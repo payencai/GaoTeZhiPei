@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="CommonTitleBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45.0dip</item>
+        <item name="android:background">@color/app_main_color</item>
+    </style>
+
+    <style name="CommonTitleBarElement">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="CommonTitleBarText" parent="CommonTitleBarElement">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:singleLine">true</item>
+    </style>
+</resources>

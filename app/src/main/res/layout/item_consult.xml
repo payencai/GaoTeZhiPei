@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_consult_iv_img"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerVertical="true"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:layout_centerVertical="true"
+        android:layout_alignTop="@id/item_consult_iv_img"
+        android:layout_toRightOf="@id/item_consult_iv_img"
+        android:gravity="center_vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_consult_tv_title"
+        android:textSize="18dp"
+        android:textColor="@android:color/black"
+        android:text="哈哈哈哈哈哈刚好哈哈"
+        android:singleLine="true"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_consult_tv_desc"
+        android:layout_marginLeft="3dp"
+        android:textSize="16dp"
+        android:textColor="@android:color/darker_gray"
+        android:text="哈哈哈哈哈哈刚好hahahhahahhahahahhahahahhahahahhahahahh哈哈"
+        android:lines="2"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

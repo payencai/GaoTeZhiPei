@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">GaoTeZhiPei</string>
+
+    <string-array name="service_center_cat_title">
+        <item>企业服务</item>
+        <item>金融服务</item>
+        <item>政策咨询</item>
+        <item>孵化服务</item>
+        <item>培训咨询</item>
+        <item>产品服务</item>
+        <item>高特智配</item>
+        <item>农资服务</item>
+        <item>数据中心</item>
+    </string-array>
+
+    <array name="service_center_cat_icon">
+        <item>@drawable/enterpriseservice</item>
+        <item>@drawable/finaceservice</item>
+        <item>@drawable/zhengcezixun</item>
+        <item>@drawable/fuhuafuwu</item>
+        <item>@drawable/peixunzixun</item>
+        <item>@drawable/product</item>
+        <item>@drawable/gaotezhipei</item>
+        <item>@drawable/nongzifuwu</item>
+        <item>@drawable/data</item>
+    </array>
+
+    <string-array name="logistics_cat_title">
+        <item>订单物流</item>
+        <item>司机位置</item>
+        <item>我要寄件</item>
+        <item>拼货订单</item>
+        <item>物流订单</item>
+        <item>违禁物品</item>
+    </string-array>
+
+    <string-array name="logistics_cat_subtitle">
+        <item>查看货物物流信息</item>
+        <item>展示该订单司机位置</item>
+        <item>点击进入寄件页面</item>
+        <item>查看我的拼货订单</item>
+        <item>服务店已收货</item>
+        <item>了解禁限物品</item>
+    </string-array>
+
+    <array name="logistics_cat_icon">
+        <item>@drawable/dingdan</item>
+        <item>@drawable/help</item>
+        <item>@drawable/sent</item>
+        <item>@drawable/pindan</item>
+        <item>@drawable/logisticsorder</item>
+        <item>@drawable/help</item>
+    </array>
+
+
+</resources>
