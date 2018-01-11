@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/part_titlebar_only_back"></include>
+
+
+    <!--<com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout-->
+        <!--android:id="@+id/pa_mrv_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+
+            <com.yichan.gaotezhipei.common.view.AutoScrollViewPagerWithIndicator
+                android:id="@+id/pa_vp_banner"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"></com.yichan.gaotezhipei.common.view.AutoScrollViewPagerWithIndicator>
+
+            <com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout
+                android:id="@+id/pa_rvl_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+            </com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout>
+
+        <!--</LinearLayout>-->
+
+    <!--</com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout>-->
+</LinearLayout>

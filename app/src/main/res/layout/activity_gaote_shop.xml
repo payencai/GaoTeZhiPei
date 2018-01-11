@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/gaoteshop_titlebar"
+        layout="@layout/part_titlebar_only_back">
+
+    </include>
+
+    <Button
+        android:id="@+id/gaoteshop_btn_apply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/btn_color_blue"
+        android:gravity="center"
+        android:text="进入商城"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/gaoteshop_btn_apply"
+        android:layout_below="@id/gaoteshop_titlebar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="225dp"
+                android:src="@drawable/product_banner3"
+                android:scaleType="fitXY"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="5dp"
+                android:textSize="12sp"
+                android:textColor="#666666"
+                android:padding="15dp"
+                android:text="        为加大电子商务推广力度，完善弥勒市电子商务进农村产品品牌培育建设及电子商务综合服务，真正将电子商务进农村落到实处，利用公信电子商务平台，建立农产品、民俗产品及旅游产品流通新渠道，规范引导农业、旅游业电子商务发展，促进产业发展、提升产业升级，弥勒市电子商务公共服务中心为农产品、民俗产品、乡村旅游特色产品等不同类型商品提供网络销售、网络批发等全方位服务，建立“高特商城”将全市电子商务产品进行有效衔接，通过资源整合为全市农产品、民俗产品、乡村旅游特色产品提供综合性的网络销售服务平台。
+“高特商城”即为“红河高原特色优质农产品销售体验中心”，“销售体验中心”包含了红河州13个县市的农产品、民俗产品、乡村旅游特色产品，各县市以县市分类分别罗列，与各县市从事当地农产品、民俗产品、乡村旅游特色产品电子商务从业者的网络销售店铺相链接，通过对“高特商城”网络推广及托管等各类营销手段，通过馆内对产品品牌进行整体包装营销，把产品品牌打造成全国乃至全球的知名商标，严格选择授权生产商和营销商，保证产品质量，保质保量保品牌；通过互联网销售平台，借助入园电商和阿里巴巴等战略合作伙伴，以O2O模式为主把红河的产品销往全世界。以红河体验馆为平台逐步实现连锁化经营，在州外、省外乃至全球布点连锁体验点，使红河优质农特产品成为世界产品。通过整合销售资源，发挥聚合效应，让农民群众、生产商、平台运营商、销售商、消费者实现共赢。最终实现产品品牌化、销售电商化、布点连锁化、利益共赢化，为全市乃至全州农产品、民俗产品、乡村旅游特色产品电子商务加快发展打造权威实用、高效便捷的一站式销售服务平台。"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

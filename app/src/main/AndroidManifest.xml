@@ -18,11 +18,67 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".servicetrain.activity.TrainServiceActivity"
+        <activity android:name=".trainservice.activity.TrainServiceActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".enterprise.activity.EnterpriseActivity"
+        <activity android:name=".enterpriseservice.activity.EnterpriseActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".enterpriseservice.activity.LicenseActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".enterpriseservice.activity.TaxServiceActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".enterpriseservice.activity.IpAcvitiy"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".finaceservice.activity.FinaceServiceActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".finaceservice.activity.DribeltAssureActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".finaceservice.activity.VentureActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".finaceservice.activity.VentureApplyActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".policyadvice.activity.PolicyAdviceActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".hatchservice.activity.HatchServiceActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".hatchservice.activity.EmploymentActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".hatchservice.activity.EntrepreneurialActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".hatchservice.activity.ArtDesignActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".hatchservice.activity.HatchProjectActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".productservice.activity.ProductServiceActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".hatchservice.activity.HatchIntroActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".productservice.activity.GaoteShopActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".productservice.activity.BrandGrowActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".gaoteintro.activity.GaoteIntroActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".gaoteintro.activity.GaoteAboutActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".gaoteintro.activity.GaoteContactActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".gaoteintro.activity.GaoteProvideActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".gaoteintro.activity.GaoteCooperateActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

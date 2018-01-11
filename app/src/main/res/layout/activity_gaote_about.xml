@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/gaote_about_titlebar"
+        layout="@layout/part_titlebar_only_back"></include>
+
+    <Button
+        android:id="@+id/gaote_about_btn_cooperate"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/btn_color_blue"
+        android:gravity="center"
+        android:text="我要合作"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/gaote_about_btn_cooperate"
+        android:layout_below="@id/gaote_about_titlebar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="194dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/gaote_banner" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="12dp"
+                android:lineSpacingExtra="5dp"
+                android:text="        云南高特智配仓储有限公司是由云南高特电商产业有限公司筹资兴建，注册资金500万，是一家集仓配、冷链服务、商品管理、物流服务为一体的第三方智慧仓储公司。现与发网供应链合作，共享全国50余个分仓，能为云南新型互联网业务提供优质、专业的第三方仓储一条龙服务。\n        云南高特智配仓储有限公司是以物流数据为基础，协同网络化分仓，优化组合运输配送资源，为销售企业提供专业的分配、分拣、打包、代物流一体化的第三方物流外包服务。"
+                android:textColor="#333333"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_common_height"
+                android:background="@color/divider_gray"></View>
+            
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/gaote_image4"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_common_height"
+                android:background="@color/divider_gray"></View>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/gaote_image5"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

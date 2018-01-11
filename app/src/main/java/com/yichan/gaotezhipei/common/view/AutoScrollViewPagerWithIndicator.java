@@ -155,10 +155,14 @@ public class AutoScrollViewPagerWithIndicator extends RelativeLayout {
         // 循环取得小点图片
         for (int i = 0; i < mScrollViews.size(); i++) {
             mIvDots[i] = new ImageView(mContext);
-            mIvDots[i].setPadding(5, 5, 5, 0);
+            mIvDots[i].setPadding(0, 0, 0, 0);
             mIvDots[i].setImageResource(R.drawable.selector_dots);
-            mDotsContainer.addView(mIvDots[i], ScreenUtil.dpToPxInt(mContext, 10), ScreenUtil.dpToPxInt(mContext, 10));
+            mDotsContainer.addView(mIvDots[i], ScreenUtil.dpToPxInt(mContext, 8), ScreenUtil.dpToPxInt(mContext,8));
             mIvDots[i].setEnabled(true);// 都设为灰色
+            if(i != mScrollViews.size() - 1) {
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mIvDots[i].getLayoutParams();
+                params.setMargins(0, 0, ScreenUtil.dpToPxInt(mContext, 10), 0);
+            }
         }
 
         if(mIvDots[mCurrentIndex].isEnabled()) {

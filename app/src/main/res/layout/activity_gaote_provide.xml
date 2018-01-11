@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/part_titlebar_only_back"></include>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#333333"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="13dp"
+        android:lineSpacingExtra="5dp"
+        android:text="        云南高特智配仓储有限公司是以物流数据为基础，协同网络化分仓，优化组合运输配送资源，为销售企业提供专业的分配、分拣、打包、代物流一体化的第三方物流外包服务。\n        为顾客提供仓储管理服务包括：入库管理、收货清点、商品质检、循环盘点、库存管理、配送管理、包裹运发、退货处理等；提供增值服务，如产品组套加工、标签及换包装、其他定制服务等。"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#373d41">
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="180dp"
+        android:scaleType="fitXY"
+        android:layout_centerInParent="true"
+        android:src="@drawable/gaote_image2"/>
+
+    </RelativeLayout>
+</LinearLayout>

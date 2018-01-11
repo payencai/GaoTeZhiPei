@@ -13,17 +13,17 @@
 
         <include
             android:id="@+id/common_mt_titlebar"
-            layout="@layout/part_home_activity_title"/>
+            layout="@layout/part_titlebar_only_back"/>
 
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/common_mt_tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:background="@android:color/white"
             app:tl_textBold="SELECT"
-            app:tl_textsize="16dp"
+            app:tl_textsize="15dp"
             app:tl_indicator_color="@color/text_black_color"
-            app:tl_textSelectColor="@color/app_main_color"
+            app:tl_textSelectColor="@color/text_black_color"
             app:tl_textUnselectColor="@color/tab_text_unselected"/>
 
         <android.support.v4.view.ViewPager

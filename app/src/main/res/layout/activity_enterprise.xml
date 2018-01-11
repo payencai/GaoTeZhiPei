@@ -6,7 +6,7 @@
 
     <include
         android:id="@+id/ep_titlebar"
-        layout="@layout/part_home_activity_title" />
+        layout="@layout/part_titlebar_only_back" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -34,6 +34,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:id="@+id/ep_cat_ll_license"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -56,6 +57,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:id="@+id/ep_cat_ll_tax_service"
                     android:orientation="vertical">
 
                     <ImageView
@@ -77,6 +79,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:id="@+id/ep_cat_ll_ip"
                     android:orientation="vertical">
 
                     <ImageView
@@ -99,111 +102,111 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="@dimen/divider_common_height"
                 android:background="@color/divider_gray" />
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:gravity="center_horizontal"-->
+                <!--android:orientation="vertical"-->
+                <!--android:paddingLeft="15dp"-->
+                <!--android:paddingRight="15dp">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="公司注册 在线核名"
-                    android:textColor="@color/text_black_color"
-                    android:textSize="20sp" />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="公司注册 在线核名"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:textSize="20sp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="快速办理通道 在线核名系统便捷、高效"
-                    android:textColor="#999999"
-                    android:textSize="14sp" />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="6dp"-->
+                    <!--android:text="快速办理通道 在线核名系统便捷、高效"-->
+                    <!--android:textColor="#999999"-->
+                    <!--android:textSize="14sp" />-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="34dp"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/shape_ep_edit"
-                    android:orientation="horizontal">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="34dp"-->
+                    <!--android:layout_marginTop="6dp"-->
+                    <!--android:background="@drawable/shape_ep_edit"-->
+                    <!--android:orientation="horizontal">-->
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@color/textview_bg_blue"
-                        android:gravity="center"
-                        android:text="拟定名称"
-                        android:textColor="@color/white"
-                        android:textSize="14sp" />
+                    <!--<TextView-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:background="@color/textview_bg_blue"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="拟定名称"-->
+                        <!--android:textColor="@color/white"-->
+                        <!--android:textSize="14sp" />-->
 
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2.5"
-                        android:background="@null"
-                        android:hint="请输入你想注册得公司名称"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:textColorHint="#999999"
-                        android:textSize="12sp" />
+                    <!--<EditText-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_weight="2.5"-->
+                        <!--android:background="@null"-->
+                        <!--android:hint="请输入您想要注册的公司名称"-->
+                        <!--android:paddingLeft="10dp"-->
+                        <!--android:paddingRight="10dp"-->
+                        <!--android:textColorHint="#999999"-->
+                        <!--android:textSize="12sp" />-->
 
-                </LinearLayout>
+                <!--</LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="34dp"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/shape_ep_edit"
-                    android:orientation="horizontal">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="34dp"-->
+                    <!--android:layout_marginTop="6dp"-->
+                    <!--android:background="@drawable/shape_ep_edit"-->
+                    <!--android:orientation="horizontal">-->
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@color/textview_bg_blue"
-                        android:gravity="center"
-                        android:text="联系电话"
-                        android:textColor="@color/white"
-                        android:textSize="14sp" />
+                    <!--<TextView-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:background="@color/textview_bg_blue"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="联系电话"-->
+                        <!--android:textColor="@color/white"-->
+                        <!--android:textSize="14sp" />-->
 
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2.5"
-                        android:background="@null"
-                        android:hint="请输入联系方式[短信接收查询结果]"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:textColorHint="#999999"
-                        android:textSize="12sp" />
+                    <!--<EditText-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_weight="2.5"-->
+                        <!--android:background="@null"-->
+                        <!--android:hint="请输入联系方式[短信接收查询结果]"-->
+                        <!--android:paddingLeft="10dp"-->
+                        <!--android:paddingRight="10dp"-->
+                        <!--android:textColorHint="#999999"-->
+                        <!--android:textSize="12sp" />-->
 
-                </LinearLayout>
+                <!--</LinearLayout>-->
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="34dp"
-                    android:layout_marginTop="6dp"
-                    android:background="@color/textview_bg_blue"
-                    android:gravity="center"
-                    android:text="查询能否注册"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
+                <!--<Button-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="34dp"-->
+                    <!--android:layout_marginTop="6dp"-->
+                    <!--android:background="@color/textview_bg_blue"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="查询能否注册"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="15sp" />-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@color/divider_gray" />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/divider_common_height"-->
+                <!--android:background="@color/divider_gray" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -384,7 +387,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="@dimen/divider_common_height"
                 android:background="@color/divider_gray" />
 
             <LinearLayout
@@ -410,6 +413,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="15dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -493,6 +498,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
 
                 <LinearLayout

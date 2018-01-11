@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:background="@color/text_blue_color">
+
+            </View>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:layout_marginLeft="9dp"
+                android:text="众创空间简介"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/divider_gray"></View>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#333333"
+            android:textSize="12sp"
+            android:lineSpacingExtra="4dp"
+            android:text="        云南高特众创空间，随中国·弥勒电子商务创业园孕育而生，是电商创业园响应“大众创业，万众创新”的加速器。\n        众创空间立足于中国·弥勒电子商务创业园优秀的电商资源，强大的整合能力，打造适应于本土发展的电商众创空间，为弥勒电子商务人才、项目打造一个设施完善、资源共享、服务周到的创客家园。\n        众创空间现入孵项目7个，项目包括：红糖、茶、甜角、野生菌等高原特色产品，销售方式涵盖网店销售、微信销售、自媒体销售，主体不仅有公司，还有个人。"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_common_height"
+        android:background="@color/divider_gray"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:background="@color/text_blue_color">
+
+            </View>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:layout_marginLeft="9dp"
+                android:text="众创活动"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/divider_gray"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginRight="8dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="74dp"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/hatch_image1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="#333333"
+                    android:layout_marginTop="8dp"
+                    android:text="摄影培训"/>
+
+                <Button
+                    android:layout_width="64dp"
+                    android:layout_height="19dp"
+                    android:textSize="10sp"
+                    android:textColor="@color/white"
+                    android:background="#00c1de"
+                    android:layout_marginTop="8dp"
+                    android:text="活动详情"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginRight="8dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="74dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/hatch_image2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="#333333"
+                    android:layout_marginTop="8dp"
+                    android:text="插花艺术"/>
+
+                <Button
+                    android:layout_width="64dp"
+                    android:layout_height="19dp"
+                    android:textSize="10sp"
+                    android:textColor="@color/white"
+                    android:background="#00c1de"
+                    android:layout_marginTop="8dp"
+                    android:text="活动详情"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="74dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/hatch_image3"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="#333333"
+                    android:layout_marginTop="8dp"
+                    android:text="烘焙活动"/>
+
+                <Button
+                    android:layout_width="64dp"
+                    android:layout_height="19dp"
+                    android:textSize="10sp"
+                    android:textColor="@color/white"
+                    android:background="#00c1de"
+                    android:layout_marginTop="8dp"
+                    android:text="活动详情"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_common_height"
+        android:background="@color/divider_gray"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:background="@color/text_blue_color">
+
+            </View>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:layout_marginLeft="9dp"
+                android:text="众创空间将为其提供"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/divider_gray"></View>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#333333"
+            android:textSize="12sp"
+            android:lineSpacingExtra="4dp"
+            android:text="1、孵化场地、办公场所、水、电、通讯、展示、洽谈、会议等公用服务设施。\n2、协助或代理办理工商注册、税务登记、银行开户、企业代码等手续\n3、协助装修、运营、管理互联网销售店铺。\n4、提供人事代理、法律咨询、代理记账服务。\n5、指导申报国家、地方相关项目及基金。\n6、举办各类讲座和培训，开展对外交流与合作，提高企业经营管理水平，增强企业竞争力。\n7、协助研发产品，开拓销售渠道。
+高特众创空间将用全心全意的态度，助力每一位创业者用百米冲刺的速度跑完创业致富的马拉松。"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

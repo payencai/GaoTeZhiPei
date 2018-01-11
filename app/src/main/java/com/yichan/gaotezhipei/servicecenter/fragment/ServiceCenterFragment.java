@@ -15,10 +15,16 @@ import com.yichan.gaotezhipei.common.util.DrawableUtil;
 import com.yichan.gaotezhipei.common.view.AutoScrollViewPagerWithIndicator;
 import com.yichan.gaotezhipei.common.view.CategoryAdapter;
 import com.yichan.gaotezhipei.common.view.GridLayoutScrollManager;
-import com.yichan.gaotezhipei.enterprise.activity.EnterpriseActivity;
+import com.yichan.gaotezhipei.enterpriseservice.activity.EnterpriseActivity;
+import com.yichan.gaotezhipei.finaceservice.activity.FinaceServiceActivity;
+import com.yichan.gaotezhipei.gaoteintro.activity.GaoteIntroActivity;
+import com.yichan.gaotezhipei.hatchservice.activity.HatchServiceActivity;
+import com.yichan.gaotezhipei.policyadvice.activity.PolicyAdviceActivity;
+import com.yichan.gaotezhipei.productservice.activity.ProductServiceActivity;
 import com.yichan.gaotezhipei.servicecenter.constant.ServiceCenterConstants;
 import com.yichan.gaotezhipei.servicecenter.entity.CommonCategoryItem;
 import com.yichan.gaotezhipei.servicecenter.view.ServiceCenterCatAdapter;
+import com.yichan.gaotezhipei.trainservice.activity.TrainServiceActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,8 +95,25 @@ public class ServiceCenterFragment extends BaseFragment {
             public void onItemClick(View view, int position) {
                 switch (position) {
                     case 0:
-                        Intent intent = new Intent(getActivity(), EnterpriseActivity.class);
-                        getActivity().startActivity(intent);
+                        getActivity().startActivity(new Intent(getActivity(), EnterpriseActivity.class));
+                        break;
+                    case 1:
+                        getActivity().startActivity(new Intent(getActivity(), FinaceServiceActivity.class));
+                        break;
+                    case 2:
+                        getActivity().startActivity(new Intent(getActivity(), PolicyAdviceActivity.class));
+                        break;
+                    case 3:
+                        getActivity().startActivity(new Intent(getActivity(), HatchServiceActivity.class));
+                        break;
+                    case 4:
+                        getActivity().startActivity(new Intent(getActivity(), TrainServiceActivity.class));
+                        break;
+                    case 5:
+                        getActivity().startActivity(new Intent(getActivity(), ProductServiceActivity.class));
+                        break;
+                    case 6:
+                        getActivity().startActivity(new Intent(getActivity(), GaoteIntroActivity.class));
                         break;
                     default:
                         break;

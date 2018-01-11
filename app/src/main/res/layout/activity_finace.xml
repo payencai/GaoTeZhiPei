@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/finace_titlebar"
+        layout="@layout/part_titlebar_only_back">
+        
+    </include>
+
+    <Button
+        android:id="@+id/finace_btn_apply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@color/btn_color_blue"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:text="我要申请"/>
+    
+    <ScrollView
+        android:layout_above="@id/finace_btn_apply"
+        android:layout_below="@id/finace_titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+           <ImageView
+               android:layout_width="match_parent"
+               android:layout_height="134dp"
+               android:src="@drawable/finace_banner1"
+               android:scaleType="fitXY"/>
+
+            <include
+                layout="@layout/part_finace_category"></include>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_common_height"
+                android:background="@color/divider_gray"></View>
+
+            <include
+                layout="@layout/part_finace_declare_process"></include>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
