@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:layout_alignParentTop="true"
+    android:background="#1975FA">
+
+    <ImageButton
+        android:id="@+id/order_titlebar_btn_left"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:background="@null"
+        android:padding="3sp"
+        android:scaleType="centerInside"
+        android:src="@drawable/lcl_arrowleft" />
+
+
+    <TextView
+        android:id="@+id/order_titlebar_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="高特"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+
+</RelativeLayout>
+

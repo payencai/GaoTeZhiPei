@@ -35,7 +35,7 @@ public class FinaceServiceActivity extends BaseActivity {
         return R.layout.activity_finace;
     }
 
-    @OnClick({R.id.titlebar_btn_left,R.id.fc_cat_ll_assure,R.id.fc_cat_ll_loan,R.id.fc_cat_ll_venture})
+    @OnClick({R.id.titlebar_btn_left,R.id.fc_cat_ll_assure,R.id.fc_cat_ll_loan,R.id.fc_cat_ll_venture,R.id.finace_btn_apply})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.titlebar_btn_left:
@@ -46,6 +46,9 @@ public class FinaceServiceActivity extends BaseActivity {
                 break;
             case R.id.fc_cat_ll_venture:
                 startActivity(new Intent(FinaceServiceActivity.this, VentureActivity.class));
+                break;
+            case R.id.finace_btn_apply:
+                startActivity(new Intent(FinaceServiceActivity.this, VentureApplyActivity.class));
                 break;
             default:
                 break;

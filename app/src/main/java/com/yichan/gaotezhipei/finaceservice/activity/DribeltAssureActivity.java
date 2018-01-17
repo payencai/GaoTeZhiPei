@@ -31,7 +31,7 @@ public class DribeltAssureActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.titlebar_btn_left,R.id.fc_cat_ll_assure,R.id.fc_cat_ll_loan,R.id.fc_cat_ll_venture})
+    @OnClick({R.id.titlebar_btn_left,R.id.fc_cat_ll_assure,R.id.fc_cat_ll_loan,R.id.fc_cat_ll_venture,R.id.assure_btn_apply})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.titlebar_btn_left:
@@ -42,6 +42,9 @@ public class DribeltAssureActivity extends BaseActivity {
                 break;
             case R.id.fc_cat_ll_venture:
                 startActivity(new Intent(DribeltAssureActivity.this, VentureActivity.class));
+                break;
+            case R.id.assure_btn_apply:
+                startActivity(new Intent(DribeltAssureActivity.this, VentureApplyActivity.class));
                 break;
             default:
                 break;

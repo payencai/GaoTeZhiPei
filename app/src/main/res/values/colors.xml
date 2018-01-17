@@ -19,4 +19,7 @@
     <color name="textview_bg_blue">#00C1DE</color>
 
     <color name="color_bg_light_white">#F6F6F6</color>
+
+    <color name="step_completed_color">#00C1DE</color>
+    <color name="step_uncompleted_color">#DDDDDD</color>
 </resources>

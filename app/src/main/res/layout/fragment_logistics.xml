@@ -10,7 +10,8 @@
         android:id="@+id/logistics_iv_map"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"></ImageView>
+        android:layout_weight="1"
+        android:scaleType="fitXY"></ImageView>
     
     <View
         android:layout_width="match_parent"
@@ -21,6 +22,7 @@
         android:id="@+id/logistics_rv_category"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/divider_gray"
         android:layout_weight="1.4"></android.support.v7.widget.RecyclerView>
 
     <View

@@ -1,5 +1,6 @@
 package com.yichan.gaotezhipei.logistics.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,6 +13,9 @@ import com.yichan.gaotezhipei.common.util.DrawableUtil;
 import com.yichan.gaotezhipei.common.view.CategoryAdapter;
 import com.yichan.gaotezhipei.common.view.DividerItemDecoration;
 import com.yichan.gaotezhipei.common.view.GridLayoutScrollManager;
+import com.yichan.gaotezhipei.logistics.activity.ExpressSearchActivity;
+import com.yichan.gaotezhipei.logistics.activity.LCLOrderActivity;
+import com.yichan.gaotezhipei.logistics.activity.LogisticOrderActivity;
 import com.yichan.gaotezhipei.logistics.view.LogisticsCatAdapter;
 import com.yichan.gaotezhipei.servicecenter.entity.CommonCategoryItem;
 
@@ -43,7 +47,7 @@ public class LogisticsFragment extends BaseFragment {
     }
 
     private void initMapView() {
-        mIvMap.setImageResource(R.mipmap.ic_launcher);
+        mIvMap.setImageResource(R.drawable.logis_banner);
     }
 
 
@@ -62,7 +66,19 @@ public class LogisticsFragment extends BaseFragment {
         mCategoryAdapter.setOnItemClickListener(new MSClickableAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                showToast("呵呵 " + position);
+                switch (position) {
+                    case 0:
+                        getActivity().startActivity(new Intent(getActivity(), ExpressSearchActivity.class));
+                        break;
+                    case 2:
+                        getActivity().startActivity(new Intent(getActivity(), LCLOrderActivity.class));
+                       break;
+                    case 3:
+                        getActivity().startActivity(new Intent(getActivity(), LogisticOrderActivity.class));
+                        break;
+                    default:
+                        break;
+                }
             }
         });
 

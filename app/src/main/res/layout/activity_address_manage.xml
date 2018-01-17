@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/address_manage_titlebar"
+        layout="@layout/part_titlebar_only_back"></include>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:id="@+id/v_divider"
+        android:layout_below="@id/address_manage_titlebar"
+        android:background="@color/divider_gray"></View>
+
+    <Button
+        android:id="@+id/address_manage_btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/btn_color_blue"
+        android:gravity="center"
+        android:text="新增寄件人地址"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/address_manage_rv_list"
+        android:layout_below="@id/v_divider"
+        android:layout_above="@id/address_manage_btn_add">
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

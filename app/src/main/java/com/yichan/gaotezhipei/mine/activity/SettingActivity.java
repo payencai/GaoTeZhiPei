@@ -1,0 +1,54 @@
+package com.yichan.gaotezhipei.mine.activity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
+import com.yichan.gaotezhipei.R;
+import com.yichan.gaotezhipei.base.component.BaseActivity;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+
+/**
+ * Created by ckerv on 2018/1/13.
+ */
+
+public class SettingActivity extends BaseActivity {
+
+    @BindView(R.id.titlebar_tv_title)
+    TextView mTvTitle;
+
+    @Override
+    protected void init(Bundle savedInstanceState) {
+        super.init(savedInstanceState);
+        initTitleBar();
+    }
+
+    private void initTitleBar() {
+        mTvTitle.setText("设置");
+    }
+
+    @OnClick({R.id.titlebar_btn_left,R.id.setting_rl_message_setting,R.id.setting_rl_clear_cache,R.id.setting_rl_about_us})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.titlebar_btn_left:
+                finish();
+                break;
+            case R.id.setting_rl_about_us:
+                startActivity(new Intent(SettingActivity.this, AboutUsActivity.class));
+                break;
+            case R.id.setting_rl_message_setting:
+                startActivity(new Intent(SettingActivity.this, MessageSettingActivity.class));
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.activity_setting;
+    }
+}

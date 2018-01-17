@@ -1,7 +1,6 @@
 package com.yichan.gaotezhipei.common.view;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -12,6 +11,8 @@ import android.support.v7.widget.RecyclerView.State;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
+import com.yichan.gaotezhipei.R;
+
 /**
  * 网格布局的分割线
  */
@@ -21,9 +22,10 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     private Drawable mDivider;
 
     public DividerItemDecoration(Context context) {
-        final TypedArray a = context.obtainStyledAttributes(ATTRS);
-        mDivider = a.getDrawable(0);
-        a.recycle();
+//        final TypedArray a = context.obtainStyledAttributes(ATTRS);
+//        mDivider = a.getDrawable(0);
+//        a.recycle();
+        mDivider = context.getDrawable(R.drawable.shape_divider_drawable);
     }
 
     @Override

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,86 +21,129 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:src="@color/divider_gray" />
+                android:layout_height="@dimen/divider_common_height"
+                android:background="@color/divider_gray" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="8dp"
-                    android:text="彭于晏 123456789012"
-                    android:textColor="@color/text_gray_color"
-                    android:textSize="14sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center_vertical"
+                    android:layout_height="88dp"
                     android:orientation="horizontal"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp">
+                    android:background="@drawable/lcl_colorbrand1"
+                    android:layout_marginTop="11dp"
+                    android:gravity="center_vertical">
+
 
                     <ImageView
-                        android:layout_width="18dp"
+                        android:layout_width="0dp"
                         android:layout_height="22dp"
-                        android:src="@drawable/greenround" />
+                        android:src="@drawable/greenround"
+                        android:layout_weight="1.5"
+                        android:layout_gravity="center"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:gravity="center_vertical"
-                        android:lines="2"
-                        android:text="云南省昆明市西aaaaaaaaaaaaaaaaaaaaaaa岛橄榄谷7-6"
-                        android:textColor="@color/text_black_color"
-                        android:textSize="14sp" />
+                        android:layout_weight="6"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="彭于晏 123456789012"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:lines="2"
+                            android:layout_marginTop="5dp"
+                            android:text="云南省昆明市西aaaaaaaaaaaaaaaaaaaaaaa岛橄榄谷7-6"
+                            android:textColor="@color/white"
+                            android:layout_marginBottom="10dp"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/lcl_whitearrow"/>
+
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center_vertical"
+                    android:layout_height="88dp"
                     android:orientation="horizontal"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp">
+                    android:background="@drawable/lcl_colorbrand2"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginBottom="11dp"
+                    android:gravity="center_vertical">
+
 
                     <ImageView
-                        android:layout_width="18dp"
+                        android:id="@+id/imageView2"
+                        android:layout_width="0dp"
                         android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.5"
                         android:src="@drawable/purpleround" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:gravity="center_vertical"
-                        android:lines="2"
-                        android:text="云南省昆明市西山区半岛橄榄谷7-6"
-                        android:textColor="#999999"
-                        android:textSize="14sp" />
+                        android:layout_weight="6"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="彭于晏 123456789012"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:lines="2"
+                            android:layout_marginTop="5dp"
+                            android:text="云南省昆明市西aaaaaaaaaaaaaaaaaaaaaaa岛橄榄谷7-6"
+                            android:textColor="@color/white"
+                            android:layout_marginBottom="10dp"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/lcl_whitearrow"/>
+
 
                 </LinearLayout>
+
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="5dp"
-                    android:src="@color/divider_gray" />
+                    android:layout_height="@dimen/divider_common_height"
+                    android:background="@color/divider_gray" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="16dp">
 
                     <ImageView
@@ -124,10 +168,14 @@
 
                             <EditText
                                 android:layout_width="64dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="23dp"
                                 android:hint="请输入重量"
                                 android:singleLine="true"
+                                android:padding="2dp"
+                                android:gravity="center"
+                                android:layout_gravity="center_vertical"
                                 android:textColor="@color/text_black_color"
+                                android:background="@drawable/shape_et_lcl"
                                 android:textColorHint="#999999"
                                 android:textSize="10sp" />
 
@@ -135,6 +183,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="kg"
+                                android:layout_marginLeft="5dp"
+                                android:layout_gravity="center_vertical"
                                 android:textColor="@color/text_black_color"
                                 android:textSize="14sp" />
 
@@ -147,8 +197,12 @@
 
                             <EditText
                                 android:layout_width="64dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="23dp"
+                                android:padding="2dp"
+                                android:gravity="center"
+                                android:layout_gravity="center_vertical"
                                 android:hint="请输入体积"
+                                android:background="@drawable/shape_et_lcl"
                                 android:singleLine="true"
                                 android:textColor="@color/text_black_color"
                                 android:textColorHint="#999999"
@@ -158,6 +212,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="m"
+                                android:layout_marginLeft="5dp"
+                                android:layout_gravity="center_vertical"
                                 android:textColor="@color/text_black_color"
                                 android:textSize="14sp" />
                         </LinearLayout>
@@ -169,8 +225,12 @@
 
                             <EditText
                                 android:layout_width="64dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="23dp"
                                 android:hint="请输入件数"
+                                android:background="@drawable/shape_et_lcl"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center"
+                                android:padding="2dp"
                                 android:singleLine="true"
                                 android:textColor="@color/text_black_color"
                                 android:textColorHint="#999999"
@@ -180,6 +240,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="件"
+                                android:layout_marginLeft="5dp"
+                                android:layout_gravity="center_vertical"
                                 android:textColor="@color/text_black_color"
                                 android:textSize="14sp" />
                         </LinearLayout>
@@ -192,6 +254,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
                     android:paddingLeft="16dp">
 
                     <ImageView
@@ -203,26 +267,27 @@
 
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="28dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="46dp"
+                        android:background="@drawable/shape_et_lcl"
                         android:layout_toRightOf="@id/icon_productname"
                         android:hint="请输入货品名称"
+                        android:paddingLeft="7dp"
                         android:textColorHint="#999999"
                         android:textSize="10sp" />
 
                 </RelativeLayout>
 
-            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="@dimen/divider_common_height"
                 android:background="@color/divider_gray" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="16dp">
 
@@ -251,7 +316,10 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="46dp"
                     android:textColorHint="#999999"
+                    android:layout_centerVertical="true"
+
                     android:hint="请输入取货地点"
+                    android:background="@null"
                     android:textColor="@color/text_black_color"
                     android:textSize="14sp"/>
             </RelativeLayout>
@@ -316,7 +384,7 @@
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="@dimen/divider_common_height"
                 android:background="@color/divider_gray" />
 
             <LinearLayout
@@ -327,20 +395,32 @@
                 android:layout_gravity="center"
                 android:gravity="center">
 
-            <ImageView
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                android:src="@drawable/bluecheck"/>
+            <CheckBox
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:button="@null"
+                android:checked="true"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/selector_check_box_lcl"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="12dp"
+                android:layout_marginLeft="3dp"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
-                android:text="我已阅读并同意《服务协议》"
+                android:text="我已阅读并同意"
                 android:textSize="12sp"
                 android:textColor="#666666"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:text="《服务协议》"
+                    android:textSize="12sp"
+                    android:textColor="#00c1de"/>
 
             </LinearLayout>
 

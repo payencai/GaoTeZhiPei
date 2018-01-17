@@ -5,8 +5,8 @@ android {
     buildToolsVersion "25.0.3"
     defaultConfig {
         applicationId "com.yichan.gaotezhipei"
-        minSdkVersion 15
-        targetSdkVersion 25
+        minSdkVersion 19
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -33,6 +33,17 @@ dependencies {
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
     compile 'org.greenrobot:eventbus:3.1.1'
     compile 'de.hdodenhof:circleimageview:2.2.0'
+    compile 'com.kyleduo.switchbutton:library:2.0.0'
+    compile 'com.github.fanhua1994:WheelPicker:1.0.1'
+    compile 'com.7heaven.widgets:segmentcontrol:1.17'
+    compile 'com.github.aohanyao:ViewPagerCardTransformer:v1.0'
+    compile project(path: ':chooseimagelibrary')
+
+
+
+
+
+
 
 
 }

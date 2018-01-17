@@ -160,16 +160,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_horizontal"
+        android:gravity="center_horizontal|center_vertical"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp">
 
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <CheckBox
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:button="@null"
+            android:checked="true"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/finace_round_check"/>
+            android:drawableStart="@drawable/selector_check_box_lcl"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -177,7 +179,15 @@
             android:layout_marginLeft="11dp"
             android:textSize="12sp"
             android:textColor="#666666"
-            android:text="我已阅读并同意《创投贷款协议》"/>
+            android:text="我已阅读并同意"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#00c1de"
+            android:text="《创投贷款协议》"/>
+
     </LinearLayout>
 
     <Button

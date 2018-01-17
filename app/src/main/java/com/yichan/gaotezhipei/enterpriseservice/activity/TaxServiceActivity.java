@@ -1,5 +1,6 @@
 package com.yichan.gaotezhipei.enterpriseservice.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -34,11 +35,15 @@ public class TaxServiceActivity extends BaseActivity {
         return R.layout.activity_tax_service;
     }
 
-    @OnClick({R.id.titlebar_btn_left})
+    @OnClick({R.id.titlebar_btn_left,R.id.tax_btn_comission})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.titlebar_btn_left:
                 finish();
+                break;
+            case R.id.tax_btn_comission:
+                Intent intent = new Intent(TaxServiceActivity.this, ComissionActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;

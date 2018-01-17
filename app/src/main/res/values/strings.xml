@@ -27,7 +27,6 @@
 
     <string-array name="logistics_cat_title">
         <item>订单物流</item>
-        <item>司机位置</item>
         <item>我要寄件</item>
         <item>拼货订单</item>
         <item>物流订单</item>
@@ -36,7 +35,6 @@
 
     <string-array name="logistics_cat_subtitle">
         <item>查看货物物流信息</item>
-        <item>展示该订单司机位置</item>
         <item>点击进入寄件页面</item>
         <item>查看我的拼货订单</item>
         <item>服务店已收货</item>
@@ -45,7 +43,6 @@
 
     <array name="logistics_cat_icon">
         <item>@drawable/dingdan</item>
-        <item>@drawable/help</item>
         <item>@drawable/sent</item>
         <item>@drawable/pindan</item>
         <item>@drawable/logisticsorder</item>

@@ -6,6 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.common.activity.CommonMultiTabActivity;
@@ -21,8 +23,10 @@ import java.util.List;
 
 public class HomeActivity extends CommonMultiTabActivity {
 
-    private ViewGroup mTvTitle;
+    private ViewGroup mVgTitle;
     private ImageView mIvRight;
+    private TextView mTvTitle;
+    private LinearLayout mLlLoc;
 
     @Override
     protected void init(Bundle savedInstanceState) {
@@ -32,9 +36,11 @@ public class HomeActivity extends CommonMultiTabActivity {
     }
 
     private void initTitleBar() {
-        mTvTitle = (ViewGroup) getTitleBar().findViewById(R.id.home_title_bar);
+        mVgTitle = (ViewGroup) getTitleBar().findViewById(R.id.home_title_bar);
         mIvRight = (ImageView) findViewById(R.id.titlebar_imgbtn_right);
+        mTvTitle = (TextView) findViewById(R.id.titlebar_tv_title);
         mIvRight.setVisibility(View.VISIBLE);
+        mLlLoc = (LinearLayout) findViewById(R.id.titlebar_ll_loc);
         mIvRight.setImageResource(R.drawable.customservice);
     }
 
@@ -70,9 +76,34 @@ public class HomeActivity extends CommonMultiTabActivity {
            public void onPageSelected(int position) {
                 //setTitleText(getTabNames()[position]);
                if(position == 3) {
-                   mTvTitle.setVisibility(View.GONE);
+                   mVgTitle.setVisibility(View.GONE);
                } else {
-                   mTvTitle.setVisibility(View.VISIBLE);
+                   mVgTitle.setVisibility(View.VISIBLE);
+               }
+               switch (position) {
+                   case 0:
+                       mTvTitle.setText("高特");
+                       mVgTitle.setVisibility(View.VISIBLE);
+                       mIvRight.setVisibility(View.VISIBLE);
+                       mLlLoc.setVisibility(View.GONE);
+                       break;
+                   case 1:
+                       mTvTitle.setText("我要拼货");
+                       mVgTitle.setVisibility(View.VISIBLE);
+                       mIvRight.setVisibility(View.GONE);
+                       mLlLoc.setVisibility(View.VISIBLE);
+                       break;
+                   case 2:
+                       mTvTitle.setText("我要寄件");
+                       mVgTitle.setVisibility(View.VISIBLE);
+                       mIvRight.setVisibility(View.GONE);
+                       mLlLoc.setVisibility(View.VISIBLE);
+                       break;
+                   case 3:
+                       mVgTitle.setVisibility(View.GONE);
+                       break;
+                   default:
+                       break;
                }
            }
 

@@ -88,6 +88,7 @@ public abstract class BaseMultiTabActivity<T extends CustomTabEntity> extends Ba
                 BaseMultiTabActivity.this.onTabReselect(position);
             }
         });
+        mCommonTabLayout.setCurrentTab(0);
     }
 
     protected void onTabSelect(int position) {

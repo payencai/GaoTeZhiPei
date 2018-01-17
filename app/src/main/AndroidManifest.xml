@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yichan.gaotezhipei">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -79,6 +81,57 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".gaoteintro.activity.GaoteCooperateActivity"
             android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".agriculturalservice.activity.AgriculturalServiceActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".logistics.activity.ExpressSearchActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".logistics.activity.LCLOrderActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".mine.activity.AddressMangeActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".mine.activity.AddAddressActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".mine.activity.SettingActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".mine.activity.MessageSettingActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".mine.activity.AboutUsActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".mine.activity.BecomeLCLDriverActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".mine.activity.ChooseCarTypeActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".logistics.activity.LogisticOrderActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".mine.activity.MyMessageActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".login.activity.DemandLoginActivity"
+            android:screenOrientation="portrait"
+            >
+
+        </activity>
+
+        <activity android:name=".login.activity.ServerLoginActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".enterpriseservice.activity.ComissionActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".mine.activity.FeedbackActivity"
+            android:screenOrientation="portrait"></activity>
+
+
     </application>
 
 </manifest>

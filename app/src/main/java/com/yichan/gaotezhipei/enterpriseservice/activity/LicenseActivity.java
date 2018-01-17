@@ -1,5 +1,6 @@
 package com.yichan.gaotezhipei.enterpriseservice.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,11 +58,15 @@ public class LicenseActivity extends BaseActivity {
         return R.layout.activity_license;
     }
 
-    @OnClick({R.id.titlebar_btn_left})
+    @OnClick({R.id.titlebar_btn_left,R.id.license_btn_commission})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.titlebar_btn_left:
                 finish();
+                break;
+            case R.id.license_btn_commission:
+                Intent intent = new Intent(LicenseActivity.this, ComissionActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;

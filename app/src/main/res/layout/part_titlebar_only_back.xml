@@ -21,6 +21,7 @@
         android:layout_centerHorizontal="true"
         android:ellipsize="marquee"
         android:focusable="true"
+        android:textSize="17sp"
         android:focusableInTouchMode="true"
         android:scrollHorizontally="true"
         android:text="高特" />

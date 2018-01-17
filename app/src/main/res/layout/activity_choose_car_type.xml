@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/part_titlebar_only_back"></include>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/divider_gray"></View>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@color/white">
+        
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*"
+            android:layout_gravity="center_vertical"
+            android:textColor="#ff7430"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="车辆类型："
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="8dp"
+            android:textColor="#666666"
+            android:textSize="12sp"/>
+
+        <com.sevenheaven.segmentcontrol.SegmentControl
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            app:selectedColor="@color/step_completed_color"
+            app:normalColor="@color/white"
+            app:textColors="@drawable/selector_rg_car_type"
+            app:cornerRadius="5dp"
+            app:separatorWidth="1dp"
+            app:texts="面包车|轻货|厢式货车|平板货车|高栏货车"
+            app:verticalGap="10dp"
+            app:horizonGap="10dp"/>
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingTop="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="面包车"
+            android:textSize="12sp"
+            android:textColor="#666666"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请在下面选择车长或车厢长，若实际长度不在下表中，则选择相对较小的长度。"
+            android:layout_marginTop="7dp"
+            android:textSize="10sp"
+            android:textColor="#999999"/>
+
+        <com.sevenheaven.segmentcontrol.SegmentControl
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="35dp"
+            android:textSize="12sp"
+            app:selectedColor="@color/step_completed_color"
+            app:normalColor="@color/white"
+            app:textColors="@drawable/selector_rg_car_type"
+            app:cornerRadius="5dp"
+            app:separatorWidth="1dp"
+            android:orientation="vertical"
+            app:texts="整车长3.20-3.59米|整车长3.60-3.99米|整车长4.00-4.39米|整车长4.40-4.59米|整车长4.60-4.79米|整车长4.80-4.99米|整车长5.00-5.39米|整车长5.40-5.79米"
+            app:verticalGap="10dp"
+            app:horizonGap="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

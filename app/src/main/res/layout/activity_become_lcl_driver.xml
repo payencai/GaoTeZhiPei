@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include
+        layout="@layout/part_titlebar_only_back"></include>
+
+    <com.yichan.gaotezhipei.base.view.StepView
+        android:id="@+id/lcl_driver_step_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        app:svCircleColor="@color/step_uncompleted_color"
+        app:svTextColor="@color/text_black_color"
+        app:svStrokeWidth="0dp"
+        app:svDrawablePadding="15dp"
+        app:svSelectedColor="@color/step_completed_color"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <include
+        android:id="@+id/lcl_driver_vg_step1"
+        layout="@layout/part_lcl_driver_step1"
+        ></include>
+
+    <include
+        android:id="@+id/lcl_driver_vg_step2"
+        layout="@layout/part_lcl_driver_step2"
+        android:visibility="gone"></include>
+
+    <include
+        android:id="@+id/lcl_driver_vg_step3"
+        layout="@layout/part_lcl_driver_step3"
+        android:visibility="gone"></include>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lcl_driver_btn_operate"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:text="下一步"
+        android:background="@drawable/shape_btn_lcl_driver"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="35dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

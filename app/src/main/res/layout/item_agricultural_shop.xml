@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    
+    
+    <ImageView
+        android:layout_width="117dp"
+        android:layout_height="88dp"
+        android:id="@+id/item_agri_iv_shopicon"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="19dp"
+        android:layout_marginLeft="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/agri_image"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_agri_tv_shopname"
+        android:textSize="14sp"
+        android:layout_toRightOf="@id/item_agri_iv_shopicon"
+        android:layout_alignTop="@id/item_agri_iv_shopicon"
+        android:textColor="@color/text_black_color"
+        android:layout_marginLeft="13dp"
+        android:singleLine="true"
+        android:layout_marginRight="16dp"
+        android:text="云南供销农资连锁店（弥勒店）"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_agri_tv_shopaddr"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@id/item_agri_tv_shopname"
+        android:layout_below="@id/item_agri_tv_shopname"
+        android:textColor="#999999"
+        android:lines="2"
+        android:layout_marginRight="16dp"
+        android:text="云南省弥勒市红河区前卫西路世纪半岛橄榄谷7-6号"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_agri_tv_shopphone"
+        android:textColor="#00c1de"
+        android:textSize="16sp"
+        android:text="0766-8532468"
+        android:layout_marginTop="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_below="@id/item_agri_tv_shopaddr"
+        android:layout_alignLeft="@id/item_agri_tv_shopname"
+        android:singleLine="true"/>
+
+    <Button
+        android:layout_width="64dp"
+        android:layout_height="24dp"
+        android:id="@+id/item_agri_btn_dial"
+        android:text="立即拨打"
+        android:textSize="12sp"
+        android:layout_marginRight="10dp"
+        android:textColor="#00c1de"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/item_agri_tv_shopaddr"
+        android:layout_alignRight="@id/item_agri_tv_shopaddr"
+        android:background="@drawable/shape_btn_dial"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/divider_gray"
+        android:layout_below="@id/item_agri_iv_shopicon"></View>
+
+</RelativeLayout>
