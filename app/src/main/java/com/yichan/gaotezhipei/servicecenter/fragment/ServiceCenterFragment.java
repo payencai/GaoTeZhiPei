@@ -85,7 +85,7 @@ public class ServiceCenterFragment extends BaseFragment {
         mViewPagerIndicator.getAutoScrollViewPager().setPageTransformer(true, CardPageTransformer.getBuild()//建造者模式
                 .addAnimationType(PageTransformerConfig.ROTATION)//默认动画 default animation rotation  旋转  当然 也可以一次性添加两个  后续会增加更多动画
                 .setRotation(0)//旋转角度
-                .addAnimationType(PageTransformerConfig.ALPHA)//默认动画 透明度 暂时还有问题
+                .addAnimationType(PageTransformerConfig.NONE)//默认动画 透明度 暂时还有问题
                 .setViewType(PageTransformerConfig.LEFT)//view的类型
                 .setOnPageTransformerListener(new OnPageTransformerListener() {
                     @Override

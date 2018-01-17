@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="152dp"
         android:background="#1975FA"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/order_common_ll_header">
 
         <include
             android:id="@+id/order_common_titlebar"
@@ -35,7 +36,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="105dp"
-        android:layout_below="@id/order_common_mt_tab_layout"
         android:background="@android:color/transparent"
         android:layout_marginBottom="10dp"/>
 

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/divider_gray"
     android:orientation="vertical">
 
     <include layout="@layout/part_titlebar_only_back">
@@ -21,10 +21,10 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="10dp"
-                android:background="@null"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                android:background="@color/white"
                 android:gravity="start"
                 android:hint="请写下你的意见或建议"
                 android:textColor="@color/text_black_color"
@@ -35,10 +35,11 @@
                 android:id="@+id/feed_back_rv_display"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="10dp"></android.support.v7.widget.RecyclerView>
+                android:paddingBottom="10dp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"></android.support.v7.widget.RecyclerView>
 
             <View
                 android:layout_width="match_parent"
@@ -46,12 +47,14 @@
                 android:background="@color/divider_gray"></View>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="12dp"
+                android:paddingRight="12dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
                 android:text="选择反馈类型"
+                android:background="@color/white"
                 android:textColor="@color/text_black_color" />
 
             <View
@@ -62,9 +65,11 @@
             <com.yichan.gaotezhipei.base.view.KeyRadioGroupV1
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="15dp"
+                android:paddingLeft="25dp"
+                android:background="@color/white"
+                android:paddingRight="25dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -141,13 +146,12 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider_common_height"
-                android:layout_marginTop="15dp"
                 android:background="@color/divider_gray"></View>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
+                android:background="@color/white"
                 android:hint="填写您的手机或邮箱"
                 android:paddingBottom="15dp"
                 android:paddingLeft="15dp"
@@ -156,10 +160,13 @@
                 android:textColorHint="#999999"
                 android:textSize="14sp" />
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/divider_gray">
+                android:background="@color/divider_gray"
+                android:orientation="vertical">
 
                 <Button
                     android:layout_width="match_parent"
@@ -173,6 +180,7 @@
                     android:textColor="@color/white" />
 
             </LinearLayout>
+
 
         </LinearLayout>
 

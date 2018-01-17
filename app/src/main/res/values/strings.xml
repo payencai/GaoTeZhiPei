@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GaoTeZhiPei</string>
+    <string name="app_name">高特智配</string>
 
     <string-array name="service_center_cat_title">
         <item>企业服务</item>
