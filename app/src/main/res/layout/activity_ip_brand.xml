@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include
+        layout="@layout/part_titlebar_only_back"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="196dp"
+                android:src="@drawable/ip_brand_banner5"
+                android:scaleType="fitXY"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="TRADEMARK COMPOSITION"
+                            android:textColor="#999999"
+                            android:textSize="11sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:layout_marginTop="6dp"
+                            android:background="@color/divider_gray"></View>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:text="商标的构成"
+                    android:textColor="@color/text_black_color"
+                    android:textSize="15sp" />
+                
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="235dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ip_brand_image9"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:lineSpacingExtra="4dp"
+                    android:text="商标查询是指商标注册申请人或其代理人在提出注册申请前，对其申请的商标是否与再先权利商标有无相同或近似的查询工作，从而了解自己准备申请注册的商标是否与他人已经注册或正在注册的商标相同或近似的程序。申请前的查询，是申请商标注册的重要步骤，其查询结果虽不具备法律效力，但它可使商标注册申请人做到心中有数，减少盲目性，降低商标注册风险，故在大大减少费用开支的同时，争取更多的申请时间。"
+                    android:textColor="@color/text_black_color"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+
+            <include
+                layout="@layout/part_ip_brand_half"></include>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

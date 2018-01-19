@@ -50,6 +50,10 @@ public class FinaceServiceActivity extends BaseActivity {
             case R.id.finace_btn_apply:
                 startActivity(new Intent(FinaceServiceActivity.this, VentureApplyActivity.class));
                 break;
+            case R.id.fc_cat_ll_loan:
+                startActivity(new Intent(FinaceServiceActivity.this, FinaceServiceActivity.class));
+                finish();
+                break;
             default:
                 break;
         }

@@ -12,12 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".home.HomeActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
 
         <activity android:name=".trainservice.activity.TrainServiceActivity"
@@ -130,6 +135,42 @@
 
         <activity android:name=".mine.activity.FeedbackActivity"
             android:screenOrientation="portrait"></activity>
+
+        <!-->*****************服务方【服务网点】*****************<-->
+
+        <activity android:name=".server.netstation.activity.NetMainActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".server.netstation.activity.ExpressRecordActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".server.netstation.activity.NewExpressActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".server.netstation.activity.ExpressToConfirmActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".hatchservice.activity.HatchApplyActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <!-->*****************服务方【拼货司机】*****************<-->
+
+        <activity android:name=".server.lcldriver.activity.LCLDriverMainActivity"
+            android:screenOrientation="portrait">
+
+
+        </activity>
+
+        <activity android:name=".server.lcldriver.activity.DriverInformActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".server.lcldriver.activity.LCLDriverOrderActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".server.lcldriver.activity.NearbyCargoActivity"
+            android:screenOrientation="portrait"></activity>
+
 
 
     </application>

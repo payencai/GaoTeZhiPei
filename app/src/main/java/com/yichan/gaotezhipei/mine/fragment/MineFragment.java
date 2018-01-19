@@ -1,10 +1,14 @@
 package com.yichan.gaotezhipei.mine.fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseFragment;
+import com.yichan.gaotezhipei.base.util.DialogHelper;
 import com.yichan.gaotezhipei.common.util.ActivityAnimationUtil;
 import com.yichan.gaotezhipei.login.activity.DemandLoginActivity;
 import com.yichan.gaotezhipei.mine.activity.AddressMangeActivity;
@@ -25,7 +29,7 @@ public class MineFragment extends BaseFragment {
         return R.layout.fragment_mine;
     }
 
-    @OnClick({R.id.mine_rl_address_manage,R.id.mine_iv_setting,R.id.mine_tv_setting,R.id.mine_rl_become_lcl_driver,R.id.mine_rl_my_message,R.id.mine_tv_login,R.id.mine_rl_feedback})
+    @OnClick({R.id.mine_rl_address_manage,R.id.mine_iv_setting,R.id.mine_tv_setting,R.id.mine_rl_become_lcl_driver,R.id.mine_rl_my_message,R.id.mine_tv_login,R.id.mine_rl_feedback,R.id.mine_rl_change_role})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.mine_rl_address_manage:
@@ -49,8 +53,36 @@ public class MineFragment extends BaseFragment {
             case R.id.mine_rl_feedback:
                 getActivity().startActivity(new Intent(getActivity(), FeedbackActivity.class));
                 break;
+            case R.id.mine_rl_change_role:
+                showChangeRoleDialog();
+                break;
             default:
                 break;
         }
+    }
+
+    private void showChangeRoleDialog() {
+        //TODO 检查权限
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_change_role_has_permisson, null);
+        DialogHelper.showCustomDialog(view, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getActivity(), "确定", Toast.LENGTH_SHORT).show();
+            }
+        }, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getActivity(), "取消", Toast.LENGTH_SHORT).show();
+            }
+        });
+//        View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_change_role_no_permission, null);
+//        final Dialog dialog = DialogHelper.showCustomDialog(view, true);
+//        view.findViewById(R.id.no_permission_btn_know).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getActivity(), "知道了", Toast.LENGTH_SHORT).show();
+//                dialog.dismiss();
+//            }
+//        });
     }
 }

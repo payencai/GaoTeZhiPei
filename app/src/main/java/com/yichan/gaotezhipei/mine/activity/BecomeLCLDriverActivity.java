@@ -1,8 +1,8 @@
 package com.yichan.gaotezhipei.mine.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseActivity;
+import com.yichan.gaotezhipei.base.util.DialogHelper;
 import com.yichan.gaotezhipei.base.view.StepView;
 
 import java.util.Arrays;
@@ -84,14 +85,10 @@ public class BecomeLCLDriverActivity extends BaseActivity {
     }
 
     private void showChooseCarPlateColorDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(BecomeLCLDriverActivity.this);
         View view = View
                 .inflate(BecomeLCLDriverActivity.this, R.layout.dialog_choose_car_plate_color, null);
+        final Dialog dialog = DialogHelper.showCustomDialog(view, true);
         ImageView ivBlueSign = (ImageView) view.findViewById(R.id.dialog_iv_bluesign);
-
-        builder.setView(view);
-        builder.setCancelable(true);
-        final AlertDialog dialog = builder.create();
         ivBlueSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +96,6 @@ public class BecomeLCLDriverActivity extends BaseActivity {
                 dialog.dismiss();
             }
         });
-        dialog.show();
     }
 
 

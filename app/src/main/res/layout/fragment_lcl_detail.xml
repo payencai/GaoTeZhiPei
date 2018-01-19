@@ -61,7 +61,7 @@
                             android:gravity="center_vertical"
                             android:lines="2"
                             android:layout_marginTop="5dp"
-                            android:text="云南省昆明市西aaaaaaaaaaaaaaaaaaaaaaa岛橄榄谷7-6"
+                            android:text="云南省昆明市西山区 前卫街道西山区世纪半岛橄榄谷7-6"
                             android:textColor="@color/white"
                             android:layout_marginBottom="10dp"
                             android:textSize="14sp" />
@@ -116,7 +116,7 @@
                             android:gravity="center_vertical"
                             android:lines="2"
                             android:layout_marginTop="5dp"
-                            android:text="云南省昆明市西aaaaaaaaaaaaaaaaaaaaaaa岛橄榄谷7-6"
+                            android:text="云南省昆明市西山区 前卫街道西山区世纪半岛橄榄谷7-6"
                             android:textColor="@color/white"
                             android:layout_marginBottom="10dp"
                             android:textSize="14sp" />
@@ -295,6 +295,8 @@
                     android:id="@+id/icon_man"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/man" />
 
@@ -382,6 +384,23 @@
                         android:src="@drawable/arrowright"/>
                 </LinearLayout>
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_common_height"
+                android:background="@color/divider_gray" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请留言给拼货司机"
+                android:textSize="14sp"
+                android:paddingLeft="16dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textColorHint="#999999"
+                android:textColor="@color/text_black_color"/>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider_common_height"

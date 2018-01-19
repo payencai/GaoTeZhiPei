@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include
+        layout="@layout/part_titlebar_only_back"></include>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textSize="15sp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="16dp"
+        android:textColor="@color/text_black_color"
+        android:hint="请输入订单号"
+        android:layout_marginRight="16dp"
+        android:textColorHint="#999999"
+        android:singleLine="true"
+        android:paddingLeft="50dp"
+        android:background="@drawable/logis_searchbox"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/divider_gray"></View>
+
+    <com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/express_record_rv">
+
+    </com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout>
+
+</LinearLayout>

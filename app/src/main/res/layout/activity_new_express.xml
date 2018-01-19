@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include
+        layout="@layout/part_titlebar_only_back"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_tag1"
+                    android:text="快递公司"
+                    android:textColor="@color/text_black_color"
+                    android:layout_alignParentLeft="true"
+                    android:textSize="14sp"/>
+
+                <ImageView
+                    android:layout_width="7dp"
+                    android:layout_height="12dp"
+                    android:id="@+id/iv_arrowright"
+                    android:src="@drawable/arrowright"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#999999"
+                    android:layout_toRightOf="@id/tv_tag1"
+                    android:layout_toLeftOf="@id/iv_arrowright"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:text="请选择快递公司"/>
+                
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider_gray"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="输入编号"
+                    android:textColor="@color/text_black_color"
+                    android:layout_alignParentLeft="true"
+                    android:textSize="14sp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:hint="请输入快递编号"
+                    android:textColorHint="#999999"
+                    android:textSize="14sp"
+                    android:background="@null"
+                    android:textColor="@color/text_black_color"/>
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_common_height"
+                android:background="@color/divider_gray"></View>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+                android:orientation="horizontal"
+                android:background="@drawable/lcl_colorbrand1"
+                android:layout_marginTop="11dp"
+                android:gravity="center_vertical">
+
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/greenround"
+                    android:layout_weight="1.5"
+                    android:layout_gravity="center"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="彭于晏 123456789012"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:lines="2"
+                        android:layout_marginTop="5dp"
+                        android:text="云南省昆明市西山区 前卫街道西山区世纪半岛橄榄谷7-6"
+                        android:textColor="@color/white"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/lcl_whitearrow"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+                android:orientation="horizontal"
+                android:background="@drawable/lcl_colorbrand2"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="11dp"
+                android:gravity="center_vertical">
+
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="0dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.5"
+                    android:src="@drawable/purpleround" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="彭于晏 123456789012"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:lines="2"
+                        android:layout_marginTop="5dp"
+                        android:text="云南省昆明市西山区 前卫街道西山区世纪半岛橄榄谷7-6"
+                        android:textColor="@color/white"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/lcl_whitearrow"/>
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_common_height"
+                android:background="@color/divider_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="16dp">
+
+                <ImageView
+                    android:id="@+id/icon_weight"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/weight" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_toRightOf="@id/icon_weight"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:layout_width="64dp"
+                            android:layout_height="23dp"
+                            android:hint="请输入重量"
+                            android:singleLine="true"
+                            android:padding="2dp"
+                            android:gravity="center"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_black_color"
+                            android:background="@drawable/shape_et_lcl"
+                            android:textColorHint="#999999"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="kg"
+                            android:layout_marginLeft="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_black_color"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:layout_width="64dp"
+                            android:layout_height="23dp"
+                            android:padding="2dp"
+                            android:gravity="center"
+                            android:layout_gravity="center_vertical"
+                            android:hint="请输入体积"
+                            android:background="@drawable/shape_et_lcl"
+                            android:singleLine="true"
+                            android:textColor="@color/text_black_color"
+                            android:textColorHint="#999999"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="m"
+                            android:layout_marginLeft="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_black_color"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:layout_width="64dp"
+                            android:layout_height="23dp"
+                            android:hint="请输入件数"
+                            android:background="@drawable/shape_et_lcl"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center"
+                            android:padding="2dp"
+                            android:singleLine="true"
+                            android:textColor="@color/text_black_color"
+                            android:textColorHint="#999999"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="件"
+                            android:layout_marginLeft="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_black_color"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="16dp">
+
+                <ImageView
+                    android:id="@+id/icon_productname"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/productname" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="46dp"
+                    android:background="@drawable/shape_et_lcl"
+                    android:layout_toRightOf="@id/icon_productname"
+                    android:hint="请输入货品名称"
+                    android:paddingLeft="7dp"
+                    android:textColorHint="#999999"
+                    android:textSize="10sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:id="@+id/iv_pay"
+                    android:adjustViewBounds="true"
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/server_payway"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/iv_pay"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="14sp"
+                    android:text="付款方式"
+                    android:textColor="@color/text_black_color"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="14sp"
+                    android:text="寄付现结"
+                    android:textColor="#666666"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_common_height"
+                android:background="@color/divider_gray"></View>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="30dp"
+                android:text="确定并上传"
+                android:gravity="center"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:background="@drawable/shape_btn_lcl_driver"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

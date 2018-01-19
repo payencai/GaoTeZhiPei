@@ -91,97 +91,107 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/hatch_polygon"/>
 
-            <LinearLayout
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="110dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/hatch_image25"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="15dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:orientation="horizontal">
+                android:layout_marginBottom="10dp"
+                android:adjustViewBounds="true"/>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/hatch_image25"/>
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="110dp"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:orientation="horizontal">-->
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:scaleType="fitXY"
-                    android:layout_marginLeft="13dp"
-                    android:src="@drawable/hatch_image26"/>
+                <!--<ImageView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:scaleType="fitXY"-->
+                    <!--android:src="@drawable/hatch_image25"/>-->
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:scaleType="fitXY"
-                    android:layout_marginLeft="13dp"
-                    android:src="@drawable/hatch_image27"/>
+                <!--<ImageView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:scaleType="fitXY"-->
+                    <!--android:layout_marginLeft="13dp"-->
+                    <!--android:src="@drawable/hatch_image26"/>-->
 
-            </LinearLayout>
+                <!--<ImageView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:scaleType="fitXY"-->
+                    <!--android:layout_marginLeft="13dp"-->
+                    <!--android:src="@drawable/hatch_image27"/>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="85dp"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:orientation="horizontal">
+            <!--</LinearLayout>-->
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/hatch_image28"/>
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="85dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:orientation="horizontal">-->
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:scaleType="fitXY"
-                    android:layout_marginLeft="13dp"
-                    android:src="@drawable/hatch_image29"/>
+                <!--<ImageView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:scaleType="fitXY"-->
+                    <!--android:src="@drawable/hatch_image28"/>-->
+
+                <!--<ImageView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:scaleType="fitXY"-->
+                    <!--android:layout_marginLeft="13dp"-->
+                    <!--android:src="@drawable/hatch_image29"/>-->
 
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="203dp"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:orientation="horizontal">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="203dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:orientation="horizontal">-->
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:scaleType="fitXY"
-                    android:src="@color/divider_gray"/>
+                <!--<ImageView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:scaleType="fitXY"-->
+                    <!--android:src="@color/divider_gray"/>-->
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:scaleType="fitXY"
-                    android:layout_marginLeft="13dp"
-                    android:src="@drawable/hatch_image31"/>
+                <!--<ImageView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:scaleType="fitXY"-->
+                    <!--android:layout_marginLeft="13dp"-->
+                    <!--android:src="@drawable/hatch_image31"/>-->
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:scaleType="fitXY"
-                    android:layout_marginLeft="13dp"
-                    android:src="@drawable/hatch_image32"/>
+                <!--<ImageView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:scaleType="fitXY"-->
+                    <!--android:layout_marginLeft="13dp"-->
+                    <!--android:src="@drawable/hatch_image32"/>-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
 
         </LinearLayout>

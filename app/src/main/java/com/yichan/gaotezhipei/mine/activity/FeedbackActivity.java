@@ -59,7 +59,7 @@ public class FeedbackActivity extends BaseActivity implements OnImageSelectedFin
 
     private void initDisplayImageViews() {
         mAdapter = new FeedbackDisplayImageAdapter(this, R.layout.item_feed_back_display_img, mDatas, mSelectNum);
-        mRvDisplay.setLayoutManager(new GridLayoutManager(this, 3));
+        mRvDisplay.setLayoutManager(new GridLayoutManager(this, 4));
         mRvDisplay.setAdapter(mAdapter);
 
         mAdapter.setOnItemClickListener(new MSClickableAdapter.OnItemClickListener() {

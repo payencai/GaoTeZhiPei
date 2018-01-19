@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
 import com.changelcai.mothership.component.activity.MSBaseListActivity;
-import com.yichan.gaotezhipei.base.util.DialogFragmentHelper;
+import com.yichan.gaotezhipei.base.util.DialogHelper;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -31,7 +31,7 @@ public abstract class BaseListActivity extends MSBaseListActivity {
 
     protected void showLoading(String msg) {
         if (mLoadingDialog == null)
-            mLoadingDialog = DialogFragmentHelper.showProgress(getSupportFragmentManager(), msg, true);
+            mLoadingDialog = DialogHelper.showProgress(getSupportFragmentManager(), msg, true);
     }
 
     protected void dismissLoading() {

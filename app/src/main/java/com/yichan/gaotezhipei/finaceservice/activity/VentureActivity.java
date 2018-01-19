@@ -50,6 +50,9 @@ public class VentureActivity extends BaseActivity {
             case R.id.fc_cat_ll_venture:
                 startActivity(new Intent(VentureActivity.this, VentureActivity.class));
                 break;
+            case R.id.fc_cat_ll_loan:
+                startActivity(new Intent(VentureActivity.this, FinaceServiceActivity.class));
+                break;
             default:
                 break;
         }

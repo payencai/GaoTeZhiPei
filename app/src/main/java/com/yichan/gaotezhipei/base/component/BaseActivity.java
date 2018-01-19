@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 
 import com.changelcai.mothership.component.activity.MSBaseActivity;
-import com.yichan.gaotezhipei.base.util.DialogFragmentHelper;
+import com.yichan.gaotezhipei.base.util.DialogHelper;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -38,7 +38,7 @@ public abstract class BaseActivity extends MSBaseActivity {
 
     protected void showLoading(String msg) {
         if (mLoadingDialog == null)
-            mLoadingDialog = DialogFragmentHelper.showProgress(getSupportFragmentManager(), msg, true);
+            mLoadingDialog = DialogHelper.showProgress(getSupportFragmentManager(), msg, true);
     }
 
     protected void dismissLoading() {

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
 import com.changelcai.mothership.component.fragment.MSBaseListFragment;
-import com.yichan.gaotezhipei.base.util.DialogFragmentHelper;
+import com.yichan.gaotezhipei.base.util.DialogHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +49,7 @@ public abstract class BaseListFragment<E> extends MSBaseListFragment {
             isDestroy = getActivity().isFinishing();
         }
         if (mLoadingDialog == null && !isDestroy)
-            mLoadingDialog = DialogFragmentHelper.showProgress(getChildFragmentManager(), msg, true);
+            mLoadingDialog = DialogHelper.showProgress(getChildFragmentManager(), msg, true);
     }
 
     protected void dismissLoading() {

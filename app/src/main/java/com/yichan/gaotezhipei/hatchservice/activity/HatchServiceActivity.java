@@ -58,7 +58,7 @@ public class HatchServiceActivity extends BaseActivity {
         return R.layout.activity_hatch;
     }
 
-    @OnClick({R.id.titlebar_btn_left, R.id.hatch_cat_ll_intro, R.id.hatch_cat_ll_employment, R.id.hatch_cat_ll_entrepreneurial,R.id.hatch_cat_ll_artdesign,R.id.hatch_cat_ll_hatchproject})
+    @OnClick({R.id.titlebar_btn_left, R.id.hatch_cat_ll_intro, R.id.hatch_cat_ll_employment, R.id.hatch_cat_ll_entrepreneurial,R.id.hatch_cat_ll_artdesign,R.id.hatch_cat_ll_hatchproject,R.id.hatch_btn_apply})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.titlebar_btn_left:
@@ -78,6 +78,9 @@ public class HatchServiceActivity extends BaseActivity {
                 break;
             case R.id.hatch_cat_ll_hatchproject:
                 startActivity(new Intent(HatchServiceActivity.this, HatchProjectActivity.class));
+                break;
+            case R.id.hatch_btn_apply:
+                startActivity(new Intent(HatchServiceActivity.this, HatchApplyActivity.class));
                 break;
             default:
                 break;

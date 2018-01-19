@@ -46,6 +46,9 @@ public class DribeltAssureActivity extends BaseActivity {
             case R.id.assure_btn_apply:
                 startActivity(new Intent(DribeltAssureActivity.this, VentureApplyActivity.class));
                 break;
+            case R.id.fc_cat_ll_loan:
+                startActivity(new Intent(DribeltAssureActivity.this, FinaceServiceActivity.class));
+                break;
             default:
                 break;
         }

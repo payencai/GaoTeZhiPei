@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/divider_gray">
+
+    <include
+        layout="@layout/part_titlebar_only_back"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <ImageView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+            android:id="@+id/net_main_iv_new_address"
+        android:src="@drawable/server_kuaijian"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/net_main_iv_express_to_confirm"
+            android:src="@drawable/server_daiquerenjian"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/net_main_iv_express_record"
+            android:layout_weight="1"
+            android:src="@drawable/server_kuaijianshoulu"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
+
+    </LinearLayout>
+    
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/server_banner1"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:paddingLeft="10dp"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="已确认接件"
+        android:textColor="@color/text_black_color"
+        android:textSize="16sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/net_main_rv"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+    </com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout>
+
+</LinearLayout>

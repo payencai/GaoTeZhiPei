@@ -37,95 +37,106 @@
                 android:layout_height="1dp"
                 android:background="@color/divider_gray"></View>
 
-            <LinearLayout
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:orientation="horizontal">
-                
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_weight="1">
-                    
-                    
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:src="@drawable/hatch_datum"/>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/hatch_apply"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#333333"
-                        android:layout_marginTop="9dp"
-                        android:textSize="11sp"
-                        android:text="提交项目资料"/>
-                    
-                </LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="110dp"-->
+                <!--android:orientation="horizontal">-->
+                <!---->
+                <!--<LinearLayout-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:gravity="center"-->
+                    <!--android:layout_weight="1">-->
+                    <!---->
+                    <!---->
+                    <!--<ImageView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="45dp"-->
+                        <!--android:src="@drawable/hatch_datum"/>-->
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="11dp"
-                    android:layout_weight="0.1"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/hatch_arrow"/>
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="#333333"-->
+                        <!--android:layout_marginTop="9dp"-->
+                        <!--android:textSize="11sp"-->
+                        <!--android:text="提交项目资料"/>-->
+                    <!---->
+                <!--</LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_weight="1">
+                <!--<ImageView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="11dp"-->
+                    <!--android:layout_weight="0.1"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:src="@drawable/hatch_arrow"/>-->
 
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:src="@color/divider_gray"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#333333"
-                        android:layout_marginTop="9dp"
-                        android:textSize="11sp"
-                        android:text="基地复审"/>
-
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="11dp"
-                    android:layout_weight="0.1"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/hatch_arrow"/>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_weight="1">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:gravity="center"-->
+                    <!--android:layout_weight="1">-->
 
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:src="@color/divider_gray"/>
+                    <!--<ImageView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="45dp"-->
+                        <!--android:src="@color/divider_gray"/>-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#333333"
-                        android:layout_marginTop="9dp"
-                        android:textSize="11sp"
-                        android:text="结果反馈"/>
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="#333333"-->
+                        <!--android:layout_marginTop="9dp"-->
+                        <!--android:textSize="11sp"-->
+                        <!--android:text="基地复审"/>-->
 
-                </LinearLayout>
+                <!--</LinearLayout>-->
 
-            </LinearLayout>
+                <!--<ImageView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="11dp"-->
+                    <!--android:layout_weight="0.1"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:src="@drawable/hatch_arrow"/>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:gravity="center"-->
+                    <!--android:layout_weight="1">-->
+
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="45dp"-->
+                        <!--android:src="@color/divider_gray"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="#333333"-->
+                        <!--android:layout_marginTop="9dp"-->
+                        <!--android:textSize="11sp"-->
+                        <!--android:text="结果反馈"/>-->
+
+                <!--</LinearLayout>-->
+
+            <!--</LinearLayout>-->
 
             <View
                 android:layout_width="match_parent"
@@ -142,202 +153,209 @@
                 android:textColor="@color/text_black_color"
                 android:textSize="15sp" />
 
-            <LinearLayout
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:background="@drawable/shape_hatch_project_table"
-                >
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/hacth_cooperationprojects"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textSize="11sp"
-                    android:gravity="center"
-                    android:textColor="@color/text_black_color"
-                    android:text="58同城"/>
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="65dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_marginLeft="4dp"-->
+                <!--android:layout_marginRight="4dp"-->
+                <!--android:background="@drawable/shape_hatch_project_table"-->
+                <!--&gt;-->
 
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/divider_gray"></View>
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textSize="11sp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:text="58同城"/>-->
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textSize="11sp"
-                    android:gravity="center"
-                    android:textColor="@color/text_black_color"
-                    android:text="中国惠农网 "/>
-            </LinearLayout>
+                <!--<View-->
+                    <!--android:layout_width="1dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:background="@color/divider_gray"></View>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:background="@drawable/shape_hatch_project_table2"
-                >
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textSize="11sp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:text="中国惠农网 "/>-->
+            <!--</LinearLayout>-->
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textSize="11sp"
-                    android:gravity="center"
-                    android:textColor="@color/text_black_color"
-                    android:text="弥勒尚品"/>
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="65dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_marginLeft="4dp"-->
+                <!--android:layout_marginRight="4dp"-->
+                <!--android:background="@drawable/shape_hatch_project_table2"-->
+                <!--&gt;-->
 
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/divider_gray"></View>
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textSize="11sp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:text="弥勒尚品"/>-->
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textSize="11sp"
-                    android:gravity="center"
-                    android:textColor="@color/text_black_color"
-                    android:text="九牛一品"/>
-            </LinearLayout>
+                <!--<View-->
+                    <!--android:layout_width="1dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:background="@color/divider_gray"></View>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:background="@drawable/shape_hatch_project_table"
-                >
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textSize="11sp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:text="九牛一品"/>-->
+            <!--</LinearLayout>-->
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textSize="11sp"
-                    android:gravity="center"
-                    android:textColor="@color/text_black_color"
-                    android:text="我连网"/>
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="65dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_marginLeft="4dp"-->
+                <!--android:layout_marginRight="4dp"-->
+                <!--android:background="@drawable/shape_hatch_project_table"-->
+                <!--&gt;-->
 
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/divider_gray"></View>
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textSize="11sp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:text="我连网"/>-->
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textSize="11sp"
-                    android:gravity="center"
-                    android:textColor="@color/text_black_color"
-                    android:text="大宝特产"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:background="@drawable/shape_hatch_project_table2"
-                >
+                <!--<View-->
+                    <!--android:layout_width="1dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:background="@color/divider_gray"></View>-->
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textSize="11sp"
-                    android:gravity="center"
-                    android:textColor="@color/text_black_color"
-                    android:text="积木生活"/>
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textSize="11sp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:text="大宝特产"/>-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="65dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_marginLeft="4dp"-->
+                <!--android:layout_marginRight="4dp"-->
+                <!--android:background="@drawable/shape_hatch_project_table2"-->
+                <!--&gt;-->
 
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/divider_gray"></View>
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textSize="11sp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:text="积木生活"/>-->
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textSize="11sp"
-                    android:gravity="center"
-                    android:textColor="@color/text_black_color"
-                    android:text="菜甜甜科技"/>
-            </LinearLayout>
+                <!--<View-->
+                    <!--android:layout_width="1dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:background="@color/divider_gray"></View>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:background="@drawable/shape_hatch_project_table"
-                >
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textSize="11sp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:text="菜甜甜科技"/>-->
+            <!--</LinearLayout>-->
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textSize="11sp"
-                    android:gravity="center"
-                    android:textColor="@color/text_black_color"
-                    android:text="喜鹿咖啡"/>
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="65dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_marginLeft="4dp"-->
+                <!--android:layout_marginRight="4dp"-->
+                <!--android:background="@drawable/shape_hatch_project_table"-->
+                <!--&gt;-->
 
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/divider_gray"></View>
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textSize="11sp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:text="喜鹿咖啡"/>-->
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textSize="11sp"
-                    android:gravity="center"
-                    android:textColor="@color/text_black_color"
-                    android:text="天绿农庄"/>
-            </LinearLayout>
+                <!--<View-->
+                    <!--android:layout_width="1dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:background="@color/divider_gray"></View>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:background="@drawable/shape_hatch_project_table2"
-                >
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textSize="11sp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:text="天绿农庄"/>-->
+            <!--</LinearLayout>-->
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textSize="11sp"
-                    android:gravity="center"
-                    android:textColor="@color/text_black_color"
-                    android:text="建筑优工"/>
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="65dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_marginLeft="4dp"-->
+                <!--android:layout_marginRight="4dp"-->
+                <!--android:background="@drawable/shape_hatch_project_table2"-->
+                <!--&gt;-->
 
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/divider_gray"></View>
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textSize="11sp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:text="建筑优工"/>-->
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textSize="11sp"
-                    android:gravity="center"
-                    android:textColor="@color/text_black_color"
-                    android:text="草帽美食"/>
-            </LinearLayout>
+                <!--<View-->
+                    <!--android:layout_width="1dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:background="@color/divider_gray"></View>-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textSize="11sp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:text="草帽美食"/>-->
+            <!--</LinearLayout>-->
 
         </LinearLayout>
 

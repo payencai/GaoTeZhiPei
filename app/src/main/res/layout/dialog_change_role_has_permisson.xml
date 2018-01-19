@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+    <ImageView
+        android:layout_width="78dp"
+        android:layout_height="55dp"
+        android:src="@drawable/mine_demand"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="80dp"
+        android:adjustViewBounds="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="25dp"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/mine_change"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_vertical"/>
+
+    <ImageView
+        android:layout_width="78dp"
+        android:layout_height="57dp"
+        android:src="@drawable/mine_driver"
+        android:scaleType="fitXY"
+        android:layout_marginTop="80dp"
+        android:layout_marginRight="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center_vertical"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
