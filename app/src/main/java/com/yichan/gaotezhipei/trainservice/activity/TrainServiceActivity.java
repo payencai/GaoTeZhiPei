@@ -7,7 +7,9 @@ import android.widget.TextView;
 
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.common.activity.CommonMultiTabOnlyTextActivity;
+import com.yichan.gaotezhipei.trainservice.fragment.ApplyCourseFragment;
 import com.yichan.gaotezhipei.trainservice.fragment.ConsultFragment;
+import com.yichan.gaotezhipei.trainservice.fragment.OnlineCourseFragment;
 import com.yichan.gaotezhipei.trainservice.fragment.SchoolIntroFragment;
 
 import java.util.ArrayList;
@@ -48,8 +50,8 @@ public class TrainServiceActivity extends CommonMultiTabOnlyTextActivity{
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new SchoolIntroFragment());
         fragments.add(new ConsultFragment());
-        fragments.add(new Fragment());
-        fragments.add(new Fragment());
+        fragments.add(new OnlineCourseFragment());
+        fragments.add(new ApplyCourseFragment());
         return fragments;
     }
 

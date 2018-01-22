@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseActivity;
+import com.yichan.gaotezhipei.common.activity.CommonWebViewProgressActivity;
 import com.yichan.gaotezhipei.common.view.AutoScrollViewPagerWithIndicator;
 import com.yichan.gaotezhipei.productservice.constant.ProductServiceConstants;
 
@@ -59,7 +60,7 @@ public class ProductServiceActivity extends BaseActivity {
         return R.layout.activity_product;
     }
 
-    @OnClick({R.id.titlebar_btn_left,R.id.product_cat_ll_gaote_shop, R.id.product_cat_ll_brand_grow})
+    @OnClick({R.id.titlebar_btn_left,R.id.product_cat_ll_gaote_shop, R.id.product_cat_ll_brand_grow,R.id.product_cat_ll_source_product,R.id.prolduct_cat_ll_taobao_shop})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.titlebar_btn_left:
@@ -69,7 +70,13 @@ public class ProductServiceActivity extends BaseActivity {
                 startActivity(new Intent(ProductServiceActivity.this, BrandGrowActivity.class));
                 break;
             case R.id.product_cat_ll_gaote_shop:
-                startActivity(new Intent(ProductServiceActivity.this, GaoteShopActivity.class));
+                CommonWebViewProgressActivity.startActivity(ProductServiceActivity.this, "商城","https://shop156991344.taobao.com");
+                break;
+            case R.id.prolduct_cat_ll_taobao_shop:
+                CommonWebViewProgressActivity.startActivity(ProductServiceActivity.this,"云南农溯","http://m.wdwd.com/supplier/sindex/2EE7R?openid=ogdMVswh-cR1rO6KF3JZmujnZY9I");
+                break;
+            case R.id.product_cat_ll_source_product:
+                startActivity(new Intent(ProductServiceActivity.this, SourceProductActivity.class));
                 break;
             default:
                 break;

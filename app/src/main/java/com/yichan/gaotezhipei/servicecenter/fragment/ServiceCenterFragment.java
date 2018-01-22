@@ -8,9 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.aohanyao.transformer.library.CardPageTransformer;
-import com.aohanyao.transformer.library.conf.OnPageTransformerListener;
-import com.aohanyao.transformer.library.conf.PageTransformerConfig;
 import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.agriculturalservice.activity.AgriculturalServiceActivity;
@@ -62,15 +59,16 @@ public class ServiceCenterFragment extends BaseFragment {
 
     private void initAutoScrollViewPager() {
         //TODO 网络数据
-        mViewPagerIndicator.setDisplayDots(false);
+        mViewPagerIndicator.setDisplayDots(true);
+        mViewPagerIndicator.setIndicatoeResId(R.drawable.selector_indicator);
         Context context = getContext();
         if (context != null) {
             LayoutInflater inflate = LayoutInflater.from(context);
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < ServiceCenterConstants.BANNER_IMAGES.length; i++) {
                 View view = inflate.inflate(R.layout.service_center_asvp_layout,
                         null);
                 ImageView imageView = (ImageView) view.findViewById(R.id.service_center_iv_scroll);
-                imageView.setImageResource(R.drawable.service_center_banner);
+                imageView.setImageResource(ServiceCenterConstants.BANNER_IMAGES[i]);
                 mViewPagerIndicator.addViewToViewPager(imageView);
             }
         }
@@ -82,20 +80,20 @@ public class ServiceCenterFragment extends BaseFragment {
         }
 
 
-        mViewPagerIndicator.getAutoScrollViewPager().setPageTransformer(true, CardPageTransformer.getBuild()//建造者模式
-                .addAnimationType(PageTransformerConfig.ROTATION)//默认动画 default animation rotation  旋转  当然 也可以一次性添加两个  后续会增加更多动画
-                .setRotation(0)//旋转角度
-                .addAnimationType(PageTransformerConfig.NONE)//默认动画 透明度 暂时还有问题
-                .setViewType(PageTransformerConfig.LEFT)//view的类型
-                .setOnPageTransformerListener(new OnPageTransformerListener() {
-                    @Override
-                    public void onPageTransformerListener(View page, float position) {
-                        //你也可以在这里对 page 实行自定义动画 cust anim
-                    }
-                })
-                .setTranslationOffset(40)
-                .setScaleOffset(100)
-                .create());
+//        mViewPagerIndicator.getAutoScrollViewPager().setPageTransformer(true, CardPageTransformer.getBuild()//建造者模式
+//                .addAnimationType(PageTransformerConfig.ROTATION)//默认动画 default animation rotation  旋转  当然 也可以一次性添加两个  后续会增加更多动画
+//                .setRotation(0)//旋转角度
+//                .addAnimationType(PageTransformerConfig.NONE)//默认动画 透明度 暂时还有问题
+//                .setViewType(PageTransformerConfig.LEFT)//view的类型
+//                .setOnPageTransformerListener(new OnPageTransformerListener() {
+//                    @Override
+//                    public void onPageTransformerListener(View page, float position) {
+//                        //你也可以在这里对 page 实行自定义动画 cust anim
+//                    }
+//                })
+//                .setTranslationOffset(40)
+//                .setScaleOffset(100)
+//                .create());
 
     }
 

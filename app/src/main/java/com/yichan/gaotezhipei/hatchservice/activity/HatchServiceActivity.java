@@ -35,7 +35,7 @@ public class HatchServiceActivity extends BaseActivity {
     }
 
     private void initTitleBar() {
-        mTvTitle.setText("云南高特众创空间");
+        mTvTitle.setText("众创孵化");
     }
 
     private void initBannerViewPager() {

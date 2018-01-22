@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="政策了解"
+                android:textColor="@color/text_blue_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:lineSpacingExtra="4dp"
+                android:text="        为贯彻落实《云南省人民政府办公厅关于云南省鼓励创业促进就业小额担保贷款实施办法的通知》(云政办发[2010]163号)和相关规定,引导青年自主创业,扶持其创业发展,以创业劳动带就业。现将2017年创业贷款相关事项通知如下："
+                android:textColor="#1a1a1a"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="不属于申报范围的经营项目"
+                android:textColor="#1a1a1a"
+                android:textSize="14sp"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="建筑业、娱乐业以及销售不动产、转让土地使用权、广告业、房屋中介、桑拿、按摩、网吧、氧吧等。"
+                android:textColor="#666666"
+                android:textSize="12sp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="6dp"
+                android:background="@color/divider_gray"></View>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:layout_marginTop="15dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="其他要求"
+                android:textColor="#1a1a1a"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="个人创业担保贷款:除助学贷款、扶贫贷款、首套住房贷款购车贷款以外,个人创业担保贷款申请人及其家庭成员(以户为位)自提交创业担保贷款申请之日起向前追溯5年内,应没有商业银行其他贷款记录。
+小微企业贷款:对小微企业当年新招用符合创业担保贷款申请条件的人员(不包括大学生村官、留学回国人员、返乡创业农民工网络商户)数量达到企业现有在职职工人数30%(超过100人的企业达到15%),并与其签订1年以上劳动合同。"
+                android:textColor="#666666"
+                android:paddingBottom="10dp"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

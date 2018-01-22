@@ -19,7 +19,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="148dp"
+                android:layout_height="163dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/hatch_banner5" />
 

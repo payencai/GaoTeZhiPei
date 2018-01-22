@@ -82,7 +82,7 @@ public class HomeActivity extends CommonMultiTabActivity {
                }
                switch (position) {
                    case 0:
-                       mTvTitle.setText("高特");
+                       mTvTitle.setText("弥勒电子商务公共服务中心");
                        mVgTitle.setVisibility(View.VISIBLE);
                        mIvRight.setVisibility(View.VISIBLE);
                        mLlLoc.setVisibility(View.GONE);

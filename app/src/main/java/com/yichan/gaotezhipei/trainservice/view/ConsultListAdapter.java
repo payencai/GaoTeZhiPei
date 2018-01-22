@@ -28,10 +28,10 @@ public class ConsultListAdapter extends BaseRecyclerListAdapter<ConsultItem, Con
     @Override
     public void onBindVH(ConsultListViewHolder holder, int position) {
 //        holder.iconIv.setImageResource();
-        ConsultItem consultItem = mItems.get(position);
-        holder.iconIv.setImageResource(R.mipmap.ic_launcher);
-        holder.titleTv.setText(consultItem.getTitle());
-        holder.descTv.setText(consultItem.getDesc());
+//        ConsultItem consultItem = mItems.get(position);
+//        holder.iconIv.setImageResource(R.mipmap.ic_launcher);
+//        holder.titleTv.setText(consultItem.getTitle());
+//        holder.descTv.setText(consultItem.getDesc());
 
     }
 

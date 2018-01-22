@@ -40,9 +40,10 @@ public class ConsultFragment extends CommonLinearListFragment<ConsultItem>{
     @Override
     protected void doRefresh(int currentPage, int size) {
         for(int i = 0; i < 10; i++) {
-            getItemList().add(new ConsultItem("", "哈哈"+i, "呵呵呵呵额和" + i));
+            getItemList().add(new ConsultItem());
         }
         doRefreshFinish(0);
+        doLoadMoreFinish(0);
     }
 
 }

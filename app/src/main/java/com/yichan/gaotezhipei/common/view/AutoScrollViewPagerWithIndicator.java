@@ -38,6 +38,8 @@ public class AutoScrollViewPagerWithIndicator extends RelativeLayout {
     private int mCurrentIndex = 0;
     private boolean isDisplayDots = true;
 
+    private int mIndicatorResId ;
+
     public AutoScrollViewPagerWithIndicator(Context context) {
         this(context, null);
     }
@@ -56,6 +58,14 @@ public class AutoScrollViewPagerWithIndicator extends RelativeLayout {
         if(isDisplayDots) {
             initDotsContainer(context, attrs, defStyleAttr);
         }
+    }
+
+    public int getIndicatoeResId() {
+        return mIndicatorResId;
+    }
+
+    public void setIndicatoeResId(int mIndicatorResId) {
+        this.mIndicatorResId = mIndicatorResId;
     }
 
     private void initViewPager(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -156,12 +166,17 @@ public class AutoScrollViewPagerWithIndicator extends RelativeLayout {
         for (int i = 0; i < mScrollViews.size(); i++) {
             mIvDots[i] = new ImageView(mContext);
             mIvDots[i].setPadding(0, 0, 0, 0);
-            mIvDots[i].setImageResource(R.drawable.selector_dots);
+            mIvDots[i].setAdjustViewBounds(true);
+            if(mIndicatorResId == 0) {
+                mIvDots[i].setImageResource(R.drawable.selector_dots);
+            } else {
+                mIvDots[i].setImageResource(mIndicatorResId);
+            }
             mDotsContainer.addView(mIvDots[i], ScreenUtil.dpToPxInt(mContext, 8), ScreenUtil.dpToPxInt(mContext,8));
             mIvDots[i].setEnabled(true);// 都设为灰色
             if(i != mScrollViews.size() - 1) {
                 LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mIvDots[i].getLayoutParams();
-                params.setMargins(0, 0, ScreenUtil.dpToPxInt(mContext, 10), 0);
+                params.setMargins(0, 0, ScreenUtil.dpToPxInt(mContext, 5), 0);
             }
         }
 

@@ -24,7 +24,7 @@
         android:focusableInTouchMode="true"
         android:scrollHorizontally="true"
         android:textSize="17sp"
-        android:text="高特" />
+        android:text="弥勒电子商务公共服务中心" />
 
 
     <ImageButton

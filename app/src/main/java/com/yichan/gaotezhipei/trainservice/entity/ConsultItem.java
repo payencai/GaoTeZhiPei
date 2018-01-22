@@ -10,6 +10,10 @@ public class ConsultItem {
     private String title;
     private String desc;
 
+    public ConsultItem() {
+
+    }
+
 
     public ConsultItem(String imgPath, String title, String desc) {
         this.imgPath = imgPath;

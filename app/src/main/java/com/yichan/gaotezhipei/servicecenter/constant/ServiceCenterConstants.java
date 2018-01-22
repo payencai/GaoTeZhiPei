@@ -1,5 +1,7 @@
 package com.yichan.gaotezhipei.servicecenter.constant;
 
+import com.yichan.gaotezhipei.R;
+
 import java.util.HashMap;
 
 /**
@@ -22,6 +24,9 @@ public class ServiceCenterConstants {
     public static final int TYPE_NONGZI = 7;
     public static final int TYPE_DATA = 8;
 
+    public static final int[] BANNER_IMAGES = new int[]{R.drawable.service_center_banner1,
+    R.drawable.service_center_banner2,
+    R.drawable.service_center_banner3};
 
 
 

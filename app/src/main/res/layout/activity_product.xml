@@ -34,6 +34,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:id="@+id/prolduct_cat_ll_taobao_shop"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -49,7 +50,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="13dp"
-                        android:text="淘宝店铺"
+                        android:text="云南云溯"
                         android:textColor="#333333"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -83,6 +84,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:id="@+id/product_cat_ll_source_product"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -120,7 +122,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="13dp"
-                        android:text="高特商城"
+                        android:text="商城"
                         android:textColor="#333333"
                         android:textSize="12sp" />
                 </LinearLayout>

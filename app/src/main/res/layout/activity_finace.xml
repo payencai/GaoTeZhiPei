@@ -34,8 +34,9 @@
             android:orientation="vertical">
            <ImageView
                android:layout_width="match_parent"
-               android:layout_height="134dp"
+               android:layout_height="wrap_content"
                android:src="@drawable/finace_banner1"
+               android:adjustViewBounds="true"
                android:scaleType="fitXY"/>
 
             <include
@@ -47,7 +48,18 @@
                 android:background="@color/divider_gray"></View>
 
             <include
-                layout="@layout/part_finace_declare_process"></include>
+                android:id="@+id/finace_ll_loan"
+                layout="@layout/part_finace_loan"></include>
+
+            <include
+                android:id="@+id/finace_ll_driblet_assure"
+                layout="@layout/part_finace_driblet_assure"
+                android:visibility="gone"></include>
+
+            <include
+                android:id="@+id/finace_ll_venture"
+                layout="@layout/part_finace_venture"
+                android:visibility="gone"></include>
 
 
         </LinearLayout>

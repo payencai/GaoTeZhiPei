@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="108dp"
+        android:layout_height="82dp"
+        android:id="@+id/item_course_iv_icon"
+        android:scaleType="fitXY"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/divider_gray"/>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/item_course_iv_icon"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_course_tv_title"
+            android:text="photoshop详情页基础"
+            android:textColor="@color/text_black_color"
+            android:textSize="17sp"
+            android:maxLines="2"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/item_course_iv_icon"
+        android:layout_alignBottom="@id/item_course_iv_icon">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_course_tv_status"
+                android:textColor="#666666"
+                android:textSize="11sp"
+                android:text="正在报名"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#e2363a"
+                android:layout_marginTop="10dp"
+                android:id="@+id/item_course_tv_type"
+                android:textSize="11sp"
+                android:text="线下课程"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="64dp"
+            android:layout_height="24dp"
+            android:id="@+id/item_course_btn_apply"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/kongrectangle"
+            android:text="我要报名"
+            android:textColor="#00c1de"
+            android:layout_marginRight="10dp"
+            android:textSize="12sp"/>
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_gray"
+        android:layout_alignParentBottom="true"></View>
+
+    
+
+</RelativeLayout>
