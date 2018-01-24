@@ -70,6 +70,14 @@ public class ServiceCenterFragment extends BaseFragment {
                 ImageView imageView = (ImageView) view.findViewById(R.id.service_center_iv_scroll);
                 imageView.setImageResource(ServiceCenterConstants.BANNER_IMAGES[i]);
                 mViewPagerIndicator.addViewToViewPager(imageView);
+                if(i == 1) {
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(new Intent(getActivity(), HatchServiceActivity.class));
+                        }
+                    });
+                }
             }
         }
 

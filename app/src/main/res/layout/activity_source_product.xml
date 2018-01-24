@@ -6,10 +6,9 @@
     <include
         layout="@layout/part_titlebar_only_back"></include>
 
-    <com.shizhefei.view.largeimage.LargeImageView
-        android:id="@+id/source_product_liv"
+
+    <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="horizontal"/>
-
+        android:id="@+id/source_product_ssiv"/>
 </LinearLayout>

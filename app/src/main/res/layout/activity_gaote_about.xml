@@ -56,8 +56,10 @@
             
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="320dp"
+                android:layout_height="wrap_content"
                 android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="10dp"
                 android:src="@drawable/gaote_image4"/>
 
             <View
@@ -67,8 +69,9 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:scaleType="fitXY"
+                android:adjustViewBounds="true"
                 android:src="@drawable/gaote_image5"/>
         </LinearLayout>
 
