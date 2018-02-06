@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/divider_gray">
+
+    <include
+        layout="@layout/part_titlebar_only_back"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/logistics_driver_iv_net"
+            android:src="@drawable/logistics_driver_net"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/logistics_driver_iv_myorder"
+            android:src="@drawable/server_myorder"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/logistics_driver_iv_driver_inform"
+            android:layout_weight="1"
+            android:src="@drawable/server_lcl_driver_driverinformation"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/server_banner1"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:paddingLeft="10dp"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="附近网点"
+        android:textColor="@color/text_black_color"
+        android:textSize="16sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/logistics_driver_main_rv">
+
+    </com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout>
+
+</LinearLayout>

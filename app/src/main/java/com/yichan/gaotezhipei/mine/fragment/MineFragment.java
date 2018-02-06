@@ -2,21 +2,30 @@ package com.yichan.gaotezhipei.mine.fragment;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseFragment;
 import com.yichan.gaotezhipei.base.util.DialogHelper;
+import com.yichan.gaotezhipei.common.UserManager;
 import com.yichan.gaotezhipei.common.util.ActivityAnimationUtil;
+import com.yichan.gaotezhipei.common.util.EventBus;
 import com.yichan.gaotezhipei.login.activity.DemandLoginActivity;
+import com.yichan.gaotezhipei.login.event.LoginEvent;
 import com.yichan.gaotezhipei.mine.activity.AddressMangeActivity;
 import com.yichan.gaotezhipei.mine.activity.BecomeLCLDriverActivity;
 import com.yichan.gaotezhipei.mine.activity.FeedbackActivity;
 import com.yichan.gaotezhipei.mine.activity.MyMessageActivity;
 import com.yichan.gaotezhipei.mine.activity.SettingActivity;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -24,6 +33,52 @@ import butterknife.OnClick;
  */
 
 public class MineFragment extends BaseFragment {
+
+    @BindView(R.id.mine_tv_account)
+    TextView mTvAccount;
+    @BindView(R.id.mine_tv_login)
+    TextView mTvLogin;
+
+
+
+    @Override
+    protected void init(Bundle savedInstanceState) {
+        super.init(savedInstanceState);
+        if (!EventBus.getInstance().isRegistered(this))
+            EventBus.getInstance().register(this);
+
+        initView();
+    }
+
+    private void initView() {
+        if(UserManager.getInstance(getActivity()).isLogin()) {
+            String accout = UserManager.getInstance(getActivity()).getAccount();
+            if(accout != null) {
+                mTvAccount.setText(accout);
+                mTvLogin.setVisibility(View.GONE);
+            } else {
+                mTvAccount.setText("Hi,您未登陆");
+                mTvLogin.setVisibility(View.VISIBLE);
+            }
+        } else {
+            mTvAccount.setText("Hi,您未登陆");
+            mTvLogin.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiverLoginEvent(LoginEvent loginEvent) {
+        initView();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getInstance().unregister(this);
+    }
+
+
+
     @Override
     protected int getContentViewId() {
         return R.layout.fragment_mine;

@@ -56,6 +56,7 @@
             android:id="@+id/login_et_account"
             android:background="@null"
             android:hint="请输入账号/手机号"
+            android:singleLine="true"
             android:textColor="@color/text_black_color"
             android:textColorHint="#c7c7cd"
             android:textSize="16sp" />
@@ -104,6 +105,8 @@
             android:layout_marginLeft="10dp"
             android:id="@+id/login_et_password"
             android:background="@null"
+            android:singleLine="true"
+            android:inputType="textPassword"
             android:hint="请输入输入密码"
             android:layout_toRightOf="@id/login_iv_password"
             android:layout_toLeftOf="@id/login_tv_forget_password"

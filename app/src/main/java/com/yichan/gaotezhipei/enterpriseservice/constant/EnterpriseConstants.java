@@ -13,4 +13,6 @@ public class EnterpriseConstants {
             R.drawable.ep_banner2,
             R.drawable.ep_banner3
     };
+
+    public static final String URL_LICENSE_APPLY = "/demander/driverApply/apply";
 }

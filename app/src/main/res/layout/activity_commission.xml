@@ -48,9 +48,10 @@
             android:textSize="14sp" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
+            android:id="@+id/commission_et_company"
             android:background="@null"
             android:hint="请输入公司名称"
             android:singleLine="true"
@@ -80,7 +81,8 @@
             android:textSize="14sp" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:id="@+id/commission_et_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
             android:background="@null"
@@ -113,9 +115,10 @@
             android:textSize="14sp" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14sp"
+            android:id="@+id/commission_et_phone"
             android:background="@null"
             android:textColorHint="#999999"
             android:hint="请输入手机号码"
@@ -145,9 +148,10 @@
             android:textSize="14sp" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14sp"
+            android:id="@+id/commission_et_email"
             android:background="@null"
             android:textColorHint="#999999"
             android:hint="请输入电子邮箱"
@@ -169,7 +173,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:button="@null"
-            android:checked="true"
+            android:id="@+id/commission_cb_agree"
             android:layout_gravity="center_vertical"
             android:drawableStart="@drawable/selector_check_box_lcl"/>
 
@@ -192,6 +196,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="13sp"
+        android:id="@+id/commission_btn_apply"
         android:textColor="@color/white"
         android:layout_marginLeft="17dp"
         android:layout_marginRight="17dp"

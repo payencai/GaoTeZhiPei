@@ -5,8 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.changelcai.mothership.component.fragment.dialog.IDialogResultListener;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseActivity;
+import com.yichan.gaotezhipei.base.util.DialogHelper;
+import com.yichan.gaotezhipei.common.util.EventBus;
+import com.yichan.gaotezhipei.login.event.LoginEvent;
+import com.yichan.gaotezhipei.login.util.LoginManager;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -30,7 +35,7 @@ public class SettingActivity extends BaseActivity {
         mTvTitle.setText("设置");
     }
 
-    @OnClick({R.id.titlebar_btn_left,R.id.setting_rl_message_setting,R.id.setting_rl_clear_cache,R.id.setting_rl_about_us})
+    @OnClick({R.id.titlebar_btn_left,R.id.setting_rl_message_setting,R.id.setting_rl_clear_cache,R.id.setting_rl_about_us,R.id.setting_rl_logout})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.titlebar_btn_left:
@@ -42,9 +47,23 @@ public class SettingActivity extends BaseActivity {
             case R.id.setting_rl_message_setting:
                 startActivity(new Intent(SettingActivity.this, MessageSettingActivity.class));
                 break;
+            case R.id.setting_rl_logout:
+                logout();
+                break;
             default:
                 break;
         }
+    }
+
+    public void logout() {
+        DialogHelper.showConfirmDailog(getSupportFragmentManager(), "您确定退出登录吗？", new IDialogResultListener<Integer>() {
+            @Override
+            public void onDataResult(Integer result) {
+                LoginManager.clearUserInfo(SettingActivity.this);
+                EventBus.getInstance().post(new LoginEvent());
+                finish();
+            }
+        });
     }
 
     @Override

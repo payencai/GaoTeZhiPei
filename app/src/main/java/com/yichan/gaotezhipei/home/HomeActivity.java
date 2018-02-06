@@ -1,5 +1,6 @@
 package com.yichan.gaotezhipei.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.baisoo.citypicker.ChooseCityActivity;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.common.activity.CommonMultiTabActivity;
 import com.yichan.gaotezhipei.lcl.fragment.LCLFragment;
@@ -42,6 +44,12 @@ public class HomeActivity extends CommonMultiTabActivity {
         mIvRight.setVisibility(View.VISIBLE);
         mLlLoc = (LinearLayout) findViewById(R.id.titlebar_ll_loc);
         mIvRight.setImageResource(R.drawable.customservice);
+        mLlLoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, ChooseCityActivity.class));
+            }
+        });
     }
 
     @Override

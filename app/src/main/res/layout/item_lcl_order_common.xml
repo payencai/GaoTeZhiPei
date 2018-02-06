@@ -243,7 +243,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:gravity="right">
 
 
             <Button
@@ -256,7 +257,8 @@
                 android:background="@drawable/order_redstroke"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="12dp"
-                android:text="联系司机"/>
+                android:text="联系司机"
+                />
 
             <Button
                 android:layout_width="67dp"
@@ -267,7 +269,7 @@
                 android:textColor="#333333"
                 android:gravity="center"
                 android:background="@drawable/order_greystroke"
-                android:layout_marginRight="6dp"
+                android:layout_marginRight="12dp"
                 android:text="取消订单"/>
 
         </RelativeLayout>

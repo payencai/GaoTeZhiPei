@@ -1,5 +1,6 @@
 package com.yichan.gaotezhipei.enterpriseservice.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -34,11 +35,15 @@ public class IpAcvitiy extends BaseActivity {
         return R.layout.activity_ip;
     }
 
-    @OnClick({R.id.titlebar_btn_left})
+    @OnClick({R.id.titlebar_btn_left,R.id.ip_btn_commission})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.titlebar_btn_left:
                 finish();
+                break;
+            case R.id.ip_btn_commission:
+                Intent intent = new Intent(IpAcvitiy.this, ComissionActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;

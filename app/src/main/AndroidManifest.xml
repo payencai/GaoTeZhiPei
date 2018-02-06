@@ -4,6 +4,7 @@
     package="com.yichan.gaotezhipei">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
 
     <!-- Dangerous Permissions：6.0运行时权限 -->
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -23,16 +24,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="9nDbWdFgN64XpxqTKlSHL3N5Zf9unbPl" />
+
         <activity android:name=".home.HomeActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
-            >
+            android:windowSoftInputMode="adjustPan">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
 
         </activity>
@@ -138,6 +137,13 @@
             android:screenOrientation="portrait"
             >
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
         </activity>
 
         <activity android:name=".login.activity.ServerLoginActivity"
@@ -183,6 +189,22 @@
         <activity android:name=".server.lcldriver.activity.NearbyCargoActivity"
             android:screenOrientation="portrait"></activity>
 
+        <!-->*****************服务方【物流司机】*****************<-->
+
+        <activity android:name=".server.logisticsdriver.activity.LogisticsDriverMainActivity"
+            android:screenOrientation="portrait">
+
+
+        </activity>
+
+        <activity android:name=".server.logisticsdriver.activity.NetDetailActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".server.logisticsdriver.activity.LogisticsDriverOrderActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".server.logisticsdriver.activity.NearbyNetActivity"
+            android:screenOrientation="portrait"></activity>
+
         <activity android:name=".common.activity.CommonWebViewActivity"
             android:screenOrientation="portrait"></activity>
 
@@ -191,6 +213,15 @@
 
         <activity android:name=".common.activity.CommonWebViewProgressActivity"
             android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".login.activity.RegisterActivity"
+            android:screenOrientation="portrait"></activity>
+
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"></service>
 
 
     </application>
