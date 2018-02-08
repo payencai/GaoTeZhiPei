@@ -8,6 +8,8 @@ import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
 
+import ikidou.reflect.TypeBuilder;
+
 
 public class GsonUtil {
     private static Gson gson = null;
@@ -44,6 +46,19 @@ public class GsonUtil {
     public static <T> Result<T> gsonToBean(String gsonString, Type type) {
         if (gson != null) {
             return gson.fromJson(gsonString, type);
+        }
+        return null;
+    }
+
+    public static <T> Result<List<T>> fromJsonArray(String gsonStr, Class<T> clazz) {
+        if (gson != null){
+            Type type = TypeBuilder
+                    .newInstance(Result.class)
+                    .beginSubType(List.class)
+                    .addTypeParam(clazz)
+                    .endSubType()
+                    .build();
+            return gson.fromJson(gsonStr, type);
         }
         return null;
     }

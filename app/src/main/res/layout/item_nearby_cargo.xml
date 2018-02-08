@@ -17,6 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/item_tv_order_time"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="13dp"
             android:layout_marginTop="10dp"
@@ -43,6 +44,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/item_tv_mail_district"
                 android:text="龙华新区"
                 android:textColor="@color/text_black_color"
                 android:textSize="14sp" />
@@ -50,6 +52,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/item_tv_mail_province_city"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
                 android:text="广东 深圳"
@@ -63,6 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:id="@+id/item_tv_distance"
             android:background="@drawable/order_redstroke"
             android:gravity="center"
             android:padding="3dp"
@@ -79,6 +83,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/item_tv_pick_district"
                 android:text="龙华新区"
                 android:textColor="@color/text_black_color"
                 android:textSize="14sp" />
@@ -86,6 +91,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/item_tv_pick_province_city"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
                 android:text="广东 深圳"
@@ -147,6 +153,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
+                    android:id="@+id/item_tv_cargo_name"
                     android:text="家电电器:"
                     android:textColor="@color/text_black_color"
                     android:textSize="12sp" />
@@ -154,6 +161,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/item_tv_cargo_inform"
                     android:layout_marginLeft="3dp"
                     android:text="22件  22kg  22m³"
                     android:textColor="@color/text_black_color"
@@ -187,6 +195,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/item_tv_get_cargo_time"
                     android:layout_marginLeft="3dp"
                     android:text="2018-01-03  11:24:00"
                     android:textColor="@color/text_black_color"
@@ -231,6 +240,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:id="@+id/item_tv_need_car"
                     android:layout_alignParentTop="@id/ll"
                     android:layout_marginLeft="3dp"
                     android:layout_toRightOf="@id/ll"
@@ -279,6 +289,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/item_tv_get_cargo_addr"
                     android:layout_alignParentTop="@id/ll2"
                     android:layout_marginLeft="3dp"
                     android:layout_toRightOf="@id/ll2"

@@ -26,6 +26,9 @@ public class UserManager {
 
     private int type;//1为后台管理，2为需求方，3为拼货司机，4为物流司机，5为服务网点，6为需求方与拼货司机
 
+    private String id;
+
+
 
     private UserManager(Context context) {
         this.context = context.getApplicationContext();
@@ -54,6 +57,16 @@ public class UserManager {
     public void setLogin(boolean login) {
         this.isLogin = login;
         getEditor().putBoolean("isLogin", login).apply();
+    }
+
+    public String getId() {
+        this.id = userPreferences.getString("userId", null);
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+        getEditor().putString("userId", id);
     }
 
     public String getToken() {
@@ -104,5 +117,9 @@ public class UserManager {
     public void setType(int type) {
         this.type = type;
         getEditor().putInt("type", type).apply();
+    }
+
+    public boolean isDemand() {
+        return getRoleType().equals("2");
     }
 }

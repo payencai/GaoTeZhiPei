@@ -1,6 +1,7 @@
 package com.yichan.gaotezhipei.lcl.fragment;
 
 import com.yichan.gaotezhipei.R;
+import com.yichan.gaotezhipei.lcl.constant.LCLConstants;
 
 /**
  * 小面包车
@@ -31,5 +32,15 @@ public class LCLMiniBusFragment extends LCLBaseDetailFragment{
     @Override
     protected String getCarWeight() {
         return "500公斤";
+    }
+
+    @Override
+    protected int getType() {
+        return LCLConstants.TYPE_MINI_BUS;
+    }
+
+    @Override
+    protected String getTypeStr() {
+        return LCLConstants.TYPE_STR_MINI_BUS;
     }
 }

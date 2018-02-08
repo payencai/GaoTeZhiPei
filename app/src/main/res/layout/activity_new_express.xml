@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp">
-                
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -38,20 +38,23 @@
                     android:layout_height="12dp"
                     android:id="@+id/iv_arrowright"
                     android:src="@drawable/arrowright"
+                    android:visibility="gone"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#999999"
-                    android:layout_toRightOf="@id/tv_tag1"
-                    android:layout_toLeftOf="@id/iv_arrowright"
-                    android:textSize="14sp"
                     android:layout_marginLeft="15dp"
+                    android:id="@+id/new_express_et_company"
+                    android:layout_toRightOf="@id/tv_tag1"
                     android:layout_marginRight="15dp"
-                    android:text="请选择快递公司"/>
-                
+                    android:hint="请输入快递公司"
+                    android:textColorHint="#999999"
+                    android:textSize="14sp"
+                    android:background="@null"
+                    android:textColor="@color/text_black_color"/>
+
             </RelativeLayout>
 
             <View
@@ -73,6 +76,7 @@
                     android:textSize="14sp"/>
 
                 <EditText
+                    android:id="@+id/new_express_et_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -99,6 +103,7 @@
                 android:orientation="horizontal"
                 android:background="@drawable/lcl_colorbrand1"
                 android:layout_marginTop="11dp"
+                android:id="@+id/new_express_ll_mail"
                 android:gravity="center_vertical">
 
 
@@ -119,17 +124,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="彭于晏 123456789012"
+                        android:id="@+id/new_express_tv_mail_name_phone"
+                        android:text="寄件人    手机号"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:lines="2"
+                        android:id="@+id/new_express_tv_mail_address"
                         android:layout_marginTop="5dp"
-                        android:text="云南省昆明市西山区 前卫街道西山区世纪半岛橄榄谷7-6"
+                        android:maxLines="3"
+                        android:lines="2"
+                        android:text="寄件地址"
+                        android:ellipsize="middle"
                         android:textColor="@color/white"
                         android:layout_marginBottom="10dp"
                         android:textSize="14sp" />
@@ -152,6 +161,7 @@
                 android:orientation="horizontal"
                 android:background="@drawable/lcl_colorbrand2"
                 android:layout_marginTop="11dp"
+                android:id="@+id/new_express_ll_pick"
                 android:layout_marginBottom="11dp"
                 android:gravity="center_vertical">
 
@@ -174,7 +184,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="彭于晏 123456789012"
+                        android:id="@+id/new_express_tv_pick_name_phone"
+                        android:text="收件人    手机号"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
@@ -182,9 +193,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
+                        android:maxLines="3"
                         android:lines="2"
+                        android:id="@+id/new_express_tv_pick_address"
                         android:layout_marginTop="5dp"
-                        android:text="云南省昆明市西山区 前卫街道西山区世纪半岛橄榄谷7-6"
+                        android:text="收件地址"
+                        android:ellipsize="middle"
                         android:textColor="@color/white"
                         android:layout_marginBottom="10dp"
                         android:textSize="14sp" />
@@ -238,9 +252,11 @@
                             android:layout_width="64dp"
                             android:layout_height="23dp"
                             android:hint="请输入重量"
+                            android:id="@+id/new_express_et_cargo_weight"
                             android:singleLine="true"
                             android:padding="2dp"
                             android:gravity="center"
+                            android:inputType="numberDecimal"
                             android:layout_gravity="center_vertical"
                             android:textColor="@color/text_black_color"
                             android:background="@drawable/shape_et_lcl"
@@ -267,9 +283,11 @@
                             android:layout_width="64dp"
                             android:layout_height="23dp"
                             android:padding="2dp"
+                            android:id="@+id/new_express_et_cargo_volume"
                             android:gravity="center"
                             android:layout_gravity="center_vertical"
                             android:hint="请输入体积"
+                            android:inputType="numberDecimal"
                             android:background="@drawable/shape_et_lcl"
                             android:singleLine="true"
                             android:textColor="@color/text_black_color"
@@ -279,7 +297,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="m"
+                            android:text="m³"
                             android:layout_marginLeft="5dp"
                             android:layout_gravity="center_vertical"
                             android:textColor="@color/text_black_color"
@@ -295,10 +313,12 @@
                             android:layout_width="64dp"
                             android:layout_height="23dp"
                             android:hint="请输入件数"
+                            android:id="@+id/new_express_et_cargo_count"
                             android:background="@drawable/shape_et_lcl"
                             android:layout_gravity="center_vertical"
                             android:gravity="center"
                             android:padding="2dp"
+                            android:inputType="number"
                             android:singleLine="true"
                             android:textColor="@color/text_black_color"
                             android:textColorHint="#999999"
@@ -336,6 +356,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="28dp"
+                    android:id="@+id/new_express_et_cargo_name"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="46dp"
                     android:background="@drawable/shape_et_lcl"
@@ -395,6 +416,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:id="@+id/new_express_btn_apply"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="30dp"

@@ -7,6 +7,11 @@
         android:id="@+id/address_manage_titlebar"
         layout="@layout/part_titlebar_only_back"></include>
 
+    <include
+        android:id="@+id/address_manage_no_data"
+        layout="@layout/part_no_data"
+        android:visibility="gone"></include>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="5dp"

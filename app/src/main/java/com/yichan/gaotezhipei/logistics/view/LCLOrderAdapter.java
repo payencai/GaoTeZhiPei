@@ -5,9 +5,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.yichan.gaotezhipei.R;
-import com.yichan.gaotezhipei.logistics.entity.LCLOrderItem;
+import com.yichan.gaotezhipei.common.UserManager;
+import com.yichan.gaotezhipei.logistics.constant.LogisticsContants;
+import com.yichan.gaotezhipei.logistics.entity.OrderPageList;
 
 import java.util.List;
 
@@ -18,9 +23,9 @@ import java.util.List;
 public class LCLOrderAdapter extends RecyclerView.Adapter<LCLOrderAdapter.LCLOrderViewHolder> {
 
     private Context mContext;
-    private List<LCLOrderItem> mList;
+    private List<OrderPageList.BeanListBean> mList;
 
-    public LCLOrderAdapter(Context context, List<LCLOrderItem> list) {
+    public LCLOrderAdapter(Context context, List<OrderPageList.BeanListBean> list) {
         this.mContext = context;
         this.mList = list;
     }
@@ -34,8 +39,100 @@ public class LCLOrderAdapter extends RecyclerView.Adapter<LCLOrderAdapter.LCLOrd
 
     @Override
     public void onBindViewHolder(LCLOrderViewHolder holder, int position) {
+        OrderPageList.BeanListBean bean = mList.get(position);
 
+        setOrderStatus(holder, bean);
+
+        setAddressInform(holder, bean);
+
+        setCargoInform(holder, bean);
+
+        setBottomLayout(holder, bean);
     }
+
+    private void setOrderStatus(LCLOrderViewHolder holder, OrderPageList.BeanListBean bean) {
+        holder.tvOrderTime.setText(bean.getOrderTime());
+        int type = Integer.valueOf(bean.getType());
+        switch (type) {
+            case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE:
+                holder.rlStatus.setBackground(mContext.getDrawable(R.drawable.order_green));
+                holder.tvStatus.setText("待接单");
+                break;
+            case LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO:
+                holder.rlStatus.setBackground(mContext.getDrawable(R.drawable.order_purple));
+                if(UserManager.getInstance(mContext).isDemand()) {
+                    holder.tvStatus.setText("待取货");
+                } else {
+                    holder.tvStatus.setText("待接货");
+                }
+                break;
+            case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO:
+                holder.rlStatus.setBackground(mContext.getDrawable(R.drawable.order_purple));
+                if(UserManager.getInstance(mContext).isDemand()) {
+                    holder.tvStatus.setText("待收货");
+                } else {
+                    holder.tvStatus.setText("待送货");
+                }
+                break;
+            case LogisticsContants.TYPE_LCL_ORDER_TO_CONFIRM:
+                holder.rlStatus.setBackground(mContext.getDrawable(R.drawable.order_orangle));
+                holder.tvStatus.setText("待签收");
+                break;
+            case LogisticsContants.TYPE_LCL_ORDER_TO_FINISH:
+                holder.rlStatus.setBackground(mContext.getDrawable(R.drawable.order_blue));
+                holder.tvStatus.setText("已完成");
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void setAddressInform(LCLOrderViewHolder holder, OrderPageList.BeanListBean bean) {
+        holder.tvMailDistrict.setText(bean.getAddress().getArea());
+        holder.tvMailProvinceCity.setText(bean.getAddress().getProvince() + " " + bean.getAddress().getCity());
+        holder.tvDistance.setText(bean.getDistance() + "km" );
+        holder.tvPickDistrict.setText(bean.getConsigneeArea());
+        holder.tvPickProvinceCity.setText(bean.getConsigneeProvince() + " " + bean.getConsigneeCity());
+    }
+
+    private void setCargoInform(LCLOrderViewHolder holder, OrderPageList.BeanListBean bean) {
+        holder.tvCargoName.setText(bean.getArticleName() + ":");
+        holder.tvCargoInform.setText(bean.getNum() + "件 " + bean.getWeight() + "kg " + bean.getVolume() + "m³");
+
+        holder.tvGetCargoTime.setText(bean.getAnticipantTime());
+        holder.tvGetCargoAddr.setText(bean.getPickupAddress());
+    }
+
+    private void setBottomLayout(LCLOrderViewHolder holder, OrderPageList.BeanListBean bean) {
+        int type = Integer.valueOf(bean.getType());
+        if(UserManager.getInstance(mContext).isDemand()) {//需求方
+            if (type == LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO) {//待接货
+                holder.rlBottom.setVisibility(View.VISIBLE);
+            } else if (type == LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO) {//待收货
+                holder.rlBottom.setVisibility(View.VISIBLE);
+                holder.btnRight.setVisibility(View.GONE);
+                holder.btnLeft.setText("查看物流");
+            } else if (type == LogisticsContants.TYPE_LCL_ORDER_TO_CONFIRM) {//待签收
+                holder.rlBottom.setVisibility(View.VISIBLE);
+                holder.btnLeft.setVisibility(View.GONE);
+                holder.btnRight.setText("确认签收");
+            } else {//已完成
+                holder.rlBottom.setVisibility(View.GONE);
+            }
+        } else  {
+            if (type == LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO) {//待接货
+                holder.rlBottom.setVisibility(View.VISIBLE);
+                holder.btnRight.setText("确认接货");
+            } else if (type == LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO) {//待送货
+                holder.rlBottom.setVisibility(View.VISIBLE);
+                holder.btnLeft.setVisibility(View.GONE);
+                holder.btnRight.setText("确认送达");
+            } else {
+                holder.rlBottom.setVisibility(View.GONE);
+            }
+        }
+    }
+
 
     @Override
     public int getItemCount() {
@@ -44,8 +141,51 @@ public class LCLOrderAdapter extends RecyclerView.Adapter<LCLOrderAdapter.LCLOrd
 
     class LCLOrderViewHolder extends RecyclerView.ViewHolder {
 
+        TextView tvOrderTime;
+        RelativeLayout rlStatus;
+        TextView tvStatus;
+
+        TextView tvMailDistrict;
+        TextView tvMailProvinceCity;
+        TextView tvDistance;
+        TextView tvPickDistrict;
+        TextView tvPickProvinceCity;
+
+        TextView tvCargoName;
+        TextView tvCargoInform;
+
+        TextView tvGetCargoTime;
+
+        TextView tvGetCargoAddr;
+
+        RelativeLayout rlBottom;
+        Button btnLeft;
+        Button btnRight;
+
+
+
         public LCLOrderViewHolder(View itemView) {
             super(itemView);
+
+            tvOrderTime = (TextView) itemView.findViewById(R.id.item_tv_order_time);
+            rlStatus = (RelativeLayout) itemView.findViewById(R.id.item_rl_status);
+            tvStatus = (TextView) itemView.findViewById(R.id.item_tv_status);
+
+            tvMailDistrict = (TextView) itemView.findViewById(R.id.item_tv_mail_district);
+            tvMailProvinceCity = (TextView) itemView.findViewById(R.id.item_tv_mail_province_city);
+            tvDistance = (TextView) itemView.findViewById(R.id.item_tv_distance);
+            tvPickDistrict = (TextView) itemView.findViewById(R.id.item_tv_pick_district);
+            tvPickProvinceCity = (TextView) itemView.findViewById(R.id.item_tv_pick_province_city);
+
+            tvCargoName = (TextView) itemView.findViewById(R.id.item_tv_cargo_name);
+            tvCargoInform = (TextView) itemView.findViewById(R.id.item_tv_cargo_inform);
+
+            tvGetCargoTime = (TextView) itemView.findViewById(R.id.item_tv_get_cargo_time);
+            tvGetCargoAddr = (TextView) itemView.findViewById(R.id.item_tv_get_cargo_addr);
+
+            rlBottom = (RelativeLayout) itemView.findViewById(R.id.item_rl_bottom);
+            btnLeft = (Button) itemView.findViewById(R.id.item_btn_left);
+            btnRight = (Button) itemView.findViewById(R.id.item_btn_right);
         }
     }
 }

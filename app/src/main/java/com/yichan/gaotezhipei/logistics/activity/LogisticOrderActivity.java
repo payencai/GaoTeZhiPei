@@ -29,10 +29,10 @@ public class LogisticOrderActivity extends BaseActivity {
     @BindView(R.id.order_titlebar_tv_title)
     TextView mTvTitle;
 
-    @BindView(R.id.logistics_order_tab_layout)
+    @BindView(R.id.order_tab_layout)
     SlidingTabLayout mTabLayout;
 
-    @BindView(R.id.logistics_order_vp)
+    @BindView(R.id.order_vp)
     ViewPager mViewPager;
 
     private List<Fragment> mFragments;
@@ -108,6 +108,6 @@ public class LogisticOrderActivity extends BaseActivity {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_logistics_order;
+        return R.layout.activity_common_order;
     }
 }

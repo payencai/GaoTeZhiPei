@@ -3,10 +3,17 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/common_order_nodata"
+        layout="@layout/part_no_data_match"
+        android:visibility="gone"
+        ></include>
+
     <com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/common_order_rv">
+
 
     </com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout>
 

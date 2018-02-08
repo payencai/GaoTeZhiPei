@@ -1,7 +1,9 @@
 package com.yichan.gaotezhipei.common.fragment;
 
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseListFragment;
@@ -12,6 +14,13 @@ import com.yichan.gaotezhipei.base.component.BaseListFragment;
 
 public abstract class CommonOrderFragment extends BaseListFragment {
 
+    protected View mViewNodata;
+
+    @Override
+    protected void init(Bundle savedInstanceState) {
+        super.init(savedInstanceState);
+        mViewNodata = findViewById(R.id.common_order_nodata);
+    }
 
     @Override
     protected int getContentViewId() {

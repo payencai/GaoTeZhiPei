@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:background="@null"
-            android:text="asdasdas"
+            android:hint="请输入收货人姓名"
             android:textColor="#1a1a1a"
             android:textSize="14sp"/>
 
@@ -63,7 +63,7 @@
             android:layout_marginLeft="15dp"
             android:id="@+id/add_address_et_phone"
             android:background="@null"
-            android:text="asdasdas"
+            android:hint="请输入手机号码"
             android:textColor="#1a1a1a"
             android:textSize="14sp"/>
 
@@ -102,19 +102,22 @@
             android:src="@drawable/mine_arrowright"/>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:id="@+id/add_address_tv_region"
             android:background="@null"
             android:text="请选择"
-            android:gravity="end"
+            android:layout_toRightOf="@id/region_tag"
+            android:singleLine="true"
+            android:ellipsize="middle"
             android:layout_marginRight="6dp"
+            android:layout_toLeftOf="@id/region_arrowright"
+            android:layout_centerVertical="true"
             android:textColor="#999999"
             android:textSize="13sp"
             android:layout_alignTop="@+id/region_arrowright"
-            android:layout_toStartOf="@+id/region_arrowright"
-            android:layout_marginEnd="6dp" />
+            />
 
     </RelativeLayout>
 

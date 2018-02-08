@@ -1,6 +1,7 @@
 package com.yichan.gaotezhipei.login.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -24,6 +25,7 @@ import com.yichan.gaotezhipei.login.constant.LoginConstants;
 import com.yichan.gaotezhipei.login.entity.UserEntity;
 import com.yichan.gaotezhipei.login.event.LoginEvent;
 import com.yichan.gaotezhipei.login.util.LoginManager;
+import com.yichan.gaotezhipei.server.lcldriver.activity.LCLDriverMainActivity;
 
 import java.io.IOException;
 
@@ -44,6 +46,13 @@ public class DemandLoginActivity extends BaseActivity {
     EditText mEtAccount;
     @BindView(R.id.login_et_password)
     EditText mEtPassword;
+
+    @Override
+    protected void init(Bundle savedInstanceState) {
+        super.init(savedInstanceState);
+        mEtAccount.setText("17628285613");
+        mEtPassword.setText("123456");
+    }
 
     @Override
     protected int getContentViewId() {
@@ -108,12 +117,27 @@ public class DemandLoginActivity extends BaseActivity {
                     UserManager.getInstance(DemandLoginActivity.this).setPassword(mEtPassword.getText().toString());
                     UserManager.getInstance(DemandLoginActivity.this).setRoleType(AppConstants.DEMAND_TYPE_CODE);
                     EventBus.getInstance().post(new LoginEvent());
-                    startActivity(new Intent(DemandLoginActivity.this, HomeActivity.class));
+                    startActivityByRole(response.getData().getType());
                     finish();
                 }
             }
 
         });
+    }
+
+    private void startActivityByRole(int type) {
+        Intent intent = new Intent();
+        switch (type) {
+            case AppConstants.ROLE_TYPE_DEMAND_AND_LCL:
+                intent.setClass(DemandLoginActivity.this, LCLDriverMainActivity.class);
+                break;
+            case AppConstants.ROLE_TYPE_DEMAND:
+                intent.setClass(DemandLoginActivity.this, HomeActivity.class);
+                break;
+            default:
+                break;
+        }
+        startActivity(intent);
     }
 
 

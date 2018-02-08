@@ -58,6 +58,8 @@ public class ServerLoginActivity extends BaseActivity {
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
         initViews();
+        mEtAccount.setText("17628285613");
+        mEtPassword.setText("123456");
     }
 
     private void initViews() {

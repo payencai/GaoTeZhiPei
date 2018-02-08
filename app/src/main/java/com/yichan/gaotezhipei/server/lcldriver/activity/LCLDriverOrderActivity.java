@@ -3,7 +3,8 @@ package com.yichan.gaotezhipei.server.lcldriver.activity;
 import android.support.v4.app.Fragment;
 
 import com.yichan.gaotezhipei.logistics.activity.CommonOrderActivtiy;
-import com.yichan.gaotezhipei.logistics.fragment.LCLAllOrderFragment;
+import com.yichan.gaotezhipei.logistics.constant.LogisticsContants;
+import com.yichan.gaotezhipei.logistics.fragment.CommonLCLOrderFragment;
 import com.yichan.gaotezhipei.server.lcldriver.constant.LCLDriverConstants;
 
 import java.util.ArrayList;
@@ -27,11 +28,11 @@ public class LCLDriverOrderActivity extends CommonOrderActivtiy {
     @Override
     protected List<Fragment> initFragmentList() {
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new LCLAllOrderFragment());
-        fragments.add(new LCLAllOrderFragment());
-        fragments.add(new LCLAllOrderFragment());
-        fragments.add(new LCLAllOrderFragment());
-        fragments.add(new LCLAllOrderFragment());
+        fragments.add(new CommonLCLOrderFragment(LogisticsContants.TYPE_LCL_ORDER_ALL));
+        fragments.add(new CommonLCLOrderFragment(LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO));
+        fragments.add(new CommonLCLOrderFragment(LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO));
+        fragments.add(new CommonLCLOrderFragment(LogisticsContants.TYPE_LCL_ORDER_TO_CONFIRM));
+        fragments.add(new CommonLCLOrderFragment(LogisticsContants.TYPE_LCL_ORDER_TO_FINISH));
         return fragments;
     }
 }

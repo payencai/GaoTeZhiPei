@@ -14,6 +14,7 @@ public class LoginManager {
     public static void saveUserEntity(Context context, UserEntity userEntity) {
         UserManager.getInstance(context).setAccount(userEntity.getAccount());
         UserManager.getInstance(context).setLogin(true);
+        UserManager.getInstance(context).setId(userEntity.getId());
         UserManager.getInstance(context).setType(userEntity.getType());
         UserManager.getInstance(context).setToken(userEntity.getToken());
     }
@@ -22,6 +23,7 @@ public class LoginManager {
         UserManager.getInstance(context).setAccount(null);
         UserManager.getInstance(context).setPassword(null);
         UserManager.getInstance(context).setLogin(false);
+        UserManager.getInstance(context).setId(null);
         UserManager.getInstance(context).setType(0);
         UserManager.getInstance(context).setToken(null);
     }

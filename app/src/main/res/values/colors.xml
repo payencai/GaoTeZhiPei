@@ -22,4 +22,5 @@
 
     <color name="step_completed_color">#00C1DE</color>
     <color name="step_uncompleted_color">#DDDDDD</color>
+
 </resources>

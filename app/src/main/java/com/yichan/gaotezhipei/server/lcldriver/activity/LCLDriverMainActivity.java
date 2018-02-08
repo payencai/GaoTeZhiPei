@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseListActivity;
-import com.yichan.gaotezhipei.server.lcldriver.entity.NearbyCargoItem;
+import com.yichan.gaotezhipei.logistics.entity.OrderPageList;
 import com.yichan.gaotezhipei.server.lcldriver.view.NearbyCargoAdapter;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class LCLDriverMainActivity extends BaseListActivity {
 
     private NearbyCargoAdapter mAdapter;
 
-    private List<NearbyCargoItem> mList = new ArrayList<>();
+    private List<OrderPageList.BeanListBean> mBeanList = new ArrayList<>();
 
     @Override
     protected void init(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class LCLDriverMainActivity extends BaseListActivity {
 
     @Override
     protected RecyclerView.Adapter getAdapter() {
-        mAdapter = new NearbyCargoAdapter(this, mList);
+        mAdapter = new NearbyCargoAdapter(this, mBeanList);
         return mAdapter;
     }
 
@@ -76,12 +76,12 @@ public class LCLDriverMainActivity extends BaseListActivity {
 
     @Override
     protected void doRefresh(int currentPage, int size) {
-        for(int i = 0; i < 10; i++ ) {
-            mList.add(new NearbyCargoItem());
-        }
-        mAdapter.notifyDataSetChanged();
-        doRefreshFinish(0);
-        doLoadMoreFinish(0);
+//        for(int i = 0; i < 10; i++ ) {
+//            mList.add(new NearbyCargoItem());
+//        }
+//        mAdapter.notifyDataSetChanged();
+//        doRefreshFinish(0);
+//        doLoadMoreFinish(0);
     }
 
     @OnClick({R.id.lcl_driver_iv_find_cargo, R.id.lcl_driver_iv_myorder, R.id.lcl_driver_iv_driver_inform})

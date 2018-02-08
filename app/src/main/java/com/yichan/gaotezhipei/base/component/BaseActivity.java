@@ -2,11 +2,13 @@ package com.yichan.gaotezhipei.base.component;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 
 import com.changelcai.mothership.component.activity.MSBaseActivity;
 import com.yichan.gaotezhipei.base.util.DialogHelper;
+import com.yichan.gaotezhipei.common.util.PermissionUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -46,5 +48,11 @@ public abstract class BaseActivity extends MSBaseActivity {
             mLoadingDialog.dismiss();
             mLoadingDialog = null;
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        PermissionUtils.onRequestPermissionsResult(BaseActivity.this, requestCode, permissions, grantResults);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }

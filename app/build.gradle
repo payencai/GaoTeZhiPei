@@ -12,6 +12,10 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+
+        ndk {
+            abiFilters "armeabi","armeabi-v7a","x86"
+        }
     }
     buildTypes {
         release {
@@ -51,6 +55,13 @@ dependencies {
     compile 'com.owater.library:CircleTextViewlibrary:0.8.3'
     compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.5.0'
     compile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.contrarywind:Android-PickerView:3.2.7'
+    compile 'com.github.ikidou:TypeBuilder:1.0'
+    compile 'com.github.baoyachi:StepView:1.9'
+
+
+
+
 
 
 

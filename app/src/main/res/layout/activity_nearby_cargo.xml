@@ -9,6 +9,10 @@
 
     </include>
 
+    <include
+        android:id="@+id/view_no_data"
+        layout="@layout/part_no_data_match"></include>
+
     <com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
