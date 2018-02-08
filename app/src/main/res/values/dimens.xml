@@ -2,4 +2,6 @@
 <resources>
 
     <dimen name="divider_common_height">8dp</dimen>
+    <dimen name="divider_height_1dp">1dp</dimen>
+    <dimen name="divider_height_2dp">2dp</dimen>
 </resources>

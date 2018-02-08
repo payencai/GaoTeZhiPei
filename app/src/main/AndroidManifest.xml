@@ -39,6 +39,12 @@
         <activity android:name=".trainservice.activity.TrainServiceActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".trainservice.activity.TrainCourseDetailActivity"
+                  android:screenOrientation="portrait"/>
+
+        <activity android:name=".trainservice.activity.TrainCourseEnrollActivity"
+                  android:screenOrientation="portrait"/>
+
         <activity android:name=".enterpriseservice.activity.EnterpriseActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".enterpriseservice.activity.LicenseActivity"
