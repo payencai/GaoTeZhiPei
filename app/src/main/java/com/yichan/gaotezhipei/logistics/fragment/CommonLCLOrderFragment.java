@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.changelcai.mothership.network.RequestCall;
 import com.changelcai.mothership.network.builder.PostFormBuilder;
+import com.yichan.gaotezhipei.common.UserManager;
 import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
 import com.yichan.gaotezhipei.common.constant.AppConstants;
 import com.yichan.gaotezhipei.common.entity.Result;
@@ -14,6 +15,7 @@ import com.yichan.gaotezhipei.common.util.GsonUtil;
 import com.yichan.gaotezhipei.logistics.constant.LogisticsContants;
 import com.yichan.gaotezhipei.logistics.entity.OrderPageList;
 import com.yichan.gaotezhipei.logistics.view.LCLOrderAdapter;
+import com.yichan.gaotezhipei.server.lcldriver.constant.LCLDriverConstants;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -71,10 +73,18 @@ public class CommonLCLOrderFragment extends CommonOrderFragment {
         if(isRefresh) {
             mBeanList.clear();
         }
-        PostFormBuilder postFormBuilder = new PostFormBuilder().url(AppConstants.BASE_URL + LogisticsContants.URL_DEMAND_GET_ORDER);
+        PostFormBuilder postFormBuilder = new PostFormBuilder();
+
+        if(UserManager.getInstance(getActivity()).isDemand()) {
+            postFormBuilder.url(AppConstants.BASE_URL + LogisticsContants.URL_DEMAND_GET_ORDER);
+        } else {
+            postFormBuilder.url(AppConstants.BASE_URL + LCLDriverConstants.URL_GET_ALL_ORDER);
+        }
+
         if(mType != LogisticsContants.TYPE_LCL_ORDER_ALL) {//全部订单，不传参数
             postFormBuilder.addParams("type", String.valueOf(mType));
         }
+
         postFormBuilder.addParams("page", String.valueOf(currentPage));
         RequestCall call = postFormBuilder.build();
         call.doScene(new TokenSceneCallback<OrderPageList>(call) {
