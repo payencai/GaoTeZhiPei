@@ -1,6 +1,7 @@
 package com.yichan.gaotezhipei.trainservice.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
+import com.yichan.gaotezhipei.trainservice.activity.TrainCourseDetailActivity;
 import com.yichan.gaotezhipei.trainservice.entity.CourseItem;
 
 import java.util.List;
@@ -45,6 +47,12 @@ public class CourseListAdapter extends MSClickableAdapter<CourseListAdapter.Cour
             holder.tvStatus.setText("正在报名");
             holder.tvType.setText("线下课程");
             holder.btnApply.setVisibility(View.VISIBLE);
+            holder.btnApply.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mContext.startActivity(new Intent(mContext, TrainCourseDetailActivity.class));
+                }
+            });
         }
     }
 
