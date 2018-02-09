@@ -2,6 +2,7 @@ package com.yichan.gaotezhipei.trainservice.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
+import com.yichan.gaotezhipei.common.constant.Constans;
 import com.yichan.gaotezhipei.trainservice.activity.TrainCourseDetailActivity;
 import com.yichan.gaotezhipei.trainservice.entity.CourseItem;
 
@@ -43,6 +45,17 @@ public class CourseListAdapter extends MSClickableAdapter<CourseListAdapter.Cour
             holder.tvStatus.setText("初级.168人在学");
             holder.tvType.setText("免费");
             holder.btnApply.setVisibility(View.GONE);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    Bundle bundle = new Bundle();
+//                    bundle.putInt();
+                    Intent intent = new Intent();
+                    intent.setClass(mContext, TrainCourseDetailActivity.class);
+                    intent.putExtra(Constans.CourseModal, Constans.COURSE_MODAL.ONLINE.getIndex());
+                    mContext.startActivity(intent);
+                }
+            });
         } else {
             holder.tvStatus.setText("正在报名");
             holder.tvType.setText("线下课程");
@@ -50,7 +63,11 @@ public class CourseListAdapter extends MSClickableAdapter<CourseListAdapter.Cour
             holder.btnApply.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mContext.startActivity(new Intent(mContext, TrainCourseDetailActivity.class));
+//                    mContext.startActivity(new Intent(mContext, TrainCourseDetailActivity.class));
+                    Intent intent = new Intent();
+                    intent.setClass(mContext, TrainCourseDetailActivity.class);
+                    intent.putExtra(Constans.CourseModal, Constans.COURSE_MODAL.OFFLINE.getIndex());
+                    mContext.startActivity(intent);
                 }
             });
         }

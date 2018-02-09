@@ -8,25 +8,21 @@ import android.widget.Toast;
 
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseActivity;
-import com.yichan.gaotezhipei.trainservice.view.CourseOutlineAdapter;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by Administrator on 2018/2/8 0008.
+ * Created by simon on 2018/2/9 0009.
  */
 
-public class TrainCourseEnrollActivity extends BaseActivity {
+public class TrainCourseEnrollSuccessActivity extends BaseActivity {
     @BindView(R.id.titlebar_tv_title)
     TextView mTvTitle;
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_train_course_enroll;
+        return R.layout.activity_train_course_enroll_success;
     }
 
     @Override
@@ -39,15 +35,17 @@ public class TrainCourseEnrollActivity extends BaseActivity {
         mTvTitle.setText("课程报名");
     }
 
-    @OnClick({R.id.titlebar_btn_left, R.id.btnApplyForEnroll})
+    @OnClick({R.id.titlebar_btn_left, R.id.btnReturn})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.titlebar_btn_left:
                 finish();
                 break;
-            case R.id.btnApplyForEnroll:
-//                Toast.makeText(this, "Enroll Succeed.", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(TrainCourseEnrollActivity.this, TrainCourseEnrollSuccessActivity.class));
+            case R.id.btnReturn:
+                Intent activityIntent = new Intent();
+                activityIntent.setClass(TrainCourseEnrollSuccessActivity.this, TrainServiceActivity.class);
+                activityIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(activityIntent);
                 break;
             default:
                 break;

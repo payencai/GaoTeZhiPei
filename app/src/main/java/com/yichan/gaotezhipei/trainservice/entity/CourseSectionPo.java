@@ -1,4 +1,4 @@
-package com.yichan.gaotezhipei.common.entity;
+package com.yichan.gaotezhipei.trainservice.entity;
 
 import java.io.Serializable;
 

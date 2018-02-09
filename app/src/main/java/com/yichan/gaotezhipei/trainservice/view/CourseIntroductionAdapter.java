@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by simon on 2018/2/8 0008.
+ * Created by simon on 2018/2/9 0008.
  */
 
-public class CourseOutlineAdapter extends BaseAdapter {
+public class CourseIntroductionAdapter extends BaseAdapter {
     protected static final int VIEW_TYPE_SECTION = 1;
     protected static final int VIEW_TYPE_CELL = 0;
     /* Add Empty module type */
@@ -25,13 +25,12 @@ public class CourseOutlineAdapter extends BaseAdapter {
 
     protected List<Module> moduleList;
     protected List dataList = new ArrayList();
-    private boolean isLearnModal = false;
 
-    public CourseOutlineAdapter(Context context) {
+    public CourseIntroductionAdapter(Context context) {
         mContext = context;
     }
 
-    public CourseOutlineAdapter(Context context, List<Module> moduleList) {
+    public CourseIntroductionAdapter(Context context, List<Module> moduleList) {
         mContext = context;
         this.moduleList = moduleList;
     }
@@ -94,10 +93,8 @@ public class CourseOutlineAdapter extends BaseAdapter {
             //sectionView.setCompModuleHeaderListener(mCompModuleHeaderListener);
         }
 
+        sectionView.setLeftImgHidden(true);
         Module module = (Module) dataList.get(position);
-        //sectionView.setTag(R.id.tag_module, module);
-        if(isLearnModal)
-            sectionView.setLeftImgHidden(true);
         String moduleTitle = module.getModuleId();
         sectionView.setHeaderTitle(moduleTitle);
 
@@ -113,16 +110,10 @@ public class CourseOutlineAdapter extends BaseAdapter {
         } else {
             cell = new CompModuleItem(mContext);
         }
-        List<CourseSectionPo> courseSectionPos = module.getList();
+        List<String> courseSectionPos = module.getList();
         //cell.setTag(R.id.tag_module, courseSectionPos.get(positionInModule));
-        cell.setTitle(String.format("%d-%d %s", courseSectionPos.get(positionInModule).getChapterId(),
-                courseSectionPos.get(positionInModule).getNumber(),
-                courseSectionPos.get(positionInModule).getSectionName()));
-        if(isLearnModal) {
-            cell.setMore("02:29");
-            if ("第1章 课程简介".equals(module.getModuleId()))
-                cell.setStatus(true);
-        }
+        cell.setLeftImgHidden(true);
+        cell.setTitle(courseSectionPos.get(positionInModule));
         view = cell;
 
         return view;
@@ -148,9 +139,5 @@ public class CourseOutlineAdapter extends BaseAdapter {
             }
         }
         this.notifyDataSetChanged();
-    }
-
-    public void setLearnModal(boolean learnModal) {
-        isLearnModal = learnModal;
     }
 }

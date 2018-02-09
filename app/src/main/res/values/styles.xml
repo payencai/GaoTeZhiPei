@@ -54,6 +54,16 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingTop">0dp</item>
-        <item name="android:textSize">13dp</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+    <style name="form_item_title_font">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/text_black_color</item>
     </style>
 </resources>
