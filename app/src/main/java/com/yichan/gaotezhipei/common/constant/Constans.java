@@ -9,6 +9,9 @@ public class Constans {
 
     public final static String CourseModal = "CourseModal";        //ORDERID
 
+    //缓存文件名
+    public static final String CONFIGFILE = "SP_CONFIGFILE";
+
     /**
      * 培训课程模式
      * @author simon

@@ -187,6 +187,12 @@
         <activity android:name=".mine.activity.FeedbackActivity"
             android:screenOrientation="portrait"></activity>
 
+        <activity android:name=".mine.activity.PersonalProfileActivity"
+                  android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".mine.activity.PersonalNickSetActivity"
+                  android:screenOrientation="portrait"></activity>
+
         <!-->*****************服务方【服务网点】*****************<-->
 
         <activity android:name=".server.netstation.activity.NetMainActivity"
