@@ -2,13 +2,14 @@ package com.yichan.gaotezhipei.logistics.entity;
 
 import com.yichan.gaotezhipei.mine.entity.AddressItem;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by ckerv on 2018/2/8.
  */
 
-public class OrderPageList {
+public class LCLOrderPage {
 
     /**
      * beanList : [{"address":{"address":"string","area":"string","city":"string","defaultAddress":0,"id":"string","isCancel":0,"lat1":"string","lng1":"string","name":"string","province":"string","telephone":"string","userId":"string"},"anticipantCar":"string","anticipantTime":"2018-02-07T12:18:33.240Z","articleName":"string","consignee":"string","consigneeAddress":"string","consigneeArea":"string","consigneeCity":"string","consigneeProvince":"string","consigneeTelephone":"string","distance":"string","driverId":"string","driverTelephone":"string","endTime":"2018-02-07T12:18:33.240Z","getTime":"2018-02-07T12:18:33.240Z","id":"string","isDel":"string","num":0,"orderTime":"2018-02-07T12:18:33.240Z","pickupAddress":"string","pickupTime":"2018-02-07T12:18:33.240Z","receiverAddressId":"string","sendTime":"2018-02-07T12:18:33.240Z","type":"string","userId":"string","volume":0,"weight":0}]
@@ -64,7 +65,7 @@ public class OrderPageList {
         this.beanList = beanList;
     }
 
-    public static class BeanListBean {
+    public static class BeanListBean implements Serializable{
         /**
          * address : {"address":"string","area":"string","city":"string","defaultAddress":0,"id":"string","isCancel":0,"lat1":"string","lng1":"string","name":"string","province":"string","telephone":"string","userId":"string"}
          * anticipantCar : string

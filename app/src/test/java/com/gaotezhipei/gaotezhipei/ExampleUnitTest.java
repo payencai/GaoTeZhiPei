@@ -1,8 +1,11 @@
 package com.gaotezhipei.gaotezhipei;
 
+import com.yichan.gaotezhipei.common.util.GsonUtil;
+
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -12,6 +15,14 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+
+        List<String> list = new ArrayList<>();
+        list.add("123");
+        list.add("456");
+
+
+
+        System.out.print(GsonUtil.GsonString(list));
+
     }
 }

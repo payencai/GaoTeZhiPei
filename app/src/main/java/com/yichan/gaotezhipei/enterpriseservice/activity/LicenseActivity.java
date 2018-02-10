@@ -1,6 +1,5 @@
 package com.yichan.gaotezhipei.enterpriseservice.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,8 +64,7 @@ public class LicenseActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.license_btn_commission:
-                Intent intent = new Intent(LicenseActivity.this, ComissionActivity.class);
-                startActivity(intent);
+                ComissionActivity.startActivity(LicenseActivity.this, 1);
                 break;
             default:
                 break;

@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:button="@null"
-        android:id="@+id/item_net_detail_cb"
+        android:id="@+id/item_cb_select"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp"
@@ -29,6 +29,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/item_tv_number"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp"
@@ -60,6 +61,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/item_tv_mail_district"
                 android:text="龙华新区"
                 android:textColor="@color/text_black_color"
                 android:textSize="14sp" />
@@ -67,6 +69,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/item_tv_mail_province_city"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
                 android:text="广东 深圳"
@@ -80,6 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:id="@+id/item_tv_distance"
             android:background="@drawable/order_redstroke"
             android:padding="3dp"
             android:gravity="center"
@@ -96,6 +100,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/item_tv_pick_district"
                 android:text="龙华新区"
                 android:textColor="@color/text_black_color"
                 android:textSize="14sp" />
@@ -103,6 +108,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/item_tv_pick_province_city"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
                 android:text="广东 深圳"
@@ -130,6 +136,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:id="@+id/item_tv_cargo_inform"
             android:layout_weight="6"
             android:singleLine="true"
             android:text="货物详情    家电电器    22件  22kg  22m³"
@@ -164,6 +171,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:id="@+id/item_tv_mail_name_phone"
                 android:text="彭于晏 123456789012"
                 android:textColor="@color/text_gray_color"
                 android:textSize="14sp" />
@@ -171,6 +179,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/item_tv_mail_address"
                 android:gravity="center_vertical"
                 android:lines="2"
                 android:maxLines="2"
@@ -213,6 +222,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/item_tv_pick_name_phone"
                 android:layout_marginTop="8dp"
                 android:text="彭于晏 123456789012"
                 android:textColor="@color/text_gray_color"
@@ -221,6 +231,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/item_tv_pick_address"
                 android:gravity="center_vertical"
                 android:lines="2"
                 android:layout_marginTop="5dp"

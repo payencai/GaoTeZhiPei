@@ -66,8 +66,14 @@
     <com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/logistics_driver_main_rv">
+        android:id="@+id/logistics_driver_main_rv"
+        >
 
     </com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout>
+
+    <include
+        android:id="@+id/view_no_data"
+        layout="@layout/part_no_data_match"
+        android:visibility="gone"></include>
 
 </LinearLayout>

@@ -7,6 +7,7 @@
     <ImageView
         android:layout_width="78dp"
         android:layout_height="55dp"
+        android:id="@+id/iv_left"
         android:src="@drawable/mine_demand"
         android:scaleType="fitCenter"
         android:layout_marginTop="80dp"
@@ -25,6 +26,7 @@
     <ImageView
         android:layout_width="78dp"
         android:layout_height="57dp"
+        android:id="@+id/iv_right"
         android:src="@drawable/mine_driver"
         android:scaleType="fitXY"
         android:layout_marginTop="80dp"

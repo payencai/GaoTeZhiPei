@@ -5,6 +5,7 @@ import android.support.v4.app.DialogFragment;
 
 import com.changelcai.mothership.component.activity.MSBaseListActivity;
 import com.yichan.gaotezhipei.base.util.DialogHelper;
+import com.yichan.gaotezhipei.common.GaoteApplication;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -39,5 +40,12 @@ public abstract class BaseListActivity extends MSBaseListActivity {
             mLoadingDialog.dismiss();
             mLoadingDialog = null;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        GaoteApplication.restoreAppCxt(this);
     }
 }

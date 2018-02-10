@@ -27,10 +27,12 @@ public class LogisticsDriverOrderActivity extends CommonOrderActivtiy {
     @Override
     protected List<Fragment> initFragmentList() {
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new CommonLogisticsDriverOrderFragment());
-        fragments.add(new CommonLogisticsDriverOrderFragment());
-        fragments.add(new CommonLogisticsDriverOrderFragment());
-        fragments.add(new CommonLogisticsDriverOrderFragment());
+        fragments.add(new CommonLogisticsDriverOrderFragment(LogisticsDriverConstants.TYPE_ALL));
+        fragments.add(new CommonLogisticsDriverOrderFragment(LogisticsDriverConstants.TYPE_TO_CONFIRM));
+        fragments.add(new CommonLogisticsDriverOrderFragment(LogisticsDriverConstants.TYPE_TO_DELEVER));
+        fragments.add(new CommonLogisticsDriverOrderFragment(LogisticsDriverConstants.TYPE_FINISHED));
         return fragments;
     }
+
+
 }

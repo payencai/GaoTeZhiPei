@@ -1,95 +1,179 @@
 package com.yichan.gaotezhipei.logistics.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.baoyachi.stepview.VerticalStepView;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseActivity;
+import com.yichan.gaotezhipei.common.UserManager;
+import com.yichan.gaotezhipei.logistics.constant.LogisticsContants;
+import com.yichan.gaotezhipei.logistics.entity.LCLOrderPage;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by ckerv on 2018/2/8.
+ * Created by ckerv on 2018/2/10.
  */
 
 public class LCLOrderDetailActivity extends BaseActivity {
 
-    private TextView mTvTitle;
-    private TextView tvOrderTime;
-    private RelativeLayout rlStatus;
-    private TextView tvStatus;
-    private TextView tvMailDistrict;
-    private TextView tvMailProvinceCity;
-    private TextView tvDistance;
-    private TextView tvPickDistrict;
-    private TextView tvPickProvinceCity;
-    private TextView tvCargoName;
-    private TextView tvCargoInform;
-    private TextView tvGetCargoTime;
-    private TextView tvGetCargoAddr;
+    @BindView(R.id.titlebar_tv_title)
+    TextView mTvTitle;
 
-    private VerticalStepView verticalStepView;
+
+    private LCLOrderPage.BeanListBean mBean;
+
+    @BindView(R.id.tv_mail_district)
+    TextView mTvMailDistrict;
+    @BindView(R.id.tv_mail_province_city)
+    TextView mTvMailProvinceCity;
+    @BindView(R.id.tv_status)
+    TextView mTvStatus;
+    @BindView(R.id.tv_status_desc)
+    TextView mTvStatusDesc;
+    @BindView(R.id.tv_pick_district)
+    TextView mTvPickDistrict;
+    @BindView(R.id.tv_pick_province_city)
+    TextView mTvPickProvinceCity;
+
+
+    @BindView(R.id.tv_order_desc)
+    TextView mTvOrderDesc;
+
+    @BindView(R.id.tv_order_time)
+    TextView mTvOrderTime;
+
+    @BindView(R.id.tv_mail_phone_name)
+    TextView mTvMailNamePhone;
+    @BindView(R.id.tv_mail_address)
+    TextView mTvMailAddr;
+
+    @BindView(R.id.tv_good_name)
+    TextView mTvGoodName;
+    @BindView(R.id.tv_good_weight)
+    TextView mTvGoodWeight;
+    @BindView(R.id.tv_good_volume)
+    TextView mTvGoodVolume;
+    @BindView(R.id.tv_good_count)
+    TextView mTvGoodCount;
+    @BindView(R.id.tv_car_type)
+    TextView mTvCarType;
+    @BindView(R.id.tv_get_good_time)
+    TextView mTvGetGoodTime;
+    @BindView(R.id.tv_get_good_addr)
+    TextView mTvGetGoodAddr;
+
+    public static void startActivity(Context context, LCLOrderPage.BeanListBean bean) {
+        Intent intent = new Intent(context, LCLOrderDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("orderdetailbean", bean);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
-
-        initView();
+        mBean = (LCLOrderPage.BeanListBean) getIntent().getSerializableExtra("orderdetailbean");
         initTitleBar();
-        initStepView();
+
+        initFirstLine();
+        initSecondLine();
+        initThirdLine();
+        initGoodInform();
     }
 
-    private void initView() {
-        mTvTitle = (TextView) findViewById(R.id.titlebar_tv_title);
-        tvOrderTime = (TextView) findViewById(R.id.item_tv_order_time);
-        rlStatus = (RelativeLayout) findViewById(R.id.item_rl_status);
-        tvStatus = (TextView) findViewById(R.id.item_tv_status);
-
-        tvMailDistrict = (TextView) findViewById(R.id.item_tv_mail_district);
-        tvMailProvinceCity = (TextView) findViewById(R.id.item_tv_mail_province_city);
-        tvDistance = (TextView) findViewById(R.id.item_tv_distance);
-        tvPickDistrict = (TextView) findViewById(R.id.item_tv_pick_district);
-        tvPickProvinceCity = (TextView) findViewById(R.id.item_tv_pick_province_city);
-
-        tvCargoName = (TextView) findViewById(R.id.item_tv_cargo_name);
-        tvCargoInform = (TextView) findViewById(R.id.item_tv_cargo_inform);
-
-        tvGetCargoTime = (TextView) findViewById(R.id.item_tv_get_cargo_time);
-        tvGetCargoAddr = (TextView) findViewById(R.id.item_tv_get_cargo_addr);
-
-        verticalStepView = (VerticalStepView) findViewById(R.id.lcl_order_detail_vsv);
+    private void initFirstLine() {
+        mTvMailDistrict.setText(mBean.getAddress().getArea());
+        mTvMailProvinceCity.setText(mBean.getAddress().getProvince() + " " + mBean.getAddress().getCity());
+        mTvPickDistrict.setText(mBean.getConsigneeArea());
+        mTvPickProvinceCity.setText(mBean.getConsigneeProvince() + " " + mBean.getConsigneeCity());
+        int type = Integer.valueOf(mBean.getType());
+        switch (type) {
+            case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE:
+                mTvStatus.setText("待接单");
+                mTvStatusDesc.setText("等待司机接单");
+                break;
+            case LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO:
+                mTvStatus.setText("待接货");
+                mTvStatusDesc.setText("等待司机接货");
+                break;
+            case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO:
+                if(UserManager.getInstance(LCLOrderDetailActivity.this).isDemand()) {
+                    mTvStatus.setText("待收货");
+                } else {
+                    mTvStatus.setText("待送货");
+                }
+                mTvStatusDesc.setText("运往签收地址");
+                break;
+            case LogisticsContants.TYPE_LCL_ORDER_TO_CONFIRM:
+                mTvStatus.setText("待签收");
+                mTvStatusDesc.setText("等待用户签收");
+                break;
+            case LogisticsContants.TYPE_LCL_ORDER_TO_FINISH:
+                mTvStatus.setText("已完成");
+                mTvStatusDesc.setText("该订单已签收");
+                break;
+            default:
+                break;
+        }
     }
 
-    private void initStepView() {
-        List<String> stepList = new ArrayList<>();
-        stepList.add("接已提交定案，等待系统确认");
-        stepList.add("您的商品需要从外地调拨，我们会尽快处理，请耐心等待");
-        stepList.add("您的商品需要从外地调拨，我们会尽快处理，请耐心等待sasdasdasdas");
-        stepList.add("您的商品需要从外地调拨，我们会尽快处理，aaaaaa等待");
-        verticalStepView.setStepsViewIndicatorComplectingPosition(0)//设置完成的步数
-                .setStepViewTexts(stepList)//总步骤
-                .setTextSize(14)
-                .reverseDraw(false)
-                .setLinePaddingProportion(1)//设置indicator线与线间距的比例系数
-                .setStepsViewIndicatorCompletedLineColor(ContextCompat.getColor(this, R.color.step_uncompleted_color))//设置StepsViewIndicator完成线的颜色
-                .setStepsViewIndicatorUnCompletedLineColor(ContextCompat.getColor(this, R.color.step_uncompleted_color))//设置StepsViewIndicator未完成线的颜色
-                .setStepViewComplectedTextColor(ContextCompat.getColor(this,R.color.step_completed_color))//设置StepsView text完成线的颜色
-                .setStepViewUnComplectedTextColor(ContextCompat.getColor(this, R.color.step_uncompleted_color))//设置StepsView text未完成线的颜色
-                .setStepsViewIndicatorCompleteIcon(ContextCompat.getDrawable(this, R.drawable.completed_icon))//设置StepsViewIndicator CompleteIcon
-                .setStepsViewIndicatorAttentionIcon(ContextCompat.getDrawable(this, R.drawable.uncompleted_icon))//设置StepsViewIndicator AttentionIcon
-                .setStepsViewIndicatorDefaultIcon(ContextCompat.getDrawable(this, R.drawable.completed_icon));//设置StepsViewIndicator DefaultIcon
+    private void initSecondLine() {
+        int type = Integer.valueOf(mBean.getType());
+        switch (type) {
+            case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE:
+                mTvOrderDesc.setText("您有新的订单要处理");
+                mTvOrderTime.setText(mBean.getOrderTime());
+                break;
+            case LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO:
+                mTvOrderDesc.setText("您有新的订单要处理");
+                mTvOrderTime.setText(mBean.getGetTime());
+                break;
+            case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO:
+                mTvOrderDesc.setText("正在前往收货目的地");
+                mTvOrderTime.setText(mBean.getPickupTime());
+                break;
+            case LogisticsContants.TYPE_LCL_ORDER_TO_CONFIRM:
+                mTvOrderDesc.setText("等待用户签收");
+                mTvOrderTime.setText(mBean.getSendTime());
+                break;
+            case LogisticsContants.TYPE_LCL_ORDER_TO_FINISH:
+                mTvOrderDesc.setText("订单已签收，签收人：" + mBean.getConsignee() + " " + mBean.getConsigneeTelephone());
+                mTvOrderTime.setText(mBean.getEndTime());
+                break;
+            default:
+                break;
+        }
+    }
 
+    private void initThirdLine() {
+        mTvMailNamePhone.setText("寄件人：" + mBean.getAddress().getName() + " " + mBean.getAddress().getTelephone());
+        mTvMailAddr.setText("寄件地址：" + mBean.getAddress().getAddress());
+
+    }
+
+    private void initGoodInform() {
+        mTvGoodName.setText("货品：" + mBean.getArticleName());
+        mTvGoodWeight.setText("重量：" + mBean.getWeight() + "kg");
+        mTvGoodVolume.setText("体积：" + mBean.getVolume() + "m³");
+        mTvGoodCount.setText("数量：" + mBean.getNum() + "件");
+        mTvCarType.setText("所需车型：" + mBean.getAnticipantCar());
+        mTvGetGoodTime.setText("取货时间：" + mBean.getAnticipantTime());
+        mTvGetGoodAddr.setText("取货地址：" + mBean.getPickupAddress());
+    }
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.activity_lcl_order_detail;
     }
 
     private void initTitleBar() {
-        mTvTitle.setText("查看物流");
+        mTvTitle.setText("快递查询");
     }
 
     @OnClick({R.id.titlebar_btn_left})
@@ -101,10 +185,5 @@ public class LCLOrderDetailActivity extends BaseActivity {
             default:
                 break;
         }
-    }
-
-    @Override
-    protected int getContentViewId() {
-        return R.layout.activity_lcl_order_detail;
     }
 }

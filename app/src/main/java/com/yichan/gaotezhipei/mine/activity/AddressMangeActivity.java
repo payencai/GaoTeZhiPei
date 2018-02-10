@@ -311,6 +311,8 @@ public class AddressMangeActivity extends BaseActivity {
             holder.phoneTv.setText(mList.get(position).getTelephone());
             holder.addressTv.setText(mList.get(position).getAddress());
 
+            holder.defaultCb.setOnCheckedChangeListener(null);
+
             if(mList.get(position).getDefaultAddress() == 1) {
                 holder.defaultTv.setText("默认地址");
                 holder.defaultTv.setTextColor(Color.parseColor("#00c1de"));

@@ -38,6 +38,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/item_tv_distance"
             android:textSize="12sp"
             android:layout_marginLeft="3dp"
             android:textColor="#666666"
@@ -59,6 +60,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/item_tv_name"
             android:text="广州白云永康路157号"
             android:textColor="@color/text_black_color"
             android:textSize="14sp"/>
@@ -66,6 +68,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/item_tv_address"
             android:text="广东省广州市白云区永平街道永泰新村"
             android:layout_marginTop="5dp"
             android:textColor="#999999"

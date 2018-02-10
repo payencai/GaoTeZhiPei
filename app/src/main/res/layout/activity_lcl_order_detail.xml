@@ -1,319 +1,360 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <include
         layout="@layout/part_titlebar_only_back"></include>
 
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/shape_item_order"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:id="@+id/item_tv_order_time"
-                android:layout_marginLeft="13dp"
-                android:layout_marginTop="10dp"
-                android:text="2018-01-03   11:16:00"
-                android:textColor="#999999"
-                android:textSize="10sp" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/item_rl_status"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/order_green"
-                android:padding="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/item_tv_status"
-                    android:layout_centerInParent="true"
-                    android:text="待接单"
-                    android:textColor="@color/white"
-                    android:textSize="10sp" />
-
-            </RelativeLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="10dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/item_tv_mail_district"
-                    android:text="龙华新区"
-                    android:textColor="@color/text_black_color"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/item_tv_mail_province_city"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5dp"
-                    android:text="广东 深圳"
-                    android:textColor="#e2363a"
-                    android:textSize="10sp" />
-
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:id="@+id/item_tv_distance"
-                android:background="@drawable/order_redstroke"
-                android:padding="3dp"
-                android:gravity="center"
-                android:text="1200km"
-                android:textColor="#e2363a"
-                android:textSize="11sp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/item_tv_pick_district"
-                    android:text="龙华新区"
-                    android:textColor="@color/text_black_color"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/item_tv_pick_province_city"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5dp"
-                    android:text="广东 深圳"
-                    android:textColor="#e2363a"
-                    android:textSize="10sp" />
-
-
-            </LinearLayout>
-
-
-        </RelativeLayout>
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="13dp"
-            android:layout_marginRight="13dp"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="6dp"
-                android:layout_height="6dp"
-                android:layout_gravity="center_vertical"
-                android:src="#e3e3e3" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:id="@+id/item_tv_cargo_name"
-                android:text="家电电器:"
-                android:textColor="@color/text_black_color"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/item_tv_cargo_inform"
-                android:layout_marginLeft="3dp"
-                android:text="22件  22kg  22m³"
-                android:textColor="@color/text_black_color"
-                android:textSize="12sp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="13dp"
-            android:layout_marginRight="13dp"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="6dp"
-                android:layout_height="6dp"
-                android:layout_gravity="center_vertical"
-                android:src="#e3e3e3" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:text="取货时间:"
-                android:textColor="@color/text_black_color"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/item_tv_get_cargo_time"
-                android:layout_marginLeft="3dp"
-                android:text="2018-01-03  11:24:00"
-                android:textColor="@color/text_black_color"
-                android:textSize="12sp" />
-
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="13dp"
-            android:layout_marginRight="13dp"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/ll"
-                android:layout_alignParentLeft="true">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="6dp"
-                    android:layout_height="6dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="#e3e3e3" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:text="取货地址:"
-                    android:layout_gravity="center_vertical"
-                    android:textColor="@color/text_black_color"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/item_tv_get_cargo_addr"
-                android:layout_marginLeft="3dp"
-                android:layout_alignParentRight="true"
-                android:text="云南省弥勒市红河区aa前卫西路世纪半岛橄榄谷7-6号"
-                android:maxLines="2"
-                android:layout_toRightOf="@id/ll"
-                android:layout_alignParentTop="@id/ll"
-                android:lineSpacingExtra="2dp"
-                android:textColor="@color/text_black_color"
-                android:textSize="12sp" />
-
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#f6f6f6"
-                android:layout_marginTop="10dp"></View>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:id="@+id/ll_left"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="center"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tv_mail_district"
+                android:text="福田区"
+                android:textSize="16sp"
+                android:textColor="@color/text_black_color"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_mail_province_city"
                 android:layout_marginTop="10dp"
-                android:id="@+id/item_rl_bottom"
-                android:layout_marginBottom="10dp"
-                android:visibility="gone"
-                android:gravity="right">
+                android:text="广东 深圳"
+                android:textColor="#e2363a"
+                android:textSize="13sp"/>
 
 
-                <Button
-                    android:layout_width="67dp"
-                    android:layout_height="28dp"
-                    android:id="@+id/item_btn_right"
-                    android:textSize="12sp"
-                    android:textColor="#ea363a"
-                    android:gravity="center"
-                    android:background="@drawable/order_redstroke"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="12dp"
-                    android:text="联系司机"
-                    />
+        </LinearLayout>
 
-                <Button
-                    android:layout_width="67dp"
-                    android:layout_height="28dp"
-                    android:id="@+id/item_btn_left"
-                    android:layout_toLeftOf="@id/item_btn_right"
-                    android:textSize="12sp"
-                    android:textColor="#333333"
-                    android:gravity="center"
-                    android:background="@drawable/order_greystroke"
-                    android:layout_marginRight="12dp"
-                    android:text="取消订单"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignBottom="@id/ll_left"
+            android:gravity="center"
+            android:layout_centerInParent="true">
 
-            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_status"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:textSize="13sp"
+                android:text="发布中"
+                android:background="@drawable/rectanglesmall"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_status_desc"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:textColor="#e2363a"
+                android:textSize="13sp"
+                android:text="等待司机接单" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+
+            android:layout_alignParentRight="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_pick_district"
+                android:text="福田区"
+                android:textSize="16sp"
+                android:textColor="@color/text_black_color"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_pick_province_city"
+                android:layout_marginTop="10dp"
+                android:text="广东 深圳"
+                android:textColor="#e2363a"
+                android:textSize="13sp"/>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_common_height"
+        ></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/order_detail_huoche"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_order_desc"
+                android:text="您的订单开始处理"
+                android:textSize="13sp"
+                android:textColor="#1975fa"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_order_time"
+                android:layout_marginTop="5dp"
+                android:text="2018-02-08 10：02：00"
+                android:textSize="13sp"
+                android:textColor="#999999"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <com.baoyachi.stepview.VerticalStepView
+    <View
         android:layout_width="match_parent"
-        android:id="@+id/lcl_order_detail_vsv"
-        android:layout_marginTop="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="15dp"
-        android:background="@color/white"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_height="wrap_content">
+        android:layout_height="1dp"
+        android:background="@color/divider_gray"></View>
 
-    </com.baoyachi.stepview.VerticalStepView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/order_detail_location"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_mail_phone_name"
+                android:text="您的订单开始处理"
+                android:textSize="13sp"
+                android:textColor="#999999"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_mail_address"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:text="2018-02-08 10：02：00"
+                android:textSize="13sp"
+                android:textColor="#999999"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_common_height"
+        android:background="@color/divider_gray"></View>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_good_name"
+        android:paddingTop="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        android:background="@color/white"
+        android:text="货品：家电电器"
+        android:textColor="@color/text_black_color"
+        android:textSize="16sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_gray"></View>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:id="@+id/tv_good_weight"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        android:background="@color/white"
+        android:text="货品：家电电器"
+        android:textColor="@color/text_black_color"
+        android:textSize="16sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_gray"></View>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:id="@+id/tv_good_volume"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        android:background="@color/white"
+        android:text="货品：家电电器"
+        android:textColor="@color/text_black_color"
+        android:textSize="16sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_gray"></View>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="15dp"
+        android:id="@+id/tv_good_count"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        android:background="@color/white"
+        android:text="货品：家电电器"
+        android:textColor="@color/text_black_color"
+        android:textSize="16sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_gray"></View>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:id="@+id/tv_car_type"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        android:background="@color/white"
+        android:text="货品：家电电器"
+        android:textColor="@color/text_black_color"
+        android:textSize="16sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_gray"></View>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:id="@+id/tv_get_good_time"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        android:background="@color/white"
+        android:text="货品：家电电器"
+        android:textColor="@color/text_black_color"
+        android:textSize="16sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_gray"></View>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:id="@+id/tv_get_good_addr"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        android:background="@color/white"
+        android:text="货品：家电电器"
+        android:textColor="@color/text_black_color"
+        android:textSize="16sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_gray"
+        android:layout_marginBottom="20dp"></View>
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

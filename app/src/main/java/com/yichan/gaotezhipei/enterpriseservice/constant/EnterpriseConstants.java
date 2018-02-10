@@ -15,4 +15,6 @@ public class EnterpriseConstants {
     };
 
     public static final String URL_LICENSE_APPLY = "/demander/driverApply/apply";
+
+    public static final String URL_TAXSERVICE_APPLY = "/demander/taxServices/apply";
 }

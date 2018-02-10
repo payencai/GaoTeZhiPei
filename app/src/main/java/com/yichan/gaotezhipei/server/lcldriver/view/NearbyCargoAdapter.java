@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.listener.OnItemSubviewClickListener;
-import com.yichan.gaotezhipei.logistics.entity.OrderPageList;
+import com.yichan.gaotezhipei.logistics.entity.LCLOrderPage;
 
 import java.util.List;
 
@@ -23,22 +23,22 @@ public class NearbyCargoAdapter extends MSClickableAdapter<NearbyCargoAdapter.Ne
 
 
     private Context mContext;
-    private List<OrderPageList.BeanListBean> mList;
-    private OnItemSubviewClickListener<OrderPageList.BeanListBean> mOnItemSubviewClickListener;
+    private List<LCLOrderPage.BeanListBean> mList;
+    private OnItemSubviewClickListener<LCLOrderPage.BeanListBean> mOnItemSubviewClickListener;
 
-    public void setOnItemSubviewClickListener(OnItemSubviewClickListener<OrderPageList.BeanListBean> listener) {
+    public void setOnItemSubviewClickListener(OnItemSubviewClickListener<LCLOrderPage.BeanListBean> listener) {
         this.mOnItemSubviewClickListener = listener;
     }
 
 
-    public NearbyCargoAdapter(Context context, List<OrderPageList.BeanListBean> list) {
+    public NearbyCargoAdapter(Context context, List<LCLOrderPage.BeanListBean> list) {
         this.mContext = context;
         this.mList = list;
     }
 
     @Override
     public void onBindVH(NearbyCargoViewHolder holder, final int position) {
-        final OrderPageList.BeanListBean bean = mList.get(position);
+        final LCLOrderPage.BeanListBean bean = mList.get(position);
 
         setOrderStatus(holder, bean);
 
@@ -56,24 +56,24 @@ public class NearbyCargoAdapter extends MSClickableAdapter<NearbyCargoAdapter.Ne
         });
     }
 
-    private void setOrderStatus(NearbyCargoViewHolder holder, OrderPageList.BeanListBean bean) {
+    private void setOrderStatus(NearbyCargoViewHolder holder, LCLOrderPage.BeanListBean bean) {
         holder.tvOrderTime.setText(bean.getOrderTime());
     }
 
-    private void setAddressInform(NearbyCargoViewHolder holder, OrderPageList.BeanListBean bean) {
+    private void setAddressInform(NearbyCargoViewHolder holder, LCLOrderPage.BeanListBean bean) {
         holder.tvMailDistrict.setText(bean.getAddress().getArea());
         holder.tvMailProvinceCity.setText(bean.getAddress().getProvince() + " " + bean.getAddress().getCity());
-        holder.tvDistance.setText(bean.getDistance());
+        holder.tvDistance.setText(String.format("%.2f", Double.valueOf(bean.getDistance()) / 1000) + "km");
         holder.tvPickDistrict.setText(bean.getConsigneeArea());
         holder.tvPickProvinceCity.setText(bean.getConsigneeProvince() + " " + bean.getConsigneeCity());
     }
 
-    private void setCargoInform(NearbyCargoViewHolder holder, OrderPageList.BeanListBean bean) {
+    private void setCargoInform(NearbyCargoViewHolder holder, LCLOrderPage.BeanListBean bean) {
         holder.tvCargoName.setText(bean.getArticleName() + ":");
         holder.tvCargoInform.setText(bean.getNum() + "件 " + bean.getWeight() + "kg " + bean.getVolume() + "m³");
         holder.tvCar.setText(bean.getAnticipantCar());
         holder.tvGetCargoTime.setText(bean.getAnticipantTime());
-        holder.tvGetCargoAddr.setText(bean.getConsigneeAddress());
+        holder.tvGetCargoAddr.setText(bean.getPickupAddress());
     }
 
     @Override

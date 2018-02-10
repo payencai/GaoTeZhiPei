@@ -25,7 +25,6 @@ import com.yichan.gaotezhipei.login.constant.LoginConstants;
 import com.yichan.gaotezhipei.login.entity.UserEntity;
 import com.yichan.gaotezhipei.login.event.LoginEvent;
 import com.yichan.gaotezhipei.login.util.LoginManager;
-import com.yichan.gaotezhipei.server.lcldriver.activity.LCLDriverMainActivity;
 
 import java.io.IOException;
 
@@ -117,7 +116,7 @@ public class DemandLoginActivity extends BaseActivity {
                     UserManager.getInstance(DemandLoginActivity.this).setPassword(mEtPassword.getText().toString());
                     UserManager.getInstance(DemandLoginActivity.this).setRoleType(AppConstants.DEMAND_TYPE_CODE);
                     EventBus.getInstance().post(new LoginEvent());
-                    startActivityByRole(response.getData().getType());
+                    startActivity(new Intent(DemandLoginActivity.this, HomeActivity.class));
                     finish();
                 }
             }
@@ -125,23 +124,23 @@ public class DemandLoginActivity extends BaseActivity {
         });
     }
 
-    private void startActivityByRole(int type) {
-        Intent intent = new Intent();
-        switch (type) {
-            case AppConstants.ROLE_TYPE_DEMAND_AND_LCL:
-                //TODO 如果当前账号是需求方且是拼货司机，则默认跳到需求方
-                //TODO 这里测试用，先跳到服务方
-                UserManager.getInstance(DemandLoginActivity.this).setRoleType("1");
-                intent.setClass(DemandLoginActivity.this, LCLDriverMainActivity.class);
-                break;
-            case AppConstants.ROLE_TYPE_DEMAND:
-                intent.setClass(DemandLoginActivity.this, HomeActivity.class);
-                break;
-            default:
-                break;
-        }
-        startActivity(intent);
-    }
+//    private void startActivityByRole(int type) {
+//        Intent intent = new Intent();
+//        switch (type) {
+//            case AppConstants.ROLE_TYPE_DEMAND_AND_LCL:
+//                //TODO 如果当前账号是需求方且是拼货司机，则默认跳到需求方
+//                //TODO 这里测试用，先跳到服务方
+//                UserManager.getInstance(DemandLoginActivity.this).setRoleType("1");
+//                intent.setClass(DemandLoginActivity.this, LCLDriverMainActivity.class);
+//                break;
+//            case AppConstants.ROLE_TYPE_DEMAND:
+//                intent.setClass(DemandLoginActivity.this, HomeActivity.class);
+//                break;
+//            default:
+//                break;
+//        }
+//        startActivity(intent);
+//    }
 
 
 

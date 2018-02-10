@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
@@ -29,7 +30,9 @@ public class ExpressConfirmedAdapter extends MSClickableAdapter<ExpressConfirmed
 
     @Override
     public void onBindVH(ExpressConfirmedViewHolder holder, int position) {
-
+        holder.tvDriverName.setText(mList.get(position).getDriverName());
+        holder.tvCount.setText("揽货件数:" + mList.get(position).getCount() + "件");
+        holder.tvTime.setText("装车时间:" + mList.get(position).getConfirmTime());
     }
 
     @Override
@@ -45,8 +48,16 @@ public class ExpressConfirmedAdapter extends MSClickableAdapter<ExpressConfirmed
 
     class ExpressConfirmedViewHolder extends RecyclerView.ViewHolder {
 
+        TextView tvDriverName;
+        TextView tvCount;
+        TextView tvTime;
+
         public ExpressConfirmedViewHolder(View itemView) {
             super(itemView);
+
+            tvDriverName = (TextView) itemView.findViewById(R.id.item_tv_driver_name);
+            tvCount = (TextView) itemView.findViewById(R.id.item_tv_count);
+            tvTime = (TextView) itemView.findViewById(R.id.item_tv_time);
         }
     }
 }

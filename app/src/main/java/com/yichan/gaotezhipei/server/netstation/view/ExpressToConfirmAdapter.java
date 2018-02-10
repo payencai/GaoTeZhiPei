@@ -5,9 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
+import com.yichan.gaotezhipei.base.listener.OnItemSubviewClickListener;
 import com.yichan.gaotezhipei.server.netstation.entity.ExpressToConfirmItem;
 
 import java.util.List;
@@ -20,6 +23,16 @@ public class ExpressToConfirmAdapter extends MSClickableAdapter<ExpressToConfirm
     private android.content.Context mContext;
     private List<ExpressToConfirmItem> mList;
 
+    private OnItemSubviewClickListener<ExpressToConfirmItem> mSubviewListener;
+
+    public OnItemSubviewClickListener<ExpressToConfirmItem> getSubviewListener() {
+        return mSubviewListener;
+    }
+
+    public void setSubviewListener(OnItemSubviewClickListener<ExpressToConfirmItem> mSubviewListener) {
+        this.mSubviewListener = mSubviewListener;
+    }
+
 
     public ExpressToConfirmAdapter(Context context, List<ExpressToConfirmItem> list) {
         this.mContext = context;
@@ -27,8 +40,18 @@ public class ExpressToConfirmAdapter extends MSClickableAdapter<ExpressToConfirm
     }
 
     @Override
-    public void onBindVH(ExpressToConfirmViewHolder holder, int position) {
-
+    public void onBindVH(ExpressToConfirmViewHolder holder, final int position) {
+        holder.tvDriverName.setText(mList.get(position).getDriverName());
+        holder.tvCount.setText("揽货件数:" + mList.get(position).getCount() + "件");
+        holder.tvTime.setText("装车时间:" + mList.get(position).getTakeorderTime());
+        holder.rlConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mSubviewListener != null) {
+                    mSubviewListener.onClick(v, position, mList.get(position));
+                }
+            }
+        });
     }
 
     @Override
@@ -44,8 +67,17 @@ public class ExpressToConfirmAdapter extends MSClickableAdapter<ExpressToConfirm
 
     class ExpressToConfirmViewHolder extends RecyclerView.ViewHolder {
 
+        TextView tvDriverName;
+        TextView tvCount;
+        TextView tvTime;
+        RelativeLayout rlConfirm;
+
         public ExpressToConfirmViewHolder(View itemView) {
             super(itemView);
+            tvDriverName = (TextView) itemView.findViewById(R.id.item_tv_driver_name);
+            tvCount = (TextView) itemView.findViewById(R.id.item_tv_count);
+            tvTime = (TextView) itemView.findViewById(R.id.item_tv_time);
+            rlConfirm = (RelativeLayout) itemView.findViewById(R.id.item_rl_confirm);
         }
     }
 }
