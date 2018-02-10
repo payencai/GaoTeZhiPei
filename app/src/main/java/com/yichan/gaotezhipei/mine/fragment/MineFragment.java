@@ -20,6 +20,7 @@ import com.yichan.gaotezhipei.mine.activity.AddressMangeActivity;
 import com.yichan.gaotezhipei.mine.activity.BecomeLCLDriverActivity;
 import com.yichan.gaotezhipei.mine.activity.FeedbackActivity;
 import com.yichan.gaotezhipei.mine.activity.MyMessageActivity;
+import com.yichan.gaotezhipei.mine.activity.PersonalProfileActivity;
 import com.yichan.gaotezhipei.mine.activity.SettingActivity;
 import com.yichan.gaotezhipei.server.lcldriver.activity.LCLDriverMainActivity;
 
@@ -85,7 +86,7 @@ public class MineFragment extends BaseFragment {
         return R.layout.fragment_mine;
     }
 
-    @OnClick({R.id.mine_rl_address_manage,R.id.mine_iv_setting,R.id.mine_tv_setting,R.id.mine_rl_become_lcl_driver,R.id.mine_rl_my_message,R.id.mine_tv_login,R.id.mine_rl_feedback,R.id.mine_rl_change_role})
+    @OnClick({R.id.mine_rl_address_manage,R.id.mine_iv_setting,R.id.mine_tv_setting,R.id.mine_rl_become_lcl_driver,R.id.mine_rl_my_message,R.id.mine_tv_login,R.id.mine_rl_feedback,R.id.mine_rl_change_role,R.id.mine_civ_head})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.mine_rl_address_manage:
@@ -111,6 +112,9 @@ public class MineFragment extends BaseFragment {
                 break;
             case R.id.mine_rl_change_role:
                 showChangeRoleDialog();
+                break;
+            case R.id.mine_civ_head:
+                getActivity().startActivity(new Intent(getActivity(), PersonalProfileActivity.class));
                 break;
             default:
                 break;

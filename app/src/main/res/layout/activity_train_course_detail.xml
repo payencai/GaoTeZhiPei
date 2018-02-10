@@ -9,7 +9,7 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-    <include layout="@layout/part_titlebar_only_back"/>
+    <include layout="@layout/part_titlebar_only_back_white"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             <FrameLayout
                 android:background="@color/text_blue_color"
                 android:layout_width="match_parent"
-                android:layout_height="120dp">
+                android:layout_height="80dp">
                 <TextView
                     style="@style/form_title_text"
                     android:layout_width="match_parent"
@@ -42,12 +42,14 @@
                 style="@style/form_title_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
+                android:layout_gravity="center_vertical"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginBottom="2dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
                 android:background="@color/text_blue_color"
                 android:textSize="11sp"
                 android:text="初级" />
@@ -77,6 +79,24 @@
                 android:layout_height="@dimen/divider_height_2dp"
                 android:background="@color/divider_gray"></View>
 
+            <com.yichan.gaotezhipei.trainservice.view.ListViewForScrollView
+                android:id="@+id/course_introduction_listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="0dp"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="@null"
+                android:fadingEdge="none"
+                android:fadingEdgeLength="0dp"
+                android:listSelector="@android:color/transparent"
+                android:scrollbars="none" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height_2dp"
+                android:background="@color/divider_gray"></View>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,8 +107,8 @@
                 android:paddingBottom="16dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:id="@+id/mine_civ_head"
                     android:src="@drawable/train_image1"
                     android:layout_marginLeft="20dp"
@@ -102,16 +122,17 @@
                     android:orientation="vertical" >
 
                     <TextView
+                        android:id="@+id/CompChartCell_mTextName"
+                        style="@style/form_item_title_font"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/CompChartCell_mTextName"
                         android:text="墨染ART" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_gravity="center_horizontal"
-                        android:text="UI Designer"
+                        android:text="UI设计师"
                         android:textColor="#999999"
                         android:textSize="11sp" />
 
@@ -133,7 +154,7 @@
                 android:layout_marginLeft="25dp"
                 android:text="课程提纲"
                 android:textColor="@color/text_black_color"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <com.yichan.gaotezhipei.trainservice.view.ListViewForScrollView
                 android:id="@+id/course_outline_listview"
@@ -166,5 +187,16 @@
             android:background="@color/text_blue_color"
             android:textSize="16sp"
             android:text="我要报名"/>
+        <TextView
+            android:id="@+id/btnBeginToLearn"
+            android:visibility="gone"
+            style="@style/form_title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center"
+            android:background="@color/text_blue_color"
+            android:textSize="16sp"
+            android:text="开始学习"/>
     </FrameLayout>
 </FrameLayout>

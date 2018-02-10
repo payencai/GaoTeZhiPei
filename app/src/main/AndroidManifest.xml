@@ -63,6 +63,12 @@
         <activity android:name=".trainservice.activity.TrainCourseEnrollActivity"
                   android:screenOrientation="portrait"/>
 
+        <activity android:name=".trainservice.activity.TrainCourseEnrollSuccessActivity"
+                  android:screenOrientation="portrait"/>
+
+        <activity android:name=".trainservice.activity.OnlineCourseLearnActivity"
+                  android:screenOrientation="portrait"/>
+
         <activity android:name=".enterpriseservice.activity.EnterpriseActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".enterpriseservice.activity.LicenseActivity"
@@ -180,6 +186,12 @@
 
         <activity android:name=".mine.activity.FeedbackActivity"
             android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".mine.activity.PersonalProfileActivity"
+                  android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".mine.activity.PersonalNickSetActivity"
+                  android:screenOrientation="portrait"></activity>
 
         <!-->*****************服务方【服务网点】*****************<-->
 
