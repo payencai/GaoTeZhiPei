@@ -37,6 +37,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/item_tv_driver_name"
             android:textSize="12sp"
             android:textColor="@color/text_black_color"
             android:text="谢霆锋"/>
@@ -44,6 +45,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/item_tv_count"
             android:textSize="12sp"
             android:layout_marginTop="3dp"
             android:textColor="@color/text_black_color"
@@ -52,6 +54,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/item_tv_time"
             android:textSize="12sp"
             android:layout_marginTop="3dp"
             android:textColor="@color/text_black_color"

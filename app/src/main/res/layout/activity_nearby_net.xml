@@ -14,5 +14,10 @@
         android:layout_height="match_parent"
         android:id="@+id/nearby_net_rv"></com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout>
 
+    <include
+        android:id="@+id/view_no_data"
+        layout="@layout/part_no_data_match"
+        android:visibility="gone"></include>
+
 
 </LinearLayout>

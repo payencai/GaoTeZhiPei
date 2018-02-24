@@ -8,16 +8,27 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.changelcai.mothership.network.RequestCall;
+import com.changelcai.mothership.network.request.GetRequest;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseListActivity;
+import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
+import com.yichan.gaotezhipei.common.constant.AppConstants;
+import com.yichan.gaotezhipei.common.entity.Result;
+import com.yichan.gaotezhipei.common.util.GsonUtil;
+import com.yichan.gaotezhipei.login.util.LoginManager;
+import com.yichan.gaotezhipei.server.netstation.constant.NetStationConstants;
 import com.yichan.gaotezhipei.server.netstation.entity.ExpressConfirmedItem;
 import com.yichan.gaotezhipei.server.netstation.view.ExpressConfirmedAdapter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.Call;
+import okhttp3.Response;
 
 /**
  * Created by ckerv on 2018/1/19.
@@ -31,6 +42,8 @@ public class NetMainActivity extends BaseListActivity {
     @BindView(R.id.titlebar_btn_left)
     ImageButton mIbLeft;
 
+    private View mViewNodata;
+
     private ExpressConfirmedAdapter mAdapter;
 
     private List<ExpressConfirmedItem> mList = new ArrayList<>();
@@ -39,12 +52,13 @@ public class NetMainActivity extends BaseListActivity {
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
 
+        mViewNodata = findViewById(R.id.view_no_data);
         initTitleBar();
     }
 
     private void initTitleBar() {
         mTvTitle.setText("服务网点");
-        mIbLeft.setVisibility(View.GONE);
+        mIbLeft.setImageResource(R.drawable.logout);
     }
 
     @Override
@@ -75,19 +89,59 @@ public class NetMainActivity extends BaseListActivity {
 
     @Override
     protected void doRefresh(int currentPage, int size) {
-        initDataList();
-        doRefreshFinish(0);
-        doLoadMoreFinish(0);
+        getDataList(true);
     }
 
-    private void initDataList() {
-        for (int i = 0; i < 10; i++) {
-            mList.add(new ExpressConfirmedItem());
+    private void getDataList(boolean isReresh) {
+        if(isReresh) {
+            mList.clear();
         }
-        mAdapter.notifyDataSetChanged();
+        GetRequest getRequest = new GetRequest(AppConstants.BASE_URL + NetStationConstants.URL_GET_CONFIRMED_ORDER, null, null, null);
+        RequestCall call = getRequest.build();
+        call.doScene(new TokenSceneCallback<List<ExpressConfirmedItem>>(call) {
+
+            @Override
+            public Result parseNetworkResponse(Response response) throws IOException {
+                return GsonUtil.fromJsonArray(response.body().string(), ExpressConfirmedItem.class);
+            }
+
+            @Override
+            protected void handleError(String errorMsg, Call call, Exception e) {
+                showToast(errorMsg);
+                doRefreshFinish(0);
+                toggleNoDataView(true);
+            }
+
+            @Override
+            protected void handleResponse(Result<List<ExpressConfirmedItem>> response) {
+                if(response.getResultCode() == Result.SUCCESS_CODE) {
+                    if(response.getData() != null) {
+                        mList.addAll(response.getData());
+                    }
+
+                    if(mList.size() != 0) {
+                        toggleNoDataView(false);
+                        mAdapter.notifyDataSetChanged();
+                    } else {
+                        showToast("暂无数据哦~");
+                        toggleNoDataView(true);
+                    }
+
+                } else {
+                    toggleNoDataView(true);
+                    showToast(response.getMessage());
+                }
+                doRefreshFinish(0);
+
+            }
+
+
+        });
     }
 
-    @OnClick({R.id.net_main_iv_new_address, R.id.net_main_iv_express_to_confirm, R.id.net_main_iv_express_record})
+
+
+    @OnClick({R.id.net_main_iv_new_address, R.id.net_main_iv_express_to_confirm, R.id.net_main_iv_express_record,R.id.view_no_data, R.id.titlebar_btn_left})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.net_main_iv_new_address:
@@ -99,8 +153,24 @@ public class NetMainActivity extends BaseListActivity {
             case R.id.net_main_iv_express_record:
                 startActivity(new Intent(NetMainActivity.this, ExpressRecordActivity.class));
                 break;
+            case R.id.view_no_data:
+                getDataList(true);
+                break;
+            case R.id.titlebar_btn_left:
+                LoginManager.logout(this, false);
+                break;
             default:
                 break;
+        }
+    }
+
+    protected void toggleNoDataView(boolean isShow) {
+        if(isShow) {
+            mViewNodata.setVisibility(View.VISIBLE);
+            mMultiLayout.setVisibility(View.GONE);
+        } else {
+            mViewNodata.setVisibility(View.GONE);
+            mMultiLayout.setVisibility(View.VISIBLE);
         }
     }
 }

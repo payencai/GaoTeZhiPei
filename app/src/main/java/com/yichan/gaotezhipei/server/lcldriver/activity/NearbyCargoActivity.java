@@ -6,15 +6,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.changelcai.mothership.component.fragment.dialog.IDialogResultListener;
 import com.changelcai.mothership.network.RequestCall;
 import com.changelcai.mothership.network.builder.PostFormBuilder;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseListActivity;
+import com.yichan.gaotezhipei.base.listener.OnItemSubviewClickListener;
+import com.yichan.gaotezhipei.base.util.DialogHelper;
 import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
 import com.yichan.gaotezhipei.common.constant.AppConstants;
 import com.yichan.gaotezhipei.common.entity.Result;
 import com.yichan.gaotezhipei.common.util.GsonUtil;
-import com.yichan.gaotezhipei.logistics.entity.OrderPageList;
+import com.yichan.gaotezhipei.logistics.entity.LCLOrderPage;
 import com.yichan.gaotezhipei.server.lcldriver.constant.LCLDriverConstants;
 import com.yichan.gaotezhipei.server.lcldriver.view.NearbyCargoAdapter;
 
@@ -40,7 +43,7 @@ public class NearbyCargoActivity extends BaseListActivity {
     @BindView(R.id.view_no_data)
     View mViewNodata;
 
-    private List<OrderPageList.BeanListBean> mBeanList = new ArrayList<>();
+    private List<LCLOrderPage.BeanListBean> mBeanList = new ArrayList<>();
 
     private NearbyCargoAdapter mAdapter;
 
@@ -49,7 +52,6 @@ public class NearbyCargoActivity extends BaseListActivity {
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
         mStartPageNum = 1;
-        mSize = 8;
         initTitleBar();
     }
 
@@ -65,16 +67,19 @@ public class NearbyCargoActivity extends BaseListActivity {
     }
 
     public void getDataList(int currentPage, final boolean isRefresh) {
+        if(isRefresh) {
+            mBeanList.clear();
+        }
         PostFormBuilder postFormBuilder = new PostFormBuilder().url(AppConstants.BASE_URL + LCLDriverConstants.URL_GET_AVAILABLE_ORDER);
         postFormBuilder.addParams("page", String.valueOf(currentPage));
         RequestCall call = postFormBuilder.build();
-        call.doScene(new TokenSceneCallback<OrderPageList>(call) {
+        call.doScene(new TokenSceneCallback<LCLOrderPage>(call) {
 
             @Override
-            public Result<OrderPageList> parseNetworkResponse(Response response) throws IOException {
+            public Result<LCLOrderPage> parseNetworkResponse(Response response) throws IOException {
                 Type type = TypeBuilder
                         .newInstance(Result.class)
-                        .beginSubType(OrderPageList.class)
+                        .beginSubType(LCLOrderPage.class)
                         .endSubType().build();
                 return GsonUtil.gsonToBean(response.body().string(), type);
             }
@@ -90,7 +95,7 @@ public class NearbyCargoActivity extends BaseListActivity {
 
 
             @Override
-            protected void handleResponse(Result<OrderPageList> response) {
+            protected void handleResponse(Result<LCLOrderPage> response) {
                 if(response.getResultCode() == Result.SUCCESS_CODE) {
 
                     //如果获取到的数据不为空，则直接添加进当前数据
@@ -138,7 +143,49 @@ public class NearbyCargoActivity extends BaseListActivity {
     @Override
     protected RecyclerView.Adapter getAdapter() {
         mAdapter = new NearbyCargoAdapter(this, mBeanList);
+        mAdapter.setOnItemSubviewClickListener(new OnItemSubviewClickListener<LCLOrderPage.BeanListBean>() {
+            @Override
+            public void onClick(View v, int pos, final LCLOrderPage.BeanListBean model) {
+                switch (v.getId()) {
+                    case R.id.nearby_cargo_rl_rob:
+                        DialogHelper.showConfirmDailog(getSupportFragmentManager(), "您确认接单吗？", new IDialogResultListener<Integer>() {
+                            @Override
+                            public void onDataResult(Integer result) {
+                                if(result == -1) {
+                                    handleOrder(1, model.getId());
+                                }
+                            }
+                        });
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
         return mAdapter;
+    }
+
+    private void handleOrder(int status, String orderId) {
+        RequestCall call = new PostFormBuilder().url(AppConstants.BASE_URL + LCLDriverConstants.URL_DRIVER_UPDATE_ORDER_STATUS)
+                .addParams("pdriverOrderId", orderId)
+                .addParams("status", String.valueOf(status)).build();
+        call.doScene(new TokenSceneCallback(call) {
+            @Override
+            protected void handleError(String errorMsg, Call call, Exception e) {
+                showToast(errorMsg);
+            }
+
+            @Override
+            protected void handleResponse(Result response) {
+                if(response.getResultCode() == Result.SUCCESS_CODE) {
+                    showToast("接单成功");
+                    getDataList(1, true);
+                } else {
+                    showToast(response.getMessage());
+                }
+            }
+
+        });
     }
 
     @Override

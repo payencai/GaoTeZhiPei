@@ -1,12 +1,12 @@
 package com.yichan.gaotezhipei.mine.fragment;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseFragment;
@@ -22,6 +22,7 @@ import com.yichan.gaotezhipei.mine.activity.FeedbackActivity;
 import com.yichan.gaotezhipei.mine.activity.MyMessageActivity;
 import com.yichan.gaotezhipei.mine.activity.PersonalProfileActivity;
 import com.yichan.gaotezhipei.mine.activity.SettingActivity;
+import com.yichan.gaotezhipei.server.lcldriver.activity.LCLDriverMainActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -122,26 +123,44 @@ public class MineFragment extends BaseFragment {
 
     private void showChangeRoleDialog() {
         //TODO 检查权限
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_change_role_has_permisson, null);
-        DialogHelper.showCustomDialog(view, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getActivity(), "确定", Toast.LENGTH_SHORT).show();
-            }
-        }, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getActivity(), "取消", Toast.LENGTH_SHORT).show();
-            }
-        });
-//        View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_change_role_no_permission, null);
-//        final Dialog dialog = DialogHelper.showCustomDialog(view, true);
-//        view.findViewById(R.id.no_permission_btn_know).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(getActivity(), "知道了", Toast.LENGTH_SHORT).show();
-//                dialog.dismiss();
-//            }
-//        });
+        final boolean isHasPermission = (UserManager.getInstance(getActivity()).getType() == 6);
+
+        View view;
+
+        if(isHasPermission) {
+            view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_change_role_has_permisson, null);
+        } else {
+            view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_change_role_no_permission, null);
+        }
+
+        if(isHasPermission) {
+            DialogHelper.showCustomDialog(view, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if (isHasPermission) {
+                        changeToLCLDriver();
+                    }
+                }
+            }, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+        } else {
+            final Dialog dialog = DialogHelper.showCustomDialog(view, true);
+            view.findViewById(R.id.no_permission_btn_know).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+        }
+    }
+
+    private void changeToLCLDriver() {
+        UserManager.getInstance(getActivity()).setRoleType("1");
+        getActivity().startActivity(new Intent(getActivity(), LCLDriverMainActivity.class));
+        getActivity().finish();
     }
 }

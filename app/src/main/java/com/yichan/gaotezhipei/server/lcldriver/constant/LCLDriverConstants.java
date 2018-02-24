@@ -12,4 +12,8 @@ public class LCLDriverConstants {
     public static final String URL_GET_AVAILABLE_ORDER = "/pdriverOrder/getPdriverOrderByDriver";
 
     public static final String URL_GET_ALL_ORDER = "/pdriverOrder/getPdriverOrderAllByDriver";
+
+    public static final String URL_DRIVER_UPDATE_ORDER_STATUS = "/pdriverOrder/updatePdriverOrderByDriver";
+
+    public static final String URL_FINISH_ORDER_BY_USER = "/pdriverOrder/updatePdriverOrderByUser";
 }

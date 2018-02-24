@@ -5,9 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
+import com.yichan.gaotezhipei.base.listener.OnItemSubviewClickListener;
 import com.yichan.gaotezhipei.server.netstation.entity.ExpressRecordedItem;
 
 import java.util.List;
@@ -21,6 +24,15 @@ public class ExpressRecordedAdapter extends MSClickableAdapter<ExpressRecordedAd
     private android.content.Context mContext;
     private List<ExpressRecordedItem> mList;
 
+    private OnItemSubviewClickListener<ExpressRecordedItem> mSubviewListener;
+
+    public OnItemSubviewClickListener<ExpressRecordedItem> getSubviewListener() {
+        return mSubviewListener;
+    }
+
+    public void setSubviewListener(OnItemSubviewClickListener<ExpressRecordedItem> mSubviewListener) {
+        this.mSubviewListener = mSubviewListener;
+    }
 
     public ExpressRecordedAdapter(Context context, List<ExpressRecordedItem> list) {
         this.mContext = context;
@@ -28,7 +40,24 @@ public class ExpressRecordedAdapter extends MSClickableAdapter<ExpressRecordedAd
     }
 
     @Override
-    public void onBindVH(ExpressRecordedViewHolder holder, int position) {
+    public void onBindVH(ExpressRecordedViewHolder holder, final int position) {
+        holder.tvNumber.setText("运单编号:" + mList.get(position).getOrderNumber());
+
+        holder.tvTakeOn.setOnClickListener(null);
+
+        if(mList.get(position).getStatus().equals("4")) {
+            holder.tvTakeOn.setText("确认\n收录");
+            holder.tvTakeOn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mSubviewListener != null) {
+                        mSubviewListener.onClick(v, position, mList.get(position));
+                    }
+                }
+            });
+        } else if(mList.get(position).getStatus().equals("5")){
+            holder.tvTakeOn.setText("已经\n收录");
+        }
 
     }
 
@@ -45,8 +74,16 @@ public class ExpressRecordedAdapter extends MSClickableAdapter<ExpressRecordedAd
 
     class ExpressRecordedViewHolder extends RecyclerView.ViewHolder {
 
+        TextView tvNumber;
+        TextView tvTakeOn;
+        Button btnDetail;
+
         public ExpressRecordedViewHolder(View itemView) {
             super(itemView);
+
+            tvNumber = (TextView) itemView.findViewById(R.id.item_tv_number);
+            tvTakeOn = (TextView) itemView.findViewById(R.id.item_tv_takeon);
+            btnDetail = (Button) itemView.findViewById(R.id.item_btn_detail);
         }
     }
 }

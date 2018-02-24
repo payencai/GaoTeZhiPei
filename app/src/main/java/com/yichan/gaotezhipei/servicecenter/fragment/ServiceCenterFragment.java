@@ -145,6 +145,9 @@ public class ServiceCenterFragment extends BaseFragment {
                     case 7:
                         getActivity().startActivity(new Intent(getActivity(), AgriculturalServiceActivity.class));
                         break;
+                    case 8:
+//                        CommonWebViewProgressActivity.startActivity(getActivity(), "数据中心", "http://120.79.176.228/gaote-web/records_center.html");
+                        break;
                     default:
                         break;
                 }

@@ -9,10 +9,12 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
+import com.yichan.gaotezhipei.base.listener.OnItemSubviewClickListener;
 import com.yichan.gaotezhipei.common.UserManager;
 import com.yichan.gaotezhipei.logistics.constant.LogisticsContants;
-import com.yichan.gaotezhipei.logistics.entity.OrderPageList;
+import com.yichan.gaotezhipei.logistics.entity.LCLOrderPage;
 
 import java.util.List;
 
@@ -20,26 +22,33 @@ import java.util.List;
  * Created by ckerv on 2018/1/12.
  */
 
-public class LCLOrderAdapter extends RecyclerView.Adapter<LCLOrderAdapter.LCLOrderViewHolder> {
+public class LCLOrderAdapter extends MSClickableAdapter<LCLOrderAdapter.LCLOrderViewHolder> {
 
     private Context mContext;
-    private List<OrderPageList.BeanListBean> mList;
+    private List<LCLOrderPage.BeanListBean> mList;
 
-    public LCLOrderAdapter(Context context, List<OrderPageList.BeanListBean> list) {
+    public LCLOrderAdapter(Context context, List<LCLOrderPage.BeanListBean> list) {
         this.mContext = context;
         this.mList = list;
     }
 
+    private OnItemSubviewClickListener<LCLOrderPage.BeanListBean> mOnItemSubviewClickListener;
+
+    public void setOnItemSubviewClickListener(OnItemSubviewClickListener<LCLOrderPage.BeanListBean> listener) {
+        this.mOnItemSubviewClickListener = listener;
+    }
+
 
     @Override
-    public LCLOrderViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public LCLOrderViewHolder onCreateVH(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(mContext).inflate(R.layout.item_lcl_order_common, parent, false);
         return new LCLOrderViewHolder(itemView);
     }
 
+
     @Override
-    public void onBindViewHolder(LCLOrderViewHolder holder, int position) {
-        OrderPageList.BeanListBean bean = mList.get(position);
+    public void onBindVH(LCLOrderViewHolder holder, int position) {
+        LCLOrderPage.BeanListBean bean = mList.get(position);
 
         setOrderStatus(holder, bean);
 
@@ -47,10 +56,10 @@ public class LCLOrderAdapter extends RecyclerView.Adapter<LCLOrderAdapter.LCLOrd
 
         setCargoInform(holder, bean);
 
-        setBottomLayout(holder, bean);
+        setBottomLayout(holder, position,  bean);
     }
 
-    private void setOrderStatus(LCLOrderViewHolder holder, OrderPageList.BeanListBean bean) {
+    private void setOrderStatus(LCLOrderViewHolder holder, LCLOrderPage.BeanListBean bean) {
         holder.tvOrderTime.setText(bean.getOrderTime());
         int type = Integer.valueOf(bean.getType());
         switch (type) {
@@ -60,11 +69,12 @@ public class LCLOrderAdapter extends RecyclerView.Adapter<LCLOrderAdapter.LCLOrd
                 break;
             case LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO:
                 holder.rlStatus.setBackground(mContext.getDrawable(R.drawable.order_purple));
-                if(UserManager.getInstance(mContext).isDemand()) {
-                    holder.tvStatus.setText("待取货");
-                } else {
-                    holder.tvStatus.setText("待接货");
-                }
+//                if(UserManager.getInstance(mContext).isDemand()) {
+//                    holder.tvStatus.setText("待接货");
+//                } else {
+//                    holder.tvStatus.setText("待取货");
+//                }
+                holder.tvStatus.setText("待接货");
                 break;
             case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO:
                 holder.rlStatus.setBackground(mContext.getDrawable(R.drawable.order_purple));
@@ -87,15 +97,15 @@ public class LCLOrderAdapter extends RecyclerView.Adapter<LCLOrderAdapter.LCLOrd
         }
     }
 
-    private void setAddressInform(LCLOrderViewHolder holder, OrderPageList.BeanListBean bean) {
+    private void setAddressInform(LCLOrderViewHolder holder, LCLOrderPage.BeanListBean bean) {
         holder.tvMailDistrict.setText(bean.getAddress().getArea());
         holder.tvMailProvinceCity.setText(bean.getAddress().getProvince() + " " + bean.getAddress().getCity());
-        holder.tvDistance.setText(bean.getDistance() + "km" );
+        holder.tvDistance.setText(String.format("%.2f", Double.valueOf(bean.getDistance()) / 1000) + "km");
         holder.tvPickDistrict.setText(bean.getConsigneeArea());
         holder.tvPickProvinceCity.setText(bean.getConsigneeProvince() + " " + bean.getConsigneeCity());
     }
 
-    private void setCargoInform(LCLOrderViewHolder holder, OrderPageList.BeanListBean bean) {
+    private void setCargoInform(LCLOrderViewHolder holder, LCLOrderPage.BeanListBean bean) {
         holder.tvCargoName.setText(bean.getArticleName() + ":");
         holder.tvCargoInform.setText(bean.getNum() + "件 " + bean.getWeight() + "kg " + bean.getVolume() + "m³");
 
@@ -103,9 +113,14 @@ public class LCLOrderAdapter extends RecyclerView.Adapter<LCLOrderAdapter.LCLOrd
         holder.tvGetCargoAddr.setText(bean.getPickupAddress());
     }
 
-    private void setBottomLayout(LCLOrderViewHolder holder, OrderPageList.BeanListBean bean) {
+    private void setBottomLayout(LCLOrderViewHolder holder, final int pos, final LCLOrderPage.BeanListBean bean) {
         int type = Integer.valueOf(bean.getType());
         if(UserManager.getInstance(mContext).isDemand()) {//需求方
+//            if(type == LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE) {
+//                holder.rlBottom.setVisibility(View.VISIBLE);
+//                holder.btnRight.setVisibility(View.GONE);
+//                holder.btnLeft.setText("取消订单");
+//            }
             if (type == LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO) {//待接货
                 holder.rlBottom.setVisibility(View.VISIBLE);
             } else if (type == LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO) {//待收货
@@ -131,6 +146,23 @@ public class LCLOrderAdapter extends RecyclerView.Adapter<LCLOrderAdapter.LCLOrd
                 holder.rlBottom.setVisibility(View.GONE);
             }
         }
+        holder.btnLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mOnItemSubviewClickListener != null) {
+                    mOnItemSubviewClickListener.onClick(v, pos, bean);
+                }
+            }
+        });
+
+        holder.btnRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mOnItemSubviewClickListener != null) {
+                    mOnItemSubviewClickListener.onClick(v, pos, bean);
+                }
+            }
+        });
     }
 
 

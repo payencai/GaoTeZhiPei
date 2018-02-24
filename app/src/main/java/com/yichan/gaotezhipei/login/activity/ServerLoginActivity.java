@@ -58,13 +58,14 @@ public class ServerLoginActivity extends BaseActivity {
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
         initViews();
-        mEtAccount.setText("17628285613");
-        mEtPassword.setText("123456");
+        mEtAccount.setText("456");
+        mEtPassword.setText("456");
     }
 
     private void initViews() {
         mBtnRegister.setText("服务方申请");
         mTvSwitch.setText("需求方登录");
+        mBtnRegister.setVisibility(View.GONE);
     }
 
     @Override
@@ -72,7 +73,7 @@ public class ServerLoginActivity extends BaseActivity {
         return R.layout.activity_login_common;
     }
 
-    @OnClick({R.id.login_tv_close, R.id.login_ll_switch, R.id.login_btn_register, R.id.login_btn_login})
+    @OnClick({R.id.login_tv_close, R.id.login_ll_switch, R.id.login_btn_login})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.login_tv_close:
@@ -82,11 +83,11 @@ public class ServerLoginActivity extends BaseActivity {
                 switchToDemandLogin();
                 finish();
                 break;
-            case R.id.login_btn_register:
-                Intent intent = new Intent(ServerLoginActivity.this, RegisterActivity.class);
-                intent.putExtra("role_type", AppConstants.SERVER_TYPE_CODE);
-                startActivity(intent);
-                break;
+//            case R.id.login_btn_register:
+//                Intent intent = new Intent(ServerLoginActivity.this, RegisterActivity.class);
+//                intent.putExtra("role_type", AppConstants.SERVER_TYPE_CODE);
+//                startActivity(intent);
+//                break;
             case R.id.login_btn_login:
                 login();
                 break;

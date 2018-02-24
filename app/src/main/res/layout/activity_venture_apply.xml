@@ -50,6 +50,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/apply_et_name"
             android:layout_marginLeft="3dp"
             android:background="@null"
             android:hint="请输入申请人姓名"
@@ -82,6 +83,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/apply_et_phone"
             android:layout_marginLeft="3dp"
             android:background="@null"
             android:hint="请输入手机号"
@@ -115,6 +117,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/apply_et_id_card"
             android:textSize="14sp"
             android:background="@null"
             android:textColorHint="#999999"
@@ -148,6 +151,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
+            android:id="@+id/apply_et_addr"
             android:background="@null"
             android:textColorHint="#999999"
             android:hint="请输入身份证件上的住地"
@@ -168,6 +172,7 @@
         <CheckBox
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:id="@+id/apply_cb_agree"
             android:button="@null"
             android:checked="true"
             android:layout_gravity="center_vertical"
@@ -193,6 +198,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/apply_btn_commit"
         android:textSize="13sp"
         android:textColor="@color/white"
         android:layout_marginLeft="17dp"

@@ -14,7 +14,14 @@
         android:id="@+id/express_to_confirm_rv"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_marginRight="10dp"
+        >
 
     </com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout>
+
+    <include
+        android:id="@+id/view_no_data"
+        layout="@layout/part_no_data"
+        android:visibility="gone"
+        ></include>
 </LinearLayout>

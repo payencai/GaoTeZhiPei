@@ -1,6 +1,5 @@
 package com.yichan.gaotezhipei.enterpriseservice.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -42,8 +41,8 @@ public class IpAcvitiy extends BaseActivity {
                 finish();
                 break;
             case R.id.ip_btn_commission:
-                Intent intent = new Intent(IpAcvitiy.this, ComissionActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(IpAcvitiy.this, ComissionActivity.class);
+                ComissionActivity.startActivity(IpAcvitiy.this, 1);
                 break;
             default:
                 break;

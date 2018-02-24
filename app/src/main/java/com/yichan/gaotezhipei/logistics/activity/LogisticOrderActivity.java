@@ -12,7 +12,7 @@ import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseActivity;
 import com.yichan.gaotezhipei.common.view.CommonFragmentPagerAdapter;
 import com.yichan.gaotezhipei.logistics.constant.LogisticsContants;
-import com.yichan.gaotezhipei.logistics.fragment.LogisticAllOrderFragment;
+import com.yichan.gaotezhipei.logistics.fragment.CommonLogisticOrderFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,12 +49,13 @@ public class LogisticOrderActivity extends BaseActivity {
 
     private void initFragments() {
         mFragments = new ArrayList<>();
-        mFragments.add(new LogisticAllOrderFragment());
-        mFragments.add(new LogisticAllOrderFragment());
-        mFragments.add(new LogisticAllOrderFragment());
-        mFragments.add(new LogisticAllOrderFragment());
-        mFragments.add(new LogisticAllOrderFragment());
-        mFragments.add(new LogisticAllOrderFragment());
+        mFragments.add(new CommonLogisticOrderFragment(LogisticsContants.TYPE_LOG_ORDER_ALL));
+        mFragments.add(new CommonLogisticOrderFragment(LogisticsContants.TYPE_LOG_ORDER_TO_RECEIVER));
+        mFragments.add(new CommonLogisticOrderFragment(LogisticsContants.TYPE_LOG_ORDER_TO_GET_CARGO));
+        mFragments.add(new CommonLogisticOrderFragment(LogisticsContants.TYPE_LOG_ORDER_TO_WAREHOUSE));
+        mFragments.add(new CommonLogisticOrderFragment(LogisticsContants.TYPE_LOG_ORDER_TRANSITING));
+        mFragments.add(new CommonLogisticOrderFragment(LogisticsContants.TYPE_LOG_ORDER_TO_CONFIRM));
+        mFragments.add(new CommonLogisticOrderFragment(LogisticsContants.TYPE_LOG_ORDER_FINISH));
     }
 
     private void initViewPager() {

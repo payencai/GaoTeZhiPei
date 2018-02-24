@@ -22,6 +22,8 @@ import com.yichan.gaotezhipei.common.entity.Result;
 import com.yichan.gaotezhipei.common.util.EventBus;
 import com.yichan.gaotezhipei.common.util.TimeUtil;
 import com.yichan.gaotezhipei.lcl.constant.LCLConstants;
+import com.yichan.gaotezhipei.lcl.event.SwitchToNextEvent;
+import com.yichan.gaotezhipei.lcl.event.SwitchToPreEvent;
 import com.yichan.gaotezhipei.mine.activity.AddressMangeActivity;
 import com.yichan.gaotezhipei.mine.entity.AddressItem;
 import com.yichan.gaotezhipei.mine.event.ChooseAddressEvent;
@@ -111,12 +113,13 @@ public abstract class LCLBaseDetailFragment extends BaseFragment {
         if(isLastFragment()) {
             mIvRight.setVisibility(View.GONE);
         }
+        mTvWeight.setText(getCarWeight());
         mIvCarType.setImageResource(getCarTypeResId());
         mTvCarSize.setText(getCarSize());
         mTvCarVolume.setText(getCarVolume());
     }
 
-    @OnClick({R.id.lcl_detail_tv_get_cargo_time,R.id.lcl_detail_ll_mail_infrom,R.id.lcl_detail_ll_pick_inform,R.id.lcl_detail_btn_apply})
+    @OnClick({R.id.lcl_detail_tv_get_cargo_time,R.id.lcl_detail_ll_mail_infrom,R.id.lcl_detail_ll_pick_inform,R.id.lcl_detail_btn_apply,R.id.car_detail_iv_left, R.id.car_detail_iv_right})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.lcl_detail_tv_get_cargo_time:
@@ -131,6 +134,11 @@ public abstract class LCLBaseDetailFragment extends BaseFragment {
             case R.id.lcl_detail_btn_apply:
                 tryToPostForms();
                 break;
+            case R.id.car_detail_iv_left:
+                EventBus.getInstance().post(new SwitchToPreEvent());
+                break;
+            case R.id.car_detail_iv_right:
+                EventBus.getInstance().post(new SwitchToNextEvent());
             default:
                 break;
         }
@@ -192,6 +200,10 @@ public abstract class LCLBaseDetailFragment extends BaseFragment {
         mEtGetCargoAddr.setText("");
         mTvGetCargoTime.setText("请选择时间");
         mTvGetCargoTime.setTextColor(Color.parseColor("#999999"));
+        mTvMailNamePhone.setText("寄件人    手机号");
+        mTvMailAddress.setText("寄件地址");
+        mTvPickNamePhone.setText("收件人    手机号");
+        mTvPickAddress.setText("收件地址");
         mEtExtraMsg.setText("");
         addressItem = null;
         contactInformEntity = null;

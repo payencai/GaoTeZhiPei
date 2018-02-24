@@ -3,6 +3,7 @@ package com.yichan.gaotezhipei.common;
 import android.app.Application;
 import android.content.Context;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.changelcai.mothership.network.core.OkHttpCore;
 import com.ckev.chooseimagelibrary.base.img.assist.CommonImageLoader;
 import com.yichan.gaotezhipei.base.net.CookieJarHelper;
@@ -24,10 +25,12 @@ public class GaoteApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        SDKInitializer.initialize(getApplicationContext());
         mApplicationContext = this;
         initOkHttpCore();
         initUniversialImageLoader();
     }
+
 
     private void initUniversialImageLoader() {
         CommonImageLoader.init(getApplicationContext());
@@ -56,5 +59,11 @@ public class GaoteApplication extends Application {
                 .maxCachedSize(1024 * 1024 * 10)//最大缓存大小
                 ;
        builder.build();
+    }
+
+    public static void restoreAppCxt(Context context) {
+        if(mApplicationContext == null) {
+            mApplicationContext = context.getApplicationContext();
+        }
     }
 }

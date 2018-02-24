@@ -1,6 +1,5 @@
 package com.yichan.gaotezhipei.enterpriseservice.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -42,8 +41,7 @@ public class TaxServiceActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.tax_btn_comission:
-                Intent intent = new Intent(TaxServiceActivity.this, ComissionActivity.class);
-                startActivity(intent);
+                ComissionActivity.startActivity(TaxServiceActivity.this, 2);
                 break;
             default:
                 break;

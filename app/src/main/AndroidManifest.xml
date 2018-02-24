@@ -256,6 +256,9 @@
         <activity android:name=".login.activity.RegisterActivity"
             android:screenOrientation="portrait"></activity>
 
+        <activity android:name=".logistics.activity.LCLOrderDetailActivity"
+            android:screenOrientation="portrait"></activity>
+
         <activity android:name=".location.activity.ChooseAddressWebActivity"
             android:screenOrientation="portrait"
             >
@@ -268,7 +271,7 @@
 
         </activity>
 
-        <activity android:name=".logistics.activity.LCLOrderDetailActivity"
+        <activity android:name=".logistics.activity.LogisticsDetailActivity"
             android:screenOrientation="portrait">
 
 

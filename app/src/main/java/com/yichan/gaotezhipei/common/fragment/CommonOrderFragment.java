@@ -1,8 +1,10 @@
 package com.yichan.gaotezhipei.common.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.AttributeSet;
 import android.view.View;
 
 import com.yichan.gaotezhipei.R;
@@ -29,12 +31,45 @@ public abstract class CommonOrderFragment extends BaseListFragment {
 
     @Override
     protected RecyclerView.LayoutManager getLayoutManager() {
-        return new LinearLayoutManager(getActivity());
+        return new WrapContentLinearLayoutManager(getActivity());
     }
 
     @Override
     protected int getMultiRecyclerViewLayoutId() {
         return R.id.common_order_rv;
+    }
+
+    protected void toggleNoDataView(boolean isShow) {
+        if(isShow) {
+            mViewNodata.setVisibility(View.VISIBLE);
+            mMultiLayout.setVisibility(View.GONE);
+        } else {
+            mViewNodata.setVisibility(View.GONE);
+            mMultiLayout.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public class WrapContentLinearLayoutManager extends LinearLayoutManager {
+        public WrapContentLinearLayoutManager(Context context) {
+            super(context);
+        }
+
+        public WrapContentLinearLayoutManager(Context context, int orientation, boolean reverseLayout) {
+            super(context, orientation, reverseLayout);
+        }
+
+        public WrapContentLinearLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+            super(context, attrs, defStyleAttr, defStyleRes);
+        }
+
+        @Override
+        public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
+            try {
+                super.onLayoutChildren(recycler, state);
+            } catch (IndexOutOfBoundsException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

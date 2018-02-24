@@ -30,6 +30,8 @@ public class CommonWebViewProgressActivity extends BaseWebViewProgressActivity {
     protected String mUrl;
     protected String mTitle;
 
+    private boolean isFinished = false;
+
     public static void startActivity(Context context, String title, String url) {
         Intent i = new Intent(context, CommonWebViewProgressActivity.class);
         i.putExtra(KEY_TITLE, title);
@@ -67,6 +69,7 @@ public class CommonWebViewProgressActivity extends BaseWebViewProgressActivity {
         //默认Client 留在APP内启动,而不是启动外部浏览器
         getWebView().setWebViewClient(new WebViewClient());
     }
+
 
     @Override
     protected int getProgressBarId() {

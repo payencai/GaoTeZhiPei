@@ -17,6 +17,7 @@ import com.yichan.gaotezhipei.common.util.GsonUtil;
 import com.yichan.gaotezhipei.common.util.NetworkUtil;
 import com.yichan.gaotezhipei.common.util.PhoneUtil;
 import com.yichan.gaotezhipei.login.constant.LoginConstants;
+import com.yichan.gaotezhipei.login.entity.RegisterEntity;
 
 import java.io.IOException;
 
@@ -81,10 +82,10 @@ public class RegisterActivity extends BaseActivity {
                 .addParams("code", mEtVerifyCode.getText().toString())
                 .addHeader("password", mEtPassword.getText().toString())
                 .build();
-        call.doScene(new UISceneCallback<Result<String>>() {
+        call.doScene(new UISceneCallback<Result<RegisterEntity>>() {
             @Override
-            public Result<String> parseNetworkResponse(Response response) throws IOException {
-                return GsonUtil.gsonToBean(response.body().string(), new TypeToken<Result<String>>(){}.getType());
+            public Result<RegisterEntity> parseNetworkResponse(Response response) throws IOException {
+                return GsonUtil.gsonToBean(response.body().string(), new TypeToken<Result<RegisterEntity>>(){}.getType());
             }
 
             @Override
@@ -97,7 +98,7 @@ public class RegisterActivity extends BaseActivity {
             }
 
             @Override
-            public void onResponse(Result<String> response) {
+            public void onResponse(Result<RegisterEntity> response) {
                 if(response.getResultCode() != Result.SUCCESS_CODE) {
                     showToast(response.getMessage());
                 } else {

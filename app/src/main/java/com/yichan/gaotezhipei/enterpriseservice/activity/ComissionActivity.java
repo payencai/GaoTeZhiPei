@@ -1,5 +1,7 @@
 package com.yichan.gaotezhipei.enterpriseservice.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -42,10 +44,20 @@ public class ComissionActivity extends BaseActivity {
     @BindView(R.id.commission_cb_agree)
     CheckBox mCbAgree;
 
+    private int mType;
+
+
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
+        mType = getIntent().getIntExtra("type", 1);
         initTitleBar();
+    }
+
+    public static void startActivity(Context context, int type) {
+        Intent intent = new Intent(context, ComissionActivity.class);
+        intent.putExtra("type", type);
+        context.startActivity(intent);
     }
 
     private void initTitleBar() {
@@ -75,8 +87,14 @@ public class ComissionActivity extends BaseActivity {
         if(!checkFormFormat()) {
             return;
         }
+        String url = null;
+        if(mType == 1) {
+            url = AppConstants.BASE_URL + EnterpriseConstants.URL_LICENSE_APPLY;
+        } else if(mType == 2) {
+            url = AppConstants.BASE_URL + EnterpriseConstants.URL_TAXSERVICE_APPLY;
+        }
         RequestCall call = new PostFormBuilder()
-                .url(AppConstants.BASE_URL + EnterpriseConstants.URL_LICENSE_APPLY)
+                .url(url)
                 .addParams("xCompany", mEtCompany.getText().toString())
                 .addParams("xTaxpayer",mEtName.getText().toString())
                 .addParams("xTelnum",mEtPhone.getText().toString())
