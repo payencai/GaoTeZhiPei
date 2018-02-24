@@ -1,8 +1,11 @@
 package com.yichan.gaotezhipei.mine.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,8 +27,8 @@ public class PersonalNickSetActivity extends BaseActivity {
     TextView mTvRight;
     @BindView(R.id.edtNickName)
     EditText edtNickName;
-    @BindView(R.id.imgNickNameEnter)
-    ImageView imgNickNameEnter;
+    @BindView(R.id.imgNickNameDel)
+    ImageView imgNickNameDel;
 
     private String mNickName;
 
@@ -50,7 +53,7 @@ public class PersonalNickSetActivity extends BaseActivity {
         mTvRight.setTextColor(getResources().getColor(R.color.text_blue_color));
     }
 
-    @OnClick({R.id.titlebar_tv_left,R.id.imgNickNameEnter,R.id.titlebar_tv_right})
+    @OnClick({R.id.titlebar_tv_left,R.id.imgNickNameDel,R.id.titlebar_tv_right})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.titlebar_tv_left:
@@ -62,8 +65,12 @@ public class PersonalNickSetActivity extends BaseActivity {
                 setResult(RESULT_OK, intent);
                 finish();
                 break;
-            case R.id.imgNickNameEnter:
+            case R.id.imgNickNameDel:
                 //set page
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+                edtNickName.setFocusable(true);
+                edtNickName.setFocusableInTouchMode(true);
                 edtNickName.setText("");
                 edtNickName.requestFocus();
                 break;

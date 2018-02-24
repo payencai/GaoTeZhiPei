@@ -25,13 +25,13 @@
             android:textColor="#1a1a1a"
             android:text="昵称" />
         <ImageView
-            android:id="@+id/imgNickNameEnter"
-            android:layout_width="8dp"
-            android:layout_height="10dp"
+            android:id="@+id/imgNickNameDel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin_10dp"
             android:layout_gravity="right|center_vertical"
             android:scaleType="fitXY"
-            android:src="@drawable/arrowright" />
+            android:src="@drawable/dig_xx" />
     </FrameLayout>
 
 </LinearLayout>
