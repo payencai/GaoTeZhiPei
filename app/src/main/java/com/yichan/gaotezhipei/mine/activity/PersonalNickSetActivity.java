@@ -27,8 +27,6 @@ public class PersonalNickSetActivity extends BaseActivity {
     TextView mTvRight;
     @BindView(R.id.edtNickName)
     EditText edtNickName;
-    @BindView(R.id.imgNickNameDel)
-    ImageView imgNickNameDel;
 
     private String mNickName;
 
