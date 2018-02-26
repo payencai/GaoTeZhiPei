@@ -70,14 +70,19 @@
             android:layout_gravity="right|center_vertical"
             android:textSize="@dimen/text_size_15sp"
             android:text="给个槌子" />
-        <ImageView
+        <FrameLayout
             android:id="@+id/imgNickNameEnter"
-            android:layout_width="8dp"
-            android:layout_height="10dp"
-            android:layout_marginRight="@dimen/margin_10dp"
             android:layout_gravity="right|center_vertical"
-            android:scaleType="fitXY"
-            android:src="@drawable/arrowright" />
+            android:layout_width="@dimen/length_view_25dp"
+            android:layout_height="@dimen/title_bar">
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="10dp"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:layout_gravity="right|center_vertical"
+                android:scaleType="fitXY"
+                android:src="@drawable/arrowright" />
+        </FrameLayout>
     </FrameLayout>
 
     <FrameLayout
@@ -126,14 +131,19 @@
             android:layout_gravity="right|center_vertical"
             android:textSize="@dimen/text_size_15sp"
             android:text="男" />
-        <ImageView
+        <FrameLayout
             android:id="@+id/imgGenderEnter"
-            android:layout_width="8dp"
-            android:layout_height="10dp"
-            android:layout_marginRight="@dimen/margin_10dp"
             android:layout_gravity="right|center_vertical"
-            android:scaleType="fitXY"
-            android:src="@drawable/arrowright" />
+            android:layout_width="@dimen/length_view_25dp"
+            android:layout_height="@dimen/title_bar">
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="10dp"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:layout_gravity="right|center_vertical"
+                android:scaleType="fitXY"
+                android:src="@drawable/arrowright" />
+        </FrameLayout>
     </FrameLayout>
 
 </LinearLayout>
