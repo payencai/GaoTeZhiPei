@@ -25,30 +25,22 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import static com.nostra13.universalimageloader.core.ImageLoader.TAG;
-
 /**
  * Created by simon on 2018/2/10 0010.
  */
 
 public abstract class ProfileActivity extends BaseActivity {
-
+    private static final String TAG = "ProfileActivity";
     private static final int IMAGE_REQUEST_CODE = 20000;
-    String photoPath;
+    private String rootPath, photoPath, cropPath;
     private static final int CAMERA_REQUEST_CODE = 1999;
     private static final int RESULT_REQUEST_CODE = 299;
     private static String path = Environment.getExternalStorageDirectory()
             .getAbsolutePath() + Environment.getExternalStorageDirectory().getPath();
-    String fileName;
-    private File cameraFile;
-
+    private String fileName;
+    private Uri cameraUri, cropUri;
     protected Context ctx;
-    protected final int REQUES_CODE = 0;
-    protected final int codeLogout = 11;
-    protected final int codeWithdrawCash = 12;
-    protected final int codeAddHeadPortraint = 13;
     protected Dialog dialog;
-    protected boolean isMethodBank = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +48,13 @@ public abstract class ProfileActivity extends BaseActivity {
         ctx = this;
         dialog = new Dialog(this, R.style.DialogStyleNoTitle);
         initView();
+
+        // 图片存储的上级目录
+        File parent = FileUtil.getInstance(ctx).makeDir("gaotezhipei");
+        // 判断有无SD卡
+        rootPath = parent.getPath() + File.separator;
+        cropPath = rootPath + "gaotezhipei_" + TAG + "_crop.jpeg";
+        cropUri = Uri.parse("file://" + cropPath);
     }
 
     @Override
@@ -106,13 +105,9 @@ public abstract class ProfileActivity extends BaseActivity {
     //拍照
     private void picCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // 图片存储的上级目录
-        File parent = FileUtil.getInstance(ctx).makeDir("gaotezhipei");
-        // 判断有无SD卡
-        photoPath = parent.getPath() + File.separator + System.currentTimeMillis() + ".jpeg";
-//        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(photoPath)));// 将照片输出为
-        cameraFile = new File(photoPath);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(cameraFile));// 将照片输出为
+        photoPath = rootPath + System.currentTimeMillis() + ".jpeg";
+        cameraUri = Uri.parse("file://" + photoPath);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, cameraUri);// 将照片输出为
         startActivityForResult(intent, CAMERA_REQUEST_CODE);
     }
     //本地选择
@@ -143,9 +138,8 @@ public abstract class ProfileActivity extends BaseActivity {
         intent.putExtra("outputY", 320);
         intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
         intent.putExtra("noFaceDetection", true);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, cropUri);
         intent.putExtra("return-data", false);//设置为不返回数据
-        //intent.putExtra("return-data", true);
         startActivityForResult(intent, RESULT_REQUEST_CODE);
     }
 
@@ -157,7 +151,6 @@ public abstract class ProfileActivity extends BaseActivity {
     private void getImageToView(Bitmap bm) {
         if (bm != null) {
             Bitmap photo = bm;
-            //imgPerson.setImageBitmap(bm);
             reloadProfile(bm);
             setPicToView(photo);
         }
@@ -165,6 +158,7 @@ public abstract class ProfileActivity extends BaseActivity {
 
     private void setPicToView(Bitmap mBitmap) {
         String sdStatus = Environment.getExternalStorageState();
+        Log.d("TAG", ">>>>>>setPicToView.MEDIA_MOUNTED:" + sdStatus);
         if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) { // 检测sd是否可用
             return;
         }
@@ -172,7 +166,8 @@ public abstract class ProfileActivity extends BaseActivity {
         File file = new File(path);
         file.mkdirs();// 创建文件夹
         String picName= "headicon";
-        fileName = path + picName + ".jpg";// 图片名字
+        fileName = path + File.separator + picName + ".jpg";// 图片名字
+        Log.d(TAG, ">>>>>>fileName:" + fileName );
         SpTools.setBoolean(getApplicationContext(), picName, true);
         try {
             b = new FileOutputStream(fileName);
@@ -196,12 +191,13 @@ public abstract class ProfileActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (data != null ){
+        if (requestCode > 0 ){
             Uri uri;
             switch (requestCode){
                 case IMAGE_REQUEST_CODE://本地相册选择图片
                     if (data != null) {
                         uri = data.getData();
+                        Log.d(TAG, ">>>>>>IMAGE_REQUEST_CODE:" + uri.getAuthority());
                         if (!TextUtils.isEmpty(uri.getAuthority())) {
                             Cursor cursor = getContentResolver().query(uri,
                                     new String[] { MediaStore.Images.Media.DATA },null, null, null);
@@ -215,26 +211,32 @@ public abstract class ProfileActivity extends BaseActivity {
                         } else {
                             photoPath = uri.getPath();
                         }
-                        startPhotoZoom(Uri.fromFile(new File(photoPath)));
+                        Log.d(TAG, ">>>>>>IMAGE_REQUEST_CODE>>>photoPath:" + photoPath);
+                        // 适配Android5.0(API21)以下版本（photoPath格式为content://XX.XXX/）
+                        if(photoPath.startsWith("/"))
+                            photoPath = "file://" + photoPath;
+                        startPhotoZoom(Uri.parse(photoPath));
+
                     }else{
                         Toast.makeText(this, "图片没找到", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     break;
                 case RESULT_REQUEST_CODE:
-                    uri = data.getData();
+                    uri = cropUri;
+                    //Toast.makeText(this, ">>>>>>RESULT_REQUEST_CODE" + uri, Toast.LENGTH_LONG).show();
+                    Log.d("TAG", ">>>>>>RESULT_REQUEST_CODE:" + uri);
                     if(uri==null)
                         break;
                     Bitmap cropBitmap= getBitmapFromUri(uri, this);
                     getImageToView(cropBitmap);
                     break;
                 case CAMERA_REQUEST_CODE://拍照
-                    Log.d(TAG, ">>>>>>CAMERA_REQUEST_CODE");
-                    uri = Uri.fromFile(cameraFile);
+                    uri = cameraUri;
+                    Log.d(TAG, ">>>>>>CAMERA_REQUEST_CODE:" + uri);
                     if(uri==null)
                         break;
                     if (FileUtil.isSDCardExist()) {
-                        Log.d(TAG, ">>>>>>CAMERA_REQUEST_CODE.startPhotoZoom");
                         // 读取uri所在的图片
                         startPhotoZoom(uri);
                     } else {
