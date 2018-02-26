@@ -152,8 +152,22 @@ public class LCLOrderDetailActivity extends BaseActivity {
     }
 
     private void initThirdLine() {
-        mTvMailNamePhone.setText("寄件人：" + mBean.getAddress().getName() + " " + mBean.getAddress().getTelephone());
-        mTvMailAddr.setText("寄件地址：" + mBean.getAddress().getAddress());
+        int type = Integer.valueOf(mBean.getType());
+        switch (type) {
+            case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE:
+            case LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO:
+            case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO:
+                mTvMailNamePhone.setText("寄件人：" + mBean.getAddress().getName() + " " + mBean.getAddress().getTelephone());
+                mTvMailAddr.setText("寄件地址：" + mBean.getAddress().getAddress());
+                break;
+            case LogisticsContants.TYPE_LCL_ORDER_TO_CONFIRM:
+            case LogisticsContants.TYPE_LCL_ORDER_TO_FINISH:
+                mTvMailNamePhone.setText("收件人：" + mBean.getConsignee() + " " + mBean.getConsigneeTelephone());
+                mTvMailAddr.setText("收件地址：" + mBean.getConsigneeAddress());
+            default:
+                break;
+        }
+
 
     }
 

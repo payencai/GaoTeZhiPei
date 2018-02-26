@@ -18,7 +18,7 @@ import com.yichan.gaotezhipei.login.entity.UserEntity;
 public class LoginManager {
 
     public static void saveUserEntity(Context context, UserEntity userEntity) {
-        UserManager.getInstance(context).setAccount(userEntity.getAccount());
+        UserManager.getInstance(context).setAccount(userEntity.getTelephone());
         UserManager.getInstance(context).setLogin(true);
         UserManager.getInstance(context).setId(userEntity.getId());
         UserManager.getInstance(context).setType(userEntity.getType());

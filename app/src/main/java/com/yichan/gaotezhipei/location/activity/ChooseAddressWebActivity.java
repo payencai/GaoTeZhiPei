@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -27,6 +28,7 @@ import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.google.gson.Gson;
 import com.yichan.gaotezhipei.R;
+import com.yichan.gaotezhipei.base.util.DialogHelper;
 import com.yichan.gaotezhipei.common.entity.ContactInformEntity;
 import com.yichan.gaotezhipei.common.util.PermissionUtils;
 import com.yichan.gaotezhipei.location.entity.WebLocResultEntity;
@@ -62,6 +64,8 @@ public class ChooseAddressWebActivity extends AppCompatActivity implements Permi
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.READ_PHONE_STATE
     };
+
+    private DialogFragment mProgressDialog;
 
 
 
@@ -165,11 +169,17 @@ public class ChooseAddressWebActivity extends AppCompatActivity implements Permi
     }
 
     private void reverseGeoParse(double lat, double lng) {
+        if(mProgressDialog != null) {
+            mProgressDialog.dismiss();
+        }
+        mProgressDialog = DialogHelper.showProgress(getSupportFragmentManager(), "", false);
         GeoCoder geoCoder = GeoCoder.newInstance();
         geoCoder.setOnGetGeoCodeResultListener(new OnGetGeoCoderResultListener() {
             @Override
             public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
-
+                if(mProgressDialog != null) {
+                    mProgressDialog.dismiss();
+                }
             }
 
             @Override
@@ -178,9 +188,14 @@ public class ChooseAddressWebActivity extends AppCompatActivity implements Permi
                     Toast.makeText(ChooseAddressWebActivity.this, "没有检索到结果，请重新再试。", Toast.LENGTH_SHORT).show();
                 }
                 ReverseGeoCodeResult.AddressComponent addressComponent = reverseGeoCodeResult.getAddressDetail();
+                if(mProgressDialog != null) {
+                    mProgressDialog.dismiss();
+                }
                 if (addressComponent != null) {
                     postBackDatas(addressComponent);
-
+                    finish();
+                } else {
+                    Toast.makeText(ChooseAddressWebActivity.this, "没有检索到结果，请重新再试。", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -209,7 +224,6 @@ public class ChooseAddressWebActivity extends AppCompatActivity implements Permi
         bundle.putSerializable("contactEntity", locationEntity);
         intent.putExtras(bundle);
         setResult(RESULT_OK, intent);
-        finish();
     }
 
     /**

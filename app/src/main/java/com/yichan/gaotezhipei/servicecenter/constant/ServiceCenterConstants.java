@@ -28,6 +28,8 @@ public class ServiceCenterConstants {
     R.drawable.service_center_banner2,
     R.drawable.service_center_banner3};
 
+    public static final String URL_GET_BANNER_IMAGES = "/banner/getBannerUse";
+
 
 
 

@@ -1,5 +1,6 @@
 package com.yichan.gaotezhipei.logistics.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -47,6 +48,11 @@ public class CommonLCLOrderFragment extends CommonOrderFragment {
 
     private int mType;
 
+    public CommonLCLOrderFragment() {
+        super();
+    }
+
+    @SuppressLint({"NewApi", "ValidFragment"})
     public CommonLCLOrderFragment(int type) {
         this.mType = type;
     }

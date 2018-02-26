@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.common.util.EventBus;
-import com.yichan.gaotezhipei.server.logisticsdriver.entity.NetDetailItem;
+import com.yichan.gaotezhipei.server.logisticsdriver.entity.NetDetailOrderPage;
 import com.yichan.gaotezhipei.server.logisticsdriver.event.SelectOrderEvent;
 
 import java.util.List;
@@ -24,12 +24,12 @@ import java.util.List;
 public class NetDetailAdapter extends MSClickableAdapter<NetDetailAdapter.NetDetailViewHolder>{
 
     private android.content.Context mContext;
-    private List<NetDetailItem> mList;
+    private List<NetDetailOrderPage.ListBean> mList;
 
 
 
 
-    public NetDetailAdapter(Context context, List<NetDetailItem> list) {
+    public NetDetailAdapter(Context context, List<NetDetailOrderPage.ListBean> list) {
         this.mContext = context;
         this.mList = list;
     }
@@ -37,7 +37,7 @@ public class NetDetailAdapter extends MSClickableAdapter<NetDetailAdapter.NetDet
     @Override
     public void onBindVH(NetDetailViewHolder holder, int position) {
 
-        NetDetailItem bean = mList.get(position);
+        NetDetailOrderPage.ListBean bean = mList.get(position);
         setOrderStatus(holder, bean);
         setAddressInform(holder, bean);
         setCargoInform(holder, bean);
@@ -45,23 +45,23 @@ public class NetDetailAdapter extends MSClickableAdapter<NetDetailAdapter.NetDet
         setPickInform(holder, bean);
     }
 
-    private void setCargoInform(NetDetailViewHolder holder, NetDetailItem bean) {
+    private void setCargoInform(NetDetailViewHolder holder, NetDetailOrderPage.ListBean bean) {
         holder.tvCargoInform.setText("货物详情    " + bean.getGoodsName() + "   " + bean.getGoodsQuantity() +
                         "件  " + bean.getGoodsMass() + "kg  " + bean.getGoodsSize() + "m³");
     }
 
 
-    private void setPickInform(NetDetailViewHolder holder, NetDetailItem bean) {
+    private void setPickInform(NetDetailViewHolder holder, NetDetailOrderPage.ListBean bean) {
         holder.pickNamePhone.setText(bean.getNameTo() + "  " + bean.getReceiverTelnum());
         holder.pickAddress.setText(bean.getAdressTo());
     }
 
-    private void setMailInform(NetDetailViewHolder holder, NetDetailItem bean) {
+    private void setMailInform(NetDetailViewHolder holder, NetDetailOrderPage.ListBean bean) {
         holder.mailNamePhone.setText(bean.getNameFrom() + "  " + bean.getDemanderTelnum());
         holder.mailAddress.setText(bean.getAdressFrom());
     }
 
-    private void setAddressInform(NetDetailViewHolder holder, NetDetailItem bean) {
+    private void setAddressInform(NetDetailViewHolder holder, NetDetailOrderPage.ListBean bean) {
         holder.tvMailDistrict.setText(bean.getAdressFromDistrict());
         holder.tvMailProvinceCity.setText(bean.getAdressFromProvince() + " " + bean.getAdressFromCity());
         holder.tvDistance.setText(String.format("%.2f", Double.valueOf(bean.getDistanceTotal()) / 1000) + "km");
@@ -69,7 +69,7 @@ public class NetDetailAdapter extends MSClickableAdapter<NetDetailAdapter.NetDet
         holder.tvPickProvinceCity.setText(bean.getAdressToProvince() + " " + bean.getAdressToCity());
     }
 
-    private void setOrderStatus(NetDetailViewHolder holder, final NetDetailItem bean) {
+    private void setOrderStatus(NetDetailViewHolder holder, final NetDetailOrderPage.ListBean bean) {
         holder.tvNumber.setText("运单编号:" + bean.getOrderNumber());
         holder.cbSelect.setOnCheckedChangeListener(null);
         holder.cbSelect.setChecked(bean.isCheck());

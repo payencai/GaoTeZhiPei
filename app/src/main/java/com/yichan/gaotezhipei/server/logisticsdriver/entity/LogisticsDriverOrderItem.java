@@ -6,8 +6,11 @@ package com.yichan.gaotezhipei.server.logisticsdriver.entity;
 
 public class LogisticsDriverOrderItem {
 
+
     /**
-     * warehouseName : 仓库
+     * driverStatus : 2
+     * updateTime : 2018-02-25 10:08:39
+     * warehouseName : 高特仓库
      * isConfirm : 1
      * networkName : 1
      * distanceDriver : 871.6
@@ -19,13 +22,17 @@ public class LogisticsDriverOrderItem {
      * warehouseAdress : 广州大学城
      * warehouseAdressLatitude : 39.976004
      * warehouseAdressLongitude : 116.611813
-     * takeorderTime : 2018-02-09 16:14:41
+     * takeorderTime : 2018-02-24 18:28:45
      * pickTime : null
      * reachwarehouseTime : null
      * count : 1
-     * status : 0
+     * status : null
+     * networkPicKey : null
+     * networkPic : null
      */
 
+    private String driverStatus;
+    private String updateTime;
     private String warehouseName;
     private String isConfirm;
     private String networkName;
@@ -39,10 +46,28 @@ public class LogisticsDriverOrderItem {
     private String warehouseAdressLatitude;
     private String warehouseAdressLongitude;
     private String takeorderTime;
-    private Object pickTime;
-    private Object reachwarehouseTime;
+    private String pickTime;
+    private String reachwarehouseTime;
     private int count;
-    private int status;
+    private String status;
+    private String networkPicKey;
+    private String networkPic;
+
+    public String getDriverStatus() {
+        return driverStatus;
+    }
+
+    public void setDriverStatus(String driverStatus) {
+        this.driverStatus = driverStatus;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
 
     public String getWarehouseName() {
         return warehouseName;
@@ -148,19 +173,19 @@ public class LogisticsDriverOrderItem {
         this.takeorderTime = takeorderTime;
     }
 
-    public Object getPickTime() {
+    public String getPickTime() {
         return pickTime;
     }
 
-    public void setPickTime(Object pickTime) {
+    public void setPickTime(String pickTime) {
         this.pickTime = pickTime;
     }
 
-    public Object getReachwarehouseTime() {
+    public String getReachwarehouseTime() {
         return reachwarehouseTime;
     }
 
-    public void setReachwarehouseTime(Object reachwarehouseTime) {
+    public void setReachwarehouseTime(String reachwarehouseTime) {
         this.reachwarehouseTime = reachwarehouseTime;
     }
 
@@ -172,11 +197,27 @@ public class LogisticsDriverOrderItem {
         this.count = count;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getNetworkPicKey() {
+        return networkPicKey;
+    }
+
+    public void setNetworkPicKey(String networkPicKey) {
+        this.networkPicKey = networkPicKey;
+    }
+
+    public String getNetworkPic() {
+        return networkPic;
+    }
+
+    public void setNetworkPic(String networkPic) {
+        this.networkPic = networkPic;
     }
 }

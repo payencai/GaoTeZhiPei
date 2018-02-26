@@ -18,16 +18,21 @@ import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
 import com.yichan.gaotezhipei.common.constant.AppConstants;
 import com.yichan.gaotezhipei.common.entity.Result;
 import com.yichan.gaotezhipei.common.util.GsonUtil;
+import com.yichan.gaotezhipei.common.util.UrlUtil;
 import com.yichan.gaotezhipei.server.netstation.constant.NetStationConstants;
-import com.yichan.gaotezhipei.server.netstation.entity.ExpressRecordedItem;
+import com.yichan.gaotezhipei.server.netstation.entity.ExpressRecordedOrderPage;
 import com.yichan.gaotezhipei.server.netstation.view.ExpressRecordedAdapter;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import ikidou.reflect.TypeBuilder;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -41,7 +46,7 @@ public class ExpressRecordActivity extends BaseListActivity {
 
     private ExpressRecordedAdapter mAdapter;
 
-    private List<ExpressRecordedItem> mList = new ArrayList<>();
+    private List<ExpressRecordedOrderPage.ListBean> mList = new ArrayList<>();
 
     private View mViewNodata;
 
@@ -49,6 +54,8 @@ public class ExpressRecordActivity extends BaseListActivity {
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
+        mStartPageNum = 1;
+        mSize = 15;
         mViewNodata = findViewById(R.id.view_no_data);
         mTvTitle.setText("快件收录");
     }
@@ -60,7 +67,7 @@ public class ExpressRecordActivity extends BaseListActivity {
                 finish();
                 break;
             case R.id.view_no_data:
-                getDataList(true);
+                getDataList(1, true);
                 break;
             default:
                 break;
@@ -75,9 +82,9 @@ public class ExpressRecordActivity extends BaseListActivity {
     @Override
     protected RecyclerView.Adapter getAdapter() {
         mAdapter = new ExpressRecordedAdapter(this, mList);
-        mAdapter.setSubviewListener(new OnItemSubviewClickListener<ExpressRecordedItem>() {
+        mAdapter.setSubviewListener(new OnItemSubviewClickListener<ExpressRecordedOrderPage.ListBean>() {
             @Override
-            public void onClick(View v, int pos, final ExpressRecordedItem model) {
+            public void onClick(View v, int pos, final ExpressRecordedOrderPage.ListBean model) {
                 switch (v.getId()) {
                     case R.id.item_tv_takeon:
                         DialogHelper.showConfirmDailog(getSupportFragmentManager(), "您确认收录吗？", new IDialogResultListener<Integer>() {
@@ -108,7 +115,7 @@ public class ExpressRecordActivity extends BaseListActivity {
             protected void handleResponse(Result response) {
                 if(response.getResultCode() == Result.SUCCESS_CODE) {
                     showToast("收录成功");
-                    getDataList(true);
+                    getDataList(1, true);
                 }
                 else {
                     showToast(response.getMessage());
@@ -131,39 +138,48 @@ public class ExpressRecordActivity extends BaseListActivity {
 
     @Override
     protected void doLoreMore(int currentPage, int size) {
-
+        getDataList(currentPage, false);
     }
 
     @Override
     protected void doRefresh(int currentPage, int size) {
-        getDataList(true);
+        getDataList(currentPage, true);
     }
 
-    private void getDataList(boolean isReresh) {
+    private void getDataList(int currentPage, final boolean isReresh) {
         if(isReresh) {
             mList.clear();
         }
-        GetRequest getRequest = new GetRequest(AppConstants.BASE_URL + NetStationConstants.URL_GET_UNARRIVED_ORDERS, null, null, null);
+        String url = AppConstants.BASE_URL + NetStationConstants.URL_GET_UNARRIVED_ORDERS;
+        Map<String, String> params = new HashMap<>();
+        params.put("pageNum", String.valueOf(currentPage));
+        url = UrlUtil.formTotalUrl(url, params);
+        GetRequest getRequest = new GetRequest(url, null, null, null);
         RequestCall call = getRequest.build();
-        call.doScene(new TokenSceneCallback<List<ExpressRecordedItem>>(call) {
+        call.doScene(new TokenSceneCallback<ExpressRecordedOrderPage>(call) {
 
             @Override
             public Result parseNetworkResponse(Response response) throws IOException {
-                return GsonUtil.fromJsonArray(response.body().string(), ExpressRecordedItem.class);
+                Type type = TypeBuilder
+                        .newInstance(Result.class)
+                        .beginSubType(ExpressRecordedOrderPage.class)
+                        .endSubType().build();
+                return GsonUtil.gsonToBean(response.body().string(), type);
             }
 
             @Override
             protected void handleError(String errorMsg, Call call, Exception e) {
                 showToast(errorMsg);
                 doRefreshFinish(0);
+                doLoadMoreFinish(0);
                 toggleNoDataView(true);
             }
 
             @Override
-            protected void handleResponse(Result<List<ExpressRecordedItem>> response) {
+            protected void handleResponse(Result<ExpressRecordedOrderPage> response) {
                 if(response.getResultCode() == Result.SUCCESS_CODE) {
                     if(response.getData() != null) {
-                        mList.addAll(response.getData());
+                        mList.addAll(response.getData().getList());
                     }
 
                     if(mList.size() != 0) {
@@ -173,11 +189,19 @@ public class ExpressRecordActivity extends BaseListActivity {
                         showToast("暂无数据哦~");
                         toggleNoDataView(true);
                     }
+
+                    if (isReresh) {
+                        doRefreshFinish(response.getData().getList().size());
+                    } else {
+                        doLoadMoreFinish(response.getData().getList().size());
+                    }
+
                 } else {
                     toggleNoDataView(true);
                     showToast(response.getMessage());
+                    doRefreshFinish(0);
+                    doLoadMoreFinish(0);
                 }
-                doRefreshFinish(0);
             }
 
 

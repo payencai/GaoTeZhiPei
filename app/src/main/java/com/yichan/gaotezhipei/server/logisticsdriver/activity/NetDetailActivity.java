@@ -24,7 +24,7 @@ import com.yichan.gaotezhipei.common.util.EventBus;
 import com.yichan.gaotezhipei.common.util.GsonUtil;
 import com.yichan.gaotezhipei.common.util.UrlUtil;
 import com.yichan.gaotezhipei.server.logisticsdriver.constant.LogisticsDriverConstants;
-import com.yichan.gaotezhipei.server.logisticsdriver.entity.NetDetailItem;
+import com.yichan.gaotezhipei.server.logisticsdriver.entity.NetDetailOrderPage;
 import com.yichan.gaotezhipei.server.logisticsdriver.entity.NetOrderItem;
 import com.yichan.gaotezhipei.server.logisticsdriver.event.SelectOrderEvent;
 import com.yichan.gaotezhipei.server.logisticsdriver.view.NetDetailAdapter;
@@ -33,6 +33,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +41,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import ikidou.reflect.TypeBuilder;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -60,7 +62,7 @@ public class NetDetailActivity extends BaseListActivity{
 
     private View mViewNodata;
 
-    private List<NetDetailItem> mList = new ArrayList<>();
+    private List<NetDetailOrderPage.ListBean> mList = new ArrayList<>();
     private NetDetailAdapter mAdapter;
 
     private NetOrderItem mNetworkInform;
@@ -72,6 +74,8 @@ public class NetDetailActivity extends BaseListActivity{
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
         EventBus.getInstance().register(this);
+        mStartPageNum = 1;
+        mSize = 15;
         mNetworkInform = (NetOrderItem) getIntent().getSerializableExtra("netorderItem");
         if(mNetworkInform != null) {
             mViewNodata = findViewById(R.id.view_no_data);
@@ -157,15 +161,15 @@ public class NetDetailActivity extends BaseListActivity{
 
     @Override
     protected void doLoreMore(int currentPage, int size) {
-
+        getDataList(currentPage, false);
     }
 
     @Override
     protected void doRefresh(int currentPage, int size) {
-        getDataList(true);
+        getDataList(1, true);
     }
 
-    private void getDataList(boolean isRefresh) {
+    private void getDataList(int currentPage, final boolean isRefresh) {
 
         if(isRefresh) {
             mList.clear();
@@ -179,15 +183,20 @@ public class NetDetailActivity extends BaseListActivity{
 
         Map<String,String> params = new HashMap<>();
         params.put("networkId", mNetworkInform.getId());
+        params.put("pageNum", String.valueOf(currentPage));
 
         GetRequest getRequest = new GetRequest(UrlUtil.formTotalUrl(AppConstants.BASE_URL + LogisticsDriverConstants.URL_GET_NET_DETAIL_LIST, params), null, null, null);
 
         RequestCall call = getRequest.build();
-        call.doScene(new TokenSceneCallback<List<NetDetailItem>>(call) {
+        call.doScene(new TokenSceneCallback<NetDetailOrderPage>(call) {
 
             @Override
-            public Result<List<NetDetailItem>> parseNetworkResponse(Response response) throws IOException {
-                return GsonUtil.fromJsonArray(response.body().string(), NetDetailItem.class);
+            public Result<NetDetailOrderPage> parseNetworkResponse(Response response) throws IOException {
+                Type type = TypeBuilder
+                        .newInstance(Result.class)
+                        .beginSubType(NetDetailOrderPage.class)
+                        .endSubType().build();
+                return GsonUtil.gsonToBean(response.body().string(), type);
             }
 
             @Override
@@ -195,14 +204,15 @@ public class NetDetailActivity extends BaseListActivity{
                 showToast(errorMsg);
                 toggleNoDataView(true);
                 doRefreshFinish(0);
+                doLoadMoreFinish(0);
             }
 
             @Override
-            protected void handleResponse(Result<List<NetDetailItem>> response) {
+            protected void handleResponse(Result<NetDetailOrderPage> response) {
                 if(response.getResultCode() == Result.SUCCESS_CODE) {
 
                     if(response.getData() != null) {
-                        mList.addAll(response.getData());
+                        mList.addAll(response.getData().getList());
                     }
 
                     //判断当前数据
@@ -214,11 +224,17 @@ public class NetDetailActivity extends BaseListActivity{
                         toggleNoDataView(true);
                     }
 
+                    if(isRefresh) {
+                        doRefreshFinish(response.getData().getList().size());
+                    } else {
+                        doLoadMoreFinish(response.getData().getList().size());
+                    }
 
                 } else {
                     showToast(response.getMessage());
+                    doLoadMoreFinish(0);
+                    doRefreshFinish(0);
                 }
-                doRefreshFinish(0);
             }
 
 
@@ -232,7 +248,7 @@ public class NetDetailActivity extends BaseListActivity{
                 finish();
                 break;
             case R.id.view_no_data:
-                getDataList(true);
+                getDataList(1, true);
                 break;
             case R.id.net_detail_tv_get_cargo:
                 DialogHelper.showConfirmDailog(getSupportFragmentManager(), "您确认揽货吗？", new IDialogResultListener<Integer>() {
@@ -263,7 +279,7 @@ public class NetDetailActivity extends BaseListActivity{
             protected void handleResponse(Result response) {
                 if(response.getResultCode() == Result.SUCCESS_CODE) {
                     showToast("揽货成功");
-                    getDataList(true);
+                    getDataList(1, true);
                 } else {
                     showToast(response.getMessage());
                 }

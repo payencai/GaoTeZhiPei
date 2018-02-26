@@ -15,4 +15,6 @@ public class HatchServiceConstants {
             R.drawable.hatch_banner4,
             R.drawable.hatch_banner5
     };
+
+    public static final String URL_HATCH_APPLY = "/demander/incubation/apply";
 }

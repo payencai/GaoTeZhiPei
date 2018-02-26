@@ -13,7 +13,7 @@ public class LogisticsDriverConstants {
 
     public static final String URL_GET_MY_ORDER = "/wdriver/order/getMyOrders";
 
-    public static final String URL_GET_MY_FINISHED_ORDER = "/wdriver/order/getMyFinishedOrders";
+//    public static final String URL_GET_MY_FINISHED_ORDER = "/wdriver/order/getMyFinishedOrders";
 
     public static final String URL_CONFIRM_ORDER = "/wdriver/order/pick";
 

@@ -13,7 +13,7 @@ import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.listener.OnItemSubviewClickListener;
 import com.yichan.gaotezhipei.logistics.constant.LogisticsContants;
-import com.yichan.gaotezhipei.logistics.entity.LogisticsOrderItem;
+import com.yichan.gaotezhipei.logistics.entity.LogisticsOrderPage;
 
 import java.util.List;
 
@@ -25,19 +25,19 @@ public class LogisticOrderAdapter extends MSClickableAdapter<LogisticOrderAdapte
 
 
     private Context mContext;
-    private List<LogisticsOrderItem> mList;
+    private List<LogisticsOrderPage.ListBean> mList;
 
-    private OnItemSubviewClickListener<LogisticsOrderItem> subviewClickListener;
+    private OnItemSubviewClickListener<LogisticsOrderPage.ListBean> subviewClickListener;
 
-    public OnItemSubviewClickListener<LogisticsOrderItem> getSubviewClickListener() {
+    public OnItemSubviewClickListener<LogisticsOrderPage.ListBean> getSubviewClickListener() {
         return subviewClickListener;
     }
 
-    public void setSubviewClickListener(OnItemSubviewClickListener<LogisticsOrderItem> subviewClickListener) {
+    public void setSubviewClickListener(OnItemSubviewClickListener<LogisticsOrderPage.ListBean> subviewClickListener) {
         this.subviewClickListener = subviewClickListener;
     }
 
-    public LogisticOrderAdapter(Context context, List<LogisticsOrderItem> list) {
+    public LogisticOrderAdapter(Context context, List<LogisticsOrderPage.ListBean> list) {
         this.mContext = context;
         this.mList = list;
     }
@@ -53,8 +53,8 @@ public class LogisticOrderAdapter extends MSClickableAdapter<LogisticOrderAdapte
 
     @Override
     public void onBindVH(LogisticOrderViewHolder holder, int position) {
-        
-        LogisticsOrderItem bean = mList.get(position);
+
+        LogisticsOrderPage.ListBean bean = mList.get(position);
         
         setOrderStatus(holder, position, bean);
         setAddressInform(holder, bean);
@@ -66,7 +66,7 @@ public class LogisticOrderAdapter extends MSClickableAdapter<LogisticOrderAdapte
         setBottomView(holder, position, bean);
     }
 
-    private void setOrderStatus(LogisticOrderViewHolder holder, int pos, LogisticsOrderItem bean) {
+    private void setOrderStatus(LogisticOrderViewHolder holder, int pos, LogisticsOrderPage.ListBean bean) {
         holder.tvOrderTime.setText(bean.getCreateTime());
         switch (getItemViewType(pos)) {
             case LogisticsContants.TYPE_LOG_ORDER_TO_RECEIVER:
@@ -98,7 +98,7 @@ public class LogisticOrderAdapter extends MSClickableAdapter<LogisticOrderAdapte
         }
     }
 
-    private void setAddressInform(LogisticOrderViewHolder holder, LogisticsOrderItem bean) {
+    private void setAddressInform(LogisticOrderViewHolder holder, LogisticsOrderPage.ListBean bean) {
         holder.tvMailDistrict.setText(bean.getAdressFromDistrict());
         holder.tvMailProvinceCity.setText(bean.getAdressFromProvince() + " " + bean.getAdressFromCity());
         holder.tvDistance.setText(String.format("%.2f", Double.valueOf(bean.getDistanceTotal()) / 1000) + "km");
@@ -106,7 +106,7 @@ public class LogisticOrderAdapter extends MSClickableAdapter<LogisticOrderAdapte
         holder.tvPickProvinceCity.setText(bean.getAdressToProvince() + " " + bean.getAdressToCity());
     }
 
-    private void setOneLine(LogisticOrderViewHolder holder, int pos, LogisticsOrderItem bean) {
+    private void setOneLine(LogisticOrderViewHolder holder, int pos, LogisticsOrderPage.ListBean bean) {
         switch (getItemViewType(pos)) {
             case LogisticsContants.TYPE_LOG_ORDER_TO_RECEIVER:
                 holder.tvOne.setText("快件录入时间:" + bean.getArriveTime());
@@ -132,20 +132,20 @@ public class LogisticOrderAdapter extends MSClickableAdapter<LogisticOrderAdapte
         }
     }
 
-    private void setTwoLine(LogisticOrderViewHolder holder, LogisticsOrderItem bean) {
+    private void setTwoLine(LogisticOrderViewHolder holder, LogisticsOrderPage.ListBean bean) {
         holder.tvTwo.setText("物流公司:" + bean.getLogisticsCompanyName());
     }
 
-    private void setThreeLine(LogisticOrderViewHolder holder, LogisticsOrderItem bean) {
+    private void setThreeLine(LogisticOrderViewHolder holder, LogisticsOrderPage.ListBean bean) {
         holder.tvThree.setText("物流单号:" + bean.getLogisticsCompanyId());
     }
 
-    private void setFourLine(LogisticOrderViewHolder holder, LogisticsOrderItem bean) {
+    private void setFourLine(LogisticOrderViewHolder holder, LogisticsOrderPage.ListBean bean) {
         holder.tvFour.setText(bean.getGoodsName() + ":" + bean.getGoodsQuantity()  + "件  " + bean.getGoodsMass() + "kg  " + bean.getGoodsSize() + "m³");
     }
 
 
-    private void setLocationView(LogisticOrderViewHolder holder, int pos, LogisticsOrderItem bean) {
+    private void setLocationView(LogisticOrderViewHolder holder, int pos, LogisticsOrderPage.ListBean bean) {
         if(getItemViewType(pos) == LogisticsContants.TYPE_LOG_ORDER_TO_WAREHOUSE) {
             holder.rlLoc.setVisibility(View.VISIBLE);
         } else {
@@ -153,7 +153,7 @@ public class LogisticOrderAdapter extends MSClickableAdapter<LogisticOrderAdapte
         }
     }
 
-    private void setBottomView(LogisticOrderViewHolder holder, final int pos, final LogisticsOrderItem bean) {
+    private void setBottomView(LogisticOrderViewHolder holder, final int pos, final LogisticsOrderPage.ListBean bean) {
         if(getItemViewType(pos) == LogisticsContants.TYPE_LOG_ORDER_TO_CONFIRM) {
             holder.rlBottom.setVisibility(View.VISIBLE);
             holder.btnRight.setVisibility(View.VISIBLE);

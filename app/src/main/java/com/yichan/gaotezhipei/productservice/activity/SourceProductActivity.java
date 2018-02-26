@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.changelcai.mothership.view.util.ScreenUtil;
 import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.davemorrissey.labs.subscaleview.ImageViewState;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
@@ -47,13 +48,14 @@ public class SourceProductActivity extends BaseActivity {
 //        int screenWidth = mSsiv.get// 屏幕宽（像素，如：480px）
 //        int screenHeight = ScreenUtil.getScreenHeight(this); // 屏幕高（像素，如：800p）
         int sWidth = ScreenPlusUtil.getScreenWidth(this);
-        int sHeight = ScreenPlusUtil.getScreenHeight(this) - ScreenPlusUtil.getStatusBarHeight(this) - ScreenPlusUtil.getNavigationBarHeight(this);
+        int sHeight = (int) (ScreenPlusUtil.getScreenHeight(this) - ScreenPlusUtil.getStatusBarHeight(this) - ScreenPlusUtil.getNavigationBarHeight(this) - ScreenUtil.dpToPx(SourceProductActivity.this, (float) 45.0));
         float scaleF = 0.0F;
         if(sWidth > sHeight) {
             scaleF = ((float)sHeight / (float) sWidth);
         } else {
             scaleF = ((float)sWidth / (float) sHeight);
         }
+        mSsiv.setParallelLoadingEnabled(true);
         mSsiv.setMinScale(scaleF);
         mSsiv.setImage(ImageSource.resource(R.drawable.source_product),  new ImageViewState(scaleF, new PointF(0, 0), 0));
 

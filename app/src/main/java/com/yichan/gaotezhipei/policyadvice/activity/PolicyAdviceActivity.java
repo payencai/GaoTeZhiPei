@@ -7,19 +7,33 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.changelcai.mothership.network.RequestCall;
+import com.changelcai.mothership.network.builder.PostFormBuilder;
 import com.changelcai.mothership.view.recycler.MultiRecyclerView;
 import com.changelcai.mothership.view.recycler.MultiRecyclerViewLayout;
+import com.ckev.chooseimagelibrary.base.img.assist.CommonImageLoader;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseActivity;
+import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
+import com.yichan.gaotezhipei.common.constant.AppConstants;
+import com.yichan.gaotezhipei.common.entity.Result;
+import com.yichan.gaotezhipei.common.util.GsonUtil;
 import com.yichan.gaotezhipei.common.view.AutoScrollViewPagerWithIndicator;
-import com.yichan.gaotezhipei.policyadvice.PolicyAdviceItem;
+import com.yichan.gaotezhipei.policyadvice.constant.PolicyConstants;
+import com.yichan.gaotezhipei.policyadvice.entity.PolicyArticlePageList;
+import com.yichan.gaotezhipei.policyadvice.entity.PolicyBannerItem;
 import com.yichan.gaotezhipei.policyadvice.view.PolicyAdviceAdapter;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import ikidou.reflect.TypeBuilder;
+import okhttp3.Call;
+import okhttp3.Response;
 
 /**
  * Created by ckerv on 2018/1/10.
@@ -39,26 +53,25 @@ public class PolicyAdviceActivity extends BaseActivity implements MultiRecyclerV
     @BindView(R.id.pa_rvl_list)
     MultiRecyclerViewLayout mRvLayout;
 
-    private List<PolicyAdviceItem> mItems = new ArrayList<>();
+    private List<PolicyArticlePageList.BeanListBean> mItems = new ArrayList<>();
+
+    private List<PolicyBannerItem> mBannerImages = new ArrayList<>();
 
     private PolicyAdviceAdapter mAdapter;
+
+    private int mPageSize = 8;
+
+    private int mCurrentPage = 1;
 
 
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
         initTitleBar();
-        initBannerViewPager();
+        requestBannerImages();
         initRecyclerView();
-//        initDataList();
     }
 
-    private void initDataList() {
-        //TODO 假数据
-        for(int i = 0; i < 10; i++) {
-            mItems.add(new PolicyAdviceItem("一周企服IIDC:行业云未来：5-1年\n" + "保持双位数增长；万达云服务多\n" + "部门面临解散", null, "环球时报", "2小时前"));
-        }
-    }
 
     private void initRecyclerView() {
 
@@ -74,18 +87,56 @@ public class PolicyAdviceActivity extends BaseActivity implements MultiRecyclerV
 
 
     private void initBannerViewPager() {
+        mVpBanner.setDisplayDots(true);
+        mVpBanner.setIndicatoeResId(R.drawable.selector_indicator);
         LayoutInflater inflate = LayoutInflater.from(PolicyAdviceActivity.this);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < mBannerImages.size(); i++) {
             View view = inflate.inflate(R.layout.service_center_asvp_layout,
                     null);
             ImageView imageView = (ImageView) view.findViewById(R.id.service_center_iv_scroll);
-            imageView.setImageResource(R.drawable.pa_banner);
+            CommonImageLoader.displayImage(mBannerImages.get(i).getImage(), imageView, CommonImageLoader.DOUBLE_CACHE_OPTIONS);
             mVpBanner.addViewToViewPager(imageView);
         }
 
         mVpBanner.getAutoScrollViewPager().setInterval(3000);
         mVpBanner.getAutoScrollViewPager().setOffscreenPageLimit(3);
         mVpBanner.getAutoScrollViewPager().startAutoScroll();
+    }
+
+    private void requestBannerImages() {
+        mBannerImages.clear();
+        RequestCall requestCall = new PostFormBuilder().url(AppConstants.BASE_URL + PolicyConstants.URL_GET_BANNER_IMGS).build();
+        requestCall.doScene(new TokenSceneCallback<List<PolicyBannerItem>>(requestCall) {
+
+            @Override
+            public Result<List<PolicyBannerItem>> parseNetworkResponse(Response response) throws IOException {
+                return GsonUtil.fromJsonArray(response.body().string(), PolicyBannerItem.class);
+            }
+
+            @Override
+            protected void handleError(String errorMsg, Call call, Exception e) {
+                showToast(errorMsg);
+            }
+
+            @Override
+            protected void handleResponse(Result<List<PolicyBannerItem>> response) {
+                if(response.getResultCode() == Result.SUCCESS_CODE) {
+                    if(response.getData() != null) {
+                        mBannerImages.addAll(response.getData());
+                    }
+
+                    if(mBannerImages.size() != 0) {
+                        initBannerViewPager();
+                    } else {
+                        showToast("暂无轮播图数据");
+                    }
+                } else {
+                    showToast(response.getMessage());
+                }
+            }
+
+
+        });
     }
 
     private void initTitleBar() {
@@ -108,14 +159,6 @@ public class PolicyAdviceActivity extends BaseActivity implements MultiRecyclerV
         }
     }
 
-//    @Override
-//    public void onLoadMore() {
-//        for(int i = 0; i < 10; i++) {
-//            mItems.add(new PolicyAdviceItem("哈哈哈哈哈哈哈哈哈", null, "环球时报", "2小时前"));
-//        }
-//        mAdapter.notifyDataSetChanged();
-//    }
-
     @Override
     public void preRefresh() {
         onRefresh();
@@ -123,16 +166,73 @@ public class PolicyAdviceActivity extends BaseActivity implements MultiRecyclerV
 
     @Override
     public void onRefresh() {
-        initDataList();
-        mRvLayout.onRefreshFinish(true);
+        mCurrentPage = 1;
+        getArticleDataList(mCurrentPage, true);
+    }
+
+    private void getArticleDataList(int currentPage, final boolean isRefresh) {
+        if(isRefresh) {
+            mItems.clear();
+        }
+
+        RequestCall call = new PostFormBuilder()
+                .url(AppConstants.BASE_URL + PolicyConstants.URL_GET_ARTICLES)
+                .addParams("page", String.valueOf(currentPage)).build();
+        call.doScene(new TokenSceneCallback<PolicyArticlePageList>(call) {
+
+            @Override
+            public Result<PolicyArticlePageList> parseNetworkResponse(Response response) throws IOException {
+                Type type = TypeBuilder
+                        .newInstance(Result.class)
+                        .beginSubType(PolicyArticlePageList.class)
+                        .endSubType().build();
+                return GsonUtil.gsonToBean(response.body().string(), type);
+            }
+
+            @Override
+            protected void handleError(String errorMsg, Call call, Exception e) {
+                showToast(errorMsg);
+            }
+
+            @Override
+            protected void handleResponse(Result<PolicyArticlePageList> response) {
+                if(response.getResultCode() == Result.SUCCESS_CODE) {
+                    if(response.getData() != null && response.getData().getBeanList() != null) {
+                        mItems.addAll(response.getData().getBeanList());
+                    }
+
+                    if(mItems.size() != 0) {
+                        mAdapter.notifyDataSetChanged();
+                    } else {
+                        showToast("暂无数据哦~");
+                    }
+                    if(isRefresh) {
+                        if(response.getData().getBeanList().size() < mPageSize) {
+                            mRvLayout.onRefreshFinish(false);
+                            mRvLayout.setLoadMoreEnable(false);
+                        } else {
+                            mRvLayout.onRefreshFinish(true);
+                        }
+                    } else {
+                        if(response.getData().getBeanList().size() < mPageSize) {
+                            mRvLayout.onLoadMoreFinish(false);
+                            mRvLayout.setLoadMoreEnable(false);
+                        } else {
+                            mRvLayout.onLoadMoreFinish(true);
+                        }
+                    }
+                } else {
+                    showToast(response.getMessage());
+                }
+            }
+
+
+        });
     }
 
     @Override
     public void onLoadMore() {
-        for(int i = 0; i < 10; i++) {
-            mItems.add(new PolicyAdviceItem("哈哈哈" + i, null, "环球时报", "2小时前"));
-        }
-        mAdapter.notifyDataSetChanged();
-        mRvLayout.onLoadMoreFinish(true);
+        mCurrentPage++;
+        getArticleDataList(mCurrentPage, false);
     }
 }

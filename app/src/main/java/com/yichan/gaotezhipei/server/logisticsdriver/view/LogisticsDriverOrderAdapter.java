@@ -60,14 +60,14 @@ public class LogisticsDriverOrderAdapter extends MSClickableAdapter<LogisticsDri
     }
 
     private void setBottomLayout(LogisticsDriverOrderViewHolder holder, final int pos, final LogisticsDriverOrderItem bean) {
-        if(bean.getStatus() == LogisticsDriverConstants.TYPE_TO_CONFIRM) {
+        if(Integer.valueOf(bean.getDriverStatus()) == LogisticsDriverConstants.TYPE_TO_CONFIRM) {
             if(bean.getIsConfirm().equals("1")) { //网点已确认
                 holder.rlBottom.setVisibility(View.VISIBLE);
                 holder.btnBottom.setText("确认收货");
             } else {
                 holder.rlBottom.setVisibility(View.GONE);
             }
-        } else if(bean.getStatus() == LogisticsDriverConstants.TYPE_TO_DELEVER) {
+        } else if(Integer.valueOf(bean.getDriverStatus()) == LogisticsDriverConstants.TYPE_TO_DELEVER) {
             holder.rlBottom.setVisibility(View.VISIBLE);
             holder.btnBottom.setText("确认送达");
         } else {
@@ -84,7 +84,7 @@ public class LogisticsDriverOrderAdapter extends MSClickableAdapter<LogisticsDri
     }
 
     private void setAddrInform(LogisticsDriverOrderViewHolder holder, LogisticsDriverOrderItem bean) {
-        int type = Integer.valueOf(bean.getStatus());
+        int type = Integer.valueOf(bean.getDriverStatus());
         switch (type)  {
             case 2:
                 holder.tvAddress.setText("网点地址:" + bean.getNetworkAdress());
@@ -99,16 +99,16 @@ public class LogisticsDriverOrderAdapter extends MSClickableAdapter<LogisticsDri
     }
 
     private void setTimeInform(LogisticsDriverOrderViewHolder holder, LogisticsDriverOrderItem bean) {
-        int type = Integer.valueOf(bean.getStatus());
+        int type = Integer.valueOf(bean.getDriverStatus());
         switch (type)  {
             case 2:
-                holder.tvTime.setText("揽货时间:" + bean.getTakeorderTime());
+                holder.tvTime.setText("揽货时间:" + bean.getUpdateTime());
                 break;
             case 3:
-                holder.tvTime.setText("派送时间:" + bean.getPickTime());
+                holder.tvTime.setText("派送时间:" + bean.getUpdateTime());
                 break;
             default:
-                holder.tvTime.setText("收货时间:" + bean.getReachwarehouseTime());
+                holder.tvTime.setText("收货时间:" + bean.getUpdateTime());
                 break;
         }
     }
@@ -124,7 +124,7 @@ public class LogisticsDriverOrderAdapter extends MSClickableAdapter<LogisticsDri
 
     private void setOrderStatus(LogisticsDriverOrderViewHolder holder, LogisticsDriverOrderItem bean) {
         holder.tvCreateTime.setText(bean.getTakeorderTime());
-        int type = Integer.valueOf(bean.getStatus());
+        int type = Integer.valueOf(bean.getDriverStatus());
         switch (type)  {
             case 2:
                 holder.rlStatus.setBackground(mContext.getDrawable(R.drawable.order_green));

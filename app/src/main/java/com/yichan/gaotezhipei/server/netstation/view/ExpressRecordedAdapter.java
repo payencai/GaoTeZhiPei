@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.listener.OnItemSubviewClickListener;
-import com.yichan.gaotezhipei.server.netstation.entity.ExpressRecordedItem;
+import com.yichan.gaotezhipei.server.netstation.entity.ExpressRecordedOrderPage;
 
 import java.util.List;
 
@@ -22,19 +22,19 @@ import java.util.List;
 public class ExpressRecordedAdapter extends MSClickableAdapter<ExpressRecordedAdapter.ExpressRecordedViewHolder> {
 
     private android.content.Context mContext;
-    private List<ExpressRecordedItem> mList;
+    private List<ExpressRecordedOrderPage.ListBean> mList;
 
-    private OnItemSubviewClickListener<ExpressRecordedItem> mSubviewListener;
+    private OnItemSubviewClickListener<ExpressRecordedOrderPage.ListBean> mSubviewListener;
 
-    public OnItemSubviewClickListener<ExpressRecordedItem> getSubviewListener() {
+    public OnItemSubviewClickListener<ExpressRecordedOrderPage.ListBean> getSubviewListener() {
         return mSubviewListener;
     }
 
-    public void setSubviewListener(OnItemSubviewClickListener<ExpressRecordedItem> mSubviewListener) {
+    public void setSubviewListener(OnItemSubviewClickListener<ExpressRecordedOrderPage.ListBean> mSubviewListener) {
         this.mSubviewListener = mSubviewListener;
     }
 
-    public ExpressRecordedAdapter(Context context, List<ExpressRecordedItem> list) {
+    public ExpressRecordedAdapter(Context context, List<ExpressRecordedOrderPage.ListBean> list) {
         this.mContext = context;
         this.mList = list;
     }

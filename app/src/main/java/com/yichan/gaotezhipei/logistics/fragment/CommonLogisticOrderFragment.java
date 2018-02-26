@@ -1,9 +1,8 @@
 package com.yichan.gaotezhipei.logistics.fragment;
 
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
+import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
 import android.view.View;
 
 import com.changelcai.mothership.component.fragment.dialog.IDialogResultListener;
@@ -20,16 +19,18 @@ import com.yichan.gaotezhipei.common.fragment.CommonOrderFragment;
 import com.yichan.gaotezhipei.common.util.GsonUtil;
 import com.yichan.gaotezhipei.common.util.UrlUtil;
 import com.yichan.gaotezhipei.logistics.constant.LogisticsContants;
-import com.yichan.gaotezhipei.logistics.entity.LogisticsOrderItem;
+import com.yichan.gaotezhipei.logistics.entity.LogisticsOrderPage;
 import com.yichan.gaotezhipei.logistics.view.LogisticOrderAdapter;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import butterknife.OnClick;
+import ikidou.reflect.TypeBuilder;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -38,21 +39,32 @@ import okhttp3.Response;
  */
 
 public class CommonLogisticOrderFragment extends CommonOrderFragment {
-    protected List<LogisticsOrderItem> mList = new ArrayList<>();
+    protected List<LogisticsOrderPage.ListBean> mList = new ArrayList<>();
     private LogisticOrderAdapter mAdapter;
 
     private int mType;
 
+    public CommonLogisticOrderFragment() {
+
+    }
+    @SuppressLint({"NewApi", "ValidFragment"})
     public CommonLogisticOrderFragment(int type) {
         this.mType = type;
     }
 
     @Override
+    protected void init(Bundle savedInstanceState) {
+        super.init(savedInstanceState);
+        mStartPageNum = 1;
+        mSize = 15;
+    }
+
+    @Override
     protected RecyclerView.Adapter getAdapter() {
         mAdapter = new LogisticOrderAdapter(getActivity(), mList);
-        mAdapter.setSubviewClickListener(new OnItemSubviewClickListener<LogisticsOrderItem>() {
+        mAdapter.setSubviewClickListener(new OnItemSubviewClickListener<LogisticsOrderPage.ListBean>() {
             @Override
-            public void onClick(View v, int pos, LogisticsOrderItem model) {
+            public void onClick(View v, int pos, LogisticsOrderPage.ListBean model) {
                 switch (v.getId()) {
                     case R.id.item_btn_right:
                         if(Integer.valueOf(model.getStatus()) == LogisticsContants.TYPE_LOG_ORDER_TO_CONFIRM) {
@@ -102,7 +114,7 @@ public class CommonLogisticOrderFragment extends CommonOrderFragment {
 
     @Override
     protected void doLoreMore(int currentPage, int size) {
-
+        getDataList(currentPage, false);
     }
 
     @Override
@@ -111,19 +123,27 @@ public class CommonLogisticOrderFragment extends CommonOrderFragment {
     }
 
     public void getDataList(int currentPage, final boolean isRefresh) {
-        String url = AppConstants.BASE_URL + LogisticsContants.URL_DEMAND_GET_LOG_ORDER;
-        if(mType != LogisticsContants.TYPE_LOG_ORDER_ALL) {
-            Map<String, String> params = new HashMap<>();
-            params.put("status", String.valueOf(mType));
-            url = UrlUtil.formTotalUrl(url, params);
+        if(isRefresh) {
+            mList.clear();
         }
+        String url = AppConstants.BASE_URL + LogisticsContants.URL_DEMAND_GET_LOG_ORDER;
+        Map<String, String> params = new HashMap<>();
+        params.put("pageNum", String.valueOf(currentPage));
+        if(mType != LogisticsContants.TYPE_LOG_ORDER_ALL) {
+            params.put("status", String.valueOf(mType));
+        }
+        url = UrlUtil.formTotalUrl(url, params);
         GetRequest getRequest = new GetRequest(url, null, null, null);
         RequestCall call = getRequest.build();
-        call.doScene(new TokenSceneCallback<List<LogisticsOrderItem>>(call) {
+        call.doScene(new TokenSceneCallback<LogisticsOrderPage>(call) {
 
             @Override
-            public Result<List<LogisticsOrderItem>> parseNetworkResponse(Response response) throws IOException {
-                return GsonUtil.fromJsonArray(response.body().string(), LogisticsOrderItem.class);
+            public Result<LogisticsOrderPage> parseNetworkResponse(Response response) throws IOException {
+                Type type = TypeBuilder
+                        .newInstance(Result.class)
+                        .beginSubType(LogisticsOrderPage.class)
+                        .endSubType().build();
+                return GsonUtil.gsonToBean(response.body().string(), type);
             }
 
             @Override
@@ -131,15 +151,16 @@ public class CommonLogisticOrderFragment extends CommonOrderFragment {
                 showToast(errorMsg);
                 toggleNoDataView(true);
                 doRefreshFinish(0);
+                doLoadMoreFinish(0);
             }
 
             @Override
-            protected void handleResponse(Result<List<LogisticsOrderItem>> response) {
+            protected void handleResponse(Result<LogisticsOrderPage> response) {
                 if(response.getResultCode() == Result.SUCCESS_CODE) {
 
                     //如果获取到的数据不为空，则直接添加进当前数据
                     if(response.getData() != null) {
-                        mList.addAll(response.getData());
+                        mList.addAll(response.getData().getList());
                     }
 
                     //判断当前数据
@@ -152,9 +173,9 @@ public class CommonLogisticOrderFragment extends CommonOrderFragment {
 
                     //后续操作
                     if(isRefresh) {
-                        doRefreshFinish(0);
+                        doRefreshFinish(response.getData().getList().size());
                     } else {
-                        doLoadMoreFinish(0);
+                        doLoadMoreFinish(response.getData().getList().size());
                     }
 
                 } else {

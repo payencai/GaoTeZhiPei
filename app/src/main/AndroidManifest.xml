@@ -47,6 +47,16 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="9nDbWdFgN64XpxqTKlSHL3N5Zf9unbPl" />
 
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
         <activity android:name=".home.HomeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
@@ -248,7 +258,8 @@
             android:screenOrientation="portrait"></activity>
 
         <activity android:name=".productservice.activity.SourceProductActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="true"></activity>
 
         <activity android:name=".common.activity.CommonWebViewProgressActivity"
             android:screenOrientation="portrait"></activity>

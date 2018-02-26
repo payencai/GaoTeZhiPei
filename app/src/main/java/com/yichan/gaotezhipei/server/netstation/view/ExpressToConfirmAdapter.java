@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.listener.OnItemSubviewClickListener;
-import com.yichan.gaotezhipei.server.netstation.entity.ExpressToConfirmItem;
+import com.yichan.gaotezhipei.server.netstation.entity.ExpressToComfirmOrderPage;
 
 import java.util.List;
 
@@ -21,20 +21,20 @@ import java.util.List;
 
 public class ExpressToConfirmAdapter extends MSClickableAdapter<ExpressToConfirmAdapter.ExpressToConfirmViewHolder> {
     private android.content.Context mContext;
-    private List<ExpressToConfirmItem> mList;
+    private List<ExpressToComfirmOrderPage.ListBean> mList;
 
-    private OnItemSubviewClickListener<ExpressToConfirmItem> mSubviewListener;
+    private OnItemSubviewClickListener<ExpressToComfirmOrderPage.ListBean> mSubviewListener;
 
-    public OnItemSubviewClickListener<ExpressToConfirmItem> getSubviewListener() {
+    public OnItemSubviewClickListener<ExpressToComfirmOrderPage.ListBean> getSubviewListener() {
         return mSubviewListener;
     }
 
-    public void setSubviewListener(OnItemSubviewClickListener<ExpressToConfirmItem> mSubviewListener) {
+    public void setSubviewListener(OnItemSubviewClickListener<ExpressToComfirmOrderPage.ListBean> mSubviewListener) {
         this.mSubviewListener = mSubviewListener;
     }
 
 
-    public ExpressToConfirmAdapter(Context context, List<ExpressToConfirmItem> list) {
+    public ExpressToConfirmAdapter(Context context, List<ExpressToComfirmOrderPage.ListBean> list) {
         this.mContext = context;
         this.mList = list;
     }

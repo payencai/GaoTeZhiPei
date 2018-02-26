@@ -25,6 +25,9 @@ import com.yichan.gaotezhipei.login.constant.LoginConstants;
 import com.yichan.gaotezhipei.login.entity.UserEntity;
 import com.yichan.gaotezhipei.login.event.LoginEvent;
 import com.yichan.gaotezhipei.login.util.LoginManager;
+import com.yichan.gaotezhipei.server.lcldriver.activity.LCLDriverMainActivity;
+import com.yichan.gaotezhipei.server.logisticsdriver.activity.LogisticsDriverMainActivity;
+import com.yichan.gaotezhipei.server.netstation.activity.NetMainActivity;
 
 import java.io.IOException;
 
@@ -46,11 +49,28 @@ public class DemandLoginActivity extends BaseActivity {
     @BindView(R.id.login_et_password)
     EditText mEtPassword;
 
+
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
-        mEtAccount.setText("17628285613");
-        mEtPassword.setText("123456");
+        checkLogigState();
+    }
+
+    private void checkLogigState() {
+        if(UserManager.getInstance(DemandLoginActivity.this).isLogin()) {
+            if(UserManager.getInstance(DemandLoginActivity.this).isDemand()) {
+                startActivity(new Intent(DemandLoginActivity.this, HomeActivity.class));
+            } else {
+                if(UserManager.getInstance(DemandLoginActivity.this).getType() == AppConstants.ROLE_TYPE_LOGISTICS_DRIVER) {
+                    startActivity(new Intent(DemandLoginActivity.this, LogisticsDriverMainActivity.class));
+                } else if(UserManager.getInstance(DemandLoginActivity.this).getType() == AppConstants.ROLE_TYPE_NET) {
+                    startActivity(new Intent(DemandLoginActivity.this, NetMainActivity.class));
+                } else {
+                    startActivity(new Intent(DemandLoginActivity.this, LCLDriverMainActivity.class));
+                }
+            }
+            finish();
+        }
     }
 
     @Override

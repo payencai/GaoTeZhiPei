@@ -7,6 +7,7 @@ import com.baidu.mapapi.SDKInitializer;
 import com.changelcai.mothership.network.core.OkHttpCore;
 import com.ckev.chooseimagelibrary.base.img.assist.CommonImageLoader;
 import com.yichan.gaotezhipei.base.net.CookieJarHelper;
+import com.yichan.gaotezhipei.base.util.ExceptionHandler;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -27,8 +28,14 @@ public class GaoteApplication extends Application {
         super.onCreate();
         SDKInitializer.initialize(getApplicationContext());
         mApplicationContext = this;
+//        initCrashHandler();
         initOkHttpCore();
         initUniversialImageLoader();
+    }
+
+    private void initCrashHandler() { // 系统崩溃处理
+        ExceptionHandler crashHandler = ExceptionHandler.getInstance();
+        crashHandler.init(this);
     }
 
 

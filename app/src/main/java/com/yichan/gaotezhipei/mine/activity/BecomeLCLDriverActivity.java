@@ -317,6 +317,7 @@ public class BecomeLCLDriverActivity extends BaseActivity implements PermissionU
             @Override
             public void onClick(View v) {
                 bottomDialog.dismiss();
+
                 requestPermission();
             }
         });
@@ -329,6 +330,8 @@ public class BecomeLCLDriverActivity extends BaseActivity implements PermissionU
         PermissionUtils.setApplyPermission(this);
         PermissionUtils.needPermission(BecomeLCLDriverActivity.this, new String[]{Manifest.permission.CAMERA}, 100);
     }
+
+
 
 
     //本地选择
@@ -348,20 +351,12 @@ public class BecomeLCLDriverActivity extends BaseActivity implements PermissionU
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.N) {
             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(photoPath)));// 将照片输出为
         } else {
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(BecomeLCLDriverActivity.this, "com.administrator.tianhu.fileprovider", new File(photoPath)));// 将照片输出为
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(BecomeLCLDriverActivity.this, "com.yichan.gaotezhipei.fileprovider", new File(photoPath)));// 将照片输出为
         }
         startActivityForResult(intent, CAMERA_REQUEST_CODE);
     }
 
-    @Override
-    public void doFailed() {
-        Toast.makeText(BecomeLCLDriverActivity.this, "拍照权限获取失败，请检查权限管理授权。", Toast.LENGTH_LONG).show();
-    }
 
-    @Override
-    public void doSuccess() {
-        picCamera();
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -532,4 +527,14 @@ public class BecomeLCLDriverActivity extends BaseActivity implements PermissionU
 
     }
 
+
+    @Override
+    public void doFailed() {
+        Toast.makeText(BecomeLCLDriverActivity.this, "拍照权限获取失败，请检查权限管理授权。", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void doSuccess() {
+        picCamera();
+    }
 }

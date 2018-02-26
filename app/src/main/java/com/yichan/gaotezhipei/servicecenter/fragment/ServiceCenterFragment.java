@@ -8,11 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.changelcai.mothership.network.RequestCall;
+import com.changelcai.mothership.network.builder.PostFormBuilder;
 import com.changelcai.mothership.view.recycler.MSClickableAdapter;
+import com.ckev.chooseimagelibrary.base.img.assist.CommonImageLoader;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.agriculturalservice.activity.AgriculturalServiceActivity;
 import com.yichan.gaotezhipei.base.component.BaseFragment;
+import com.yichan.gaotezhipei.common.activity.CommonWebViewActivity;
+import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
+import com.yichan.gaotezhipei.common.constant.AppConstants;
+import com.yichan.gaotezhipei.common.entity.Result;
 import com.yichan.gaotezhipei.common.util.DrawableUtil;
+import com.yichan.gaotezhipei.common.util.GsonUtil;
 import com.yichan.gaotezhipei.common.view.AutoScrollViewPagerWithIndicator;
 import com.yichan.gaotezhipei.common.view.CategoryAdapter;
 import com.yichan.gaotezhipei.common.view.GridLayoutScrollManager;
@@ -23,14 +31,18 @@ import com.yichan.gaotezhipei.hatchservice.activity.HatchServiceActivity;
 import com.yichan.gaotezhipei.policyadvice.activity.PolicyAdviceActivity;
 import com.yichan.gaotezhipei.productservice.activity.ProductServiceActivity;
 import com.yichan.gaotezhipei.servicecenter.constant.ServiceCenterConstants;
+import com.yichan.gaotezhipei.servicecenter.entity.BannerImageItem;
 import com.yichan.gaotezhipei.servicecenter.entity.CommonCategoryItem;
 import com.yichan.gaotezhipei.servicecenter.view.ServiceCenterCatAdapter;
 import com.yichan.gaotezhipei.trainservice.activity.TrainServiceActivity;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import okhttp3.Call;
+import okhttp3.Response;
 
 /**
  * Created by ckerv on 2018/1/6.
@@ -49,12 +61,52 @@ public class ServiceCenterFragment extends BaseFragment {
 
     private CategoryAdapter mCategoryAdapter;
 
+    private List<BannerImageItem> mBannerImgs = new ArrayList<>();
+
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
-        initAutoScrollViewPager();
+        requestBannerImages();
         initRecyclerViewCategories();
     }
+
+    private void requestBannerImages() {
+        mBannerImgs.clear();
+        RequestCall requestCall = new PostFormBuilder().url(AppConstants.BASE_URL + ServiceCenterConstants.URL_GET_BANNER_IMAGES).build();
+        requestCall.doScene(new TokenSceneCallback<List<BannerImageItem>>(requestCall) {
+
+            @Override
+            public Result<List<BannerImageItem>> parseNetworkResponse(Response response) throws IOException {
+                return GsonUtil.fromJsonArray(response.body().string(), BannerImageItem.class);
+            }
+
+            @Override
+            protected void handleError(String errorMsg, Call call, Exception e) {
+                showToast(errorMsg);
+            }
+
+            @Override
+            protected void handleResponse(Result<List<BannerImageItem>> response) {
+                if(response.getResultCode() == Result.SUCCESS_CODE) {
+                    if(response.getData() != null) {
+                        mBannerImgs.addAll(response.getData());
+                    }
+
+                    if(mBannerImgs.size() != 0) {
+                        initAutoScrollViewPager();
+                    } else {
+                        showToast("暂无首页轮播图数据");
+                    }
+                } else {
+                    showToast(response.getMessage());
+                }
+            }
+
+
+        });
+    }
+
+
 
 
     private void initAutoScrollViewPager() {
@@ -64,20 +116,20 @@ public class ServiceCenterFragment extends BaseFragment {
         Context context = getContext();
         if (context != null) {
             LayoutInflater inflate = LayoutInflater.from(context);
-            for (int i = 0; i < ServiceCenterConstants.BANNER_IMAGES.length; i++) {
+            for (int i = 0; i < mBannerImgs.size(); i++) {
                 View view = inflate.inflate(R.layout.service_center_asvp_layout,
                         null);
                 ImageView imageView = (ImageView) view.findViewById(R.id.service_center_iv_scroll);
-                imageView.setImageResource(ServiceCenterConstants.BANNER_IMAGES[i]);
+                CommonImageLoader.displayImage(mBannerImgs.get(i).getImage(), imageView, CommonImageLoader.DOUBLE_CACHE_OPTIONS);
                 mViewPagerIndicator.addViewToViewPager(imageView);
-                if(i == 1) {
-                    imageView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            startActivity(new Intent(getActivity(), HatchServiceActivity.class));
-                        }
-                    });
-                }
+//                if(i == 1) {
+//                    imageView.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            startActivity(new Intent(getActivity(), HatchServiceActivity.class));
+//                        }
+//                    });
+//                }
             }
         }
 
@@ -146,7 +198,7 @@ public class ServiceCenterFragment extends BaseFragment {
                         getActivity().startActivity(new Intent(getActivity(), AgriculturalServiceActivity.class));
                         break;
                     case 8:
-//                        CommonWebViewProgressActivity.startActivity(getActivity(), "数据中心", "http://120.79.176.228/gaote-web/records_center.html");
+                        CommonWebViewActivity.startActivity(getActivity(), "数据中心", "http://120.79.176.228/gaote-web/records_center.html");
                         break;
                     default:
                         break;

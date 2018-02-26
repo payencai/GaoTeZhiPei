@@ -30,7 +30,6 @@ public class CommonWebViewProgressActivity extends BaseWebViewProgressActivity {
     protected String mUrl;
     protected String mTitle;
 
-    private boolean isFinished = false;
 
     public static void startActivity(Context context, String title, String url) {
         Intent i = new Intent(context, CommonWebViewProgressActivity.class);
@@ -64,8 +63,8 @@ public class CommonWebViewProgressActivity extends BaseWebViewProgressActivity {
     protected void initWebViewSetting(WebSettings settings) {
         super.initWebViewSetting(settings);
         //第三方网页中 如优酷会用到DOMStorage来存储信息,如果不能存储则无法转跳
-        settings.setDomStorageEnabled(true);
         settings.setJavaScriptEnabled(true);
+        settings.setDomStorageEnabled(true);
         //默认Client 留在APP内启动,而不是启动外部浏览器
         getWebView().setWebViewClient(new WebViewClient());
     }
@@ -102,5 +101,6 @@ public class CommonWebViewProgressActivity extends BaseWebViewProgressActivity {
     public void onClickBack() {
         finish();
     }
+
 
 }

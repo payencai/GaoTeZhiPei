@@ -1,5 +1,7 @@
 package com.yichan.gaotezhipei.server.logisticsdriver.fragment;
 
+import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -41,6 +43,18 @@ public class CommonLogisticsDriverOrderFragment extends CommonOrderFragment {
 
     private int mType;
 
+    public CommonLogisticsDriverOrderFragment() {
+
+    }
+
+    @Override
+    protected void init(Bundle savedInstanceState) {
+        super.init(savedInstanceState);
+        mStartPageNum = 1;
+        mSize = 15;
+    }
+
+    @SuppressLint({"NewApi", "ValidFragment"})
     public CommonLogisticsDriverOrderFragment(int type) {
         mType = type;
     }
@@ -53,21 +67,21 @@ public class CommonLogisticsDriverOrderFragment extends CommonOrderFragment {
             public void onClick(View v, int pos, final LogisticsDriverOrderItem model) {
                 switch (v.getId()) {
                     case R.id.item_btn_bottom:
-                        if(model.getStatus() == LogisticsDriverConstants.TYPE_TO_CONFIRM) {
+                        if (Integer.valueOf(model.getDriverStatus()) == LogisticsDriverConstants.TYPE_TO_CONFIRM) {
                             DialogHelper.showConfirmDailog(getFragmentManager(), "您确认收货吗？", new IDialogResultListener<Integer>() {
                                 @Override
                                 public void onDataResult(Integer result) {
-                                    if(result == -1) {
-                                        confirmExpress(model.getNetworkId());
+                                    if (result == -1) {
+                                        confirmExpress(model.getNetworkId(), model.getUpdateTime());
                                     }
                                 }
                             });
-                        } else if(model.getStatus() == LogisticsDriverConstants.TYPE_TO_DELEVER) {
+                        } else if (Integer.valueOf(model.getDriverStatus()) == LogisticsDriverConstants.TYPE_TO_DELEVER) {
                             DialogHelper.showConfirmDailog(getFragmentManager(), "您确认送达吗？", new IDialogResultListener<Integer>() {
                                 @Override
                                 public void onDataResult(Integer result) {
-                                    if(result == -1) {
-                                        deliverExpress(model.getNetworkId());
+                                    if (result == -1) {
+                                        deliverExpress(model.getNetworkId(), model.getUpdateTime());
                                     }
                                 }
                             });
@@ -79,10 +93,11 @@ public class CommonLogisticsDriverOrderFragment extends CommonOrderFragment {
         return mAdapter;
     }
 
-    private void confirmExpress(String networkId) {
+    private void confirmExpress(String networkId, String updateTime) {
         RequestCall call = new PostFormBuilder()
                 .url(AppConstants.BASE_URL + LogisticsDriverConstants.URL_CONFIRM_ORDER)
                 .addParams("networkId", networkId)
+                .addParams("confirmTime", updateTime)
                 .build();
         call.doScene(new TokenSceneCallback(call) {
             @Override
@@ -92,9 +107,9 @@ public class CommonLogisticsDriverOrderFragment extends CommonOrderFragment {
 
             @Override
             protected void handleResponse(Result response) {
-                if(response.getResultCode() == Result.SUCCESS_CODE) {
+                if (response.getResultCode() == Result.SUCCESS_CODE) {
                     showToast("确认收货成功");
-                    getDataList(1,true);
+                    getDataList(1, true);
                 } else {
                     showToast(response.getMessage());
                 }
@@ -104,10 +119,11 @@ public class CommonLogisticsDriverOrderFragment extends CommonOrderFragment {
         });
     }
 
-    private void deliverExpress(String networkId) {
+    private void deliverExpress(String networkId, String updateTime) {
         RequestCall call = new PostFormBuilder()
                 .url(AppConstants.BASE_URL + LogisticsDriverConstants.URL_DILIVER)
                 .addParams("networkId", networkId)
+                .addParams("pickTime", updateTime)
                 .build();
         call.doScene(new TokenSceneCallback(call) {
             @Override
@@ -117,9 +133,9 @@ public class CommonLogisticsDriverOrderFragment extends CommonOrderFragment {
 
             @Override
             protected void handleResponse(Result response) {
-                if(response.getResultCode() == Result.SUCCESS_CODE) {
+                if (response.getResultCode() == Result.SUCCESS_CODE) {
                     showToast("确认送达成功");
-                    getDataList(1,true);
+                    getDataList(1, true);
                 } else {
                     showToast(response.getMessage());
                 }
@@ -131,34 +147,31 @@ public class CommonLogisticsDriverOrderFragment extends CommonOrderFragment {
 
     @Override
     protected void doLoreMore(int currentPage, int size) {
-
+        getDataList(currentPage, false);
     }
 
     @Override
     protected void doRefresh(int currentPage, int size) {
         getDataList(currentPage, true);
-        doLoadMoreFinish(0);
     }
 
 
     public void getDataList(int currentPage, final boolean isRefresh) {
-        if(isRefresh) {
+        if (isRefresh) {
             mBeanList.clear();
         }
-        String url = null;
+        String url = AppConstants.BASE_URL + LogisticsDriverConstants.URL_GET_MY_ORDER;
 
-        if(mType == LogisticsDriverConstants.TYPE_FINISHED) {//已完成
-            url = AppConstants.BASE_URL + LogisticsDriverConstants.URL_GET_MY_FINISHED_ORDER;
-        } else {
-            url = AppConstants.BASE_URL + LogisticsDriverConstants.URL_GET_MY_ORDER;
-            if(mType != LogisticsDriverConstants.TYPE_ALL) {
-                Map<String,String> params = new HashMap<>();
-                params.put("status", String.valueOf(mType));
-                url = UrlUtil.formTotalUrl(url, params);
-            }
+        Map<String, String> params = new HashMap<>();
+        params.put("pageNum", String.valueOf(currentPage));
+
+        if (mType != LogisticsDriverConstants.TYPE_ALL) {
+            params.put("status", String.valueOf(mType));
         }
 
-        GetRequest getRequest = new GetRequest(url, null,null,null);
+        url = UrlUtil.formTotalUrl(url, params);
+
+        GetRequest getRequest = new GetRequest(url, null, null, null);
 
         RequestCall call = getRequest.build();
 
@@ -178,18 +191,17 @@ public class CommonLogisticsDriverOrderFragment extends CommonOrderFragment {
             }
 
 
-
             @Override
             protected void handleResponse(Result<List<LogisticsDriverOrderItem>> response) {
-                if(response.getResultCode() == Result.SUCCESS_CODE) {
+                if (response.getResultCode() == Result.SUCCESS_CODE) {
 
                     //如果获取到的数据不为空，则直接添加进当前数据
-                    if(response.getData() != null) {
+                    if (response.getData() != null) {
                         mBeanList.addAll(response.getData());
                     }
 
                     //判断当前数据
-                    if(mBeanList.size() != 0) {
+                    if (mBeanList.size() != 0) {
                         toggleNoDataView(false);
                         mAdapter.notifyDataSetChanged();
                     } else {
@@ -198,8 +210,10 @@ public class CommonLogisticsDriverOrderFragment extends CommonOrderFragment {
                     }
 
                     //后续操作
-                    if(isRefresh) {
+                    if (isRefresh) {
                         doRefreshFinish(response.getData().size());
+                    } else {
+                        doLoadMoreFinish(response.getData().size());
                     }
 
                 } else {

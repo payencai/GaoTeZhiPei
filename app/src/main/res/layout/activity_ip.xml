@@ -5,427 +5,427 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-    <include
-        android:id="@+id/ip_titlebar"
-        layout="@layout/part_titlebar_only_back"></include>
+    <!--<include-->
+        <!--android:id="@+id/ip_titlebar"-->
+        <!--layout="@layout/part_titlebar_only_back"></include>-->
 
-    <Button
-        android:id="@+id/ip_btn_commission"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/btn_color_blue"
-        android:layout_alignParentBottom="true"
-        android:textSize="14sp"
-        android:textColor="@color/white"
-        android:text="我要代办"/>
+    <!--<Button-->
+        <!--android:id="@+id/ip_btn_commission"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/btn_color_blue"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:textSize="14sp"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:text="我要代办"/>-->
 
-    <ScrollView
-        android:layout_below="@id/ip_titlebar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<ScrollView-->
+        <!--android:layout_below="@id/ip_titlebar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="118dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/ep_banner3" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
 
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        android:orientation="vertical">
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="118dp"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:src="@drawable/ep_banner3" />-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="INTELLECTUAL PROPERTY"
-                            android:textColor="#999999"
-                            android:textSize="11sp" />
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:orientation="vertical">-->
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="3dp"
-                            android:layout_marginTop="6dp"
-                            android:background="@color/divider_gray"></View>
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:gravity="center"
-                    android:text="知识产权服务"
-                    android:textColor="@color/text_black_color"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:lineSpacingExtra="4dp"
-                    android:text="专注于知识产权全产业链服务以“细致入微，体贴入心”为服务理念，专业高效且低价的为中小微企业提供知识产权产业链服务，服务范围涉及国内商标注册、国际商标注册、国内专利申请、国际专利申请、作品版权登记、计算机软件著作权登记、法律维权、知识产权运营、质押、融资、诉讼等知识产权产业链服务。通过改良式创新，以便捷、极简、人性化的专业服务解决客户知识产权问题。"
-                    android:textColor="@color/text_black_color"
-                    android:textSize="12sp" />
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical">-->
 
 
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:background="@color/divider_gray"></View>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="OUR SERVICE"
-                            android:textColor="#999999"
-                            android:textSize="11sp" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="3dp"
-                            android:layout_marginTop="6dp"
-                            android:background="@color/divider_gray"></View>
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:gravity="center"
-                    android:text="我们的服务"
-                    android:textColor="@color/text_black_color"
-                    android:textSize="15sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal"
-                    android:gravity="center">
-
-                    <!--<RelativeLayout-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:layout_marginLeft="18dp"-->
-                        <!--android:background="@drawable/ip_round">-->
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center_horizontal"-->
+                        <!--android:layout_marginTop="20dp"-->
+                        <!--android:orientation="vertical">-->
 
                         <!--<TextView-->
                             <!--android:layout_width="wrap_content"-->
                             <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_centerInParent="true"-->
-                            <!--android:text="    商标\n基础业务"-->
-                            <!--android:textColor="@color/white"-->
-                            <!--android:textSize="12sp" />-->
-                    <!--</RelativeLayout>-->
+                            <!--android:layout_gravity="center_horizontal"-->
+                            <!--android:text="INTELLECTUAL PROPERTY"-->
+                            <!--android:textColor="#999999"-->
+                            <!--android:textSize="11sp" />-->
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:layout_marginLeft="18dp"
-                        android:src="@drawable/ip_brand"/>
+                        <!--<View-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="3dp"-->
+                            <!--android:layout_marginTop="6dp"-->
+                            <!--android:background="@color/divider_gray"></View>-->
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:layout_marginLeft="18dp"
-                        android:src="@drawable/ip_ip"/>
+                    <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:layout_marginLeft="18dp"
-                        android:src="@drawable/ip_base"/>
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:layout_marginLeft="18dp"
-                        android:layout_marginRight="18dp"
-                        android:src="@drawable/ip_other"/>
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="6dp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="知识产权服务"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:textSize="15sp" />-->
 
-                    <!--<RelativeLayout-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:layout_marginLeft="18dp"-->
-                        <!--android:background="@drawable/ip_round">-->
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:paddingLeft="20dp"-->
+                    <!--android:paddingRight="20dp"-->
+                    <!--android:lineSpacingExtra="4dp"-->
+                    <!--android:text="专注于知识产权全产业链服务以“细致入微，体贴入心”为服务理念，专业高效且低价的为中小微企业提供知识产权产业链服务，服务范围涉及国内商标注册、国际商标注册、国内专利申请、国际专利申请、作品版权登记、计算机软件著作权登记、法律维权、知识产权运营、质押、融资、诉讼等知识产权产业链服务。通过改良式创新，以便捷、极简、人性化的专业服务解决客户知识产权问题。"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:textSize="12sp" />-->
+
+
+            <!--</LinearLayout>-->
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="8dp"-->
+                <!--android:background="@color/divider_gray"></View>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical">-->
+
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center_horizontal"-->
+                        <!--android:layout_marginTop="10dp"-->
+                        <!--android:orientation="vertical">-->
 
                         <!--<TextView-->
                             <!--android:layout_width="wrap_content"-->
                             <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_centerInParent="true"-->
-                            <!--android:text="    专利\n基础业务"-->
-                            <!--android:textColor="@color/white"-->
-                            <!--android:textSize="12sp" />-->
+                            <!--android:layout_gravity="center_horizontal"-->
+                            <!--android:text="OUR SERVICE"-->
+                            <!--android:textColor="#999999"-->
+                            <!--android:textSize="11sp" />-->
 
-                    <!--</RelativeLayout>-->
+                        <!--<View-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="3dp"-->
+                            <!--android:layout_marginTop="6dp"-->
+                            <!--android:background="@color/divider_gray"></View>-->
 
-                    <!--<RelativeLayout-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_weight="1"-->
+                    <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="6dp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="我们的服务"-->
+                    <!--android:textColor="@color/text_black_color"-->
+                    <!--android:textSize="15sp" />-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="75dp"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:gravity="center">-->
+
+                    <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginLeft="18dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@drawable/ip_round">&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_centerInParent="true"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:text="    商标\n基础业务"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:textColor="@color/white"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:textSize="12sp" />&ndash;&gt;-->
+                    <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:adjustViewBounds="true"-->
                         <!--android:layout_marginLeft="18dp"-->
-                        <!--android:background="@drawable/ip_round">-->
+                        <!--android:src="@drawable/ip_brand"/>-->
 
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_centerInParent="true"-->
-                            <!--android:text="    版权\n基础业务"-->
-                            <!--android:textColor="@color/white"-->
-                            <!--android:textSize="12sp" />-->
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:adjustViewBounds="true"-->
+                        <!--android:layout_marginLeft="18dp"-->
+                        <!--android:src="@drawable/ip_ip"/>-->
 
-                    <!--</RelativeLayout>-->
-
-                    <!--<RelativeLayout-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_weight="1"-->
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:adjustViewBounds="true"-->
+                        <!--android:layout_marginLeft="18dp"-->
+                        <!--android:src="@drawable/ip_base"/>-->
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:adjustViewBounds="true"-->
                         <!--android:layout_marginLeft="18dp"-->
                         <!--android:layout_marginRight="18dp"-->
-                        <!--android:background="@drawable/ip_round">-->
+                        <!--android:src="@drawable/ip_other"/>-->
 
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_centerInParent="true"-->
-                            <!--android:text="其他业务"-->
-                            <!--android:textColor="@color/white"-->
-                            <!--android:textSize="12sp" />-->
+                    <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginLeft="18dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@drawable/ip_round">&ndash;&gt;-->
 
-                    <!--</RelativeLayout>-->
-                </LinearLayout>
+                        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_centerInParent="true"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:text="    专利\n基础业务"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:textColor="@color/white"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:textSize="12sp" />&ndash;&gt;-->
 
+                    <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
 
-            </LinearLayout>
+                    <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginLeft="18dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@drawable/ip_round">&ndash;&gt;-->
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:background="@color/divider_gray"></View>
+                        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_centerInParent="true"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:text="    版权\n基础业务"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:textColor="@color/white"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:textSize="12sp" />&ndash;&gt;-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:orientation="vertical">
+                    <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                    <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginLeft="18dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginRight="18dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@drawable/ip_round">&ndash;&gt;-->
 
+                        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_centerInParent="true"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:text="其他业务"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:textColor="@color/white"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:textSize="12sp" />&ndash;&gt;-->
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="REGISTRATION PROCESS"
-                        android:textColor="#999999"
-                        android:textSize="11sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="3dp"
-                        android:layout_marginTop="6dp"
-                        android:background="@color/divider_gray"></View>
-
-                </LinearLayout>
-                </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:background="@color/white"
-                android:layout_marginTop="6dp"
-                android:text="商标注册流程"
-                android:textColor="@color/text_black_color"
-                android:textSize="15sp" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ip_trademarkregistration"
-                android:scaleType="fitXY"
-                android:background="@color/white"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:adjustViewBounds="true"/>
-
-        </LinearLayout>
+                    <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
+                <!--</LinearLayout>-->
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:background="@color/divider_gray"></View>
+            <!--</LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="8dp"-->
+                <!--android:background="@color/divider_gray"></View>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@color/white"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:orientation="vertical">-->
 
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:orientation="vertical">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="REFERENCE DESCRIPTION"
-                        android:textColor="#999999"
-                        android:textSize="11sp" />
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center_horizontal"-->
+                        <!--android:text="REGISTRATION PROCESS"-->
+                        <!--android:textColor="#999999"-->
+                        <!--android:textSize="11sp" />-->
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="3dp"
-                        android:layout_marginTop="6dp"
-                        android:background="@color/divider_gray"></View>
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="3dp"-->
+                        <!--android:layout_marginTop="6dp"-->
+                        <!--android:background="@color/divider_gray"></View>-->
 
-                </LinearLayout>
-            </LinearLayout>
+                <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:gravity="center"
-                android:text="参照说明"
-                android:textColor="@color/text_black_color"
-                android:textSize="15sp" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:background="@color/white"-->
+                <!--android:layout_marginTop="6dp"-->
+                <!--android:text="商标注册流程"-->
+                <!--android:textColor="@color/text_black_color"-->
+                <!--android:textSize="15sp" />-->
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/ip_image1"/>
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/ip_trademarkregistration"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:background="@color/white"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:adjustViewBounds="true"/>-->
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/ip_image2"/>
+        <!--</LinearLayout>-->
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/ip_image3"/>
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/ip_image4"/>
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="8dp"-->
+                <!--android:background="@color/divider_gray"></View>-->
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/ip_image5"/>
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:orientation="vertical">-->
 
-        </LinearLayout>
-        </LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
 
-    </ScrollView>
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center_horizontal"-->
+                        <!--android:text="REFERENCE DESCRIPTION"-->
+                        <!--android:textColor="#999999"-->
+                        <!--android:textSize="11sp" />-->
+
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="3dp"-->
+                        <!--android:layout_marginTop="6dp"-->
+                        <!--android:background="@color/divider_gray"></View>-->
+
+                <!--</LinearLayout>-->
+            <!--</LinearLayout>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="6dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="参照说明"-->
+                <!--android:textColor="@color/text_black_color"-->
+                <!--android:textSize="15sp" />-->
+<!--&lt;!&ndash;&ndash;&gt;-->
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:adjustViewBounds="true"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:src="@drawable/ip_image1"/>-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:adjustViewBounds="true"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:src="@drawable/ip_image2"/>-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:adjustViewBounds="true"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:src="@drawable/ip_image3"/>-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:adjustViewBounds="true"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:src="@drawable/ip_image4"/>-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:adjustViewBounds="true"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:src="@drawable/ip_image5"/>-->
+
+        <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+
+    <!--</ScrollView>-->
 
 </RelativeLayout>

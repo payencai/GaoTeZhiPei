@@ -86,7 +86,15 @@ public class CommonWebViewActivity extends BaseWebViewActivity {
 
     @OnClick(R.id.titlebar_btn_left)
     public void onClickBack() {
-        finish();
+        onBackPressed();
     }
 
+    @Override
+    public void onBackPressed() {
+        if(getWebView().canGoBack()) {
+            getWebView().goBack();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }
