@@ -45,7 +45,7 @@ public class ChooseAddressWebActivity extends AppCompatActivity implements Permi
     private TextView mTvTitle;
 
 
-    private String mUrl = "http://www.huanlechuangke.com/shop/location";
+    private String mUrl = "http://120.79.176.228/gaote-web/map/index.html";
 
     private String mPoiName;
     private String mPoiAddress;
