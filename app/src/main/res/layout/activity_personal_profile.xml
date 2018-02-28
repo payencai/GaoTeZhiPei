@@ -42,7 +42,7 @@
             android:id="@+id/imgPerson"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/train_image1"
+            android:src="@drawable/defaulthead"
             android:layout_toLeftOf="@id/imgEnter"
             android:layout_marginLeft="@dimen/margin_20dp"
             />

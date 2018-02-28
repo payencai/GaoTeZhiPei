@@ -88,6 +88,11 @@ public class TrainCourseDetailActivity extends BaseActivity {
     }
 
     protected void initData() {
+        if(mCourseIntroductionPos != null)
+            mCourseIntroductionPos.clear();
+        if(mListCourseChapterPos != null)
+            mListCourseChapterPos.clear();
+
         if(Constans.DEMO_MODE) {
             // introduction
             List<CourseIntroductionPo> courseIntroductionPos = new ArrayList<>();

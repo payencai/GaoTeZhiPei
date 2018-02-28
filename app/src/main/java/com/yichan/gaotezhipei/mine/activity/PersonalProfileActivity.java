@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.common.util.BottomMenuDialog;
@@ -13,8 +14,6 @@ import com.yichan.gaotezhipei.common.util.BottomMenuDialog;
 import butterknife.BindView;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static com.yichan.gaotezhipei.R.id.imgPerson;
 
 /**
  * Created by Administrator on 2018/2/10 0010.
@@ -122,6 +121,7 @@ public class PersonalProfileActivity extends ProfileActivity {
 
     @Override
     protected void reloadProfile(Bitmap bm) {
+        Toast.makeText(this, ">>>>>>reloadProfile", Toast.LENGTH_SHORT);
         imgPerson.setImageBitmap(bm);
     }
 
