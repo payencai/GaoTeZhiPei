@@ -11,6 +11,22 @@
 
     <include layout="@layout/part_titlebar_only_back_white"/>
 
+        <FrameLayout
+            android:background="@color/text_blue_color"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+            <TextView
+                style="@style/form_title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="20dp"
+                android:textSize="16sp"
+                android:text="UI动效入门知识储备" />
+
+        </FrameLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -20,22 +36,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
-            <FrameLayout
-                android:background="@color/text_blue_color"
-                android:layout_width="match_parent"
-                android:layout_height="80dp">
-                <TextView
-                    style="@style/form_title_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginBottom="20dp"
-                    android:textSize="16sp"
-                    android:text="UI动效入门知识储备" />
-
-            </FrameLayout>
 
 
             <TextView
@@ -68,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingExtra="4dp"
-                    android:text="红河州高特电商职业培训学校是经红河州人力资源和社会保障局批准设立的一所民办职业培训学校，并获得省人社厅《中华人民共和国民办学校办学许可证》。是一所为广大青年、农民百姓、返乡大学生等提供职业指导、技能培训、创业扶持等服务而建的培训机构。"
+                    android:text="随着国际大品牌苹果和谷歌的引领，越来越多的国内公司开始关注动效设计，越来越多的团队已经意识到动效在产品用户体验的重要性，更多的设计师们也开始投身动效设计领域，为什么需要动效设计？本套课程将带领大家了解、学习动效的重要性，使用动效帮我们提升UX，从而使UI界面显得更加一致和真实，并给整个产品带来创新的感觉。"
                     android:textColor="#333333"
                     android:textSize="12sp" />
 

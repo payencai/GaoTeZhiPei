@@ -1,6 +1,9 @@
 package com.yichan.gaotezhipei.trainservice.fragment;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseFragment;
@@ -17,12 +20,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by simon on 2018/2/9 0009.
  */
 
 public class OnlineCourseDetailFragment extends BaseFragment {
+    @BindView(R.id.tvCourseDescribe)
+    TextView mTvCourseDescribe;
+    @BindView(R.id.imgArrow)
+    ImageView mImgArrow;
     @BindView(R.id.course_introduction_listview)
     ListViewForScrollView mIntroductionListView;
     private CourseIntroductionAdapter mCourseIntroductionAdapter;
@@ -87,6 +95,22 @@ public class OnlineCourseDetailFragment extends BaseFragment {
             }
             mCourseIntroductionAdapter.setModuleList(introductionModuleList);
             mCourseIntroductionAdapter.notifyDataSetChanged();
+        }
+    }
+
+    @OnClick({R.id.flArrow, R.id.imgArrow})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.flArrow:
+            case R.id.imgArrow:
+                if(mTvCourseDescribe.getMaxLines() <= 2) {
+                    mTvCourseDescribe.setMaxLines(50);
+                    mImgArrow.setImageResource(R.drawable.arrowup);
+                } else {
+                    mTvCourseDescribe.setMaxLines(2);
+                    mImgArrow.setImageResource(R.drawable.arrowdown);
+                }
+                break;
         }
     }
 }
