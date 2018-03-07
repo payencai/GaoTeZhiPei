@@ -16,7 +16,12 @@ import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
 import com.yichan.gaotezhipei.common.constant.AppConstants;
 import com.yichan.gaotezhipei.common.entity.ContactInformEntity;
 import com.yichan.gaotezhipei.common.entity.Result;
+import com.yichan.gaotezhipei.common.util.EventBus;
 import com.yichan.gaotezhipei.server.netstation.constant.NetStationConstants;
+import com.yichan.gaotezhipei.server.netstation.event.ChooseExpressCompanyEvent;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -31,8 +36,8 @@ public class NewExpressActivity extends BaseActivity {
     @BindView(R.id.titlebar_tv_title)
     TextView mTvTitle;
 
-    @BindView(R.id.new_express_et_company)
-    EditText mEtCompany;
+    @BindView(R.id.new_express_tv_company)
+    TextView mTvCompany;
     @BindView(R.id.new_express_et_number)
     EditText mEtNumber;
     @BindView(R.id.new_express_tv_mail_name_phone)
@@ -58,14 +63,23 @@ public class NewExpressActivity extends BaseActivity {
     private ContactInformEntity mailContactEntity;
     private ContactInformEntity pickContactEntity;
 
+    private String mExpressCompanyId = null;
+
 
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
+        EventBus.getInstance().register(this);
         mTvTitle.setText("新增快件");
     }
 
-    @OnClick({R.id.titlebar_btn_left,R.id.new_express_ll_mail, R.id.new_express_ll_pick,R.id.new_express_btn_apply})
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getInstance().unregister(this);
+    }
+
+    @OnClick({R.id.titlebar_btn_left,R.id.new_express_ll_mail, R.id.new_express_ll_pick,R.id.new_express_btn_apply,R.id.new_express_rl_choose_express_company})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.titlebar_btn_left:
@@ -79,6 +93,10 @@ public class NewExpressActivity extends BaseActivity {
                 break;
             case R.id.new_express_btn_apply:
                 tryToPostForms();
+                break;
+            case R.id.new_express_rl_choose_express_company:
+                startActivity(new Intent(NewExpressActivity.this, ChooseExpressCompanyActivity.class));
+                break;
             default:
                 break;
         }
@@ -114,6 +132,8 @@ public class NewExpressActivity extends BaseActivity {
                 .addParams("goodsMass", mEtCargoWeight.getText().toString())
                 .addParams("goodsSize",mEtCargoVolume.getText().toString())
                 .addParams("goodsQuantity", mEtCargoCount.getText().toString())
+                .addParams("logisticsCompanyId", mExpressCompanyId)
+                .addParams("logisticsCompanyName", mTvCompany.getText().toString())
                 .addParams("paymentMethod", "1").build();
         call.doScene(new TokenSceneCallback(call) {
             @Override
@@ -136,7 +156,8 @@ public class NewExpressActivity extends BaseActivity {
     }
 
     private boolean checkForms() {
-        if(TextUtils.isEmpty(mEtCompany.getText().toString())
+        if(TextUtils.isEmpty(mTvCompany.getText().toString())
+                || mTvCompany.getText().toString().equals("请输入快递公司")
                 || TextUtils.isEmpty(mEtNumber.getText().toString())
                 || TextUtils.isEmpty(mTvMailNamePhone.getText().toString())
                 || TextUtils.isEmpty(mTvMailAddr.getText().toString())
@@ -147,7 +168,8 @@ public class NewExpressActivity extends BaseActivity {
                 || TextUtils.isEmpty(mEtCargoCount.getText().toString())
                 || TextUtils.isEmpty(mEtCargoName.getText().toString())
                 || mailContactEntity == null
-                || pickContactEntity == null) {
+                || pickContactEntity == null
+                || mExpressCompanyId == null) {
             showToast("信息填写不完整，请检查。");
             return false;
         } else {
@@ -191,6 +213,12 @@ public class NewExpressActivity extends BaseActivity {
     private void setPickInformToView() {
         mTvPickNamePhone.setText(pickContactEntity.name + "    " + pickContactEntity.phone);
         mTvPickAddr.setText(pickContactEntity.detail);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiveChooseExpressCompanyEvent(ChooseExpressCompanyEvent event) {
+        mTvCompany.setText(event.companyName);
+        mExpressCompanyId = event.companyId;
     }
 
     @Override

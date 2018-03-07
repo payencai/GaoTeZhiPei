@@ -34,10 +34,10 @@ public class ChooseCarTypeActivity extends BaseActivity {
     @BindView(R.id.tv_volume)
     TextView mTvVolume;
 
-    private String mChooseCarType = "小面包车";
+    private String mChooseCarType = "摩托车";
 
-    private String mChooseCarWeight = "500";
-    private String mChooseCarVolume = "2.6";
+    private String mChooseCarWeight = "200";
+    private String mChooseCarVolume = "0.8";
 
 
     @Override
@@ -55,6 +55,30 @@ public class ChooseCarTypeActivity extends BaseActivity {
             public void onSegmentControlClick(int index) {
                 switch (index) {
                     case 0:
+                        mTvWeight.setText("200公斤");
+                        mTvSize.setText("1.9*0.8*1.1米");
+                        mTvVolume.setText("0.8方");
+                        mChooseCarType = "摩托车";
+                        mChooseCarWeight = "200";
+                        mChooseCarVolume = "0.8";
+                        break;
+                    case 1:
+                        mTvWeight.setText("450公斤");
+                        mTvSize.setText("3.5*1.5*1.5米");
+                        mTvVolume.setText("1.6方");
+                        mChooseCarType = "小轿车";
+                        mChooseCarWeight = "450";
+                        mChooseCarVolume = "1.6";
+                        break;
+                    case 2:
+                        mTvWeight.setText("370公斤");
+                        mTvSize.setText("3.5*1.2*1.8米");
+                        mTvVolume.setText("5.8方");
+                        mChooseCarType = "三轮车";
+                        mChooseCarWeight = "370";
+                        mChooseCarVolume = "5.8";
+                        break;
+                    case 3:
                         mTvWeight.setText("500公斤");
                         mTvSize.setText("1.8*1.3*1.1米");
                         mTvVolume.setText("2.6方");
@@ -62,7 +86,7 @@ public class ChooseCarTypeActivity extends BaseActivity {
                         mChooseCarWeight = "500";
                         mChooseCarVolume = "2.6";
                         break;
-                    case 1:
+                    case 4:
                         mTvWeight.setText("1吨");
                         mTvSize.setText("2.7*1.4*1.2米");
                         mTvVolume.setText("4.5方");
@@ -70,7 +94,7 @@ public class ChooseCarTypeActivity extends BaseActivity {
                         mChooseCarWeight = "1000";
                         mChooseCarVolume = "4.5";
                         break;
-                    case 2:
+                    case 5:
                         mTvWeight.setText("1吨");
                         mTvSize.setText("2.7*1.5*1.7米");
                         mTvVolume.setText("6.9方");
@@ -78,7 +102,7 @@ public class ChooseCarTypeActivity extends BaseActivity {
                         mChooseCarWeight = "1000";
                         mChooseCarVolume = "6.9";
                         break;
-                    case 3:
+                    case 6:
                         mTvWeight.setText("1.8吨");
                         mTvSize.setText("4.2*1.8*1.8米");
                         mTvVolume.setText("13.6方");

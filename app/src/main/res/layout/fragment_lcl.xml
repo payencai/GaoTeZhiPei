@@ -16,7 +16,7 @@
             android:orientation="vertical">
 
 
-            <com.flyco.tablayout.CommonTabLayout
+            <com.flyco.tablayout.SlidingTabLayout
                 android:id="@+id/lcl_detail_tablayout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"

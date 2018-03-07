@@ -43,7 +43,7 @@ public class ExpressToConfirmAdapter extends MSClickableAdapter<ExpressToConfirm
     public void onBindVH(ExpressToConfirmViewHolder holder, final int position) {
         holder.tvDriverName.setText(mList.get(position).getDriverName());
         holder.tvCount.setText("揽货件数:" + mList.get(position).getCount() + "件");
-        holder.tvTime.setText("装车时间:" + mList.get(position).getTakeorderTime());
+        holder.tvTime.setText("揽货时间:" + mList.get(position).getTakeorderTime());
         holder.rlConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

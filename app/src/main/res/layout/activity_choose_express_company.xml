@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/part_titlebar_only_back"></include>
+
+    <cn.ittiger.indexlist.IndexStickyView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/indexStickyView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:sideBarBackgroundColor="@android:color/transparent"
+        app:sideBarFocusBackgroundColor="@android:color/holo_red_dark"
+        app:sideBarFocusTextColor="@android:color/white"
+        app:sideBarTextColor="@android:color/black"
+        app:sideBarTextSize="16sp"
+        app:sideBarTextSpace="4dp"
+        app:sideBarWidth="24dp"/>
+
+
+</LinearLayout>

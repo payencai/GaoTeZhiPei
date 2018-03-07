@@ -45,23 +45,37 @@ public class VentureApplyActivity extends BaseActivity {
     CheckBox mCbAgree;
 
 
-    private String url = "/demander/freeLoan/apply";
+    private String url;
+
 
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
+        initVariables();
         initTitleBar();
+    }
+
+    private void initVariables() {
+        int index = getIntent().getIntExtra("currentIndex", 0);
+        if (index == 0) {
+            url = "/demander/freeLoan/apply";
+        } else if (index == 1) {
+            url = "/demander/pettyLoan/apply";
+        } else if(index == 2) {
+            url = "/demander/ventureLoan/apply";
+        }
     }
 
     private void initTitleBar() {
         mTvTitle.setText("填写相关信息");
     }
+
     @Override
     protected int getContentViewId() {
         return R.layout.activity_venture_apply;
     }
 
-    @OnClick({R.id.titlebar_btn_left,R.id.apply_btn_commit})
+    @OnClick({R.id.titlebar_btn_left, R.id.apply_btn_commit})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.titlebar_btn_left:
@@ -76,7 +90,7 @@ public class VentureApplyActivity extends BaseActivity {
     }
 
     private void commit() {
-        if(!checkForms()) {
+        if (!checkForms()) {
             return;
         }
         RequestCall call = new PostFormBuilder()
@@ -93,7 +107,7 @@ public class VentureApplyActivity extends BaseActivity {
 
             @Override
             protected void handleResponse(Result response) {
-                if(response.getResultCode() == Result.SUCCESS_CODE) {
+                if (response.getResultCode() == Result.SUCCESS_CODE) {
                     showToast("申请成功，请等待审核。");
                     finish();
                 } else {
@@ -105,16 +119,16 @@ public class VentureApplyActivity extends BaseActivity {
     }
 
     private boolean checkForms() {
-        if(TextUtils.isEmpty(mEtName.getText().toString())
+        if (TextUtils.isEmpty(mEtName.getText().toString())
                 || TextUtils.isEmpty(mEtPhone.getText().toString())
                 || TextUtils.isEmpty(mEtIdCard.getText().toString())
                 || TextUtils.isEmpty(mEtAddr.getText().toString())) {
             showToast("信息填写不完整，请检查。");
             return false;
-        } else if(!PhoneUtil.isPhoneNumber(mEtPhone.getText().toString())) {
+        } else if (!PhoneUtil.isPhoneNumber(mEtPhone.getText().toString())) {
             showToast("请填写正确格式的手机号");
             return false;
-        } else if(!mCbAgree.isChecked()) {
+        } else if (!mCbAgree.isChecked()) {
             showToast("您尚未同意《创投贷款协议》");
             return false;
         } else {

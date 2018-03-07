@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.changelcai.mothership.component.fragment.dialog.IDialogResultListener;
@@ -59,6 +60,9 @@ public class NetDetailActivity extends BaseListActivity{
 
     @BindView(R.id.net_detail_tv_cargo_count)
     TextView mTvCount;
+
+    @BindView(R.id.net_detail_rl_bottom)
+    RelativeLayout mRlBottom;
 
     private View mViewNodata;
 
@@ -294,9 +298,11 @@ public class NetDetailActivity extends BaseListActivity{
         if(isShow) {
             mViewNodata.setVisibility(View.VISIBLE);
             mMultiLayout.setVisibility(View.GONE);
+            mRlBottom.setVisibility(View.GONE);
         } else {
             mViewNodata.setVisibility(View.GONE);
             mMultiLayout.setVisibility(View.VISIBLE);
+            mRlBottom.setVisibility(View.VISIBLE);
         }
     }
 

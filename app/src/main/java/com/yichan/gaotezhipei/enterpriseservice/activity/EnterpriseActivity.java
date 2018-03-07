@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseActivity;
-import com.yichan.gaotezhipei.common.activity.CommonWebViewActivity;
 import com.yichan.gaotezhipei.common.view.AutoScrollViewPagerWithIndicator;
 import com.yichan.gaotezhipei.enterpriseservice.constant.EnterpriseConstants;
 
@@ -76,7 +75,7 @@ public class EnterpriseActivity extends BaseActivity {
                 break;
             case R.id.ep_cat_ll_ip:
 //                startActivity(new Intent(EnterpriseActivity.this, IpAcvitiy.class));
-                CommonWebViewActivity.startActivity(EnterpriseActivity.this, "知识产权","http://120.79.176.228/gaote-web/intellectual_property.html");
+                IpAcvitiy.startActivity(EnterpriseActivity.this, "http://120.79.176.228/gaote-web/intellectual_property.html");
                 break;
             default:
                 break;

@@ -99,7 +99,11 @@ public class MineFragment extends BaseFragment {
                 getActivity().startActivity(new Intent(getActivity(), SettingActivity.class));
                 break;
             case R.id.mine_rl_become_lcl_driver:
-                getActivity().startActivity(new Intent(getActivity(), BecomeLCLDriverActivity.class));
+                if(checkIsLCLDriver()) {
+                    showToast("您已经是拼货司机");
+                } else {
+                    getActivity().startActivity(new Intent(getActivity(), BecomeLCLDriverActivity.class));
+                }
                 break;
             case R.id.mine_rl_my_message:
                 getActivity().startActivity(new Intent(getActivity(), MyMessageActivity.class));
@@ -119,6 +123,10 @@ public class MineFragment extends BaseFragment {
             default:
                 break;
         }
+    }
+
+    private boolean checkIsLCLDriver() {
+        return UserManager.getInstance(getActivity()).getType() == 3 || UserManager.getInstance(getActivity()).getType() == 6;
     }
 
     private void showChangeRoleDialog() {

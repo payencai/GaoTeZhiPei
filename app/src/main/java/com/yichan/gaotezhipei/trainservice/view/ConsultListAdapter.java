@@ -8,9 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ckev.chooseimagelibrary.base.img.assist.CommonImageLoader;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.view.BaseRecyclerListAdapter;
-import com.yichan.gaotezhipei.trainservice.entity.ConsultItem;
+import com.yichan.gaotezhipei.trainservice.entity.ConsultPage;
 
 import java.util.List;
 
@@ -18,21 +19,18 @@ import java.util.List;
  * Created by ckerv on 2018/1/7.
  */
 
-public class ConsultListAdapter extends BaseRecyclerListAdapter<ConsultItem, ConsultListAdapter.ConsultListViewHolder> {
+public class ConsultListAdapter extends BaseRecyclerListAdapter<ConsultPage.BeanListBean, ConsultListAdapter.ConsultListViewHolder> {
 
 
-    public ConsultListAdapter(Context context, List<ConsultItem> items) {
+    public ConsultListAdapter(Context context, List<ConsultPage.BeanListBean> items) {
         super(context, items);
     }
 
     @Override
     public void onBindVH(ConsultListViewHolder holder, int position) {
-//        holder.iconIv.setImageResource();
-//        ConsultItem consultItem = mItems.get(position);
-//        holder.iconIv.setImageResource(R.mipmap.ic_launcher);
-//        holder.titleTv.setText(consultItem.getTitle());
-//        holder.descTv.setText(consultItem.getDesc());
-
+        CommonImageLoader.displayImage(mItems.get(position).getImage(), holder.iconIv, CommonImageLoader.NO_CACHE_OPTIONS);
+        holder.titleTv.setText(mItems.get(position).getTitle());
+        holder.descTv.setText(mItems.get(position).getContent());
     }
 
     @Override

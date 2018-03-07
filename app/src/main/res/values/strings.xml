@@ -27,7 +27,7 @@
 
     <string-array name="logistics_cat_title">
         <item>订单物流</item>
-        <item>我要寄件</item>
+        <item>快递物流</item>
         <item>拼货订单</item>
         <item>物流订单</item>
         <item>违禁物品</item>

@@ -37,6 +37,8 @@ public class FinaceServiceActivity extends BaseActivity {
 
     private List<ViewGroup> mContents;
 
+    private int mCurrentIndex;
+
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
@@ -51,6 +53,7 @@ public class FinaceServiceActivity extends BaseActivity {
         mContents.add(mVgAssure);
         mContents.add(mVgVenture);
         mCurrentVg = mVgLoan;
+        mCurrentIndex = 0;
     }
 
     private void initTitleBar() {
@@ -78,7 +81,9 @@ public class FinaceServiceActivity extends BaseActivity {
                 switchContent(2);
                 break;
             case R.id.finace_btn_apply:
-                startActivity(new Intent(FinaceServiceActivity.this, VentureApplyActivity.class));
+                Intent intent = new Intent(FinaceServiceActivity.this, VentureApplyActivity.class);
+                intent.putExtra("currentIndex", mCurrentIndex);
+                startActivity(intent);
                 break;
             default:
                 break;
@@ -86,6 +91,7 @@ public class FinaceServiceActivity extends BaseActivity {
     }
 
     private void switchContent(int index) {
+        mCurrentIndex = index;
         ViewGroup vg = mContents.get(index);
         if(vg == mCurrentVg) {
             return;

@@ -124,9 +124,9 @@ public class LCLOrderAdapter extends MSClickableAdapter<LCLOrderAdapter.LCLOrder
             if (type == LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO) {//待接货
                 holder.rlBottom.setVisibility(View.VISIBLE);
             } else if (type == LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO) {//待收货
-                holder.rlBottom.setVisibility(View.VISIBLE);
-                holder.btnRight.setVisibility(View.GONE);
-                holder.btnLeft.setText("查看物流");
+                holder.rlBottom.setVisibility(View.GONE);
+//                holder.btnRight.setVisibility(View.GONE);
+//                holder.btnLeft.setText("查看物流");
             } else if (type == LogisticsContants.TYPE_LCL_ORDER_TO_CONFIRM) {//待签收
                 holder.rlBottom.setVisibility(View.VISIBLE);
                 holder.btnLeft.setVisibility(View.GONE);

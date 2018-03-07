@@ -14,6 +14,7 @@ import com.yichan.gaotezhipei.common.view.CategoryAdapter;
 import com.yichan.gaotezhipei.common.view.DividerItemDecoration;
 import com.yichan.gaotezhipei.common.view.GridLayoutScrollManager;
 import com.yichan.gaotezhipei.logistics.activity.ExpressSearchActivity;
+import com.yichan.gaotezhipei.logistics.activity.ForbiddenObjActivity;
 import com.yichan.gaotezhipei.logistics.activity.LCLOrderActivity;
 import com.yichan.gaotezhipei.logistics.activity.LogisticOrderActivity;
 import com.yichan.gaotezhipei.logistics.view.LogisticsCatAdapter;
@@ -75,6 +76,9 @@ public class LogisticsFragment extends BaseFragment {
                        break;
                     case 3:
                         getActivity().startActivity(new Intent(getActivity(), LogisticOrderActivity.class));
+                        break;
+                    case 4:
+                        getActivity().startActivity(new Intent(getActivity(), ForbiddenObjActivity.class));
                         break;
                     default:
                         break;

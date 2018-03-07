@@ -13,20 +13,16 @@ import android.widget.TextView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.changelcai.mothership.network.RequestCall;
 import com.changelcai.mothership.network.builder.PostFormBuilder;
-import com.flyco.tablayout.CommonTabLayout;
-import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseFragment;
-import com.yichan.gaotezhipei.common.activity.EditContactInformActivity;
 import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
 import com.yichan.gaotezhipei.common.constant.AppConstants;
-import com.yichan.gaotezhipei.common.entity.ContactInformEntity;
 import com.yichan.gaotezhipei.common.entity.Result;
 import com.yichan.gaotezhipei.common.util.EventBus;
 import com.yichan.gaotezhipei.common.util.TimeUtil;
 import com.yichan.gaotezhipei.common.view.CommonFragmentPagerAdapter;
-import com.yichan.gaotezhipei.common.view.CommonTabBean;
 import com.yichan.gaotezhipei.lcl.constant.LCLConstants;
 import com.yichan.gaotezhipei.lcl.event.SwitchToNextEvent;
 import com.yichan.gaotezhipei.lcl.event.SwitchToPreEvent;
@@ -57,7 +53,7 @@ public class LCLFragment extends BaseFragment {
     ViewPager mViewPager;
 
     @BindView(R.id.lcl_detail_tablayout)
-    CommonTabLayout mCommonTabLayout;
+    SlidingTabLayout mCommonTabLayout;
 
 
     @BindView(R.id.lcl_detail_tv_mail_name_phone)
@@ -98,11 +94,10 @@ public class LCLFragment extends BaseFragment {
 
     private List<Fragment> mFragments;
 
-    private ArrayList<CustomTabEntity> mTabList;
 
 
-    private AddressItem addressItem = null;
-    private ContactInformEntity contactInformEntity = null;
+    private AddressItem addressMail = null;
+    private AddressItem addressPick = null;
 
 
     @Override
@@ -116,18 +111,11 @@ public class LCLFragment extends BaseFragment {
         EventBus.getInstance().register(this);
 
         initFragmentList();
-        initTabList();
         initViewPager();
         initTabLayout();
     }
 
-    private void initTabList() {
-        mTabList = new ArrayList<>();
-        String[] tabNames = getTabNames();
-        for (int i = 0; i < tabNames.length; i++) {
-            mTabList.add(new CommonTabBean(tabNames[i]));
-        }
-    }
+
 
     private void initViewPager() {
         CommonFragmentPagerAdapter adapter = new CommonFragmentPagerAdapter(getFragmentManager(), mFragments);
@@ -148,11 +136,11 @@ public class LCLFragment extends BaseFragment {
             }
         });
         mViewPager.setCurrentItem(0);
-        mViewPager.setOffscreenPageLimit(mTabList.size());
+        mViewPager.setOffscreenPageLimit(LCLConstants.LCL_TAB_NAMES.length);
     }
 
     private void initTabLayout() {
-        mCommonTabLayout.setTabData(mTabList);
+        mCommonTabLayout.setViewPager(mViewPager, LCLConstants.LCL_TAB_NAMES);
         mCommonTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
@@ -187,12 +175,11 @@ public class LCLFragment extends BaseFragment {
         }
     }
 
-    protected String[] getTabNames() {
-        return new String[]{"小面包车", "中面包车", "小货车", "中货车"};
-    }
-
     protected void initFragmentList() {
         mFragments = new ArrayList<>();
+        mFragments.add(new LCLMotorbikeFragment());
+        mFragments.add(new LCLSedanFragment());
+        mFragments.add(new LCLTricycleFragment());
         mFragments.add(new LCLMiniBusFragment());
         mFragments.add(new LCLMiddleBusFragment());
         mFragments.add(new LCLSmallTrackFragment());
@@ -210,7 +197,7 @@ public class LCLFragment extends BaseFragment {
                 AddressMangeActivity.startActivity(getActivity(), 1);
                 break;
             case R.id.lcl_detail_ll_pick_inform:
-                EditContactInformActivity.startActivity(getActivity(), 1);
+                AddressMangeActivity.startActivity(getActivity(), 2);
                 break;
             case R.id.lcl_detail_btn_apply:
                 tryToPostForms();
@@ -231,13 +218,13 @@ public class LCLFragment extends BaseFragment {
 
     private void postForms() {
         RequestCall call = new PostFormBuilder().url(AppConstants.BASE_URL + LCLConstants.URL_ADD_LCL_ORDER)
-                .addParams("receiverAddressId", addressItem.getId())
-                .addParams("consignee", contactInformEntity.name)
-                .addParams("consigneeTelephone", contactInformEntity.phone)
-                .addParams("consigneeArea", contactInformEntity.district)
-                .addParams("consigneeProvince", contactInformEntity.province)
-                .addParams("consigneeCity", contactInformEntity.city)
-                .addParams("consigneeAddress", contactInformEntity.detail)
+                .addParams("receiverAddressId", addressMail.getId())
+                .addParams("consignee", addressPick.getName())
+                .addParams("consigneeTelephone", addressPick.getTelephone())
+                .addParams("consigneeArea", addressPick.getArea())
+                .addParams("consigneeProvince", addressPick.getProvince())
+                .addParams("consigneeCity", addressPick.getCity())
+                .addParams("consigneeAddress", addressPick.getAddress())
                 .addParams("num", mEtCargoCount.getText().toString())
                 .addParams("weight", mEtCargoWeight.getText().toString())
                 .addParams("volume", mEtCargoVolume.getText().toString())
@@ -245,10 +232,10 @@ public class LCLFragment extends BaseFragment {
                 .addParams("pickupAddress", mEtGetCargoAddr.getText().toString())
                .addParams("anticipantCar", ((LCLBaseDetailFragment)mFragments.get(mViewPager.getCurrentItem())).getTypeStr())
                 .addParams("anticipantTime", mTvGetCargoTime.getText().toString())
-                .addParams("lng1", addressItem.getLng1())
-                .addParams("lat1", addressItem.getLat1())
-                .addParams("lng2", String.valueOf(contactInformEntity.lng))
-                .addParams("lat2", String.valueOf(contactInformEntity.lat)).build();
+                .addParams("lng1", addressMail.getLng1())
+                .addParams("lat1", addressMail.getLat1())
+                .addParams("lng2", String.valueOf(addressPick.getLng1()))
+                .addParams("lat2", String.valueOf(addressPick.getLat1())).build();
         call.doScene(new TokenSceneCallback(call) {
             @Override
             protected void handleError(String errorMsg, Call call, Exception e) {
@@ -282,8 +269,8 @@ public class LCLFragment extends BaseFragment {
         mTvPickNamePhone.setText("收件人    手机号");
         mTvPickAddress.setText("收件地址");
         mEtExtraMsg.setText("");
-        addressItem = null;
-        contactInformEntity = null;
+        addressMail = null;
+        addressPick = null;
     }
 
     private boolean checkForms() {
@@ -293,8 +280,8 @@ public class LCLFragment extends BaseFragment {
                 || TextUtils.isEmpty(mEtCargoName.getText().toString())
                 || TextUtils.isEmpty(mEtGetCargoAddr.getText().toString())
                 || "请选择时间".equals(mTvGetCargoTime.getText().toString())
-                || addressItem == null
-                || contactInformEntity == null) {
+                || addressMail == null
+                || addressPick == null) {
             showToast("信息填写不完整，请检查。");
             return false;
         } else if(!mCbAgree.isChecked()) {
@@ -308,13 +295,15 @@ public class LCLFragment extends BaseFragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onReceiveChooseAddressEvent(ChooseAddressEvent chooseAddressEvent) {
         if(chooseAddressEvent.addressItem != null) {
-            addressItem = chooseAddressEvent.addressItem;
-            mTvMailNamePhone.setText(chooseAddressEvent.addressItem.getName() + "    " + chooseAddressEvent.addressItem.getTelephone());
-            mTvMailAddress.setText(chooseAddressEvent.addressItem.getAddress());
-        } else if(chooseAddressEvent.contactInformEntity != null) {
-            contactInformEntity = chooseAddressEvent.contactInformEntity;
-            mTvPickAddress.setText(chooseAddressEvent.contactInformEntity.detail);
-            mTvPickNamePhone.setText(chooseAddressEvent.contactInformEntity.name + "    " + chooseAddressEvent.contactInformEntity.phone);
+            if(chooseAddressEvent.chooseType == 1) {
+                addressMail = chooseAddressEvent.addressItem;
+                mTvMailNamePhone.setText(chooseAddressEvent.addressItem.getName() + "    " + chooseAddressEvent.addressItem.getTelephone());
+                mTvMailAddress.setText(chooseAddressEvent.addressItem.getAddress());
+            } else if(chooseAddressEvent.chooseType == 2) {
+                addressPick = chooseAddressEvent.addressItem;
+                mTvPickAddress.setText(chooseAddressEvent.addressItem.getName() + "    " + chooseAddressEvent.addressItem.getTelephone());
+                mTvPickNamePhone.setText(chooseAddressEvent.addressItem.getAddress());
+            }
         }
     }
 

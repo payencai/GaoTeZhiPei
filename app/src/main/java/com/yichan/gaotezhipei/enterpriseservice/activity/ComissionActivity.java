@@ -33,8 +33,8 @@ public class ComissionActivity extends BaseActivity {
     @BindView(R.id.titlebar_tv_title)
     TextView mTvTitle;
 
-    @BindView(R.id.commission_et_company)
-    EditText mEtCompany;
+//    @BindView(R.id.commission_et_company)
+//    EditText mEtCompany;
     @BindView(R.id.commission_et_name)
     EditText mEtName;
     @BindView(R.id.commission_et_phone)
@@ -92,11 +92,13 @@ public class ComissionActivity extends BaseActivity {
             url = AppConstants.BASE_URL + EnterpriseConstants.URL_LICENSE_APPLY;
         } else if(mType == 2) {
             url = AppConstants.BASE_URL + EnterpriseConstants.URL_TAXSERVICE_APPLY;
+        } else if(mType == 3) {
+            url = AppConstants.BASE_URL + EnterpriseConstants.URL_IPRIGHT_APPLY;
         }
         RequestCall call = new PostFormBuilder()
                 .url(url)
-                .addParams("xCompany", mEtCompany.getText().toString())
-                .addParams("xTaxpayer",mEtName.getText().toString())
+//                .addParams("xCompany", mEtCompany.getText().toString())
+                .addParams("xPerson",mEtName.getText().toString())
                 .addParams("xTelnum",mEtPhone.getText().toString())
                 .addParams("xEmail", mEtEmail.getText().toString()).build();
         call.doScene(new TokenSceneCallback<String>(call) {
@@ -119,11 +121,8 @@ public class ComissionActivity extends BaseActivity {
     }
 
     private boolean checkFormFormat() {
-        if(TextUtils.isEmpty(mEtCompany.getText().toString())) {
-            showToast("公司名称不能为空");
-            return false;
-        } else if(TextUtils.isEmpty(mEtName.getText().toString())) {
-            showToast("纳税人姓名不能为空");
+        if(TextUtils.isEmpty(mEtName.getText().toString())) {
+            showToast("申请人姓名不能为空");
             return false;
         } else if(TextUtils.isEmpty(mEtPhone.getText().toString())) {
             showToast("手机号码不能为空");

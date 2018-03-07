@@ -162,7 +162,7 @@ public class LCLDriverMainActivity extends BaseListActivity {
                 startActivity(new Intent(LCLDriverMainActivity.this, LCLDriverOrderActivity.class));
                 break;
             case R.id.lcl_driver_iv_driver_inform:
-                startActivity(new Intent(LCLDriverMainActivity.this, DriverInformActivity.class));
+                DriverInformActivity.startActivity(LCLDriverMainActivity.this, DriverInformActivity.START_TYPE_LCL);
                 break;
             case R.id.view_no_data:
                 getDataList(1, true);

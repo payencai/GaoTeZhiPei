@@ -20,6 +20,7 @@ public class GaoteIntroActivity extends BaseActivity {
     @BindView(R.id.titlebar_tv_title)
     TextView mTvTitle;
 
+
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);

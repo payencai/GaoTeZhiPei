@@ -66,7 +66,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:id="@+id/et_contact"
+            android:textSize="16sp"
             android:layout_marginLeft="80dp"
             android:padding="10dp"
             android:background="@drawable/shape_et_gaote_cooperate"/>
@@ -108,10 +109,13 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="16sp"
+            android:id="@+id/et_phone"
             android:layout_marginLeft="80dp"
             android:padding="10dp"
-            android:background="@drawable/shape_et_gaote_cooperate"/>
+            android:background="@drawable/shape_et_gaote_cooperate"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 
@@ -150,7 +154,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:id="@+id/et_goods_type"
+            android:textSize="16sp"
             android:layout_marginLeft="80dp"
             android:padding="10dp"
             android:background="@drawable/shape_et_gaote_cooperate"/>
@@ -192,7 +197,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:id="@+id/et_marketing_mode"
+            android:textSize="16sp"
             android:layout_marginLeft="80dp"
             android:padding="10dp"
             android:background="@drawable/shape_et_gaote_cooperate"/>
@@ -234,7 +240,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:id="@+id/et_sop"
+            android:textSize="16sp"
             android:layout_marginLeft="80dp"
             android:padding="10dp"
             android:background="@drawable/shape_et_gaote_cooperate"/>
@@ -276,7 +283,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:id="@+id/et_express"
+            android:textSize="16sp"
             android:layout_marginLeft="80dp"
             android:padding="10dp"
             android:background="@drawable/shape_et_gaote_cooperate"/>
@@ -289,6 +297,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="13sp"
+        android:id="@+id/btn_commit"
         android:textColor="@color/white"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="17dp"

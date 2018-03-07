@@ -22,6 +22,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/new_express_rl_choose_express_company"
                 android:padding="10dp">
 
                 <TextView
@@ -42,18 +43,25 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"/>
 
-                <EditText
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:id="@+id/new_express_et_company"
+                    android:id="@+id/new_express_tv_company"
                     android:layout_toRightOf="@id/tv_tag1"
                     android:layout_marginRight="15dp"
-                    android:hint="请输入快递公司"
+                    android:text="请输入快递公司"
                     android:textColorHint="#999999"
                     android:textSize="14sp"
                     android:background="@null"
-                    android:textColor="@color/text_black_color"/>
+                    android:textColor="#999999"/>
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/arrowright"/>
 
             </RelativeLayout>
 

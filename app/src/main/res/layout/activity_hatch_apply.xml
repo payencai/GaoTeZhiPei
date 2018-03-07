@@ -394,67 +394,77 @@
 
             </RelativeLayout>
 
-            <!--<RelativeLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:paddingLeft="18dp"-->
-                <!--android:paddingRight="18dp">-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp">
 
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_centerVertical="true"-->
-                    <!--android:orientation="horizontal">-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/ll"
+                    android:orientation="horizontal">
 
-                    <!--<ImageView-->
-                        <!--android:layout_width="6dp"-->
-                        <!--android:layout_height="6dp"-->
-                        <!--android:layout_gravity="center_vertical"-->
-                        <!--android:scaleType="fitXY"-->
-                        <!--android:src="@drawable/gaote_smart" />-->
+                    <ImageView
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/gaote_smart" />
 
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="center_vertical"-->
-                        <!--android:layout_marginLeft="3dp"-->
-                        <!--android:text="商业计划书："-->
-                        <!--android:textColor="#666666"-->
-                        <!--android:textSize="12sp" />-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="3dp"
+                        android:text="商业计划书："
+                        android:textColor="#666666"
+                        android:textSize="12sp" />
 
-                <!--</LinearLayout>-->
+                </LinearLayout>
 
-                <!--<LinearLayout-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginLeft="80dp"-->
-                    <!--android:background="@drawable/shape_et_gaote_cooperate"-->
-                    <!--android:orientation="horizontal"-->
-                    <!--android:padding="10dp">-->
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/iv_plan"
+                    android:layout_toRightOf="@id/ll"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:id="@+id/ll_upload"
+                    android:background="@drawable/shape_et_gaote_cooperate"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    android:padding="10dp">
 
 
-                    <!--<ImageView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:adjustViewBounds="true"-->
-                        <!--android:scaleType="fitXY"-->
-                        <!--android:layout_gravity="center_vertical"-->
-                        <!--android:src="@drawable/hatch_upload" />-->
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/hatch_upload" />
 
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="点击上传"-->
-                        <!--android:layout_gravity="center_vertical"-->
-                        <!--android:textSize="12sp"-->
-                        <!--android:textColor="#666666"-->
-                        <!--android:layout_marginLeft="5dp"/>-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="点击上传"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="12sp"
+                        android:textColor="#666666"
+                        android:layout_marginLeft="5dp"/>
 
-                <!--</LinearLayout>-->
+                </LinearLayout>
 
-            <!--</RelativeLayout>-->
+            </RelativeLayout>
 
 
             <Button

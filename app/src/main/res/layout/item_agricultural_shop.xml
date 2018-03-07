@@ -29,7 +29,7 @@
         android:text="云南供销农资连锁店（弥勒店）"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/item_agri_tv_shopaddr"
         android:textSize="12sp"
@@ -39,7 +39,7 @@
         android:textColor="#999999"
         android:lines="2"
         android:layout_marginRight="16dp"
-        android:text="云南省弥勒市红河区前卫西路世纪半岛橄榄谷7-6号"/>
+        android:text="云南省弥勒市红谷7-6号"/>
 
     <TextView
         android:layout_width="wrap_content"

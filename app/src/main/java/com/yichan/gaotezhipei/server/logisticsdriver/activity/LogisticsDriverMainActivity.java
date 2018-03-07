@@ -224,7 +224,7 @@ public class LogisticsDriverMainActivity extends BaseListActivity implements Per
                 startActivity(new Intent(LogisticsDriverMainActivity.this, LogisticsDriverOrderActivity.class));
                 break;
             case R.id.logistics_driver_iv_driver_inform:
-                startActivity(new Intent(LogisticsDriverMainActivity.this, DriverInformActivity.class));
+                DriverInformActivity.startActivity(LogisticsDriverMainActivity.this, DriverInformActivity.START_TYPE_LOGISTICS);
                 break;
             case R.id.view_no_data:
                 getDataList(1, true);

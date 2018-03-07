@@ -5,9 +5,28 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-    <!--<include-->
-        <!--android:id="@+id/ip_titlebar"-->
-        <!--layout="@layout/part_titlebar_only_back"></include>-->
+    <include
+        android:id="@+id/ip_titlebar"
+        layout="@layout/part_titlebar_only_back"></include>
+
+
+    <Button
+        android:id="@+id/ip_btn_commission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/btn_color_blue"
+        android:layout_alignParentBottom="true"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:text="我要代办"/>
+
+
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ip_webview"
+        android:layout_below="@id/ip_titlebar"
+        android:layout_above="@id/ip_btn_commission"></WebView>
 
     <!--<Button-->
         <!--android:id="@+id/ip_btn_commission"-->

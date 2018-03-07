@@ -24,10 +24,6 @@ public class LCLMiniBusFragment extends LCLBaseDetailFragment{
         return "2.6方";
     }
 
-    @Override
-    protected boolean isFistFragment() {
-        return true;
-    }
 
     @Override
     protected String getCarWeight() {

@@ -14,11 +14,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:paddingTop="20dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         
         
         <TextView
@@ -37,18 +41,22 @@
             android:textColor="#666666"
             android:textSize="12sp"/>
 
+        </LinearLayout>
+
         <com.sevenheaven.segmentcontrol.SegmentControl
+
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:id="@+id/segmentcontrol_car_type"
-            android:textSize="12sp"
+            android:textSize="11sp"
             app:selectedColor="@color/step_completed_color"
             app:normalColor="@color/white"
             app:textColors="@drawable/selector_rg_car_type"
             app:cornerRadius="5dp"
             app:separatorWidth="1dp"
-            app:texts="小面包车|中面包车|小货车|中货车"
+            app:texts="摩托车|小轿车|三轮车|小面包车|中面包车|小货车|中货车"
             app:verticalGap="10dp"
             app:horizonGap="10dp"/>
         
