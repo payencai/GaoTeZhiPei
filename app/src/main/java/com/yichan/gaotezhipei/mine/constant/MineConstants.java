@@ -20,4 +20,9 @@ public class MineConstants {
     public static final String URL_UPLOAD_IMAGE = "/image/uploadImage";
 
     public static final String URL_COMMIT_LCL_DRIVER_INFORM = "/driverApply/commit";
+
+    public static final String URL_GET_INFO = "/demander/info/get";
+    public static final String URL_UPLOAD_PORTRAINT = "/demander/info/uploadPortraint";
+    public static final String URL_UPDATE_NAME = "/demander/info/updateName";
+    public static final String URL_UPDATE_SEX = "/demander/info/updateSex";
 }
