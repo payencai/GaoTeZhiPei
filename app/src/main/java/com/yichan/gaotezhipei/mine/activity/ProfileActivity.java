@@ -65,11 +65,10 @@ public abstract class ProfileActivity extends BaseActivity {
 
     protected abstract void initView();
     protected abstract void initData();
-//    protected abstract void onRequestSucceed(int what, HttpJsonClient client);
     protected abstract void buildMenu(BottomMenuDialog.Builder builder, int type);
     protected abstract void reloadProfile(Bitmap bm);
     //上传图片到后台
-    protected abstract void picSelectUpload(Bitmap mBitmap, String fileName);
+    protected abstract void picSelectUpload(String fileName);
 
     protected String[] items1;
     protected BottomMenuDialog bottomDialog;
@@ -185,7 +184,7 @@ public abstract class ProfileActivity extends BaseActivity {
 
         }
         //上传图片到后台
-        picSelectUpload(mBitmap, fileName);
+        picSelectUpload(fileName);
     }
 
     @Override
