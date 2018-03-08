@@ -100,7 +100,7 @@ public class LCLOrderAdapter extends MSClickableAdapter<LCLOrderAdapter.LCLOrder
     private void setAddressInform(LCLOrderViewHolder holder, LCLOrderPage.BeanListBean bean) {
         holder.tvMailDistrict.setText(bean.getAddress().getArea());
         holder.tvMailProvinceCity.setText(bean.getAddress().getProvince() + " " + bean.getAddress().getCity());
-        holder.tvDistance.setText(String.format("%.2f", Double.valueOf(bean.getDistance()) / 1000) + "km");
+        holder.tvDistance.setText(String.format("%.2f", Double.valueOf(bean.getDistance())) + "km");
         holder.tvPickDistrict.setText(bean.getConsigneeArea());
         holder.tvPickProvinceCity.setText(bean.getConsigneeProvince() + " " + bean.getConsigneeCity());
     }
@@ -116,24 +116,27 @@ public class LCLOrderAdapter extends MSClickableAdapter<LCLOrderAdapter.LCLOrder
     private void setBottomLayout(LCLOrderViewHolder holder, final int pos, final LCLOrderPage.BeanListBean bean) {
         int type = Integer.valueOf(bean.getType());
         if(UserManager.getInstance(mContext).isDemand()) {//需求方
-//            if(type == LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE) {
-//                holder.rlBottom.setVisibility(View.VISIBLE);
-//                holder.btnRight.setVisibility(View.GONE);
-//                holder.btnLeft.setText("取消订单");
-//            }
-            if (type == LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO) {//待接货
+            if(type == LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE) {
+                holder.rlBottom.setVisibility(View.VISIBLE);
+                holder.btnRight.setVisibility(View.GONE);
+                holder.btnLeft.setText("取消订单");
+            }
+            else if (type == LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO) {//待接货
                 holder.rlBottom.setVisibility(View.VISIBLE);
             } else if (type == LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO) {//待收货
-                holder.rlBottom.setVisibility(View.GONE);
-//                holder.btnRight.setVisibility(View.GONE);
-//                holder.btnLeft.setText("查看物流");
+                holder.rlBottom.setVisibility(View.VISIBLE);
+                holder.btnRight.setVisibility(View.GONE);
+                holder.btnLeft.setVisibility(View.GONE);
             } else if (type == LogisticsContants.TYPE_LCL_ORDER_TO_CONFIRM) {//待签收
                 holder.rlBottom.setVisibility(View.VISIBLE);
                 holder.btnLeft.setVisibility(View.GONE);
                 holder.btnRight.setText("确认签收");
             } else {//已完成
-                holder.rlBottom.setVisibility(View.GONE);
+                holder.rlBottom.setVisibility(View.VISIBLE);
+                holder.btnRight.setVisibility(View.GONE);
+                holder.btnLeft.setVisibility(View.GONE);
             }
+            holder.btnMid.setVisibility(View.VISIBLE);
         } else  {
             if (type == LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO) {//待接货
                 holder.rlBottom.setVisibility(View.VISIBLE);
@@ -145,6 +148,7 @@ public class LCLOrderAdapter extends MSClickableAdapter<LCLOrderAdapter.LCLOrder
             } else {
                 holder.rlBottom.setVisibility(View.GONE);
             }
+            holder.btnMid.setVisibility(View.GONE);
         }
         holder.btnLeft.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,6 +167,15 @@ public class LCLOrderAdapter extends MSClickableAdapter<LCLOrderAdapter.LCLOrder
                 }
             }
         });
+
+        holder.btnMid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mOnItemSubviewClickListener != null) {
+                    mOnItemSubviewClickListener.onClick(v, pos, bean);
+                }
+            }
+        });
     }
 
 
@@ -171,28 +184,29 @@ public class LCLOrderAdapter extends MSClickableAdapter<LCLOrderAdapter.LCLOrder
         return mList.size();
     }
 
-    class LCLOrderViewHolder extends RecyclerView.ViewHolder {
+    public static class LCLOrderViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvOrderTime;
-        RelativeLayout rlStatus;
-        TextView tvStatus;
+        public TextView tvOrderTime;
+        public RelativeLayout rlStatus;
+        public TextView tvStatus;
 
-        TextView tvMailDistrict;
-        TextView tvMailProvinceCity;
-        TextView tvDistance;
-        TextView tvPickDistrict;
-        TextView tvPickProvinceCity;
+        public TextView tvMailDistrict;
+        public TextView tvMailProvinceCity;
+        public TextView tvDistance;
+        public TextView tvPickDistrict;
+        public TextView tvPickProvinceCity;
 
-        TextView tvCargoName;
-        TextView tvCargoInform;
+        public TextView tvCargoName;
+        public TextView tvCargoInform;
 
-        TextView tvGetCargoTime;
+        public TextView tvGetCargoTime;
 
-        TextView tvGetCargoAddr;
+        public TextView tvGetCargoAddr;
 
-        RelativeLayout rlBottom;
-        Button btnLeft;
-        Button btnRight;
+        public RelativeLayout rlBottom;
+        public Button btnLeft;
+        public Button btnRight;
+        public Button btnMid;
 
 
 
@@ -218,6 +232,7 @@ public class LCLOrderAdapter extends MSClickableAdapter<LCLOrderAdapter.LCLOrder
             rlBottom = (RelativeLayout) itemView.findViewById(R.id.item_rl_bottom);
             btnLeft = (Button) itemView.findViewById(R.id.item_btn_left);
             btnRight = (Button) itemView.findViewById(R.id.item_btn_right);
+            btnMid = (Button) itemView.findViewById(R.id.item_btn_mid);
         }
     }
 }

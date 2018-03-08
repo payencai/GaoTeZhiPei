@@ -25,6 +25,7 @@ import com.yichan.gaotezhipei.login.constant.LoginConstants;
 import com.yichan.gaotezhipei.login.entity.UserEntity;
 import com.yichan.gaotezhipei.login.event.LoginEvent;
 import com.yichan.gaotezhipei.login.util.LoginManager;
+import com.yichan.gaotezhipei.mine.event.NotifyPersonalInformEvent;
 import com.yichan.gaotezhipei.server.lcldriver.activity.LCLDriverMainActivity;
 import com.yichan.gaotezhipei.server.logisticsdriver.activity.LogisticsDriverMainActivity;
 import com.yichan.gaotezhipei.server.netstation.activity.NetMainActivity;
@@ -136,6 +137,7 @@ public class DemandLoginActivity extends BaseActivity {
                     UserManager.getInstance(DemandLoginActivity.this).setPassword(mEtPassword.getText().toString());
                     UserManager.getInstance(DemandLoginActivity.this).setRoleType(AppConstants.DEMAND_TYPE_CODE);
                     EventBus.getInstance().post(new LoginEvent());
+                    EventBus.getInstance().post(new NotifyPersonalInformEvent());
                     startActivity(new Intent(DemandLoginActivity.this, HomeActivity.class));
                     finish();
                 }

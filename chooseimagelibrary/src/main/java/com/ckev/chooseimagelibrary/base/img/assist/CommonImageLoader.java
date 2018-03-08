@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
+import com.ckev.chooseimagelibrary.R;
 import com.nostra13.universalimageloader.cache.disc.DiskCache;
 import com.nostra13.universalimageloader.cache.memory.MemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -27,11 +28,11 @@ public class CommonImageLoader {
      */
     public static final DisplayImageOptions NO_CACHE_OPTIONS = new DisplayImageOptions.Builder()
             // 设置图片在下载期间显示的图片
-            //.showImageOnLoading(R.mipmap.img_null)
+            .showImageOnLoading(R.drawable.base_img_null)
             // 设置图片Uri为空或是错误的时候显示的图片
-            //.showImageForEmptyUri(R.mipmap.base_img_null)
+            .showImageForEmptyUri(R.drawable.base_img_null)
             // 设置图片加载/解码过程中错误时候显示的图片
-            //.showImageOnFail(R.mipmap.base_img_null)
+            .showImageOnFail(R.drawable.base_img_null)
             // 设置图片以如何的编码方式显示
             .imageScaleType(ImageScaleType.EXACTLY)
             .considerExifParams(true)
@@ -43,7 +44,12 @@ public class CommonImageLoader {
      * 内存缓存配置
      */
     public static final DisplayImageOptions MEMORY_CACHE_OPTIONS = new DisplayImageOptions.Builder()
-            // 设置下载的图片是否缓存在内存中
+            // 设置图片在下载期间显示的图片
+            .showImageOnLoading(R.drawable.base_img_null)
+            // 设置图片Uri为空或是错误的时候显示的图片
+            .showImageForEmptyUri(R.drawable.base_img_null)
+            // 设置图片加载/解码过程中错误时候显示的图片
+            .showImageOnFail(R.drawable.base_img_null)// 设置下载的图片是否缓存在内存中
             .cacheInMemory(true)
             // 设置图片以如何的编码方式显示
             .imageScaleType(ImageScaleType.EXACTLY)
@@ -57,6 +63,12 @@ public class CommonImageLoader {
      * 双缓存配置
      */
     public static final DisplayImageOptions DOUBLE_CACHE_OPTIONS = new DisplayImageOptions.Builder()
+            // 设置图片在下载期间显示的图片
+            .showImageOnLoading(R.drawable.base_img_null)
+            // 设置图片Uri为空或是错误的时候显示的图片
+            .showImageForEmptyUri(R.drawable.base_img_null)
+            // 设置图片加载/解码过程中错误时候显示的图片
+            .showImageOnFail(R.drawable.base_img_null)
             // 设置下载的图片是否缓存在内存中
             .cacheInMemory(true)
             // 设置下载的图片是否缓存在SD中

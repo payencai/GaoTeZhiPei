@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.changelcai.mothership.network.RequestCall;
 import com.changelcai.mothership.network.builder.PostFormBuilder;
@@ -17,9 +16,11 @@ import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
 import com.yichan.gaotezhipei.common.constant.AppConstants;
 import com.yichan.gaotezhipei.common.entity.Result;
 import com.yichan.gaotezhipei.common.util.BottomMenuDialog;
+import com.yichan.gaotezhipei.common.util.EventBus;
 import com.yichan.gaotezhipei.common.util.GsonUtil;
 import com.yichan.gaotezhipei.mine.constant.MineConstants;
 import com.yichan.gaotezhipei.mine.entity.DemanderInfo;
+import com.yichan.gaotezhipei.mine.event.NotifyPersonalInformEvent;
 
 import java.io.File;
 import java.io.IOException;
@@ -234,6 +235,7 @@ public class PersonalProfileActivity extends ProfileActivity {
                 if(response.getResultCode() == Result.SUCCESS_CODE) {
                     showToast("头像已更新。");
                     initData2();
+                    EventBus.getInstance().post(new NotifyPersonalInformEvent());
 //                    imgPerson.setImageBitmap(mBitmap);
 //                    mBitmap.recycle();
 //                    mBitmap = null;
@@ -287,6 +289,7 @@ public class PersonalProfileActivity extends ProfileActivity {
                 if(response.getResultCode() == Result.SUCCESS_CODE) {
                     showToast("昵称已更新。");
                     mTvNickName.setText(name);
+                    EventBus.getInstance().post(new NotifyPersonalInformEvent());
                 } else {
                     showToast(response.getMessage());
                 }

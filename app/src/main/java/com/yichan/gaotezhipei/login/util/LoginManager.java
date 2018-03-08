@@ -32,6 +32,8 @@ public class LoginManager {
         UserManager.getInstance(context).setId(null);
         UserManager.getInstance(context).setType(0);
         UserManager.getInstance(context).setToken(null);
+        UserManager.getInstance(context).setAvatar(null);
+        UserManager.getInstance(context).setNickName(null);
     }
 
     public static void logout(final AppCompatActivity activity, final boolean skipToDemand) {

@@ -9,6 +9,7 @@ import com.changelcai.mothership.component.fragment.dialog.IDialogResultListener
 import com.changelcai.mothership.network.RequestCall;
 import com.changelcai.mothership.network.builder.PostFormBuilder;
 import com.changelcai.mothership.network.request.GetRequest;
+import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.listener.OnItemSubviewClickListener;
 import com.yichan.gaotezhipei.base.util.DialogHelper;
@@ -18,6 +19,7 @@ import com.yichan.gaotezhipei.common.entity.Result;
 import com.yichan.gaotezhipei.common.fragment.CommonOrderFragment;
 import com.yichan.gaotezhipei.common.util.GsonUtil;
 import com.yichan.gaotezhipei.common.util.UrlUtil;
+import com.yichan.gaotezhipei.logistics.activity.LogisticsDetailActivity;
 import com.yichan.gaotezhipei.logistics.constant.LogisticsContants;
 import com.yichan.gaotezhipei.logistics.entity.LogisticsOrderPage;
 import com.yichan.gaotezhipei.logistics.view.LogisticOrderAdapter;
@@ -71,9 +73,18 @@ public class CommonLogisticOrderFragment extends CommonOrderFragment {
                             tryToSign(model.getId());
                         }
                         break;
+                    case R.id.item_btn_left:
+                        LogisticsDetailActivity.startActivity(getActivity(), 1, model);
+                        break;
                     default:
                         break;
                 }
+            }
+        });
+        mAdapter.setOnItemClickListener(new MSClickableAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                LogisticsDetailActivity.startActivity(getActivity(), 1, mList.get(position));
             }
         });
         return mAdapter;

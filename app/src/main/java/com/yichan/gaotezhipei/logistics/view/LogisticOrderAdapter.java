@@ -101,7 +101,7 @@ public class LogisticOrderAdapter extends MSClickableAdapter<LogisticOrderAdapte
     private void setAddressInform(LogisticOrderViewHolder holder, LogisticsOrderPage.ListBean bean) {
         holder.tvMailDistrict.setText(bean.getAdressFromDistrict());
         holder.tvMailProvinceCity.setText(bean.getAdressFromProvince() + " " + bean.getAdressFromCity());
-        holder.tvDistance.setText(String.format("%.2f", Double.valueOf(bean.getDistanceTotal()) / 1000) + "km");
+        holder.tvDistance.setText(String.format("%.2f", Double.valueOf(bean.getDistanceTotal())) + "km");
         holder.tvPickDistrict.setText(bean.getAdressToDistrict());
         holder.tvPickProvinceCity.setText(bean.getAdressToProvince() + " " + bean.getAdressToCity());
     }
@@ -109,7 +109,7 @@ public class LogisticOrderAdapter extends MSClickableAdapter<LogisticOrderAdapte
     private void setOneLine(LogisticOrderViewHolder holder, int pos, LogisticsOrderPage.ListBean bean) {
         switch (getItemViewType(pos)) {
             case LogisticsContants.TYPE_LOG_ORDER_TO_RECEIVER:
-                holder.tvOne.setText("快件录入时间:" + bean.getArriveTime());
+                holder.tvOne.setText("快件录入时间:" + bean.getCreateTime());
                 break;
             case LogisticsContants.TYPE_LOG_ORDER_TO_GET_CARGO:
                 holder.tvOne.setText("服务录入网点:" + bean.getNetworkName());
@@ -170,6 +170,14 @@ public class LogisticOrderAdapter extends MSClickableAdapter<LogisticOrderAdapte
                 }
             }
         });
+        holder.btnLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(subviewClickListener != null) {
+                    subviewClickListener.onClick(v, pos, bean);
+                }
+            }
+        });
     }
 
 
@@ -178,28 +186,28 @@ public class LogisticOrderAdapter extends MSClickableAdapter<LogisticOrderAdapte
         return mList.size();
     }
 
-    class LogisticOrderViewHolder extends RecyclerView.ViewHolder {
+    public static class LogisticOrderViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvOrderTime;
-        RelativeLayout rlStatus;
-        TextView tvStatus;
+        public TextView tvOrderTime;
+        public RelativeLayout rlStatus;
+        public TextView tvStatus;
 
-        TextView tvMailDistrict;
-        TextView tvMailProvinceCity;
-        TextView tvDistance;
-        TextView tvPickDistrict;
-        TextView tvPickProvinceCity;
+        public TextView tvMailDistrict;
+        public TextView tvMailProvinceCity;
+        public TextView tvDistance;
+        public TextView tvPickDistrict;
+        public TextView tvPickProvinceCity;
 
-        RelativeLayout rlLoc;
+        public RelativeLayout rlLoc;
 
-        TextView tvOne;
-        TextView tvTwo;
-        TextView tvThree;
-        TextView tvFour;
+        public TextView tvOne;
+        public TextView tvTwo;
+        public TextView tvThree;
+        public TextView tvFour;
 
-        RelativeLayout rlBottom;
-        Button btnLeft;
-        Button btnRight;
+        public RelativeLayout rlBottom;
+        public Button btnLeft;
+        public Button btnRight;
 
         public LogisticOrderViewHolder(View itemView) {
             super(itemView);

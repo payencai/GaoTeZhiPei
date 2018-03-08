@@ -10,12 +10,25 @@ public class ExpressCompanyItem implements BaseEntity {
 
 
     /**
-     * id : string
-     * name : string
+     * id : 1
+     * name : 顺丰
+     * picKey : null
+     * createTime : null
+     * picUrl : null
+     * isCancel : 1
      */
 
     private String id;
     private String name;
+    private String picKey;
+    private String createTime;
+    private String picUrl;
+    private String isCancel;
+
+    @Override
+    public String getIndexField() {
+        return name;
+    }
 
     public String getId() {
         return id;
@@ -33,8 +46,35 @@ public class ExpressCompanyItem implements BaseEntity {
         this.name = name;
     }
 
-    @Override
-    public String getIndexField() {
-        return name;
+    public String getPicKey() {
+        return picKey;
+    }
+
+    public void setPicKey(String picKey) {
+        this.picKey = picKey;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getPicUrl() {
+        return picUrl;
+    }
+
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
+    }
+
+    public String getIsCancel() {
+        return isCancel;
+    }
+
+    public void setIsCancel(String isCancel) {
+        this.isCancel = isCancel;
     }
 }

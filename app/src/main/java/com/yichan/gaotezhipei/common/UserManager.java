@@ -28,6 +28,15 @@ public class UserManager {
 
     private String id;
 
+    private String city;
+
+    private String locatedCity;
+
+    private String avatar;
+
+    private String nickName;
+
+
 
 
     private UserManager(Context context) {
@@ -119,7 +128,49 @@ public class UserManager {
         getEditor().putInt("type", type).apply();
     }
 
+    public String getCity() {
+        this.city = userPreferences.getString("city", "昆明");
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+        getEditor().putString("city", city).apply();
+
+    }
+
+    public String getLocatedCity() {
+        this.locatedCity = userPreferences.getString("locatedCity", "昆明");
+        return locatedCity;
+    }
+
+    public void setLocatedCity(String city) {
+        this.locatedCity = city;
+        getEditor().putString("locatedCity", city).apply();
+
+    }
+
     public boolean isDemand() {
         return getRoleType().equals("2");
+    }
+
+    public String getAvatar() {
+        this.avatar = userPreferences.getString("avatar", null);
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+        getEditor().putString("avatar", avatar).apply();
+    }
+
+    public String getNickName() {
+        this.nickName = userPreferences.getString("nickName", null);
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+        getEditor().putString("nickName", nickName).apply();
     }
 }

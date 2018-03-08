@@ -1,6 +1,7 @@
 package com.baisoo.citypicker;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import java.util.List;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
+
 
 public class ChooseCityActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
 
@@ -110,6 +112,7 @@ public class ChooseCityActivity extends AppCompatActivity implements EasyPermiss
         allCities = dbManager.getAllCities();
         adapter = new CityRecyclerAdapter(ChooseCityActivity.this, allCities);
         linearLayoutManager = new LinearLayoutManager(ChooseCityActivity.this);
+        adapter.updateLocateState(CityRecyclerAdapter.SUCCESS, this.getSharedPreferences("gaoteapplication", Context.MODE_PRIVATE).getString("locatedCity", "昆明"));
         mRecyCity.setLayoutManager(linearLayoutManager);
         mRecyCity.setAdapter(adapter);
 
@@ -117,7 +120,8 @@ public class ChooseCityActivity extends AppCompatActivity implements EasyPermiss
             @Override
             public void onCityClick(String name) {
                 Log.e("ChooseCityActivity", "onCityClick:" + name);
-                Toast.makeText(ChooseCityActivity.this, name, Toast.LENGTH_SHORT).show();
+                ChooseCityActivity.this.getSharedPreferences("gaoteapplication", Context.MODE_PRIVATE).edit().putString("city", name).apply();
+                finish();
             }
 
             @Override

@@ -19,14 +19,15 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/et_comment"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingTop="10dp"
                 android:background="@color/white"
                 android:gravity="start"
                 android:hint="请写下你的意见或建议"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
                 android:textColor="@color/text_black_color"
                 android:textColorHint="#999999"
                 android:textSize="14sp" />
@@ -36,18 +37,19 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/feed_back_rv_display"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:background="@color/white"
-                android:paddingLeft="15dp"
-                android:layout_gravity="center_horizontal"
-                android:paddingRight="15dp"
-                android:paddingTop="10dp"></android.support.v7.widget.RecyclerView>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/feed_back_rv_display"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/white"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="10dp"></android.support.v7.widget.RecyclerView>
 
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider_common_height"
@@ -56,12 +58,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingRight="12dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp"
-                android:text="选择反馈类型"
                 android:background="@color/white"
+                android:paddingBottom="12dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="12dp"
+                android:paddingTop="12dp"
+                android:text="选择反馈类型"
                 android:textColor="@color/text_black_color" />
 
             <View
@@ -70,14 +72,15 @@
                 android:background="@color/divider_gray"></View>
 
             <com.yichan.gaotezhipei.base.view.KeyRadioGroupV1
+                android:id="@+id/rg_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="25dp"
                 android:background="@color/white"
-                android:paddingRight="25dp"
-                android:paddingTop="15dp"
+                android:orientation="vertical"
                 android:paddingBottom="15dp"
-                android:orientation="vertical">
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:paddingTop="15dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -88,6 +91,7 @@
                     <RadioButton
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:id="@+id/rb_1"
                         android:layout_weight="1"
                         android:button="@drawable/selector_feedback_rb"
                         android:paddingLeft="8dp"
@@ -97,6 +101,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:id="@+id/rb_2"
                         android:button="@drawable/selector_feedback_rb"
                         android:paddingLeft="8dp"
                         android:text="功能建议" />
@@ -105,6 +110,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:id="@+id/rb_3"
                         android:button="@drawable/selector_feedback_rb"
                         android:paddingLeft="8dp"
                         android:text="内容意见" />
@@ -123,6 +129,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:id="@+id/rb_4"
                         android:button="@drawable/selector_feedback_rb"
                         android:enabled="true"
                         android:paddingLeft="8dp"
@@ -132,6 +139,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:id="@+id/rb_5"
                         android:button="@drawable/selector_feedback_rb"
                         android:paddingLeft="8dp"
                         android:text="网络问题" />
@@ -140,6 +148,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:id="@+id/rb_6"
                         android:button="@drawable/selector_feedback_rb"
                         android:paddingLeft="8dp"
                         android:text="其他" />
@@ -156,6 +165,7 @@
                 android:background="@color/divider_gray"></View>
 
             <EditText
+                android:id="@+id/et_contact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -168,7 +178,6 @@
                 android:textSize="14sp" />
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -178,10 +187,11 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/btn_commit"
+                    android:layout_marginBottom="20dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="18dp"
-                    android:layout_marginBottom="20dp"
                     android:background="@drawable/shape_btn_lcl_driver"
                     android:text="提交"
                     android:textColor="@color/white" />

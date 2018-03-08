@@ -47,6 +47,7 @@ public class LogisticsFragment extends BaseFragment {
 
     }
 
+
     private void initMapView() {
         mIvMap.setImageResource(R.drawable.logis_banner);
     }

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.changelcai.mothership.network.RequestCall;
 import com.changelcai.mothership.network.request.GetRequest;
+import com.ckev.chooseimagelibrary.base.img.assist.CommonImageLoader;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseActivity;
 import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
@@ -94,10 +95,10 @@ public class ChooseExpressCompanyActivity extends BaseActivity {
     private void initIndexViews() {
         MyIndexStickyViewAdapter adapter = new MyIndexStickyViewAdapter(mDataList);
         indexStickyView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new OnItemClickListener() {
+        adapter.setOnItemClickListener(new OnItemClickListener<ExpressCompanyItem>() {
             @Override
-            public void onItemClick(View childView, int position, Object item) {
-                EventBus.getInstance().post(new ChooseExpressCompanyEvent(mDataList.get(position).getName(), mDataList.get(position).getId()));
+            public void onItemClick(View childView, int position, ExpressCompanyItem item) {
+                EventBus.getInstance().post(new ChooseExpressCompanyEvent(item.getName(),item.getId()));
                 finish();
             }
         });
@@ -141,6 +142,7 @@ public class ChooseExpressCompanyActivity extends BaseActivity {
 
             ContentViewHolder contentViewHolder = (ContentViewHolder) holder;
             contentViewHolder.mName.setText(itemData.getName());
+            CommonImageLoader.displayImage(itemData.getPicUrl(), contentViewHolder.mAvatar, CommonImageLoader.NO_CACHE_OPTIONS);
         }
     }
 

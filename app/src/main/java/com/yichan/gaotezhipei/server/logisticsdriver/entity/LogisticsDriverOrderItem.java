@@ -1,10 +1,12 @@
 package com.yichan.gaotezhipei.server.logisticsdriver.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by ckerv on 2018/2/9.
  */
 
-public class LogisticsDriverOrderItem {
+public class LogisticsDriverOrderItem implements Serializable {
 
 
     /**

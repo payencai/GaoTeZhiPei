@@ -1,5 +1,6 @@
 package com.yichan.gaotezhipei.logistics.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -212,7 +213,7 @@ public class LogisticsOrderPage {
         this.navigatepageNums = navigatepageNums;
     }
 
-    public static class ListBean {
+    public static class ListBean implements Serializable {
         /**
          * driverStatus : 4
          * updateTime : null

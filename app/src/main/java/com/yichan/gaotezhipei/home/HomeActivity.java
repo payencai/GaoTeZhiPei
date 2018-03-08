@@ -1,7 +1,9 @@
 package com.yichan.gaotezhipei.home;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -10,9 +12,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.baidu.location.BDAbstractLocationListener;
+import com.baidu.location.BDLocation;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.baisoo.citypicker.ChooseCityActivity;
 import com.yichan.gaotezhipei.R;
+import com.yichan.gaotezhipei.common.UserManager;
 import com.yichan.gaotezhipei.common.activity.CommonMultiTabActivity;
+import com.yichan.gaotezhipei.common.util.PermissionUtils;
 import com.yichan.gaotezhipei.lcl.fragment.LCLFragment;
 import com.yichan.gaotezhipei.logistics.fragment.LogisticsFragment;
 import com.yichan.gaotezhipei.mine.fragment.MineFragment;
@@ -23,18 +31,44 @@ import java.util.List;
 
 
 
-public class HomeActivity extends CommonMultiTabActivity {
+public class HomeActivity extends CommonMultiTabActivity implements PermissionUtils.ApplyPermission {
 
     private ViewGroup mVgTitle;
     private ImageView mIvRight;
     private TextView mTvTitle;
     private LinearLayout mLlLoc;
+    private TextView mTvLoc;
+
+    public LocationClient mLocationClient = null;
+    private MyLocationListener myListener = new MyLocationListener();
+    //BDAbstractLocationListener为7.2版本新增的Abstract类型的监听接口
+    //原有BDLocationListener接口暂时同步保留。具体介绍请参考后文中的说明
+
+    private double lat;
+    private double lng;
+
+    /**
+     * 需要进行检测的权限数组
+     */
+    protected static String[] needPermissions = {
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.READ_PHONE_STATE
+    };
 
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
         initTitleBar();
         initViewPagerListener();
+        requestPermissions();
+    }
+
+    private void requestPermissions() {
+        PermissionUtils.setApplyPermission(this);
+        PermissionUtils.needPermission(HomeActivity.this, needPermissions, 100);
     }
 
     private void initTitleBar() {
@@ -43,6 +77,7 @@ public class HomeActivity extends CommonMultiTabActivity {
         mTvTitle = (TextView) findViewById(R.id.titlebar_tv_title);
         mIvRight.setVisibility(View.VISIBLE);
         mLlLoc = (LinearLayout) findViewById(R.id.titlebar_ll_loc);
+        mTvLoc = (TextView) findViewById(R.id.titlebar_tv_right);
         mIvRight.setImageResource(R.drawable.customservice);
         mLlLoc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,4 +183,64 @@ public class HomeActivity extends CommonMultiTabActivity {
     }
 
 
+    @Override
+    public void doFailed() {
+        showToast("应用缺少相应权限，请检查。");
+        finish();
+    }
+
+    @Override
+    public void doSuccess() {
+        initBaiduLocation();
+        mLocationClient.start();
+    }
+
+    private void initBaiduLocation() {
+        mLocationClient = new LocationClient(getApplicationContext());
+        //声明LocationClient类
+        mLocationClient.registerLocationListener(myListener);
+        //注册监听函数
+        LocationClientOption option = new LocationClientOption();
+        option.setCoorType("bd09ll");
+        option.setIsNeedAddress(true);
+        mLocationClient.setLocOption(option);
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        PermissionUtils.onRequestPermissionsResult(HomeActivity.this, requestCode, permissions, grantResults);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    public class MyLocationListener extends BDAbstractLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation location){
+            //此处的BDLocation为定位结果信息类，通过它的各种get方法可获取定位相关的全部结果
+            //以下只列举部分获取经纬度相关（常用）的结果信息
+            //更多结果信息获取说明，请参照类参考中BDLocation类中的说明
+
+            lat = location.getLatitude();    //获取纬度信息
+            lng = location.getLongitude();    //获取经度信息
+
+            String cityTotal = location.getCity();
+            int index = cityTotal.indexOf("市");
+            if(index != -1) {
+                UserManager.getInstance(HomeActivity.this).setLocatedCity(cityTotal.substring(0, index));
+                UserManager.getInstance(HomeActivity.this).setCity(cityTotal.substring(0, index));
+                mTvLoc.setText(cityTotal.substring(0, index));
+            } else {
+                UserManager.getInstance(HomeActivity.this).setLocatedCity(location.getCity());
+                UserManager.getInstance(HomeActivity.this).setCity(location.getCity());
+                mTvLoc.setText(location.getCity());
+            }
+
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mTvLoc.setText(UserManager.getInstance(HomeActivity.this).getCity());
+    }
 }

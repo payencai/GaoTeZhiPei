@@ -63,7 +63,7 @@ public class NearbyCargoAdapter extends MSClickableAdapter<NearbyCargoAdapter.Ne
     private void setAddressInform(NearbyCargoViewHolder holder, LCLOrderPage.BeanListBean bean) {
         holder.tvMailDistrict.setText(bean.getAddress().getArea());
         holder.tvMailProvinceCity.setText(bean.getAddress().getProvince() + " " + bean.getAddress().getCity());
-        holder.tvDistance.setText(String.format("%.2f", Double.valueOf(bean.getDistance()) / 1000) + "km");
+        holder.tvDistance.setText(String.format("%.2f", Double.valueOf(bean.getDistance())) + "km");
         holder.tvPickDistrict.setText(bean.getConsigneeArea());
         holder.tvPickProvinceCity.setText(bean.getConsigneeProvince() + " " + bean.getConsigneeCity());
     }

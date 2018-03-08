@@ -64,7 +64,7 @@ public class NetDetailAdapter extends MSClickableAdapter<NetDetailAdapter.NetDet
     private void setAddressInform(NetDetailViewHolder holder, NetDetailOrderPage.ListBean bean) {
         holder.tvMailDistrict.setText(bean.getAdressFromDistrict());
         holder.tvMailProvinceCity.setText(bean.getAdressFromProvince() + " " + bean.getAdressFromCity());
-        holder.tvDistance.setText(String.format("%.2f", Double.valueOf(bean.getDistanceTotal()) / 1000) + "km");
+        holder.tvDistance.setText(String.format("%.2f", Double.valueOf(bean.getDistanceTotal())) + "km");
         holder.tvPickDistrict.setText(bean.getAdressToDistrict());
         holder.tvPickProvinceCity.setText(bean.getAdressToProvince() + " " + bean.getAdressToCity());
     }

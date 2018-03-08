@@ -25,4 +25,8 @@ public class MineConstants {
     public static final String URL_UPLOAD_PORTRAINT = "/demander/info/uploadPortraint";
     public static final String URL_UPDATE_NAME = "/demander/info/updateName";
     public static final String URL_UPDATE_SEX = "/demander/info/updateSex";
+
+    public static final String URL_GET_NOTICE = "/demander/info/getNotice";
+
+    public static final String URL_FEEDBACK_APPLY = "/demander/feedback/apply";
 }

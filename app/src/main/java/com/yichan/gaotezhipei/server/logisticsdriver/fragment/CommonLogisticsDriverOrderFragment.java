@@ -9,6 +9,7 @@ import com.changelcai.mothership.component.fragment.dialog.IDialogResultListener
 import com.changelcai.mothership.network.RequestCall;
 import com.changelcai.mothership.network.builder.PostFormBuilder;
 import com.changelcai.mothership.network.request.GetRequest;
+import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.listener.OnItemSubviewClickListener;
 import com.yichan.gaotezhipei.base.util.DialogHelper;
@@ -18,6 +19,7 @@ import com.yichan.gaotezhipei.common.entity.Result;
 import com.yichan.gaotezhipei.common.fragment.CommonOrderFragment;
 import com.yichan.gaotezhipei.common.util.GsonUtil;
 import com.yichan.gaotezhipei.common.util.UrlUtil;
+import com.yichan.gaotezhipei.logistics.activity.LogisticsDetailActivity;
 import com.yichan.gaotezhipei.server.logisticsdriver.constant.LogisticsDriverConstants;
 import com.yichan.gaotezhipei.server.logisticsdriver.entity.LogisticsDriverOrderItem;
 import com.yichan.gaotezhipei.server.logisticsdriver.view.LogisticsDriverOrderAdapter;
@@ -62,6 +64,12 @@ public class CommonLogisticsDriverOrderFragment extends CommonOrderFragment {
     @Override
     protected RecyclerView.Adapter getAdapter() {
         mAdapter = new LogisticsDriverOrderAdapter(getActivity(), mBeanList);
+        mAdapter.setOnItemClickListener(new MSClickableAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                LogisticsDetailActivity.startActivity(getActivity(), 2, mBeanList.get(position));
+            }
+        });
         mAdapter.setSubviewClickListener(new OnItemSubviewClickListener<LogisticsDriverOrderItem>() {
             @Override
             public void onClick(View v, int pos, final LogisticsDriverOrderItem model) {

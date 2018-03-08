@@ -119,7 +119,7 @@ public class LogisticsDriverOrderAdapter extends MSClickableAdapter<LogisticsDri
 
     private void setNetInform(LogisticsDriverOrderViewHolder holder, LogisticsDriverOrderItem bean) {
         holder.tvNetName.setText(bean.getNetworkName());
-        holder.tvDistance.setText(String.valueOf(bean.getDistanceDriver() + "m"));
+        holder.tvDistance.setText(String.valueOf(bean.getDistanceDriver() + "km"));
     }
 
     private void setOrderStatus(LogisticsDriverOrderViewHolder holder, LogisticsDriverOrderItem bean) {

@@ -1,6 +1,8 @@
 package com.yichan.gaotezhipei.logistics.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -17,12 +19,18 @@ import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
 import com.yichan.gaotezhipei.common.constant.AppConstants;
 import com.yichan.gaotezhipei.common.entity.Result;
 import com.yichan.gaotezhipei.common.fragment.CommonOrderFragment;
+import com.yichan.gaotezhipei.common.util.EventBus;
 import com.yichan.gaotezhipei.common.util.GsonUtil;
 import com.yichan.gaotezhipei.logistics.activity.LCLOrderDetailActivity;
+import com.yichan.gaotezhipei.logistics.activity.LogisticsDetailActivity;
 import com.yichan.gaotezhipei.logistics.constant.LogisticsContants;
 import com.yichan.gaotezhipei.logistics.entity.LCLOrderPage;
+import com.yichan.gaotezhipei.logistics.event.RefreshLCLOrderEvent;
 import com.yichan.gaotezhipei.logistics.view.LCLOrderAdapter;
 import com.yichan.gaotezhipei.server.lcldriver.constant.LCLDriverConstants;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -33,6 +41,8 @@ import butterknife.OnClick;
 import ikidou.reflect.TypeBuilder;
 import okhttp3.Call;
 import okhttp3.Response;
+
+import static android.R.attr.type;
 
 /**
  * 拼货订单fragment公共基类。与物流订单隔开。
@@ -60,8 +70,19 @@ public class CommonLCLOrderFragment extends CommonOrderFragment {
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
+        if(!EventBus.getInstance().isRegistered(this)) {
+            EventBus.getInstance().register(this);
+        }
         mStartPageNum = 1;
         mSize = 8;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(EventBus.getInstance().isRegistered(this)) {
+            EventBus.getInstance().unregister(this);
+        }
     }
 
     @Override
@@ -99,7 +120,23 @@ public class CommonLCLOrderFragment extends CommonOrderFragment {
                             }
                         }
                     });
+                } else {
+                    diallPhone(model.getDriverTelephone());
                 }
+                break;
+            case R.id.item_btn_left:
+                DialogHelper.showConfirmDailog(getFragmentManager(), "您确认取消订单吗？", new IDialogResultListener<Integer>() {
+                    @Override
+                    public void onDataResult(Integer result) {
+                        if(result == -1) {
+                            onHandleOrderByUser(2, model.getId());
+                        }
+                    }
+                });
+                break;
+            case R.id.item_btn_mid:
+                LogisticsDetailActivity.startActivity(getActivity(), 3, model);
+                break;
         }
     }
 
@@ -117,6 +154,26 @@ public class CommonLCLOrderFragment extends CommonOrderFragment {
                 protected void handleResponse(Result response) {
                     if(response.getResultCode() == Result.SUCCESS_CODE) {
                         showToast("签收成功");
+                        getDataList(1, true);
+                    } else {
+                        showToast(response.getMessage());
+                    }
+                }
+
+            });
+        } else if(status == 2) {
+            RequestCall call = new PostFormBuilder().url(AppConstants.BASE_URL + LCLDriverConstants.URL_USER_UPDATE_ORDER_STATUS)
+                    .addParams("pdriverOrderId", orderId).build();
+            call.doScene(new TokenSceneCallback(call) {
+                @Override
+                protected void handleError(String errorMsg, Call call, Exception e) {
+                    showToast(errorMsg);
+                }
+
+                @Override
+                protected void handleResponse(Result response) {
+                    if(response.getResultCode() == Result.SUCCESS_CODE) {
+                        showToast(toastMsgWhenSuccess(type));
                         getDataList(1, true);
                     } else {
                         showToast(response.getMessage());
@@ -295,6 +352,20 @@ public class CommonLCLOrderFragment extends CommonOrderFragment {
             case R.id.common_order_nodata:
                 getDataList(1, true);
                 break;
+        }
+    }
+
+    private void diallPhone(String phoneNum) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        Uri data = Uri.parse("tel:" + phoneNum);
+        intent.setData(data);
+        startActivity(intent);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiveRefreshEvent(RefreshLCLOrderEvent refreshLCLOrderEvent) {
+        if(isVisible()) {
+            getDataList(1, true);
         }
     }
 

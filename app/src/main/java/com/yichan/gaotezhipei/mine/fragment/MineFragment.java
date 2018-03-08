@@ -4,16 +4,24 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import com.changelcai.mothership.network.RequestCall;
+import com.changelcai.mothership.network.request.GetRequest;
+import com.ckev.chooseimagelibrary.base.img.assist.CommonImageLoader;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseFragment;
 import com.yichan.gaotezhipei.base.util.DialogHelper;
 import com.yichan.gaotezhipei.common.UserManager;
+import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
+import com.yichan.gaotezhipei.common.constant.AppConstants;
+import com.yichan.gaotezhipei.common.entity.Result;
 import com.yichan.gaotezhipei.common.util.ActivityAnimationUtil;
 import com.yichan.gaotezhipei.common.util.EventBus;
+import com.yichan.gaotezhipei.common.util.GsonUtil;
 import com.yichan.gaotezhipei.login.activity.DemandLoginActivity;
 import com.yichan.gaotezhipei.login.event.LoginEvent;
 import com.yichan.gaotezhipei.mine.activity.AddressMangeActivity;
@@ -22,13 +30,23 @@ import com.yichan.gaotezhipei.mine.activity.FeedbackActivity;
 import com.yichan.gaotezhipei.mine.activity.MyMessageActivity;
 import com.yichan.gaotezhipei.mine.activity.PersonalProfileActivity;
 import com.yichan.gaotezhipei.mine.activity.SettingActivity;
+import com.yichan.gaotezhipei.mine.constant.MineConstants;
+import com.yichan.gaotezhipei.mine.entity.DemanderInfo;
+import com.yichan.gaotezhipei.mine.event.NotifyPersonalInformEvent;
 import com.yichan.gaotezhipei.server.lcldriver.activity.LCLDriverMainActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
+import ikidou.reflect.TypeBuilder;
+import okhttp3.Call;
+import okhttp3.Response;
 
 /**
  * Created by ckerv on 2018/1/8.
@@ -40,31 +58,44 @@ public class MineFragment extends BaseFragment {
     TextView mTvAccount;
     @BindView(R.id.mine_tv_login)
     TextView mTvLogin;
-
+    @BindView(R.id.mine_civ_head)
+    CircleImageView mCivHead;
 
 
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
-        if (!EventBus.getInstance().isRegistered(this))
+        if (!EventBus.getInstance().isRegistered(this)) {
             EventBus.getInstance().register(this);
+        }
+        onReceiveNotifyPIEvent(null);
+    }
 
-        initView();
+    @Override
+    protected void onDestroyViewLazy() {
+        super.onDestroyViewLazy();
+        if(EventBus.getInstance().isRegistered(this)) {
+            EventBus.getInstance().unregister(this);
+        }
     }
 
     private void initView() {
         if(UserManager.getInstance(getActivity()).isLogin()) {
             String accout = UserManager.getInstance(getActivity()).getAccount();
             if(accout != null) {
-                mTvAccount.setText(accout);
+                mTvAccount.setText(UserManager.getInstance(getActivity()).getNickName());
+                CommonImageLoader.displayImage(UserManager.getInstance(getActivity()).getAvatar(),mCivHead, CommonImageLoader.NO_CACHE_OPTIONS);
                 mTvLogin.setVisibility(View.GONE);
             } else {
-                mTvAccount.setText("Hi,您未登陆");
-                mTvLogin.setVisibility(View.VISIBLE);
+//                mTvAccount.setText("Hi,您未登陆");
+//                CommonImageLoader.displayImage(null,mCivHead, CommonImageLoader.NO_CACHE_OPTIONS);
+//                mTvLogin.setVisibility(View.VISIBLE);
+                getActivity().finish();
             }
         } else {
-            mTvAccount.setText("Hi,您未登陆");
-            mTvLogin.setVisibility(View.VISIBLE);
+//            mTvAccount.setText("Hi,您未登陆");
+//            mTvLogin.setVisibility(View.VISIBLE);
+            getActivity().finish();
         }
     }
 
@@ -170,5 +201,45 @@ public class MineFragment extends BaseFragment {
         UserManager.getInstance(getActivity()).setRoleType("1");
         getActivity().startActivity(new Intent(getActivity(), LCLDriverMainActivity.class));
         getActivity().finish();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiveNotifyPIEvent(NotifyPersonalInformEvent event) {
+        String url = AppConstants.BASE_URL + MineConstants.URL_GET_INFO;
+        GetRequest getRequest = new GetRequest(url, null, null, null);
+        RequestCall call = getRequest.build();
+        call.doScene(new TokenSceneCallback<DemanderInfo>(call) {
+            @Override
+            public Result<DemanderInfo> parseNetworkResponse(Response response) throws IOException {
+                Type type = TypeBuilder
+                        .newInstance(Result.class)
+                        .beginSubType(DemanderInfo.class)
+                        .endSubType().build();
+                return GsonUtil.gsonToBean(response.body().string(), type);
+            }
+
+            @Override
+            protected void handleError(String errorMsg, Call call, Exception e) {
+                showToast(errorMsg);
+            }
+
+            @Override
+            protected void handleResponse(Result response) {
+                if(response.getResultCode() == Result.SUCCESS_CODE) {
+                    if(response.getData() != null) {
+                        DemanderInfo mDemanderInfo = (DemanderInfo)response.getData();
+                        Log.d("TAG", ">>>>>>GET:" + mDemanderInfo.getPortraint());
+                        //GetBitmapTools.getBitmap(ctx,demanderInfo.getPortraint(),imgPerson,R.drawable.default_icon,R.drawable.default_icon);
+                        UserManager.getInstance(getActivity()).setAvatar(mDemanderInfo.getPortraint());
+                        UserManager.getInstance(getActivity()).setNickName(mDemanderInfo.getName());
+                        initView();
+                    }
+                } else {
+                    showToast(response.getMessage());
+                }
+            }
+
+
+        });
     }
 }

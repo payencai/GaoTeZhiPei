@@ -31,7 +31,7 @@ public class NearbyNetAdapter extends MSClickableAdapter<NearbyNetAdapter.Nearby
     public void onBindVH(NearbyNetViewHolder holder, int position) {
         holder.tvName.setText(mList.get(position).getName());
         holder.tvAddress.setText(mList.get(position).getAdress());
-        holder.tvDistance.setText(String.valueOf(mList.get(position).getDistance()) + "m");
+        holder.tvDistance.setText(String.valueOf(mList.get(position).getDistance()) + "km");
     }
 
     @Override

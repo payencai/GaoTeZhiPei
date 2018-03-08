@@ -171,15 +171,24 @@ public class HatchApplyActivity extends BaseActivity implements PermissionUtils.
             @Override
             protected void handleError(String errorMsg, Call call, Exception e) {
                 showToast(errorMsg);
+                if(mProgerssDialog != null) {
+                    mProgerssDialog.dismiss();
+                }
             }
 
             @Override
             protected void handleResponse(Result response) {
                 if(response.getResultCode() == Result.SUCCESS_CODE) {
                     showToast("申请成功，请等待审核。");
+                    if(mProgerssDialog != null) {
+                        mProgerssDialog.dismiss();
+                    }
                     finish();
                 } else {
                     showToast(response.getMessage());
+                    if(mProgerssDialog != null) {
+                        mProgerssDialog.dismiss();
+                    }
                 }
             }
 
@@ -215,7 +224,11 @@ public class HatchApplyActivity extends BaseActivity implements PermissionUtils.
                     commitAllParams();
                 } else {
                     showToast((response.getMessage() == null ? "图片上传失败" : response.getMessage()));
+                    if(mProgerssDialog != null) {
+                        mProgerssDialog.dismiss();
+                    }
                 }
+
             }
 
         });

@@ -1,6 +1,7 @@
 package com.yichan.gaotezhipei.server.netstation.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -217,6 +218,7 @@ public class NewExpressActivity extends BaseActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onReceiveChooseExpressCompanyEvent(ChooseExpressCompanyEvent event) {
+        mTvCompany.setTextColor(Color.parseColor("#333333"));
         mTvCompany.setText(event.companyName);
         mExpressCompanyId = event.companyId;
     }

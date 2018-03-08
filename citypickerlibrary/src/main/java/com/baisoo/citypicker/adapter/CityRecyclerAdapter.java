@@ -43,7 +43,7 @@ public class CityRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public static final int LOCATING    = 111;
     public static final int FAILED      = 666;
     public static final int SUCCESS     = 888;
-    private int locateState = LOCATING;
+    private int locateState = SUCCESS;
     private String locatedCity;
 
     private final int ITEM_TYPE_CHARACTER = 5;

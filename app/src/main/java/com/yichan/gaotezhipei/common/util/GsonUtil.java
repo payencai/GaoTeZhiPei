@@ -37,6 +37,14 @@ public class GsonUtil {
         return gsonString;
     }
 
+    public static Object gsonToBean(String jsonStr, Class clazz) {
+        Object object = null;
+        if (gson != null) {
+            object = gson.fromJson(jsonStr, clazz);
+        }
+        return object;
+    }
+
     /**
      * 转成bean
      *
