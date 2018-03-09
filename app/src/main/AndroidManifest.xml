@@ -342,6 +342,9 @@
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
 
+        <activity android:name=".server.logisticsdriver.activity.LogisticsDriverOrderDetailActivity"
+            android:screenOrientation="portrait"></activity>
+
 
 
     </application>

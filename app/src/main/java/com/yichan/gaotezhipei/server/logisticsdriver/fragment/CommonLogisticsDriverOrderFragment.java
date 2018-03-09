@@ -17,12 +17,17 @@ import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
 import com.yichan.gaotezhipei.common.constant.AppConstants;
 import com.yichan.gaotezhipei.common.entity.Result;
 import com.yichan.gaotezhipei.common.fragment.CommonOrderFragment;
+import com.yichan.gaotezhipei.common.util.EventBus;
 import com.yichan.gaotezhipei.common.util.GsonUtil;
 import com.yichan.gaotezhipei.common.util.UrlUtil;
-import com.yichan.gaotezhipei.logistics.activity.LogisticsDetailActivity;
+import com.yichan.gaotezhipei.server.logisticsdriver.activity.LogisticsDriverOrderDetailActivity;
 import com.yichan.gaotezhipei.server.logisticsdriver.constant.LogisticsDriverConstants;
 import com.yichan.gaotezhipei.server.logisticsdriver.entity.LogisticsDriverOrderItem;
+import com.yichan.gaotezhipei.server.logisticsdriver.event.RefreshOrderEvent;
 import com.yichan.gaotezhipei.server.logisticsdriver.view.LogisticsDriverOrderAdapter;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,8 +57,19 @@ public class CommonLogisticsDriverOrderFragment extends CommonOrderFragment {
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
+        if(!EventBus.getInstance().isRegistered(this)) {
+            EventBus.getInstance().register(this);
+        }
         mStartPageNum = 1;
         mSize = 15;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(EventBus.getInstance().isRegistered(this)) {
+            EventBus.getInstance().unregister(this);
+        }
     }
 
     @SuppressLint({"NewApi", "ValidFragment"})
@@ -67,7 +83,7 @@ public class CommonLogisticsDriverOrderFragment extends CommonOrderFragment {
         mAdapter.setOnItemClickListener(new MSClickableAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                LogisticsDetailActivity.startActivity(getActivity(), 2, mBeanList.get(position));
+                LogisticsDriverOrderDetailActivity.startActivity(getActivity(), mBeanList.get(position));
             }
         });
         mAdapter.setSubviewClickListener(new OnItemSubviewClickListener<LogisticsDriverOrderItem>() {
@@ -243,6 +259,13 @@ public class CommonLogisticsDriverOrderFragment extends CommonOrderFragment {
             case R.id.common_order_nodata:
                 getDataList(1, true);
                 break;
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiveRefreshEvent(RefreshOrderEvent refreshLCLOrderEvent) {
+        if(isVisible()) {
+            getDataList(1, true);
         }
     }
 }
