@@ -9,11 +9,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.changelcai.mothership.view.recycler.MSClickableAdapter;
+import com.ckev.chooseimagelibrary.base.img.assist.CommonImageLoader;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.listener.OnItemSubviewClickListener;
 import com.yichan.gaotezhipei.server.netstation.entity.ExpressToComfirmOrderPage;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by ckerv on 2018/1/19.
@@ -41,6 +44,7 @@ public class ExpressToConfirmAdapter extends MSClickableAdapter<ExpressToConfirm
 
     @Override
     public void onBindVH(ExpressToConfirmViewHolder holder, final int position) {
+        CommonImageLoader.displayImage(mList.get(position).getPortraitUrl(), holder.civHeader, CommonImageLoader.NO_CACHE_OPTIONS);
         holder.tvDriverName.setText(mList.get(position).getDriverName());
         holder.tvCount.setText("揽货件数:" + mList.get(position).getCount() + "件");
         holder.tvTime.setText("揽货时间:" + mList.get(position).getTakeorderTime());
@@ -71,9 +75,11 @@ public class ExpressToConfirmAdapter extends MSClickableAdapter<ExpressToConfirm
         TextView tvCount;
         TextView tvTime;
         RelativeLayout rlConfirm;
+        CircleImageView civHeader;
 
         public ExpressToConfirmViewHolder(View itemView) {
             super(itemView);
+            civHeader = (CircleImageView) itemView.findViewById(R.id.item_express_to_confrim_iv_header);
             tvDriverName = (TextView) itemView.findViewById(R.id.item_tv_driver_name);
             tvCount = (TextView) itemView.findViewById(R.id.item_tv_count);
             tvTime = (TextView) itemView.findViewById(R.id.item_tv_time);
