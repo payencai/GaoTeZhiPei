@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.common.UserManager;
 import com.yichan.gaotezhipei.logistics.constant.LogisticsContants;
@@ -21,7 +22,7 @@ import java.util.List;
  * Created by ckerv on 2018/1/15.
  */
 
-public class MyMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class MyMessageAdapter extends MSClickableAdapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
     private List<MyMessageItem> mList;
@@ -32,8 +33,9 @@ public class MyMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
 
+
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateVH(ViewGroup parent, int viewType) {
         if(viewType == 1) {
             View itemView = LayoutInflater.from(mContext).inflate(R.layout.item_lcl_order_common, parent, false);
             return new LCLOrderAdapter.LCLOrderViewHolder(itemView);
@@ -43,8 +45,9 @@ public class MyMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
     }
 
+
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindVH(RecyclerView.ViewHolder holder, int position) {
         if(getItemViewType(position) == 1) {
             onBindViewLCLOrder((LCLOrderAdapter.LCLOrderViewHolder)holder, (LCLOrderPage.BeanListBean)mList.get(position).getOrder());
         } else {
@@ -146,7 +149,7 @@ public class MyMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     private void setOrderStatus(LogisticOrderAdapter.LogisticOrderViewHolder holder, int pos, LogisticsOrderPage.ListBean bean) {
         holder.tvOrderTime.setText(bean.getCreateTime());
-        switch (getItemViewType(pos)) {
+        switch (Integer.valueOf(bean.getStatus())) {
             case LogisticsContants.TYPE_LOG_ORDER_TO_RECEIVER:
                 holder.rlStatus.setBackground(mContext.getDrawable(R.drawable.order_green));
                 holder.tvStatus.setText("待接单");
@@ -185,7 +188,7 @@ public class MyMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     private void setOneLine(LogisticOrderAdapter.LogisticOrderViewHolder holder, int pos, LogisticsOrderPage.ListBean bean) {
-        switch (getItemViewType(pos)) {
+        switch (Integer.valueOf(bean.getStatus())) {
             case LogisticsContants.TYPE_LOG_ORDER_TO_RECEIVER:
                 holder.tvOne.setText("快件录入时间:" + bean.getCreateTime());
                 break;
@@ -224,11 +227,11 @@ public class MyMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
 
     private void setLocationView(LogisticOrderAdapter.LogisticOrderViewHolder holder, int pos, LogisticsOrderPage.ListBean bean) {
-        if(getItemViewType(pos) == LogisticsContants.TYPE_LOG_ORDER_TO_WAREHOUSE) {
-            holder.rlLoc.setVisibility(View.VISIBLE);
-        } else {
+//        if(getItemViewType(pos) == LogisticsContants.TYPE_LOG_ORDER_TO_WAREHOUSE) {
+//            holder.rlLoc.setVisibility(View.VISIBLE);
+//        } else {
             holder.rlLoc.setVisibility(View.GONE);
-        }
+//        }
     }
 
     private void setBottomView(LogisticOrderAdapter.LogisticOrderViewHolder holder, final LogisticsOrderPage.ListBean bean) {

@@ -8,18 +8,25 @@ import android.widget.TextView;
 
 import com.changelcai.mothership.network.RequestCall;
 import com.changelcai.mothership.network.request.GetRequest;
+import com.changelcai.mothership.view.recycler.MSClickableAdapter;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseListActivity;
 import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
 import com.yichan.gaotezhipei.common.constant.AppConstants;
 import com.yichan.gaotezhipei.common.entity.Result;
+import com.yichan.gaotezhipei.common.util.EventBus;
 import com.yichan.gaotezhipei.common.util.GsonUtil;
+import com.yichan.gaotezhipei.logistics.activity.LCLOrderDetailActivity;
+import com.yichan.gaotezhipei.logistics.activity.LogisticsDetailActivity;
 import com.yichan.gaotezhipei.logistics.entity.LCLOrderPage;
 import com.yichan.gaotezhipei.logistics.entity.LogisticsOrderPage;
+import com.yichan.gaotezhipei.logistics.event.RefreshLCLOrderEvent;
 import com.yichan.gaotezhipei.mine.constant.MineConstants;
 import com.yichan.gaotezhipei.mine.entity.MyMessageItem;
 import com.yichan.gaotezhipei.mine.view.MyMessageAdapter;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,7 +56,14 @@ public class MyMessageActivity extends BaseListActivity {
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
+        EventBus.getInstance().register(this);
         mTvTitle.setText("我的消息");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getInstance().unregister(this);
     }
 
     @Override
@@ -60,6 +74,16 @@ public class MyMessageActivity extends BaseListActivity {
     @Override
     protected RecyclerView.Adapter getAdapter() {
         mAdapter = new MyMessageAdapter(this, mMsgList);
+        mAdapter.setOnItemClickListener(new MSClickableAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                if(mMsgList.get(position).getType() == 1) {
+                    LCLOrderDetailActivity.startActivity(MyMessageActivity.this, (LCLOrderPage.BeanListBean) mMsgList.get(position).getOrder());
+                } else {
+                    LogisticsDetailActivity.startActivity(MyMessageActivity.this, 1,  (LogisticsOrderPage.ListBean)mMsgList.get(position).getOrder());
+                }
+            }
+        });
         return mAdapter;
     }
 
@@ -176,5 +200,10 @@ public class MyMessageActivity extends BaseListActivity {
             default:
                 break;
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiveRefreshEvent(RefreshLCLOrderEvent event) {
+        getDataList(true);
     }
 }
