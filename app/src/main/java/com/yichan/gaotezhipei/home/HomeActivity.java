@@ -79,6 +79,12 @@ public class HomeActivity extends CommonMultiTabActivity implements PermissionUt
         mLlLoc = (LinearLayout) findViewById(R.id.titlebar_ll_loc);
         mTvLoc = (TextView) findViewById(R.id.titlebar_tv_right);
         mIvRight.setImageResource(R.drawable.customservice);
+        mIvRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showToast("客服功能开发中，敬请期待。");
+            }
+        });
         mLlLoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
