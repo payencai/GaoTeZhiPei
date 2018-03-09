@@ -48,6 +48,9 @@ public class NetMainActivity extends BaseListActivity {
     @BindView(R.id.titlebar_btn_left)
     ImageButton mIbLeft;
 
+    @BindView(R.id.titlebar_btn_right)
+    ImageButton mIbRight;
+
     private View mViewNodata;
 
     private ExpressConfirmedAdapter mAdapter;
@@ -66,7 +69,8 @@ public class NetMainActivity extends BaseListActivity {
 
     private void initTitleBar() {
         mTvTitle.setText("服务网点");
-        mIbLeft.setImageResource(R.drawable.logout);
+        mIbLeft.setImageResource(R.drawable.logout_txt);
+        mIbRight.setImageResource(R.drawable.setting_txt);
     }
 
     @Override
@@ -164,7 +168,7 @@ public class NetMainActivity extends BaseListActivity {
 
 
 
-    @OnClick({R.id.net_main_iv_new_address, R.id.net_main_iv_express_to_confirm, R.id.net_main_iv_express_record,R.id.view_no_data, R.id.titlebar_btn_left})
+    @OnClick({R.id.net_main_iv_new_address, R.id.net_main_iv_express_to_confirm, R.id.net_main_iv_express_record,R.id.view_no_data, R.id.titlebar_btn_left, R.id.titlebar_btn_right})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.net_main_iv_new_address:
@@ -181,6 +185,9 @@ public class NetMainActivity extends BaseListActivity {
                 break;
             case R.id.titlebar_btn_left:
                 LoginManager.logout(this, false);
+                break;
+            case R.id.titlebar_btn_right:
+                startActivity(new Intent(NetMainActivity.this, NetProfileActivity.class));
                 break;
             default:
                 break;

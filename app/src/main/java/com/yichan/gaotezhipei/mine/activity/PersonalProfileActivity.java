@@ -12,6 +12,7 @@ import com.changelcai.mothership.network.builder.PostFormBuilder;
 import com.changelcai.mothership.network.request.GetRequest;
 import com.ckev.chooseimagelibrary.base.img.assist.CommonImageLoader;
 import com.yichan.gaotezhipei.R;
+import com.yichan.gaotezhipei.common.activity.ProfileActivity;
 import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
 import com.yichan.gaotezhipei.common.constant.AppConstants;
 import com.yichan.gaotezhipei.common.entity.Result;
@@ -48,7 +49,6 @@ public class PersonalProfileActivity extends ProfileActivity {
     TextView mTvGender;
 
     private DemanderInfo mDemanderInfo;
-    private Bitmap mBitmap;
 
     @Override
     protected int getContentViewId() {
@@ -181,9 +181,6 @@ public class PersonalProfileActivity extends ProfileActivity {
 
     @Override
     protected void reloadProfile(Bitmap bm) {
-//        if(mBitmap != null)
-//            mBitmap.recycle();
-//        mBitmap = bm.copy(Bitmap.Config.RGB_565, true);
         Log.d("TAG", ">>>>>>reloadProfile BEGIN");
         imgPerson.setImageBitmap(bm);
         Log.d("TAG", ">>>>>>reloadProfile END");
@@ -236,9 +233,6 @@ public class PersonalProfileActivity extends ProfileActivity {
                     showToast("头像已更新。");
                     initData2();
                     EventBus.getInstance().post(new NotifyPersonalInformEvent());
-//                    imgPerson.setImageBitmap(mBitmap);
-//                    mBitmap.recycle();
-//                    mBitmap = null;
                 } else {
                     showToast(response.getMessage());
                 }

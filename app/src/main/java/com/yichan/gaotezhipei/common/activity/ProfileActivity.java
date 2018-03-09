@@ -1,4 +1,4 @@
-package com.yichan.gaotezhipei.mine.activity;
+package com.yichan.gaotezhipei.common.activity;
 
 import android.app.Dialog;
 import android.content.Context;

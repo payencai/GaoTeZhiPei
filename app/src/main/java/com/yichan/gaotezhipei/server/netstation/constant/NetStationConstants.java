@@ -17,4 +17,10 @@ public class NetStationConstants {
 
     public static final String URL_TAKE_ON_ORDER = "/network/order/takeOn";
 
+    public static final String URL_UPLOAD_IMAGE = "/image/uploadImage";
+
+    public static final String URL_GET_INFO = "/network/info/get";
+    public static final String URL_UPLOAD_PORTRAINT = "/network/info/uploadPortrait";
+    public static final String URL_UPDATE_NAME = "/network/info/updateName";
+    public static final String URL_UPDATE_ADDRESS = "/network/info/updateAdress";
 }

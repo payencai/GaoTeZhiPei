@@ -218,6 +218,12 @@
         <activity android:name=".server.netstation.activity.ExpressToConfirmActivity"
             android:screenOrientation="portrait"></activity>
 
+        <activity android:name=".server.netstation.activity.NetProfileActivity"
+                  android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".server.netstation.activity.NetNameSetActivity"
+                  android:screenOrientation="portrait"></activity>
+
         <activity android:name=".hatchservice.activity.HatchApplyActivity"
             android:screenOrientation="portrait"></activity>
 
@@ -275,6 +281,9 @@
             >
 
         </activity>
+
+        <activity android:name=".location.activity.SimpleChooseAddrWebActivity"
+                  android:screenOrientation="portrait" />
 
         <activity android:name=".common.activity.EditContactInformActivity"
             android:screenOrientation="portrait"
