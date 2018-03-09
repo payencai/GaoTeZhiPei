@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -49,7 +49,7 @@ dependencies {
     compile 'com.kyleduo.switchbutton:library:2.0.0'
     compile 'com.github.fanhua1994:WheelPicker:1.0.1'
     compile 'com.7heaven.widgets:segmentcontrol:1.17'
-//    compile 'com.github.aohanyao:ViewPagerCardTransformer:v1.0'
+    //    compile 'com.github.aohanyao:ViewPagerCardTransformer:v1.0'
     compile project(path: ':chooseimagelibrary')
     compile project(path: ':citypickerlibrary')
     compile 'com.owater.library:CircleTextViewlibrary:0.8.3'
@@ -57,21 +57,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.contrarywind:Android-PickerView:3.2.7'
     compile 'com.github.ikidou:TypeBuilder:1.0'
-    compile 'com.xyz.step:step:1.0.4'
-    compile 'cn.ittiger:indexstickyview:1.1.0'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    compile 'com.github.baoyachi:StepView:1.9'
 }
