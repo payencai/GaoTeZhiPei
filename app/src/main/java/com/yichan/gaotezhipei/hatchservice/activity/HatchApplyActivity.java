@@ -342,10 +342,11 @@ public class HatchApplyActivity extends BaseActivity implements PermissionUtils.
                             photoPath = uri.getPath();
                         }
                         cropImageUri = Uri.fromFile(new File(photoPath));
-                        Uri newUri = Uri.parse(PhotoUtils.getPath(HatchApplyActivity.this, data.getData()));
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-                            newUri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".fileprovider", new File(newUri.getPath()));
-                        PhotoUtils.cropImageUri(this, newUri, cropImageUri, 1, 1, 300, 300, 299);
+                        // 适配Android5.0(API21)以下版本（photoPath格式为content://XX.XXX/）
+                        if(photoPath.startsWith("/"))
+                            photoPath = "file://" + photoPath;
+                        startPhotoZoom(Uri.parse(photoPath));
+//                        PhotoUtils.cropImageUri(this, newUri, cropImageUri, 1, 1, 300, 300, 299);
                     } else {
                         Toast.makeText(this, "图片没找到", Toast.LENGTH_SHORT).show();
                         return;
@@ -384,5 +385,31 @@ public class HatchApplyActivity extends BaseActivity implements PermissionUtils.
         mIvPlan.setVisibility(View.VISIBLE);
         mIvPlan.setImageBitmap(mBitmapToUpload);
         mLlUpload.setVisibility(View.GONE);
+    }
+
+    /**
+     * 裁剪图片方法实现
+     *
+     * @param uri
+     */
+    private void startPhotoZoom(Uri uri) {
+
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(uri, "image/*");
+        // 设置裁剪
+        intent.putExtra("crop", "true");
+        intent.putExtra("scale", true);// 去黑边
+        intent.putExtra("scaleUpIfNeeded", true);// 去黑边
+        // aspectX aspectY 是宽高的比例
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+        // outputX outputY 是裁剪图片宽高
+        intent.putExtra("outputX", 320);
+        intent.putExtra("outputY", 320);
+        intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+        intent.putExtra("noFaceDetection", true);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, cropImageUri);
+        intent.putExtra("return-data", false);//设置为不返回数据
+        startActivityForResult(intent, RESULT_REQUEST_CODE);
     }
 }
