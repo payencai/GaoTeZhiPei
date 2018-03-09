@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.changelcai.mothership.view.recycler.MSClickableAdapter;
+import com.ckev.chooseimagelibrary.base.img.assist.CommonImageLoader;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.listener.OnItemSubviewClickListener;
 import com.yichan.gaotezhipei.server.logisticsdriver.constant.LogisticsDriverConstants;
@@ -45,6 +47,8 @@ public class LogisticsDriverOrderAdapter extends MSClickableAdapter<LogisticsDri
     public void onBindVH(LogisticsDriverOrderViewHolder holder, int position) {
 
         LogisticsDriverOrderItem bean = mList.get(position);
+
+        CommonImageLoader.displayImage(bean.getNetworkPic(), holder.ivIcon, CommonImageLoader.NO_CACHE_OPTIONS);
 
         setOrderStatus(holder, bean);
 
@@ -169,10 +173,13 @@ public class LogisticsDriverOrderAdapter extends MSClickableAdapter<LogisticsDri
         RelativeLayout rlBottom;
         Button btnBottom;
 
+        ImageView ivIcon;
+
 
         public LogisticsDriverOrderViewHolder(View itemView) {
             super(itemView);
 
+            ivIcon = (ImageView) itemView.findViewById(R.id.item_logis_driver_order_iv_icon);
             tvCreateTime = (TextView) itemView.findViewById(R.id.item_tv_create_time);
             rlStatus = (RelativeLayout) itemView.findViewById(R.id.item_rl_status);
             tvStatus = (TextView) itemView.findViewById(R.id.item_tv_status);
