@@ -13,6 +13,7 @@ import com.yichan.gaotezhipei.common.util.DrawableUtil;
 import com.yichan.gaotezhipei.common.view.CategoryAdapter;
 import com.yichan.gaotezhipei.common.view.DividerItemDecoration;
 import com.yichan.gaotezhipei.common.view.GridLayoutScrollManager;
+import com.yichan.gaotezhipei.logistics.activity.ExpressLogisticsActivity;
 import com.yichan.gaotezhipei.logistics.activity.ExpressSearchActivity;
 import com.yichan.gaotezhipei.logistics.activity.ForbiddenObjActivity;
 import com.yichan.gaotezhipei.logistics.activity.LCLOrderActivity;
@@ -71,6 +72,9 @@ public class LogisticsFragment extends BaseFragment {
                 switch (position) {
                     case 0:
                         getActivity().startActivity(new Intent(getActivity(), ExpressSearchActivity.class));
+                        break;
+                    case 1:
+                        getActivity().startActivity(new Intent(getActivity(), ExpressLogisticsActivity.class));
                         break;
                     case 2:
                         getActivity().startActivity(new Intent(getActivity(), LCLOrderActivity.class));
