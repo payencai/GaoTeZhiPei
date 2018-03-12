@@ -91,6 +91,11 @@ public class HomeActivity extends CommonMultiTabActivity implements PermissionUt
                 startActivity(new Intent(HomeActivity.this, ChooseCityActivity.class));
             }
         });
+
+        mTvTitle.setText("我要拼货");
+        mVgTitle.setVisibility(View.VISIBLE);
+        mIvRight.setVisibility(View.GONE);
+        mLlLoc.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -124,31 +129,31 @@ public class HomeActivity extends CommonMultiTabActivity implements PermissionUt
            @Override
            public void onPageSelected(int position) {
                 //setTitleText(getTabNames()[position]);
-               if(position == 3) {
+               if(position == 2) {
                    mVgTitle.setVisibility(View.GONE);
                } else {
                    mVgTitle.setVisibility(View.VISIBLE);
                }
                switch (position) {
+//                   case 0:
+//                       mTvTitle.setText("弥勒电子商务公共服务中心");
+//                       mVgTitle.setVisibility(View.VISIBLE);
+//                       mIvRight.setVisibility(View.VISIBLE);
+//                       mLlLoc.setVisibility(View.GONE);
+//                       break;
                    case 0:
-                       mTvTitle.setText("弥勒电子商务公共服务中心");
-                       mVgTitle.setVisibility(View.VISIBLE);
-                       mIvRight.setVisibility(View.VISIBLE);
-                       mLlLoc.setVisibility(View.GONE);
-                       break;
-                   case 1:
                        mTvTitle.setText("我要拼货");
                        mVgTitle.setVisibility(View.VISIBLE);
                        mIvRight.setVisibility(View.GONE);
                        mLlLoc.setVisibility(View.VISIBLE);
                        break;
-                   case 2:
+                   case 1:
                        mTvTitle.setText("我要寄件");
                        mVgTitle.setVisibility(View.VISIBLE);
                        mIvRight.setVisibility(View.GONE);
                        mLlLoc.setVisibility(View.VISIBLE);
                        break;
-                   case 3:
+                   case 2:
                        mVgTitle.setVisibility(View.GONE);
                        break;
                    default:
@@ -176,7 +181,7 @@ public class HomeActivity extends CommonMultiTabActivity implements PermissionUt
     @Override
     protected List<Fragment> initFragmentList() {
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new ServiceCenterFragment());
+//        fragments.add(new ServiceCenterFragment());
         fragments.add(new LCLFragment());
         fragments.add(new LogisticsFragment());
         fragments.add(new MineFragment());
