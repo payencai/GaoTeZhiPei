@@ -13,11 +13,13 @@ import com.changelcai.mothership.network.request.GetRequest;
 import com.ckev.chooseimagelibrary.base.img.assist.CommonImageLoader;
 import com.yichan.gaotezhipei.R;
 import com.yichan.gaotezhipei.base.component.BaseActivity;
+import com.yichan.gaotezhipei.common.GaoteApplication;
 import com.yichan.gaotezhipei.common.callback.TokenSceneCallback;
 import com.yichan.gaotezhipei.common.constant.AppConstants;
 import com.yichan.gaotezhipei.common.entity.Result;
 import com.yichan.gaotezhipei.common.util.EventBus;
 import com.yichan.gaotezhipei.common.util.GsonUtil;
+import com.yichan.gaotezhipei.dao.ExpressCompanyDao;
 import com.yichan.gaotezhipei.server.netstation.entity.ExpressCompanyItem;
 import com.yichan.gaotezhipei.server.netstation.event.ChooseExpressCompanyEvent;
 
@@ -57,6 +59,7 @@ public class ChooseExpressCompanyActivity extends BaseActivity {
     }
 
     private void initDataList() {
+        /*
         GetRequest getRequest = new GetRequest(AppConstants.BASE_URL + "/logisticsCompany/getAll", null, null, null);
         RequestCall call = getRequest.build();
         call.doScene(new TokenSceneCallback<List<ExpressCompanyItem>>(call) {
@@ -89,7 +92,16 @@ public class ChooseExpressCompanyActivity extends BaseActivity {
             public Result<List<ExpressCompanyItem>> parseNetworkResponse(Response response) throws IOException {
                 return GsonUtil.fromJsonArray(response.body().string(), ExpressCompanyItem.class);
             }
-        });
+        });*/
+
+//        ExpressCompanyItem expressCompanyItem = new ExpressCompanyItem();
+//        expressCompanyItem.setId("1");
+//        expressCompanyItem.setName("");
+//        expressCompanyItem.setIsCancel("0");
+//        mDataList.add(expressCompanyItem);
+        ExpressCompanyDao dao = new ExpressCompanyDao(GaoteApplication.mApplicationContext);
+        mDataList = dao.findList();
+        initIndexViews();
     }
 
     private void initIndexViews() {
@@ -98,7 +110,7 @@ public class ChooseExpressCompanyActivity extends BaseActivity {
         adapter.setOnItemClickListener(new OnItemClickListener<ExpressCompanyItem>() {
             @Override
             public void onItemClick(View childView, int position, ExpressCompanyItem item) {
-                EventBus.getInstance().post(new ChooseExpressCompanyEvent(item.getName(),item.getId()));
+                EventBus.getInstance().post(new ChooseExpressCompanyEvent(item.getName(),item.getCode()));
                 finish();
             }
         });

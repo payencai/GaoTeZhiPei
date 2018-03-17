@@ -19,6 +19,7 @@ import com.yichan.gaotezhipei.common.entity.Result;
 import com.yichan.gaotezhipei.common.fragment.CommonOrderFragment;
 import com.yichan.gaotezhipei.common.util.GsonUtil;
 import com.yichan.gaotezhipei.common.util.UrlUtil;
+import com.yichan.gaotezhipei.logistics.activity.LogisticOrderDetailActivity;
 import com.yichan.gaotezhipei.logistics.activity.LogisticsDetailActivity;
 import com.yichan.gaotezhipei.logistics.constant.LogisticsContants;
 import com.yichan.gaotezhipei.logistics.entity.LogisticsOrderPage;
@@ -84,7 +85,8 @@ public class CommonLogisticOrderFragment extends CommonOrderFragment {
         mAdapter.setOnItemClickListener(new MSClickableAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                LogisticsDetailActivity.startActivity(getActivity(), 1, mList.get(position));
+                //LogisticsDetailActivity.startActivity(getActivity(), 1, mList.get(position));
+                LogisticOrderDetailActivity.startActivity(getActivity(), mList.get(position));
             }
         });
         return mAdapter;

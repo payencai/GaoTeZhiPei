@@ -89,6 +89,8 @@ public class LogisticsDetailActivity extends BaseActivity {
             setViewByLogisDriver();
         } else if(mStartType == 3) {
             setViewByLCLOrder();
+        } else if(mStartType == 4) {
+            setViewByLogisticOrder();
         }
     }
 
@@ -137,6 +139,59 @@ public class LogisticsDetailActivity extends BaseActivity {
 
             tvExpressCompany.setText("取货时间:" + bean.getAnticipantTime());
             tvExpressNumber.setText("取货地址:" + bean.getPickupAddress());
+        }
+    }
+
+    private void setViewByLogisticOrder() {
+        LogisticsOrderPage.ListBean bean = (LogisticsOrderPage.ListBean) getIntent().getSerializableExtra("bean");
+        if(bean != null) {
+            tvOrderTime.setText(bean.getTakeorderTime());
+            int type = Integer.valueOf(bean.getStatus());
+            switch (type) {
+                case LogisticsContants.TYPE_LOG_ORDER_TO_RECEIVER:
+                    rlStatus.setBackground(mContext.getDrawable(R.drawable.order_green));
+                    tvStatus.setText("待接单");
+                    initStepView(bean, type);
+                    break;
+                case LogisticsContants.TYPE_LOG_ORDER_TO_GET_CARGO:
+                    rlStatus.setBackground(mContext.getDrawable(R.drawable.order_purple));
+                    tvStatus.setText("待接货");
+                    initStepView(bean, type);
+                    break;
+                case LogisticsContants.TYPE_LOG_ORDER_TO_WAREHOUSE:
+                    rlStatus.setBackground(mContext.getDrawable(R.drawable.order_purple));
+                    tvStatus.setText("待发往仓库");
+                    initStepView(bean, type);
+                    break;
+                case LogisticsContants.TYPE_LOG_ORDER_TRANSITING:
+                    rlStatus.setBackground(mContext.getDrawable(R.drawable.order_purple));
+                    tvStatus.setText("运输中");
+                    initStepView(bean, type);
+                    break;
+                case LogisticsContants.TYPE_LOG_ORDER_TO_CONFIRM:
+                    rlStatus.setBackground(mContext.getDrawable(R.drawable.order_orangle));
+                    tvStatus.setText("待签收");
+                    initStepView(bean, type);
+                    break;
+                case LogisticsContants.TYPE_LOG_ORDER_FINISH:
+                    rlStatus.setBackground(mContext.getDrawable(R.drawable.order_blue));
+                    tvStatus.setText("已完成");
+                    initStepView(bean, type);
+                    break;
+                default:
+                    break;
+            }
+            tvMailDistrict.setText(bean.getAdressToDistrict());
+            tvMailProvinceCity.setText(bean.getAdressToProvince() + " " + bean.getAdressToCity());
+            tvDistance.setText(String.format("%.2f", Double.valueOf(bean.getDistanceDriver())) + "km");
+            tvPickDistrict.setText(bean.getAdressFromDistrict());
+            tvPickProvinceCity.setText(bean.getAdressFromProvince() + " " + bean.getAdressFromCity());
+
+            tvCargoName.setText(bean.getGoodsName() + ":");
+            tvCargoInform.setText(bean.getGoodsQuantity() + "件 " + bean.getGoodsMass() + "kg " + bean.getGoodsSize() + "m³");
+
+            tvExpressCompany.setText("取货时间:" + bean.getPickTime());
+            tvExpressNumber.setText("取货地址:" + bean.getAdressFrom());
         }
     }
 

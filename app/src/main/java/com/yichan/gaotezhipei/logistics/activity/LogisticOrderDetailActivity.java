@@ -6,8 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -24,6 +22,7 @@ import com.yichan.gaotezhipei.common.entity.Result;
 import com.yichan.gaotezhipei.common.util.EventBus;
 import com.yichan.gaotezhipei.logistics.constant.LogisticsContants;
 import com.yichan.gaotezhipei.logistics.entity.LCLOrderPage;
+import com.yichan.gaotezhipei.logistics.entity.LogisticsOrderPage;
 import com.yichan.gaotezhipei.logistics.event.RefreshLCLOrderEvent;
 import com.yichan.gaotezhipei.server.lcldriver.constant.LCLDriverConstants;
 
@@ -34,16 +33,16 @@ import okhttp3.Call;
 import static android.R.attr.type;
 
 /**
- * Created by ckerv on 2018/2/10.
+ * Created by Simon on 2018/3/16.
  */
 
-public class LCLOrderDetailActivity extends BaseActivity {
+public class LogisticOrderDetailActivity extends BaseActivity {
 
     @BindView(R.id.titlebar_tv_title)
     TextView mTvTitle;
 
 
-    private LCLOrderPage.BeanListBean mBean;
+    private LogisticsOrderPage.ListBean mBean;
 
     @BindView(R.id.tv_mail_district)
     TextView mTvMailDistrict;
@@ -96,8 +95,8 @@ public class LCLOrderDetailActivity extends BaseActivity {
 
     private Context mContext;
 
-    public static void startActivity(Context context, LCLOrderPage.BeanListBean bean) {
-        Intent intent = new Intent(context, LCLOrderDetailActivity.class);
+    public static void startActivity(Context context, LogisticsOrderPage.ListBean bean) {
+        Intent intent = new Intent(context, LogisticOrderDetailActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("orderdetailbean", bean);
         intent.putExtras(bundle);
@@ -107,8 +106,8 @@ public class LCLOrderDetailActivity extends BaseActivity {
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
-        mBean = (LCLOrderPage.BeanListBean) getIntent().getSerializableExtra("orderdetailbean");
-        mContext = LCLOrderDetailActivity.this;
+        mBean = (LogisticsOrderPage.ListBean) getIntent().getSerializableExtra("orderdetailbean");
+        mContext = LogisticOrderDetailActivity.this;
         initTitleBar();
 
         initFirstLine();
@@ -119,35 +118,35 @@ public class LCLOrderDetailActivity extends BaseActivity {
     }
 
     private void initFirstLine() {
-        mTvMailDistrict.setText(mBean.getAddress().getArea());
-        mTvMailProvinceCity.setText(mBean.getAddress().getProvince() + " " + mBean.getAddress().getCity());
-        mTvPickDistrict.setText(mBean.getConsigneeArea());
-        mTvPickProvinceCity.setText(mBean.getConsigneeProvince() + " " + mBean.getConsigneeCity());
-        int type = Integer.valueOf(mBean.getType());
+        mTvMailDistrict.setText(mBean.getAdressToDistrict());
+        mTvMailProvinceCity.setText(mBean.getAdressToProvince() + " " + mBean.getAdressToCity());
+        mTvPickDistrict.setText(mBean.getAdressFromDistrict());
+        mTvPickProvinceCity.setText(mBean.getAdressFromProvince() + " " + mBean.getAdressFromCity());
+        int type = Integer.valueOf(mBean.getStatus());
         switch (type) {
-            case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE:
+            case LogisticsContants.TYPE_LOG_ORDER_TO_RECEIVER:
                 mTvStatus.setText("发布中");
                 mTvStatusDesc.setText("等待司机接单");
                 break;
-            case LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO:
+            case LogisticsContants.TYPE_LOG_ORDER_TO_GET_CARGO:
                 mTvStatus.setText("待接货");
                 mTvStatusDesc.setText("等待司机接货");
                 break;
-            case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO:
-                if(UserManager.getInstance(LCLOrderDetailActivity.this).isDemand()) {
-                    mTvStatus.setText("待收货");
-                } else {
-                    mTvStatus.setText("待送货");
-                }
-                mTvStatusDesc.setText("运往签收地址");
+            case LogisticsContants.TYPE_LOG_ORDER_TO_WAREHOUSE:
+                mTvStatus.setText("待发往");
+                mTvStatusDesc.setText("运往仓库途中");
                 break;
-            case LogisticsContants.TYPE_LCL_ORDER_TO_CONFIRM:
-                mTvStatus.setText("待签收");
+            case LogisticsContants.TYPE_LOG_ORDER_TRANSITING:
+                mTvStatus.setText("运输中");
+                mTvStatusDesc.setText("等待物流公司取件");
+                break;
+            case LogisticsContants.TYPE_LOG_ORDER_TO_CONFIRM:
+                mTvStatus.setText("派送中");
                 mTvStatusDesc.setText("等待用户签收");
                 break;
-            case LogisticsContants.TYPE_LCL_ORDER_TO_FINISH:
-                mTvStatus.setText("已完成");
-                mTvStatusDesc.setText("该订单已签收");
+            case LogisticsContants.TYPE_LOG_ORDER_FINISH:
+                mTvStatus.setText("已签收");
+                mTvStatusDesc.setText("快件已经签收");
                 break;
             default:
                 break;
@@ -155,27 +154,31 @@ public class LCLOrderDetailActivity extends BaseActivity {
     }
 
     private void initSecondLine() {
-        int type = Integer.valueOf(mBean.getType());
+        int type = Integer.valueOf(mBean.getStatus());
         switch (type) {
-            case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE:
-                mTvOrderDesc.setText("您的订单开始处理");
-                mTvOrderTime.setText(mBean.getOrderTime());
+            case LogisticsContants.TYPE_LOG_ORDER_TO_RECEIVER:
+                mTvOrderDesc.setText("等待物流司机接单");
+                mTvOrderTime.setText(mBean.getTakeorderTime());
                 break;
-            case LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO:
-                mTvOrderDesc.setText("司机前往接货，请耐心等候");
-                mTvOrderTime.setText(mBean.getGetTime());
+            case LogisticsContants.TYPE_LOG_ORDER_TO_GET_CARGO:
+                mTvOrderDesc.setText("等待物流司机接货");
+                mTvOrderTime.setText(mBean.getPickTime());
                 break;
-            case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO:
-                mTvOrderDesc.setText("正在前往收货目的地");
-                mTvOrderTime.setText(mBean.getPickupTime());
+            case LogisticsContants.TYPE_LOG_ORDER_TO_WAREHOUSE:
+                mTvOrderDesc.setText("订单正运往仓库，请耐心等候");
+                mTvOrderTime.setText(mBean.getReachwarehouseTime());
                 break;
-            case LogisticsContants.TYPE_LCL_ORDER_TO_CONFIRM:
-                mTvOrderDesc.setText("等待用户签收");
-                mTvOrderTime.setText(mBean.getSendTime());
+            case LogisticsContants.TYPE_LOG_ORDER_TRANSITING:
+                mTvOrderDesc.setText("订单到达仓库，等待物流公司取件");
+                mTvOrderTime.setText(mBean.getArriveTime());
                 break;
-            case LogisticsContants.TYPE_LCL_ORDER_TO_FINISH:
-                mTvOrderDesc.setText("订单已签收，签收人：" + mBean.getConsignee() + " " + mBean.getConsigneeTelephone());
-                mTvOrderTime.setText(mBean.getEndTime());
+            case LogisticsContants.TYPE_LOG_ORDER_TO_CONFIRM:
+                mTvOrderDesc.setText("订单正在派送中");
+                mTvOrderTime.setText(mBean.getConfirmTime());
+                break;
+            case LogisticsContants.TYPE_LOG_ORDER_FINISH:
+                mTvOrderDesc.setText("订单已签收，签收人：" + mBean.getDemanderId() + " " + mBean.getDemanderTelnum());
+                mTvOrderTime.setText(mBean.getSignTime());
                 break;
             default:
                 break;
@@ -183,18 +186,18 @@ public class LCLOrderDetailActivity extends BaseActivity {
     }
 
     private void initThirdLine() {
-        int type = Integer.valueOf(mBean.getType());
+        int type = Integer.valueOf(mBean.getStatus());
         switch (type) {
             case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE:
             case LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO:
             case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO:
-                mTvMailNamePhone.setText("寄件人：" + mBean.getAddress().getName() + " " + mBean.getAddress().getTelephone());
-                mTvMailAddr.setText("寄件地址：" + mBean.getAddress().getAddress());
+                mTvMailNamePhone.setText("寄件人：" + mBean.getDemanderId() + " " + mBean.getDemanderTelnum());
+                mTvMailAddr.setText("寄件地址：" + mBean.getAdressFrom());
                 break;
             case LogisticsContants.TYPE_LCL_ORDER_TO_CONFIRM:
             case LogisticsContants.TYPE_LCL_ORDER_TO_FINISH:
-                mTvMailNamePhone.setText("收件人：" + mBean.getConsignee() + " " + mBean.getConsigneeTelephone());
-                mTvMailAddr.setText("收件地址：" + mBean.getConsigneeAddress());
+                mTvMailNamePhone.setText("收件人：" + mBean.getReceiverTelnum());
+                mTvMailAddr.setText("收件地址：" + mBean.getAdressTo());
             default:
                 break;
         }
@@ -203,38 +206,17 @@ public class LCLOrderDetailActivity extends BaseActivity {
     }
 
     private void initGoodInform() {
-        mTvGoodName.setText("货品：" + mBean.getArticleName());
-        mTvGoodWeight.setText("重量：" + mBean.getWeight() + "kg");
-        mTvGoodVolume.setText("体积：" + mBean.getVolume() + "m³");
-        mTvGoodCount.setText("数量：" + mBean.getNum() + "件");
-        mTvCarType.setText("所需车型：" + String.format("%s (%.1f*%.1f*%.1f)米", mBean.getAnticipantCar(), 3.5, 1.5, 1.5));
-        int type = Integer.valueOf(mBean.getType());
-        switch (type) {
-            case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE:
-                mTvGetGoodTime.setText("下单时间：" + mBean.getOrderTime());
-                mTvGetGoodAddr.setText("取货地址：" + mBean.getPickupAddress());
-                break;
-            case LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO:
-                mTvGetGoodTime.setText("取货时间：" + mBean.getAnticipantTime());
-                mTvGetGoodAddr.setText("取货地址：" + mBean.getPickupAddress());
-                break;
-            case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO:
-                mTvGetGoodTime.setText("取货时间：" + mBean.getGetTime());
-                mTvGetGoodAddr.setText("取货地址：" + mBean.getPickupAddress());
-                break;
-            case LogisticsContants.TYPE_LCL_ORDER_TO_CONFIRM:
-                mTvGetGoodTime.setText("派送时间：" + mBean.getSendTime());
-                mTvGetGoodAddr.setText("收货地址：" + mBean.getConsigneeAddress());
-                break;
-            case LogisticsContants.TYPE_LCL_ORDER_TO_FINISH:
-                mTvGetGoodTime.setText("签收时间：" + mBean.getEndTime());
-                mTvGetGoodAddr.setText("收货地址：" + mBean.getConsigneeAddress());
-                break;
-        }
+        mTvGoodName.setText("货品：" + mBean.getGoodsName());
+        mTvGoodWeight.setText("重量：" + mBean.getGoodsMass() + "kg");
+        mTvGoodVolume.setText("体积：" + mBean.getGoodsSize() + "m³");
+        mTvGoodCount.setText("运费（快递）：￥" + (mBean.getFreight() == null ? "0.00" : mBean.getFreight()));
+        mTvCarType.setText("物流公司：" + mBean.getLogisticsCompanyName());
+        mTvGetGoodTime.setText("物流单号：" + mBean.getOrderNumber());
+        mTvGetGoodAddr.setText("发布时间：" + mBean.getCreateTime());
     }
 
     private void initBottomLayout() {
-        int type = Integer.valueOf(mBean.getType());
+        int type = Integer.valueOf(mBean.getStatus());
         if(UserManager.getInstance(mContext).isDemand()) {//需求方
             if(type == LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE) {
                 rlBottom.setVisibility(View.VISIBLE);
@@ -274,7 +256,7 @@ public class LCLOrderDetailActivity extends BaseActivity {
         btnMid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogisticsDetailActivity.startActivity(LCLOrderDetailActivity.this, 3, mBean);
+                LogisticsDetailActivity.startActivity(LogisticOrderDetailActivity.this, 4, mBean);
             }
         });
 
@@ -307,7 +289,7 @@ public class LCLOrderDetailActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if(UserManager.getInstance(mContext).isDemand()) {
-                    if(Integer.valueOf(mBean.getType()) == LogisticsContants.TYPE_LCL_ORDER_TO_CONFIRM) {
+                    if(Integer.valueOf(mBean.getStatus()) == LogisticsContants.TYPE_LCL_ORDER_TO_CONFIRM) {
                         DialogHelper.showConfirmDailog(getSupportFragmentManager(), "您确认签收吗？", new IDialogResultListener<Integer>() {
                             @Override
                             public void onDataResult(Integer result) {
@@ -317,10 +299,10 @@ public class LCLOrderDetailActivity extends BaseActivity {
                             }
                         });
                     } else {
-                        diallPhone(mBean.getDriverTelephone());
+                        diallPhone(mBean.getDemanderTelnum());
                     }
                 } else {
-                    if(Integer.valueOf(mBean.getType()) == LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO)  {
+                    if(Integer.valueOf(mBean.getStatus()) == LogisticsContants.TYPE_LCL_ORDER_TO_GET_CARGO)  {
                         DialogHelper.showConfirmDailog(getSupportFragmentManager(), "您确认接货吗？", new IDialogResultListener<Integer>() {
                             @Override
                             public void onDataResult(Integer result) {
@@ -329,7 +311,7 @@ public class LCLOrderDetailActivity extends BaseActivity {
                                 }
                             }
                         });
-                    } else if(Integer.valueOf(mBean.getType()) == LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO) {
+                    } else if(Integer.valueOf(mBean.getStatus()) == LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE_CARGO) {
                         DialogHelper.showConfirmDailog(getSupportFragmentManager(), "您确认送达吗？", new IDialogResultListener<Integer>() {
                             @Override
                             public void onDataResult(Integer result) {
@@ -441,7 +423,7 @@ public class LCLOrderDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.fl_arrowright:
-                LogisticsDetailActivity.startActivity(LCLOrderDetailActivity.this, 3, mBean);
+                LogisticsDetailActivity.startActivity(LogisticOrderDetailActivity.this, 4, mBean);
                 break;
             default:
                 break;

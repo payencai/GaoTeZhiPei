@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,6 +70,7 @@ public class ExpressLogisticsActivity extends AppCompatActivity implements Permi
 
 
     private static final String APP_FOLDER_NAME = "BNSDKSimpleDemo";
+    private ImageButton mBtnLeft;
 
     private TextView mTvTitle;
 
@@ -150,16 +152,16 @@ public class ExpressLogisticsActivity extends AppCompatActivity implements Permi
     }
 
 
-    @OnClick({R.id.titlebar_btn_left})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.titlebar_btn_left:
-                finish();
-                break;
-            default:
-                break;
-        }
-    }
+//    @OnClick({R.id.titlebar_btn_left})
+//    public void onClick(View view) {
+//        switch (view.getId()) {
+//            case R.id.titlebar_btn_left:
+//                finish();
+//                break;
+//            default:
+//                break;
+//        }
+//    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -173,6 +175,13 @@ public class ExpressLogisticsActivity extends AppCompatActivity implements Permi
 //            }
 //        });
         setContentView(R.layout.activity_express_logistic);
+        mBtnLeft = (ImageButton) findViewById(R.id.titlebar_btn_left);
+        mBtnLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         mTvTitle = (TextView) findViewById(R.id.titlebar_tv_title);
         mMapView = (MapView) findViewById(R.id.mapview);
         mLlDetail = (LinearLayout) findViewById(R.id.ll_detail);

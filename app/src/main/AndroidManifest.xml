@@ -160,6 +160,9 @@
         <activity android:name=".logistics.activity.ExpressSearchActivity"
             android:screenOrientation="portrait"></activity>
 
+        <activity android:name=".logistics.activity.ExpressSearchResultActivity"
+                  android:screenOrientation="portrait"></activity>
+
         <activity android:name=".logistics.activity.LCLOrderActivity"
             android:screenOrientation="portrait"></activity>
 
@@ -291,6 +294,9 @@
 
         <activity android:name=".logistics.activity.LCLOrderDetailActivity"
             android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".logistics.activity.LogisticOrderDetailActivity"
+                  android:screenOrientation="portrait"></activity>
 
         <activity android:name=".location.activity.ChooseAddressWebActivity"
             android:screenOrientation="portrait"

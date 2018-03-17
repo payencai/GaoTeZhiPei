@@ -1,5 +1,9 @@
 package com.yichan.gaotezhipei.server.netstation.entity;
 
+import android.database.Cursor;
+
+import com.yichan.gaotezhipei.common.constant.Constans;
+
 import cn.ittiger.indexlist.entity.BaseEntity;
 
 /**
@@ -19,6 +23,7 @@ public class ExpressCompanyItem implements BaseEntity {
      */
 
     private String id;
+    private String code;
     private String name;
     private String picKey;
     private String createTime;
@@ -36,6 +41,14 @@ public class ExpressCompanyItem implements BaseEntity {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {
@@ -76,5 +89,15 @@ public class ExpressCompanyItem implements BaseEntity {
 
     public void setIsCancel(String isCancel) {
         this.isCancel = isCancel;
+    }
+
+
+    public void initWithCursor(Cursor cursor) {
+        this.id = cursor.getString(cursor.getColumnIndex(Constans.TBL_EXPRESS_COMPANY_COLUMNS.ID.toString()));
+        this.code = cursor.getString(cursor.getColumnIndex(Constans.TBL_EXPRESS_COMPANY_COLUMNS.CODE.toString()));
+        this.name = cursor.getString(cursor.getColumnIndex(Constans.TBL_EXPRESS_COMPANY_COLUMNS.NAME.toString()));
+        this.picKey = cursor.getString(cursor.getColumnIndex(Constans.TBL_EXPRESS_COMPANY_COLUMNS.PIC_KEY.toString()));
+        this.isCancel = cursor.getString(cursor.getColumnIndex(Constans.TBL_EXPRESS_COMPANY_COLUMNS.IS_CANCEL.toString()));
+
     }
 }

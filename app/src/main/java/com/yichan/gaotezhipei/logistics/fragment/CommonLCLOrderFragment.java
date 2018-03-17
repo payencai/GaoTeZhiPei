@@ -321,7 +321,7 @@ public class CommonLCLOrderFragment extends CommonOrderFragment {
                         toggleNoDataView(false);
                         mAdapter.notifyDataSetChanged();
                     } else {
-                        showToast("暂无数据哦~");
+                        //showToast("暂无数据哦~");
                         toggleNoDataView(true);
                     }
 

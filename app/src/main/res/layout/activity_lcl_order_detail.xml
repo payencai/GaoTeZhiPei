@@ -123,6 +123,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider_common_height"></View>
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -140,13 +143,13 @@
                     android:src="@drawable/order_detail_huoche" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginRight="@dimen/margin_20dp"
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
-
 
                     <TextView
                         android:id="@+id/tv_order_desc"
@@ -168,7 +171,25 @@
                 </LinearLayout>
 
             </LinearLayout>
+                <FrameLayout
+                    android:id="@+id/fl_arrowright"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="@dimen/length_view_25dp"
+                    android:layout_height="@dimen/title_bar">
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginTop="10dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/arrowright" />
+                </FrameLayout>
+            </FrameLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
