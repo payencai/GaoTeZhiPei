@@ -6,8 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -207,7 +205,7 @@ public class LCLOrderDetailActivity extends BaseActivity {
         mTvGoodWeight.setText("重量：" + mBean.getWeight() + "kg");
         mTvGoodVolume.setText("体积：" + mBean.getVolume() + "m³");
         mTvGoodCount.setText("数量：" + mBean.getNum() + "件");
-        mTvCarType.setText("所需车型：" + String.format("%s (%.1f*%.1f*%.1f)米", mBean.getAnticipantCar(), 3.5, 1.5, 1.5));
+        mTvCarType.setText("所需车型：" + mBean.getAnticipantCar() + getSizeByCar(mBean.getAnticipantCar()));
         int type = Integer.valueOf(mBean.getType());
         switch (type) {
             case LogisticsContants.TYPE_LCL_ORDER_TO_RECEIVE:
@@ -230,6 +228,28 @@ public class LCLOrderDetailActivity extends BaseActivity {
                 mTvGetGoodTime.setText("签收时间：" + mBean.getEndTime());
                 mTvGetGoodAddr.setText("收货地址：" + mBean.getConsigneeAddress());
                 break;
+        }
+    }
+
+    private String getSizeByCar(String car) {
+        if(car == null) {
+            return "";
+        } else if(car.equals("摩托车")) {
+            return "(1.9*0.8*1.1)米";
+        } else if(car.equals("小轿车")) {
+            return "(3.5*1.5*1.5)米";
+        } else if(car.equals("三轮车")){
+            return "(3.5*1.2*1.8)米";
+        } else if(car.equals("小面包车")) {
+            return "(1.8*1.3*1.1)米";
+        } else if(car.equals("中面包车")) {
+            return "(2.7*1.4*1.2)米";
+        } else if(car.equals("小货车")) {
+            return "(2.7*1.5*1.7)米";
+        } else if(car.equals("中货车")) {
+            return "(4.2*1.8*1.8)米";
+        } else {
+            return "";
         }
     }
 
