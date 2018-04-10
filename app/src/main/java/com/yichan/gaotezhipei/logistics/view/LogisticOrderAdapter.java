@@ -146,13 +146,13 @@ public class LogisticOrderAdapter extends MSClickableAdapter<LogisticOrderAdapte
 
 
     private void setLocationView(LogisticOrderViewHolder holder, int pos, LogisticsOrderPage.ListBean bean) {
-        if(getItemViewType(pos) == LogisticsContants.TYPE_LOG_ORDER_TO_WAREHOUSE) {
-            holder.rlLoc.setVisibility(View.VISIBLE);
-        } else {
-            holder.rlLoc.setVisibility(View.GONE);
-        }
+//        if(getItemViewType(pos) == LogisticsContants.TYPE_LOG_ORDER_TO_WAREHOUSE) {
+//            holder.rlLoc.setVisibility(View.VISIBLE);
+//        } else {
+//            holder.rlLoc.setVisibility(View.GONE);
+//        }
         //TODO 司机位置 功能待开发
-        //holder.rlLoc.setVisibility(View.GONE);
+        holder.rlLoc.setVisibility(View.GONE);
     }
 
     private void setBottomView(LogisticOrderViewHolder holder, final int pos, final LogisticsOrderPage.ListBean bean) {
