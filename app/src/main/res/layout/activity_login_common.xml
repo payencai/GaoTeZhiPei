@@ -96,6 +96,7 @@
             android:text="忘记密码?"
             android:textColor="#666666"
             android:textSize="14sp"
+            android:visibility="gone"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"/>
 

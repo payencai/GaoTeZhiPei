@@ -26,17 +26,17 @@
     </array>
 
     <string-array name="logistics_cat_title">
-        <item>订单物流</item>
-        <item>快递物流</item>
-        <item>拼货订单</item>
-        <item>物流订单</item>
-        <item>违禁物品</item>
+        <item>物流查询</item>
+        <item>我要寄件</item>
+        <!--<item>拼货订单</item>-->
+        <!--<item>物流订单</item>-->
+        <item>寄件须知</item>
     </string-array>
 
     <string-array name="logistics_cat_subtitle">
         <item>查看货物物流信息</item>
-        <item>点击进入寄件页面</item>
-        <item>查看我的拼货订单</item>
+        <!--<item>点击进入寄件页面</item>-->
+        <!--<item>查看我的拼货订单</item>-->
         <item>服务店已收货</item>
         <item>了解禁限物品</item>
     </string-array>
@@ -44,8 +44,8 @@
     <array name="logistics_cat_icon">
         <item>@drawable/dingdan</item>
         <item>@drawable/sent</item>
-        <item>@drawable/pindan</item>
-        <item>@drawable/logisticsorder</item>
+        <!--<item>@drawable/pindan</item>-->
+        <!--<item>@drawable/logisticsorder</item>-->
         <item>@drawable/help</item>
     </array>
 

@@ -57,7 +57,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.Call;
 import okhttp3.Response;
@@ -208,7 +207,7 @@ public class ExpressLogisticsActivity extends AppCompatActivity implements Permi
                 }
             }
         });
-        mTvTitle.setText("快递物流");
+        mTvTitle.setText("我要寄件");
         requestPermissions();
 
         mBaiduMap = mMapView.getMap();
@@ -351,7 +350,7 @@ public class ExpressLogisticsActivity extends AppCompatActivity implements Permi
         //设置坐标点
 
         BitmapDescriptor bitmapMarker = BitmapDescriptorFactory
-                .fromResource(R.drawable.icon_maker);
+                .fromResource(R.drawable.latticepoint);
 
         for (int i = 0; i < mList.size(); i++) {
             LatLng latLng = new LatLng(Double.valueOf(mList.get(i).getLatitude()), Double.valueOf(mList.get(i).getLongitude()));

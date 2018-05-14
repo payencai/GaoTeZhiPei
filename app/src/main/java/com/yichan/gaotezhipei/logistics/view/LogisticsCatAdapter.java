@@ -27,7 +27,7 @@ public class LogisticsCatAdapter extends CategoryAdapter<CommonCategoryItem, Log
 
     @Override
     protected int getCategorySpanCount() {
-        return 2;
+        return 3;
     }
 
     @Override

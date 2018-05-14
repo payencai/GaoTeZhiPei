@@ -24,6 +24,8 @@ import com.yichan.gaotezhipei.common.util.EventBus;
 import com.yichan.gaotezhipei.common.util.GsonUtil;
 import com.yichan.gaotezhipei.login.activity.DemandLoginActivity;
 import com.yichan.gaotezhipei.login.event.LoginEvent;
+import com.yichan.gaotezhipei.logistics.activity.LCLOrderActivity;
+import com.yichan.gaotezhipei.logistics.activity.LogisticOrderActivity;
 import com.yichan.gaotezhipei.mine.activity.AddressMangeActivity;
 import com.yichan.gaotezhipei.mine.activity.BecomeLCLDriverActivity;
 import com.yichan.gaotezhipei.mine.activity.FeedbackActivity;
@@ -117,7 +119,7 @@ public class MineFragment extends BaseFragment {
         return R.layout.fragment_mine;
     }
 
-    @OnClick({R.id.mine_rl_address_manage,R.id.mine_iv_setting,R.id.mine_tv_setting,R.id.mine_rl_become_lcl_driver,R.id.mine_rl_my_message,R.id.mine_tv_login,R.id.mine_rl_feedback,R.id.mine_rl_change_role,R.id.mine_civ_head})
+    @OnClick({R.id.mine_rl_address_manage,R.id.mine_iv_setting,R.id.mine_tv_setting,R.id.mine_rl_become_lcl_driver,R.id.mine_rl_my_message,R.id.mine_tv_login,R.id.mine_rl_feedback,R.id.mine_rl_change_role,R.id.mine_civ_head,R.id.mine_rl_lcl_order, R.id.mine_rl_logis_order})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.mine_rl_address_manage:
@@ -150,6 +152,12 @@ public class MineFragment extends BaseFragment {
                 break;
             case R.id.mine_civ_head:
                 getActivity().startActivity(new Intent(getActivity(), PersonalProfileActivity.class));
+                break;
+            case R.id.mine_rl_lcl_order:
+                getActivity().startActivity(new Intent(getActivity(), LCLOrderActivity.class));
+                break;
+            case R.id.mine_rl_logis_order:
+                getActivity().startActivity(new Intent(getActivity(), LogisticOrderActivity.class));
                 break;
             default:
                 break;

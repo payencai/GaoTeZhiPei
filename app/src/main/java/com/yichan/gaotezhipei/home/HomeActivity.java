@@ -24,7 +24,6 @@ import com.yichan.gaotezhipei.common.util.PermissionUtils;
 import com.yichan.gaotezhipei.lcl.fragment.LCLFragment;
 import com.yichan.gaotezhipei.logistics.fragment.LogisticsFragment;
 import com.yichan.gaotezhipei.mine.fragment.MineFragment;
-import com.yichan.gaotezhipei.servicecenter.fragment.ServiceCenterFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -148,7 +147,7 @@ public class HomeActivity extends CommonMultiTabActivity implements PermissionUt
                        mLlLoc.setVisibility(View.VISIBLE);
                        break;
                    case 1:
-                       mTvTitle.setText("我要寄件");
+                       mTvTitle.setText("物流");
                        mVgTitle.setVisibility(View.VISIBLE);
                        mIvRight.setVisibility(View.GONE);
                        mLlLoc.setVisibility(View.VISIBLE);

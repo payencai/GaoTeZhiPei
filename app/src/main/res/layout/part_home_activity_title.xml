@@ -46,7 +46,7 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="15dp"
         android:orientation="horizontal"
-        android:visibility="gone">
+       >
 
         <TextView
             android:id="@+id/titlebar_tv_right"
@@ -54,9 +54,10 @@
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="8dp"
-            android:ellipsize="marquee"
+            android:ellipsize="end"
             android:scrollHorizontally="true"
             android:text="昆明"
+            android:maxEms="4"
             android:textColor="#333333"
             android:textSize="16sp" />
 

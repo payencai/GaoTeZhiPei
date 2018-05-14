@@ -6,7 +6,7 @@ package com.yichan.gaotezhipei.common.constant;
 
 public class AppConstants  {
 
-    public static final String BASE_URL = "http://120.79.176.228/hightde";
+    public static final String BASE_URL = "http://120.79.176.228:8080/hightde";
 
     public static final String SERVER_TYPE_CODE = "1";
     public static final String DEMAND_TYPE_CODE = "2";
